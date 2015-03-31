@@ -779,7 +779,7 @@ namespace DeveloperTools
                     for (int i = MinRequestID; i <= MaxRequestID; i++)
                     {
                         string fileName = ".NET" + reNo.ToString() + "-" + dtime + "-" + author + ".xls";
-                        url = "http://sysfreight.dyndns.biz/RequestForm/Attach/Request/" + i.ToString(System.Globalization.NumberFormatInfo.InvariantInfo) + "/";
+                        url = "http://218.6.71.82:8081/RequestForm/Attach/Request/" + i.ToString(System.Globalization.NumberFormatInfo.InvariantInfo) + "/";
                         string filePath = url + fileName;
                         if (IsWebResourceAvailable(filePath))
                         {

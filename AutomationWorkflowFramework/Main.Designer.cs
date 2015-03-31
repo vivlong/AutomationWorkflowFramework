@@ -120,10 +120,10 @@
             // 
             this.tabPage2.BackColor = System.Drawing.Color.White;
             this.tabPage2.Controls.Add(this.panel_tabPage2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(886, 456);
+            this.tabPage2.Size = new System.Drawing.Size(886, 459);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "EDI";
             // 
@@ -133,17 +133,17 @@
             this.panel_tabPage2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_tabPage2.Location = new System.Drawing.Point(3, 3);
             this.panel_tabPage2.Name = "panel_tabPage2";
-            this.panel_tabPage2.Size = new System.Drawing.Size(880, 450);
+            this.panel_tabPage2.Size = new System.Drawing.Size(880, 453);
             this.panel_tabPage2.TabIndex = 0;
             // 
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.White;
             this.tabPage3.Controls.Add(this.panel_tabPage3);
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(886, 456);
+            this.tabPage3.Size = new System.Drawing.Size(886, 459);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Backup File/Folder";
             // 
@@ -153,17 +153,17 @@
             this.panel_tabPage3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_tabPage3.Location = new System.Drawing.Point(3, 3);
             this.panel_tabPage3.Name = "panel_tabPage3";
-            this.panel_tabPage3.Size = new System.Drawing.Size(880, 450);
+            this.panel_tabPage3.Size = new System.Drawing.Size(880, 453);
             this.panel_tabPage3.TabIndex = 1;
             // 
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.Color.White;
             this.tabPage4.Controls.Add(this.panel_tabPage4);
-            this.tabPage4.Location = new System.Drawing.Point(4, 25);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(886, 456);
+            this.tabPage4.Size = new System.Drawing.Size(886, 459);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Computer Info";
             // 
@@ -173,17 +173,17 @@
             this.panel_tabPage4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_tabPage4.Location = new System.Drawing.Point(3, 3);
             this.panel_tabPage4.Name = "panel_tabPage4";
-            this.panel_tabPage4.Size = new System.Drawing.Size(880, 450);
+            this.panel_tabPage4.Size = new System.Drawing.Size(880, 453);
             this.panel_tabPage4.TabIndex = 2;
             // 
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.Color.White;
             this.tabPage5.Controls.Add(this.panel_tabPage5);
-            this.tabPage5.Location = new System.Drawing.Point(4, 25);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(886, 456);
+            this.tabPage5.Size = new System.Drawing.Size(886, 459);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Restore Database";
             // 
@@ -193,17 +193,17 @@
             this.panel_tabPage5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_tabPage5.Location = new System.Drawing.Point(3, 3);
             this.panel_tabPage5.Name = "panel_tabPage5";
-            this.panel_tabPage5.Size = new System.Drawing.Size(880, 450);
+            this.panel_tabPage5.Size = new System.Drawing.Size(880, 453);
             this.panel_tabPage5.TabIndex = 3;
             // 
             // tabPage6
             // 
             this.tabPage6.BackColor = System.Drawing.Color.White;
             this.tabPage6.Controls.Add(this.panel_tabPage6);
-            this.tabPage6.Location = new System.Drawing.Point(4, 25);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(886, 456);
+            this.tabPage6.Size = new System.Drawing.Size(886, 459);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "SQL Tools";
             // 
@@ -213,7 +213,7 @@
             this.panel_tabPage6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_tabPage6.Location = new System.Drawing.Point(3, 3);
             this.panel_tabPage6.Name = "panel_tabPage6";
-            this.panel_tabPage6.Size = new System.Drawing.Size(880, 450);
+            this.panel_tabPage6.Size = new System.Drawing.Size(880, 453);
             this.panel_tabPage6.TabIndex = 4;
             // 
             // tabPage7
@@ -239,10 +239,10 @@
             // tabPage8
             // 
             this.tabPage8.Controls.Add(this.panel_tabPage8);
-            this.tabPage8.Location = new System.Drawing.Point(4, 25);
+            this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(886, 456);
+            this.tabPage8.Size = new System.Drawing.Size(886, 459);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "Config";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -253,7 +253,7 @@
             this.panel_tabPage8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_tabPage8.Location = new System.Drawing.Point(3, 3);
             this.panel_tabPage8.Name = "panel_tabPage8";
-            this.panel_tabPage8.Size = new System.Drawing.Size(880, 450);
+            this.panel_tabPage8.Size = new System.Drawing.Size(880, 453);
             this.panel_tabPage8.TabIndex = 6;
             // 
             // statusStrip1

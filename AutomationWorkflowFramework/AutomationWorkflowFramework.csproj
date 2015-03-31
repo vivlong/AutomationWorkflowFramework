@@ -163,6 +163,12 @@
     <Compile Include="Frm_Edi.Designer.cs">
       <DependentUpon>Frm_Edi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_ProgramR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_ProgramR.Designer.cs">
+      <DependentUpon>Frm_ProgramR.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Publishing.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,6 +219,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Edi.resx">
       <DependentUpon>Frm_Edi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_ProgramR.resx">
+      <DependentUpon>Frm_ProgramR.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_RestoreDB.resx">
       <DependentUpon>Frm_RestoreDB.cs</DependentUpon>
