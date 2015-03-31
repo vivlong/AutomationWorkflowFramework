@@ -44,7 +44,7 @@
             this.RichTextBox1 = new System.Windows.Forms.RichTextBox();
             this.TextBox1 = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
-            this.Button1 = new System.Windows.Forms.Button();
+            this.cmd_SaveNode = new System.Windows.Forms.Button();
             this.cmdSQL = new System.Windows.Forms.Button();
             this.cmdFindText = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -67,7 +67,7 @@
             this.panel1.Controls.Add(this.RichTextBox1);
             this.panel1.Controls.Add(this.TextBox1);
             this.panel1.Controls.Add(this.Label1);
-            this.panel1.Controls.Add(this.Button1);
+            this.panel1.Controls.Add(this.cmd_SaveNode);
             this.panel1.Controls.Add(this.cmdSQL);
             this.panel1.Controls.Add(this.cmdFindText);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -104,6 +104,7 @@
             this.cmdAddDatabase.TabIndex = 43;
             this.cmdAddDatabase.Text = "Add Database";
             this.cmdAddDatabase.UseVisualStyleBackColor = true;
+            this.cmdAddDatabase.Click += new System.EventHandler(this.cmdAddDatabase_Click);
             // 
             // cboDatabseList
             // 
@@ -161,7 +162,7 @@
             this.txtServer.Name = "txtServer";
             this.txtServer.Size = new System.Drawing.Size(125, 22);
             this.txtServer.TabIndex = 36;
-            this.txtServer.Text = "192.168.0.236";
+            this.txtServer.Text = "192.168.0.230";
             // 
             // Label5
             // 
@@ -174,8 +175,12 @@
             // 
             // RichTextBox1
             // 
+            this.RichTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.RichTextBox1.Location = new System.Drawing.Point(11, 136);
             this.RichTextBox1.Name = "RichTextBox1";
+            this.RichTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.RichTextBox1.Size = new System.Drawing.Size(540, 132);
             this.RichTextBox1.TabIndex = 34;
             this.RichTextBox1.Text = "";
@@ -196,14 +201,15 @@
             this.Label1.TabIndex = 32;
             this.Label1.Text = "Node Name";
             // 
-            // Button1
+            // cmd_SaveNode
             // 
-            this.Button1.Location = new System.Drawing.Point(284, 105);
-            this.Button1.Name = "Button1";
-            this.Button1.Size = new System.Drawing.Size(84, 24);
-            this.Button1.TabIndex = 31;
-            this.Button1.Text = "save Node Script";
-            this.Button1.UseVisualStyleBackColor = true;
+            this.cmd_SaveNode.Location = new System.Drawing.Point(284, 105);
+            this.cmd_SaveNode.Name = "cmd_SaveNode";
+            this.cmd_SaveNode.Size = new System.Drawing.Size(84, 24);
+            this.cmd_SaveNode.TabIndex = 31;
+            this.cmd_SaveNode.Text = "save Node Script";
+            this.cmd_SaveNode.UseVisualStyleBackColor = true;
+            this.cmd_SaveNode.Click += new System.EventHandler(this.cmd_SaveNode_Click);
             // 
             // cmdSQL
             // 
@@ -259,7 +265,7 @@
         internal System.Windows.Forms.RichTextBox RichTextBox1;
         internal System.Windows.Forms.TextBox TextBox1;
         internal System.Windows.Forms.Label Label1;
-        internal System.Windows.Forms.Button Button1;
+        internal System.Windows.Forms.Button cmd_SaveNode;
         internal System.Windows.Forms.Button cmdSQL;
         internal System.Windows.Forms.Button cmdFindText;
     }

@@ -527,7 +527,16 @@ namespace DeveloperTools.Classes
         {
             return ExecuteDataset(connection, commandType, commandText, (SqlParameter[])null);
         }
-
+        public static DataTable ExecuteDataTable(string connectionString, string commandText)
+        {
+              DataTable dt=null;
+              DataSet ds = SqlHelper.ExecuteDataset(connectionString, CommandType.Text, commandText);
+              if (ds.Tables.Count > 0)
+              {
+                  dt = ds.Tables[0];
+              }
+            return dt;
+        }
         /// <summary> 
         /// 执行指定数据库连接对象的命令,指定存储过程参数,返回DataSet. 
         /// </summary> 
