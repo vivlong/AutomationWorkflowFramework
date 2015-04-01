@@ -65,12 +65,18 @@
             this.txtVer = new System.Windows.Forms.TextBox();
             this.v71 = new System.Windows.Forms.RadioButton();
             this.v76 = new System.Windows.Forms.RadioButton();
+            this.txtFormName = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.txtFormName);
             this.panel1.Controls.Add(this.rB_v802);
             this.panel1.Controls.Add(this.progressBar1);
             this.panel1.Controls.Add(this.lbl_programmer);
@@ -129,7 +135,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(241, 199);
+            this.progressBar1.Location = new System.Drawing.Point(244, 263);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(330, 35);
             this.progressBar1.TabIndex = 63;
@@ -193,7 +199,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(688, 354);
+            this.textBox1.Location = new System.Drawing.Point(757, 354);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
@@ -205,7 +211,7 @@
             // btn_publish
             // 
             this.btn_publish.Enabled = false;
-            this.btn_publish.Location = new System.Drawing.Point(17, 199);
+            this.btn_publish.Location = new System.Drawing.Point(20, 263);
             this.btn_publish.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btn_publish.Name = "btn_publish";
             this.btn_publish.Size = new System.Drawing.Size(172, 26);
@@ -217,7 +223,7 @@
             // btn_rebuild
             // 
             this.btn_rebuild.Enabled = false;
-            this.btn_rebuild.Location = new System.Drawing.Point(17, 169);
+            this.btn_rebuild.Location = new System.Drawing.Point(17, 230);
             this.btn_rebuild.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btn_rebuild.Name = "btn_rebuild";
             this.btn_rebuild.Size = new System.Drawing.Size(172, 26);
@@ -229,7 +235,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(382, 299);
+            this.label6.Location = new System.Drawing.Point(385, 340);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(25, 17);
             this.label6.TabIndex = 68;
@@ -238,7 +244,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(241, 299);
+            this.label7.Location = new System.Drawing.Point(244, 340);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(44, 17);
             this.label7.TabIndex = 67;
@@ -246,7 +252,7 @@
             // 
             // txtTo
             // 
-            this.txtTo.Location = new System.Drawing.Point(416, 295);
+            this.txtTo.Location = new System.Drawing.Point(419, 336);
             this.txtTo.Name = "txtTo";
             this.txtTo.Size = new System.Drawing.Size(79, 23);
             this.txtTo.TabIndex = 66;
@@ -254,7 +260,7 @@
             // 
             // txtFrom
             // 
-            this.txtFrom.Location = new System.Drawing.Point(294, 295);
+            this.txtFrom.Location = new System.Drawing.Point(297, 336);
             this.txtFrom.Name = "txtFrom";
             this.txtFrom.Size = new System.Drawing.Size(79, 23);
             this.txtFrom.TabIndex = 65;
@@ -262,7 +268,7 @@
             // 
             // cmdSourceSendto
             // 
-            this.cmdSourceSendto.Location = new System.Drawing.Point(17, 295);
+            this.cmdSourceSendto.Location = new System.Drawing.Point(20, 336);
             this.cmdSourceSendto.Name = "cmdSourceSendto";
             this.cmdSourceSendto.Size = new System.Drawing.Size(172, 26);
             this.cmdSourceSendto.TabIndex = 64;
@@ -272,7 +278,7 @@
             // 
             // txtFolder
             // 
-            this.txtFolder.Location = new System.Drawing.Point(241, 263);
+            this.txtFolder.Location = new System.Drawing.Point(244, 304);
             this.txtFolder.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtFolder.Name = "txtFolder";
             this.txtFolder.ReadOnly = true;
@@ -281,7 +287,7 @@
             // 
             // cmdSelectFolder
             // 
-            this.cmdSelectFolder.Location = new System.Drawing.Point(17, 261);
+            this.cmdSelectFolder.Location = new System.Drawing.Point(20, 302);
             this.cmdSelectFolder.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmdSelectFolder.Name = "cmdSelectFolder";
             this.cmdSelectFolder.Size = new System.Drawing.Size(172, 26);
@@ -292,7 +298,7 @@
             // 
             // cmdBackUp
             // 
-            this.cmdBackUp.Location = new System.Drawing.Point(548, 292);
+            this.cmdBackUp.Location = new System.Drawing.Point(551, 333);
             this.cmdBackUp.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmdBackUp.Name = "cmdBackUp";
             this.cmdBackUp.Size = new System.Drawing.Size(194, 26);
@@ -368,7 +374,7 @@
             // 
             // cmdPublished2Zip
             // 
-            this.cmdPublished2Zip.Location = new System.Drawing.Point(241, 170);
+            this.cmdPublished2Zip.Location = new System.Drawing.Point(241, 231);
             this.cmdPublished2Zip.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmdPublished2Zip.Name = "cmdPublished2Zip";
             this.cmdPublished2Zip.Size = new System.Drawing.Size(212, 26);
@@ -431,7 +437,7 @@
             // 
             // cmdSendTo
             // 
-            this.cmdSendTo.Location = new System.Drawing.Point(523, 170);
+            this.cmdSendTo.Location = new System.Drawing.Point(523, 231);
             this.cmdSendTo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmdSendTo.Name = "cmdSendTo";
             this.cmdSendTo.Size = new System.Drawing.Size(219, 26);
@@ -502,6 +508,36 @@
             this.v76.UseVisualStyleBackColor = true;
             this.v76.CheckedChanged += new System.EventHandler(this.version_CheckedChanged);
             // 
+            // txtFormName
+            // 
+            this.txtFormName.Location = new System.Drawing.Point(241, 164);
+            this.txtFormName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtFormName.Multiline = true;
+            this.txtFormName.Name = "txtFormName";
+            this.txtFormName.Size = new System.Drawing.Size(212, 55);
+            this.txtFormName.TabIndex = 81;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(17, 164);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(134, 17);
+            this.label8.TabIndex = 82;
+            this.label8.Text = "Change Form Name";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(523, 164);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(219, 26);
+            this.button1.TabIndex = 83;
+            this.button1.Text = "Auto Update Request";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Frm_Publishing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -509,6 +545,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(750, 410);
             this.Controls.Add(this.panel1);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -560,5 +597,8 @@
         private System.Windows.Forms.Label lbl_programmer;
         private System.Windows.Forms.ComboBox cbo_Programmer;
         private System.Windows.Forms.RadioButton rB_v802;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtFormName;
     }
 }

@@ -13,6 +13,7 @@ using System.Threading;
 using System.Diagnostics;
 using System.Net;
 using DevComponents.DotNetBar;
+using DeveloperTools.Classes;
 
 namespace DeveloperTools
 {
@@ -899,6 +900,36 @@ namespace DeveloperTools
                 Myrq = null;
                 GC.Collect();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            String strConn = "Data Source= 192.168.0.230;database=RequestForm;" + "uid=sa;" + "pwd=p@ssw0rd$;" + "Integrated Security=false";
+            string strSQL;
+            strSQL = "Select * From Sasr1 where TrackNo='" + txt_TrackNo.Text.ToString() + "'";
+
+            DataTable dt = SqlHelper.ExecuteDataTable(strConn, strSQL);
+                if (dt.Rows.Count > 0)
+                {
+                    string m_strFixVersion;
+                    m_strFixVersion = dt.Rows[0]["FixVersion"].ToString();
+                    if (m_strFixVersion != "")
+                    {
+                        strSQL = "Update Sasr1 set FixVersion ='" + m_strFixVersion + ";" + txtVer.Text.ToString() + "' And ActualCompleteDate ='" + Classes.Modfunction.datetime_today.ToString("yy-MM-dd") + "' ANd ProgrammingSummary =ProgrammingSummary + '" + Classes.Modfunction.datetime_today.ToString("yyMMdd") + "(" + txtVer.Text.ToString() + ")" + cbo_Programmer.Text.ToString() + "Fixed ";
+                        strSQL = strSQL + " And FormName ='" + txtFormName.Text.ToString();
+                        int i = SqlHelper.ExecuteNonQuery(strConn, CommandType.Text, strSQL);
+
+
+                    }
+                    else
+                    {
+                        strSQL = "Update Sasr1 set UpdateBy ='" + cbo_Programmer.Text.ToString() + "', FixVersion ='" + txtVer.Text.ToString() + "'And ActualCompleteDate ='" + Classes.Modfunction.datetime_today.ToString("yy-MM-dd") + "' ANd ProgrammingSummary ='" + Classes.Modfunction.datetime_today.ToString("yyMMdd") + "(" + txtVer.Text.ToString() + ")" + cbo_Programmer.Text.ToString() + " done ";
+                        int i = SqlHelper.ExecuteNonQuery(strConn, CommandType.Text, strSQL);
+
+                    }
+
+                }
+           
         }
 
         //private void btn_UploadToCloud_Click(object sender, EventArgs e)
