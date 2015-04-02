@@ -8,8 +8,8 @@
     <ProjectGuid>{49958F2C-94C4-4574-BBF3-E9F03B2ABB30}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DeveloperTools</RootNamespace>
-    <AssemblyName>DeveloperTools</AssemblyName>
+    <RootNamespace>AutomationWorkflowFramework</RootNamespace>
+    <AssemblyName>AutomationWorkflowFramework</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ApplicationIcon>Image.ico</ApplicationIcon>

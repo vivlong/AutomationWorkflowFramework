@@ -14,7 +14,7 @@ namespace DeveloperTools.Classes
         public static Font SetFormFontByUsingMemoryFont()
         {
             p_Font = new PrivateFontCollection();
-            byte[] b_Font = DeveloperTools.Properties.Resources.DroidSans;
+            byte[] b_Font = AutomationWorkflowFramework.Properties.Resources.DroidSans;
             IntPtr MeAdd = Marshal.AllocHGlobal(b_Font.Length);
             Marshal.Copy(b_Font, 0, MeAdd, b_Font.Length);
             p_Font.AddMemoryFont(MeAdd, b_Font.Length);

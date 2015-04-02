@@ -292,7 +292,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_banner.BackColor = System.Drawing.Color.Transparent;
-            this.panel_banner.BackgroundImage = global::DeveloperTools.Properties.Resources.devFreight2;
+            this.panel_banner.BackgroundImage = global::AutomationWorkflowFramework.Properties.Resources.devFreight2;
             this.panel_banner.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel_banner.Controls.Add(this.lbl_Title);
             this.panel_banner.Location = new System.Drawing.Point(0, 0);
