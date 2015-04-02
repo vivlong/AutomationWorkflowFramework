@@ -163,12 +163,6 @@
     <Compile Include="Frm_Edi.Designer.cs">
       <DependentUpon>Frm_Edi.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm_ProgramR.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_ProgramR.Designer.cs">
-      <DependentUpon>Frm_ProgramR.cs</DependentUpon>
-    </Compile>
     <Compile Include="Frm_Publishing.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,9 +214,6 @@
     <EmbeddedResource Include="Frm_Edi.resx">
       <DependentUpon>Frm_Edi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm_ProgramR.resx">
-      <DependentUpon>Frm_ProgramR.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Frm_RestoreDB.resx">
       <DependentUpon>Frm_RestoreDB.cs</DependentUpon>
     </EmbeddedResource>
@@ -236,7 +227,7 @@
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -283,9 +274,9 @@
     <Content Include="AutomationWorkflowFramework.exe.l4n">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\DroidSans.ttf">
+    <Content Include="Resources\DroidSans.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
     <None Include="build.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

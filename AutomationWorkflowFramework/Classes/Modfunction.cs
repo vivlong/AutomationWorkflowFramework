@@ -229,7 +229,7 @@ namespace DeveloperTools.Classes
                 {
                     for (int i = 0; i <= (addressList.Length - 1); i++)
                     {
-                        if (addressList[i].AddressFamily.ToString() == "InterNetwork")
+                        if (addressList[i].AddressFamily.ToString() == "InterNetwork" && addressList[i].ToString().IndexOf("192")==0)
                         {
                             currentIP = addressList[i].ToString();
                             if (currentIP == "192.168.0.236")

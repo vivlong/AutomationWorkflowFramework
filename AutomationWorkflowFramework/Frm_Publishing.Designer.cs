@@ -71,6 +71,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.rB_v802);
             this.panel1.Controls.Add(this.progressBar1);
             this.panel1.Controls.Add(this.lbl_programmer);
@@ -78,7 +79,6 @@
             this.panel1.Controls.Add(this.lbl_trackno);
             this.panel1.Controls.Add(this.txt_TrackNo);
             this.panel1.Controls.Add(this.btn_DownloadRequestXls);
-            this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.btn_publish);
             this.panel1.Controls.Add(this.btn_rebuild);
             this.panel1.Controls.Add(this.label6);
@@ -109,18 +109,18 @@
             this.panel1.Controls.Add(this.v76);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(750, 410);
+            this.panel1.Size = new System.Drawing.Size(873, 487);
             this.panel1.TabIndex = 0;
             // 
             // rB_v802
             // 
             this.rB_v802.AutoSize = true;
-            this.rB_v802.Location = new System.Drawing.Point(658, 9);
-            this.rB_v802.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.rB_v802.Location = new System.Drawing.Point(658, 11);
+            this.rB_v802.Margin = new System.Windows.Forms.Padding(4);
             this.rB_v802.Name = "rB_v802";
-            this.rB_v802.Size = new System.Drawing.Size(84, 21);
+            this.rB_v802.Size = new System.Drawing.Size(82, 23);
             this.rB_v802.TabIndex = 80;
             this.rB_v802.TabStop = true;
             this.rB_v802.Text = "Ver 8.0.2";
@@ -129,19 +129,20 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(241, 199);
+            this.progressBar1.Location = new System.Drawing.Point(241, 236);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(330, 35);
+            this.progressBar1.Size = new System.Drawing.Size(330, 42);
             this.progressBar1.TabIndex = 63;
             this.progressBar1.Visible = false;
             // 
             // lbl_programmer
             // 
             this.lbl_programmer.AutoSize = true;
-            this.lbl_programmer.Location = new System.Drawing.Point(482, 111);
+            this.lbl_programmer.Location = new System.Drawing.Point(482, 132);
             this.lbl_programmer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_programmer.Name = "lbl_programmer";
-            this.lbl_programmer.Size = new System.Drawing.Size(94, 17);
+            this.lbl_programmer.Size = new System.Drawing.Size(93, 19);
             this.lbl_programmer.TabIndex = 79;
             this.lbl_programmer.Text = "Programmer :";
             // 
@@ -155,37 +156,38 @@
             "xiaozhen",
             "liaozheng",
             "tangxc"});
-            this.cbo_Programmer.Location = new System.Drawing.Point(622, 108);
+            this.cbo_Programmer.Location = new System.Drawing.Point(622, 128);
+            this.cbo_Programmer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbo_Programmer.Name = "cbo_Programmer";
-            this.cbo_Programmer.Size = new System.Drawing.Size(120, 24);
+            this.cbo_Programmer.Size = new System.Drawing.Size(120, 27);
             this.cbo_Programmer.TabIndex = 78;
             this.cbo_Programmer.ValueMember = "Name";
             // 
             // lbl_trackno
             // 
             this.lbl_trackno.AutoSize = true;
-            this.lbl_trackno.Location = new System.Drawing.Point(14, 111);
+            this.lbl_trackno.Location = new System.Drawing.Point(14, 132);
             this.lbl_trackno.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_trackno.Name = "lbl_trackno";
-            this.lbl_trackno.Size = new System.Drawing.Size(171, 17);
+            this.lbl_trackno.Size = new System.Drawing.Size(163, 19);
             this.lbl_trackno.TabIndex = 77;
             this.lbl_trackno.Text = "Track No : （; or Space）";
             // 
             // txt_TrackNo
             // 
-            this.txt_TrackNo.Location = new System.Drawing.Point(241, 108);
-            this.txt_TrackNo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txt_TrackNo.Location = new System.Drawing.Point(241, 128);
+            this.txt_TrackNo.Margin = new System.Windows.Forms.Padding(4);
             this.txt_TrackNo.Multiline = true;
             this.txt_TrackNo.Name = "txt_TrackNo";
-            this.txt_TrackNo.Size = new System.Drawing.Size(212, 55);
+            this.txt_TrackNo.Size = new System.Drawing.Size(212, 65);
             this.txt_TrackNo.TabIndex = 76;
             // 
             // btn_DownloadRequestXls
             // 
-            this.btn_DownloadRequestXls.Location = new System.Drawing.Point(523, 138);
-            this.btn_DownloadRequestXls.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btn_DownloadRequestXls.Location = new System.Drawing.Point(523, 164);
+            this.btn_DownloadRequestXls.Margin = new System.Windows.Forms.Padding(4);
             this.btn_DownloadRequestXls.Name = "btn_DownloadRequestXls";
-            this.btn_DownloadRequestXls.Size = new System.Drawing.Size(219, 26);
+            this.btn_DownloadRequestXls.Size = new System.Drawing.Size(219, 31);
             this.btn_DownloadRequestXls.TabIndex = 75;
             this.btn_DownloadRequestXls.Text = "Auto Export XLS to Folder";
             this.btn_DownloadRequestXls.UseVisualStyleBackColor = true;
@@ -193,22 +195,23 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(688, 354);
+            this.textBox1.Location = new System.Drawing.Point(548, 394);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(543, 228);
+            this.textBox1.Size = new System.Drawing.Size(683, 296);
             this.textBox1.TabIndex = 71;
             this.textBox1.Visible = false;
             // 
             // btn_publish
             // 
             this.btn_publish.Enabled = false;
-            this.btn_publish.Location = new System.Drawing.Point(17, 199);
-            this.btn_publish.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btn_publish.Location = new System.Drawing.Point(17, 257);
+            this.btn_publish.Margin = new System.Windows.Forms.Padding(4);
             this.btn_publish.Name = "btn_publish";
-            this.btn_publish.Size = new System.Drawing.Size(172, 26);
+            this.btn_publish.Size = new System.Drawing.Size(172, 31);
             this.btn_publish.TabIndex = 70;
             this.btn_publish.Text = "Publish Deploy";
             this.btn_publish.UseVisualStyleBackColor = true;
@@ -216,11 +219,10 @@
             // 
             // btn_rebuild
             // 
-            this.btn_rebuild.Enabled = false;
-            this.btn_rebuild.Location = new System.Drawing.Point(17, 169);
-            this.btn_rebuild.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btn_rebuild.Location = new System.Drawing.Point(17, 222);
+            this.btn_rebuild.Margin = new System.Windows.Forms.Padding(4);
             this.btn_rebuild.Name = "btn_rebuild";
-            this.btn_rebuild.Size = new System.Drawing.Size(172, 26);
+            this.btn_rebuild.Size = new System.Drawing.Size(172, 31);
             this.btn_rebuild.TabIndex = 69;
             this.btn_rebuild.Text = "Rebuild All";
             this.btn_rebuild.UseVisualStyleBackColor = true;
@@ -229,42 +231,45 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(382, 299);
+            this.label6.Location = new System.Drawing.Point(382, 363);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(25, 17);
+            this.label6.Size = new System.Drawing.Size(24, 19);
             this.label6.TabIndex = 68;
             this.label6.Text = "To";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(241, 299);
+            this.label7.Location = new System.Drawing.Point(241, 363);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(44, 17);
+            this.label7.Size = new System.Drawing.Size(45, 19);
             this.label7.TabIndex = 67;
             this.label7.Text = "From ";
             // 
             // txtTo
             // 
-            this.txtTo.Location = new System.Drawing.Point(416, 295);
+            this.txtTo.Location = new System.Drawing.Point(416, 358);
+            this.txtTo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTo.Name = "txtTo";
-            this.txtTo.Size = new System.Drawing.Size(79, 23);
+            this.txtTo.Size = new System.Drawing.Size(79, 24);
             this.txtTo.TabIndex = 66;
             this.txtTo.Text = "131218";
             // 
             // txtFrom
             // 
-            this.txtFrom.Location = new System.Drawing.Point(294, 295);
+            this.txtFrom.Location = new System.Drawing.Point(294, 358);
+            this.txtFrom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtFrom.Name = "txtFrom";
-            this.txtFrom.Size = new System.Drawing.Size(79, 23);
+            this.txtFrom.Size = new System.Drawing.Size(79, 24);
             this.txtFrom.TabIndex = 65;
             this.txtFrom.Text = "131218";
             // 
             // cmdSourceSendto
             // 
-            this.cmdSourceSendto.Location = new System.Drawing.Point(17, 295);
+            this.cmdSourceSendto.Location = new System.Drawing.Point(17, 358);
+            this.cmdSourceSendto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmdSourceSendto.Name = "cmdSourceSendto";
-            this.cmdSourceSendto.Size = new System.Drawing.Size(172, 26);
+            this.cmdSourceSendto.Size = new System.Drawing.Size(172, 31);
             this.cmdSourceSendto.TabIndex = 64;
             this.cmdSourceSendto.Text = " Backup/Send Source to 250";
             this.cmdSourceSendto.UseVisualStyleBackColor = true;
@@ -272,19 +277,19 @@
             // 
             // txtFolder
             // 
-            this.txtFolder.Location = new System.Drawing.Point(241, 263);
-            this.txtFolder.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtFolder.Location = new System.Drawing.Point(241, 320);
+            this.txtFolder.Margin = new System.Windows.Forms.Padding(4);
             this.txtFolder.Name = "txtFolder";
             this.txtFolder.ReadOnly = true;
-            this.txtFolder.Size = new System.Drawing.Size(501, 23);
+            this.txtFolder.Size = new System.Drawing.Size(501, 24);
             this.txtFolder.TabIndex = 62;
             // 
             // cmdSelectFolder
             // 
-            this.cmdSelectFolder.Location = new System.Drawing.Point(17, 261);
-            this.cmdSelectFolder.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmdSelectFolder.Location = new System.Drawing.Point(17, 318);
+            this.cmdSelectFolder.Margin = new System.Windows.Forms.Padding(4);
             this.cmdSelectFolder.Name = "cmdSelectFolder";
-            this.cmdSelectFolder.Size = new System.Drawing.Size(172, 26);
+            this.cmdSelectFolder.Size = new System.Drawing.Size(172, 31);
             this.cmdSelectFolder.TabIndex = 61;
             this.cmdSelectFolder.Text = "Select Folder To ZIP";
             this.cmdSelectFolder.UseVisualStyleBackColor = true;
@@ -292,10 +297,10 @@
             // 
             // cmdBackUp
             // 
-            this.cmdBackUp.Location = new System.Drawing.Point(548, 292);
-            this.cmdBackUp.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmdBackUp.Location = new System.Drawing.Point(548, 355);
+            this.cmdBackUp.Margin = new System.Windows.Forms.Padding(4);
             this.cmdBackUp.Name = "cmdBackUp";
-            this.cmdBackUp.Size = new System.Drawing.Size(194, 26);
+            this.cmdBackUp.Size = new System.Drawing.Size(194, 31);
             this.cmdBackUp.TabIndex = 60;
             this.cmdBackUp.Text = "BackUp SourceCode";
             this.cmdBackUp.UseVisualStyleBackColor = true;
@@ -304,10 +309,10 @@
             // rB_v801
             // 
             this.rB_v801.AutoSize = true;
-            this.rB_v801.Location = new System.Drawing.Point(549, 9);
-            this.rB_v801.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.rB_v801.Location = new System.Drawing.Point(549, 11);
+            this.rB_v801.Margin = new System.Windows.Forms.Padding(4);
             this.rB_v801.Name = "rB_v801";
-            this.rB_v801.Size = new System.Drawing.Size(84, 21);
+            this.rB_v801.Size = new System.Drawing.Size(82, 23);
             this.rB_v801.TabIndex = 59;
             this.rB_v801.TabStop = true;
             this.rB_v801.Text = "Ver 8.0.1";
@@ -316,10 +321,10 @@
             // 
             // cmd_Open
             // 
-            this.cmd_Open.Location = new System.Drawing.Point(564, 76);
-            this.cmd_Open.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmd_Open.Location = new System.Drawing.Point(564, 90);
+            this.cmd_Open.Margin = new System.Windows.Forms.Padding(4);
             this.cmd_Open.Name = "cmd_Open";
-            this.cmd_Open.Size = new System.Drawing.Size(178, 26);
+            this.cmd_Open.Size = new System.Drawing.Size(178, 31);
             this.cmd_Open.TabIndex = 58;
             this.cmd_Open.Text = "Open EXCEL Folder";
             this.cmd_Open.UseVisualStyleBackColor = true;
@@ -327,10 +332,10 @@
             // 
             // cmd_CreatFolder
             // 
-            this.cmd_CreatFolder.Location = new System.Drawing.Point(241, 76);
-            this.cmd_CreatFolder.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmd_CreatFolder.Location = new System.Drawing.Point(241, 90);
+            this.cmd_CreatFolder.Margin = new System.Windows.Forms.Padding(4);
             this.cmd_CreatFolder.Name = "cmd_CreatFolder";
-            this.cmd_CreatFolder.Size = new System.Drawing.Size(289, 26);
+            this.cmd_CreatFolder.Size = new System.Drawing.Size(289, 31);
             this.cmd_CreatFolder.TabIndex = 57;
             this.cmd_CreatFolder.Text = "Create Current Version EXCEL Folder";
             this.cmd_CreatFolder.UseVisualStyleBackColor = true;
@@ -339,39 +344,39 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 80);
+            this.label5.Location = new System.Drawing.Point(14, 95);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(162, 17);
+            this.label5.Size = new System.Drawing.Size(159, 19);
             this.label5.TabIndex = 56;
             this.label5.Text = "Step 3: One by one click";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 41);
+            this.label4.Location = new System.Drawing.Point(14, 49);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(155, 34);
+            this.label4.Size = new System.Drawing.Size(157, 38);
             this.label4.TabIndex = 55;
             this.label4.Text = "Step 2 : Enter BuildNo\r\n              and Other Info";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 11);
+            this.label3.Location = new System.Drawing.Point(14, 13);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(152, 17);
+            this.label3.Size = new System.Drawing.Size(147, 19);
             this.label3.TabIndex = 54;
             this.label3.Text = "Step 1 : Select Version";
             // 
             // cmdPublished2Zip
             // 
-            this.cmdPublished2Zip.Location = new System.Drawing.Point(241, 170);
-            this.cmdPublished2Zip.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmdPublished2Zip.Location = new System.Drawing.Point(241, 202);
+            this.cmdPublished2Zip.Margin = new System.Windows.Forms.Padding(4);
             this.cmdPublished2Zip.Name = "cmdPublished2Zip";
-            this.cmdPublished2Zip.Size = new System.Drawing.Size(212, 26);
+            this.cmdPublished2Zip.Size = new System.Drawing.Size(212, 31);
             this.cmdPublished2Zip.TabIndex = 52;
             this.cmdPublished2Zip.Text = "Get Published to Zip";
             this.cmdPublished2Zip.UseVisualStyleBackColor = true;
@@ -380,10 +385,10 @@
             // v75
             // 
             this.v75.AutoSize = true;
-            this.v75.Location = new System.Drawing.Point(549, 9);
-            this.v75.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.v75.Location = new System.Drawing.Point(549, 11);
+            this.v75.Margin = new System.Windows.Forms.Padding(4);
             this.v75.Name = "v75";
-            this.v75.Size = new System.Drawing.Size(84, 21);
+            this.v75.Size = new System.Drawing.Size(82, 23);
             this.v75.TabIndex = 48;
             this.v75.TabStop = true;
             this.v75.Text = "Ver 7.0.5";
@@ -393,10 +398,10 @@
             // rB_v704
             // 
             this.rB_v704.AutoSize = true;
-            this.rB_v704.Location = new System.Drawing.Point(440, 9);
-            this.rB_v704.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.rB_v704.Location = new System.Drawing.Point(440, 11);
+            this.rB_v704.Margin = new System.Windows.Forms.Padding(4);
             this.rB_v704.Name = "rB_v704";
-            this.rB_v704.Size = new System.Drawing.Size(84, 21);
+            this.rB_v704.Size = new System.Drawing.Size(82, 23);
             this.rB_v704.TabIndex = 47;
             this.rB_v704.TabStop = true;
             this.rB_v704.Text = "Ver 7.0.4";
@@ -406,10 +411,10 @@
             // rB_v703
             // 
             this.rB_v703.AutoSize = true;
-            this.rB_v703.Location = new System.Drawing.Point(331, 9);
-            this.rB_v703.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.rB_v703.Location = new System.Drawing.Point(331, 11);
+            this.rB_v703.Margin = new System.Windows.Forms.Padding(4);
             this.rB_v703.Name = "rB_v703";
-            this.rB_v703.Size = new System.Drawing.Size(84, 21);
+            this.rB_v703.Size = new System.Drawing.Size(82, 23);
             this.rB_v703.TabIndex = 45;
             this.rB_v703.TabStop = true;
             this.rB_v703.Text = "Ver 7.0.3";
@@ -419,10 +424,10 @@
             // rB_v702
             // 
             this.rB_v702.AutoSize = true;
-            this.rB_v702.Location = new System.Drawing.Point(222, 9);
-            this.rB_v702.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.rB_v702.Location = new System.Drawing.Point(222, 11);
+            this.rB_v702.Margin = new System.Windows.Forms.Padding(4);
             this.rB_v702.Name = "rB_v702";
-            this.rB_v702.Size = new System.Drawing.Size(84, 21);
+            this.rB_v702.Size = new System.Drawing.Size(82, 23);
             this.rB_v702.TabIndex = 43;
             this.rB_v702.TabStop = true;
             this.rB_v702.Text = "Ver 7.0.2";
@@ -431,10 +436,10 @@
             // 
             // cmdSendTo
             // 
-            this.cmdSendTo.Location = new System.Drawing.Point(523, 170);
-            this.cmdSendTo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmdSendTo.Location = new System.Drawing.Point(523, 202);
+            this.cmdSendTo.Margin = new System.Windows.Forms.Padding(4);
             this.cmdSendTo.Name = "cmdSendTo";
-            this.cmdSendTo.Size = new System.Drawing.Size(219, 26);
+            this.cmdSendTo.Size = new System.Drawing.Size(219, 31);
             this.cmdSendTo.TabIndex = 53;
             this.cmdSendTo.Text = "Send Updated to 250";
             this.cmdSendTo.UseVisualStyleBackColor = true;
@@ -442,47 +447,47 @@
             // 
             // txt_SpecialName
             // 
-            this.txt_SpecialName.Location = new System.Drawing.Point(591, 38);
-            this.txt_SpecialName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txt_SpecialName.Location = new System.Drawing.Point(591, 45);
+            this.txt_SpecialName.Margin = new System.Windows.Forms.Padding(4);
             this.txt_SpecialName.Name = "txt_SpecialName";
-            this.txt_SpecialName.Size = new System.Drawing.Size(151, 23);
+            this.txt_SpecialName.Size = new System.Drawing.Size(151, 24);
             this.txt_SpecialName.TabIndex = 51;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(475, 41);
+            this.label2.Location = new System.Drawing.Point(475, 49);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 17);
+            this.label2.Size = new System.Drawing.Size(93, 19);
             this.label2.TabIndex = 46;
             this.label2.Text = "Special Name";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(241, 41);
+            this.label1.Location = new System.Drawing.Point(241, 49);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 17);
+            this.label1.Size = new System.Drawing.Size(65, 19);
             this.label1.TabIndex = 44;
             this.label1.Text = "Build No.";
             // 
             // txtVer
             // 
-            this.txtVer.Location = new System.Drawing.Point(326, 38);
-            this.txtVer.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtVer.Location = new System.Drawing.Point(326, 45);
+            this.txtVer.Margin = new System.Windows.Forms.Padding(4);
             this.txtVer.Name = "txtVer";
-            this.txtVer.Size = new System.Drawing.Size(103, 23);
+            this.txtVer.Size = new System.Drawing.Size(103, 24);
             this.txtVer.TabIndex = 50;
             // 
             // v71
             // 
             this.v71.AutoSize = true;
-            this.v71.Location = new System.Drawing.Point(222, 9);
-            this.v71.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.v71.Location = new System.Drawing.Point(222, 11);
+            this.v71.Margin = new System.Windows.Forms.Padding(4);
             this.v71.Name = "v71";
-            this.v71.Size = new System.Drawing.Size(84, 21);
+            this.v71.Size = new System.Drawing.Size(82, 23);
             this.v71.TabIndex = 42;
             this.v71.TabStop = true;
             this.v71.Text = "Ver 7.0.1";
@@ -492,10 +497,10 @@
             // v76
             // 
             this.v76.AutoSize = true;
-            this.v76.Location = new System.Drawing.Point(440, 9);
-            this.v76.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.v76.Location = new System.Drawing.Point(440, 11);
+            this.v76.Margin = new System.Windows.Forms.Padding(4);
             this.v76.Name = "v76";
-            this.v76.Size = new System.Drawing.Size(84, 21);
+            this.v76.Size = new System.Drawing.Size(82, 23);
             this.v76.TabIndex = 49;
             this.v76.TabStop = true;
             this.v76.Text = "Ver 7.0.6";
@@ -504,14 +509,15 @@
             // 
             // Frm_Publishing
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(750, 410);
+            this.ClientSize = new System.Drawing.Size(873, 487);
             this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.DoubleBuffered = true;
+            this.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Frm_Publishing";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Frm_Publishing_Load);

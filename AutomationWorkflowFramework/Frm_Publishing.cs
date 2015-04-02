@@ -203,6 +203,44 @@ namespace DeveloperTools
             }
         }
 
+        private void deleteFilesAndFolders(string update_publish_path)
+        {
+            string[] pubfiles = Directory.GetFiles(update_publish_path);
+            foreach (string file in pubfiles)
+            {
+                if (file != null && file != "")
+                    File.Delete(file);
+            }
+            string[] pubfolders = Directory.GetDirectories(update_publish_path);
+            foreach (string folder in pubfolders)
+            {
+                if (Directory.Exists(folder))
+                {
+                    deleteFilesAndFolders(folder);
+                    Directory.Delete(folder);
+                }
+            }
+        }
+
+        private void copyFilesAndFolders(string update_publish_path, string filepath)
+        {
+            string[] files = Directory.GetFiles(filepath);
+            foreach (string file in files)
+            {
+                string name = Path.GetFileName(file);
+                string dest = Path.Combine(update_publish_path, name);
+                File.Move(file, dest);
+            }
+            string[] folders = Directory.GetDirectories(filepath);
+            foreach (string folder in folders)
+            {
+                string n = folder.Substring(folder.LastIndexOf("\\") + 1);
+                if (n != "crystalreports" && n != "mdac28" && n != "dotnetfx" && n != "sysfreightupdate")
+                {
+                    Directory.Move(folder, update_publish_path + "\\" + n);
+                }
+            }
+        }
         private void cmdPublished2Zip_Click(object sender, EventArgs e)
         {
             try
@@ -212,47 +250,14 @@ namespace DeveloperTools
                 progressBar1.Maximum = 1000;
                 progressBar1.Enabled = true;
                 progressBar1.Visible = true;
-
+                //
                 ver = GetVer();
                 string update_publish_path = Classes.Modfunction.baseDPath + @"PublishFolder\sysfreightupdate\publish";
-                string[] pubfiles = Directory.GetFiles(update_publish_path);
-                foreach (string file in pubfiles)
-                {
-                    if (file != null && file != "")
-                        File.Delete(file);
-                }
-                string[] pubfolders = Directory.GetDirectories(update_publish_path);
-                foreach (string folder in pubfolders)
-                {
-                    if (Directory.Exists(folder))
-                    {
-                        pubfiles = Directory.GetFiles(folder);
-                        foreach (string file in pubfiles)
-                        {
-                            if (file != null && file != "")
-                                File.Delete(file);
-                        }
-                        Directory.Delete(folder);
-                    }
-                }
+                deleteFilesAndFolders(update_publish_path);
                 //
                 string filepath = Classes.Modfunction.baseDPath + @"PublishFolder\sysfreight";
-                string[] files = Directory.GetFiles(filepath);
-                foreach (string file in files)
-                {
-                    string name = Path.GetFileName(file);
-                    string dest = Path.Combine(update_publish_path, name);
-                    File.Move(file, dest);
-                }
-                string[] folders = Directory.GetDirectories(filepath);
-                foreach (string folder in folders)
-                {
-                    string n = folder.Substring(folder.LastIndexOf("\\") + 1);
-                    if (n != "crystalreports" && n != "mdac28" && n != "dotnetfx" && n != "sysfreightupdate")
-                    {
-                        Directory.Move(folder, update_publish_path + "\\" + n);
-                    }
-                }
+                copyFilesAndFolders(update_publish_path, filepath);
+                //
                 if (txtVer.Text != "")
                 {
                     string verName = "sysfreightupdate_" + ver.Replace(".", "_") + "_";

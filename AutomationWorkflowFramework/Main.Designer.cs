@@ -100,10 +100,10 @@
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
             this.tabPage1.Controls.Add(this.panel_tabPage1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Location = new System.Drawing.Point(4, 28);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(886, 456);
+            this.tabPage1.Size = new System.Drawing.Size(886, 453);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Publish Release";
             // 
@@ -113,7 +113,7 @@
             this.panel_tabPage1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_tabPage1.Location = new System.Drawing.Point(3, 3);
             this.panel_tabPage1.Name = "panel_tabPage1";
-            this.panel_tabPage1.Size = new System.Drawing.Size(880, 450);
+            this.panel_tabPage1.Size = new System.Drawing.Size(880, 447);
             this.panel_tabPage1.TabIndex = 0;
             // 
             // tabPage2
@@ -220,10 +220,10 @@
             // 
             this.tabPage7.BackColor = System.Drawing.Color.White;
             this.tabPage7.Controls.Add(this.panel_tabPage7);
-            this.tabPage7.Location = new System.Drawing.Point(4, 25);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(886, 456);
+            this.tabPage7.Size = new System.Drawing.Size(886, 459);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "Testing";
             // 
@@ -233,7 +233,7 @@
             this.panel_tabPage7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_tabPage7.Location = new System.Drawing.Point(3, 3);
             this.panel_tabPage7.Name = "panel_tabPage7";
-            this.panel_tabPage7.Size = new System.Drawing.Size(880, 450);
+            this.panel_tabPage7.Size = new System.Drawing.Size(880, 453);
             this.panel_tabPage7.TabIndex = 5;
             // 
             // tabPage8
@@ -304,10 +304,10 @@
             // 
             this.lbl_Title.AutoSize = true;
             this.lbl_Title.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Title.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Title.Location = new System.Drawing.Point(12, 16);
             this.lbl_Title.Name = "lbl_Title";
-            this.lbl_Title.Size = new System.Drawing.Size(689, 15);
+            this.lbl_Title.Size = new System.Drawing.Size(711, 17);
             this.lbl_Title.TabIndex = 1;
             this.lbl_Title.Text = "「凡是被不断重复的过程，将其工具化，绑定到自动化流程之中，依靠工具，而不是经验」—— SysMagic DevOps Team 工具文化";
             // 
@@ -320,7 +320,7 @@
             this.Controls.Add(this.panel_tabControl);
             this.Controls.Add(this.panel_banner);
             this.DoubleBuffered = true;
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
