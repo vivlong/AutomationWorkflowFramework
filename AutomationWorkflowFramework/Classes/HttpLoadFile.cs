@@ -5,7 +5,7 @@ using System.Threading;
 using System.Net;
 using System.IO;
 
-namespace DeveloperTools.Classes
+namespace AWF.Classes
 {
     public class HttpLoadFile
     {

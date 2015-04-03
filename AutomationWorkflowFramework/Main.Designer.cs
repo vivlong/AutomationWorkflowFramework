@@ -1,4 +1,4 @@
-﻿namespace DeveloperTools
+﻿namespace AWF
 {
     partial class Main
     {
@@ -29,232 +29,43 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            this.panel_tabControl = new System.Windows.Forms.Panel();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.panel_tabPage1 = new System.Windows.Forms.Panel();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.panel_tabPage2 = new System.Windows.Forms.Panel();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.panel_tabPage3 = new System.Windows.Forms.Panel();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.panel_tabPage4 = new System.Windows.Forms.Panel();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.panel_tabPage5 = new System.Windows.Forms.Panel();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.panel_tabPage6 = new System.Windows.Forms.Panel();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.panel_tabPage7 = new System.Windows.Forms.Panel();
-            this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.panel_tabPage8 = new System.Windows.Forms.Panel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel_banner = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.pbMenu6 = new System.Windows.Forms.PictureBox();
+            this.pbMenu8 = new System.Windows.Forms.PictureBox();
+            this.pbMenu9 = new System.Windows.Forms.PictureBox();
+            this.pbMenu10 = new System.Windows.Forms.PictureBox();
+            this.pbMenu5 = new System.Windows.Forms.PictureBox();
+            this.pbMenu2 = new System.Windows.Forms.PictureBox();
+            this.pbMenu4 = new System.Windows.Forms.PictureBox();
+            this.pbMenu3 = new System.Windows.Forms.PictureBox();
+            this.pbMenu7 = new System.Windows.Forms.PictureBox();
+            this.pbMenu1 = new System.Windows.Forms.PictureBox();
             this.lbl_Title = new System.Windows.Forms.Label();
-            this.panel_tabControl.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.tabPage4.SuspendLayout();
-            this.tabPage5.SuspendLayout();
-            this.tabPage6.SuspendLayout();
-            this.tabPage7.SuspendLayout();
-            this.tabPage8.SuspendLayout();
+            this.panel_Form = new System.Windows.Forms.Panel();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.panel_banner.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMenu6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMenu8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMenu9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMenu10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMenu5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMenu2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMenu4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMenu3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMenu7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMenu1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel_tabControl
-            // 
-            this.panel_tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel_tabControl.Controls.Add(this.tabControl1);
-            this.panel_tabControl.Location = new System.Drawing.Point(0, 44);
-            this.panel_tabControl.Name = "panel_tabControl";
-            this.panel_tabControl.Size = new System.Drawing.Size(894, 485);
-            this.panel_tabControl.TabIndex = 2;
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Controls.Add(this.tabPage6);
-            this.tabControl1.Controls.Add(this.tabPage7);
-            this.tabControl1.Controls.Add(this.tabPage8);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(894, 485);
-            this.tabControl1.TabIndex = 0;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.BackColor = System.Drawing.Color.White;
-            this.tabPage1.Controls.Add(this.panel_tabPage1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 28);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(886, 453);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Publish Release";
-            // 
-            // panel_tabPage1
-            // 
-            this.panel_tabPage1.BackColor = System.Drawing.Color.White;
-            this.panel_tabPage1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_tabPage1.Location = new System.Drawing.Point(3, 3);
-            this.panel_tabPage1.Name = "panel_tabPage1";
-            this.panel_tabPage1.Size = new System.Drawing.Size(880, 447);
-            this.panel_tabPage1.TabIndex = 0;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.Color.White;
-            this.tabPage2.Controls.Add(this.panel_tabPage2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(886, 459);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "EDI";
-            // 
-            // panel_tabPage2
-            // 
-            this.panel_tabPage2.BackColor = System.Drawing.Color.White;
-            this.panel_tabPage2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_tabPage2.Location = new System.Drawing.Point(3, 3);
-            this.panel_tabPage2.Name = "panel_tabPage2";
-            this.panel_tabPage2.Size = new System.Drawing.Size(880, 453);
-            this.panel_tabPage2.TabIndex = 0;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.BackColor = System.Drawing.Color.White;
-            this.tabPage3.Controls.Add(this.panel_tabPage3);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(886, 459);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Backup File/Folder";
-            // 
-            // panel_tabPage3
-            // 
-            this.panel_tabPage3.BackColor = System.Drawing.Color.White;
-            this.panel_tabPage3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_tabPage3.Location = new System.Drawing.Point(3, 3);
-            this.panel_tabPage3.Name = "panel_tabPage3";
-            this.panel_tabPage3.Size = new System.Drawing.Size(880, 453);
-            this.panel_tabPage3.TabIndex = 1;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.BackColor = System.Drawing.Color.White;
-            this.tabPage4.Controls.Add(this.panel_tabPage4);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(886, 459);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Computer Info";
-            // 
-            // panel_tabPage4
-            // 
-            this.panel_tabPage4.BackColor = System.Drawing.Color.White;
-            this.panel_tabPage4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_tabPage4.Location = new System.Drawing.Point(3, 3);
-            this.panel_tabPage4.Name = "panel_tabPage4";
-            this.panel_tabPage4.Size = new System.Drawing.Size(880, 453);
-            this.panel_tabPage4.TabIndex = 2;
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.BackColor = System.Drawing.Color.White;
-            this.tabPage5.Controls.Add(this.panel_tabPage5);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(886, 459);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Restore Database";
-            // 
-            // panel_tabPage5
-            // 
-            this.panel_tabPage5.BackColor = System.Drawing.Color.White;
-            this.panel_tabPage5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_tabPage5.Location = new System.Drawing.Point(3, 3);
-            this.panel_tabPage5.Name = "panel_tabPage5";
-            this.panel_tabPage5.Size = new System.Drawing.Size(880, 453);
-            this.panel_tabPage5.TabIndex = 3;
-            // 
-            // tabPage6
-            // 
-            this.tabPage6.BackColor = System.Drawing.Color.White;
-            this.tabPage6.Controls.Add(this.panel_tabPage6);
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(886, 459);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "SQL Tools";
-            // 
-            // panel_tabPage6
-            // 
-            this.panel_tabPage6.BackColor = System.Drawing.Color.White;
-            this.panel_tabPage6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_tabPage6.Location = new System.Drawing.Point(3, 3);
-            this.panel_tabPage6.Name = "panel_tabPage6";
-            this.panel_tabPage6.Size = new System.Drawing.Size(880, 453);
-            this.panel_tabPage6.TabIndex = 4;
-            // 
-            // tabPage7
-            // 
-            this.tabPage7.BackColor = System.Drawing.Color.White;
-            this.tabPage7.Controls.Add(this.panel_tabPage7);
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(886, 459);
-            this.tabPage7.TabIndex = 6;
-            this.tabPage7.Text = "Testing";
-            // 
-            // panel_tabPage7
-            // 
-            this.panel_tabPage7.BackColor = System.Drawing.Color.White;
-            this.panel_tabPage7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_tabPage7.Location = new System.Drawing.Point(3, 3);
-            this.panel_tabPage7.Name = "panel_tabPage7";
-            this.panel_tabPage7.Size = new System.Drawing.Size(880, 453);
-            this.panel_tabPage7.TabIndex = 5;
-            // 
-            // tabPage8
-            // 
-            this.tabPage8.Controls.Add(this.panel_tabPage8);
-            this.tabPage8.Location = new System.Drawing.Point(4, 22);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(886, 459);
-            this.tabPage8.TabIndex = 7;
-            this.tabPage8.Text = "Config";
-            this.tabPage8.UseVisualStyleBackColor = true;
-            // 
-            // panel_tabPage8
-            // 
-            this.panel_tabPage8.BackColor = System.Drawing.Color.White;
-            this.panel_tabPage8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_tabPage8.Location = new System.Drawing.Point(3, 3);
-            this.panel_tabPage8.Name = "panel_tabPage8";
-            this.panel_tabPage8.Size = new System.Drawing.Size(880, 453);
-            this.panel_tabPage8.TabIndex = 6;
             // 
             // statusStrip1
             // 
@@ -286,39 +97,186 @@
             this.toolStripStatusLabel3.Size = new System.Drawing.Size(60, 17);
             this.toolStripStatusLabel3.Text = "Datetime";
             // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.IsSplitterFixed = true;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.panel_banner);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.panel_Form);
+            this.splitContainer1.Size = new System.Drawing.Size(896, 531);
+            this.splitContainer1.SplitterDistance = 89;
+            this.splitContainer1.TabIndex = 7;
+            // 
             // panel_banner
             // 
-            this.panel_banner.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_banner.BackColor = System.Drawing.Color.Transparent;
-            this.panel_banner.BackgroundImage = global::AutomationWorkflowFramework.Properties.Resources.devFreight2;
+            this.panel_banner.BackgroundImage = global::AWF.Properties.Resources.devFreight2;
             this.panel_banner.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel_banner.Controls.Add(this.panel4);
             this.panel_banner.Controls.Add(this.lbl_Title);
+            this.panel_banner.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_banner.Location = new System.Drawing.Point(0, 0);
             this.panel_banner.Name = "panel_banner";
-            this.panel_banner.Size = new System.Drawing.Size(894, 185);
-            this.panel_banner.TabIndex = 1;
+            this.panel_banner.Size = new System.Drawing.Size(896, 89);
+            this.panel_banner.TabIndex = 3;
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.BackColor = System.Drawing.Color.Transparent;
+            this.panel4.Controls.Add(this.pbMenu6);
+            this.panel4.Controls.Add(this.pbMenu8);
+            this.panel4.Controls.Add(this.pbMenu9);
+            this.panel4.Controls.Add(this.pbMenu10);
+            this.panel4.Controls.Add(this.pbMenu5);
+            this.panel4.Controls.Add(this.pbMenu2);
+            this.panel4.Controls.Add(this.pbMenu4);
+            this.panel4.Controls.Add(this.pbMenu3);
+            this.panel4.Controls.Add(this.pbMenu7);
+            this.panel4.Controls.Add(this.pbMenu1);
+            this.panel4.Location = new System.Drawing.Point(346, 4);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(550, 77);
+            this.panel4.TabIndex = 23;
+            // 
+            // pbMenu6
+            // 
+            this.pbMenu6.BackColor = System.Drawing.Color.Transparent;
+            this.pbMenu6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbMenu6.Location = new System.Drawing.Point(255, 6);
+            this.pbMenu6.Name = "pbMenu6";
+            this.pbMenu6.Size = new System.Drawing.Size(40, 68);
+            this.pbMenu6.TabIndex = 9;
+            this.pbMenu6.TabStop = false;
+            // 
+            // pbMenu8
+            // 
+            this.pbMenu8.BackColor = System.Drawing.Color.Transparent;
+            this.pbMenu8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbMenu8.Location = new System.Drawing.Point(355, 6);
+            this.pbMenu8.Name = "pbMenu8";
+            this.pbMenu8.Size = new System.Drawing.Size(40, 68);
+            this.pbMenu8.TabIndex = 8;
+            this.pbMenu8.TabStop = false;
+            // 
+            // pbMenu9
+            // 
+            this.pbMenu9.BackColor = System.Drawing.Color.Transparent;
+            this.pbMenu9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbMenu9.Location = new System.Drawing.Point(405, 6);
+            this.pbMenu9.Name = "pbMenu9";
+            this.pbMenu9.Size = new System.Drawing.Size(40, 68);
+            this.pbMenu9.TabIndex = 7;
+            this.pbMenu9.TabStop = false;
+            // 
+            // pbMenu10
+            // 
+            this.pbMenu10.BackColor = System.Drawing.Color.Transparent;
+            this.pbMenu10.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbMenu10.Location = new System.Drawing.Point(455, 6);
+            this.pbMenu10.Name = "pbMenu10";
+            this.pbMenu10.Size = new System.Drawing.Size(40, 68);
+            this.pbMenu10.TabIndex = 6;
+            this.pbMenu10.TabStop = false;
+            // 
+            // pbMenu5
+            // 
+            this.pbMenu5.BackColor = System.Drawing.Color.Transparent;
+            this.pbMenu5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbMenu5.Location = new System.Drawing.Point(205, 6);
+            this.pbMenu5.Name = "pbMenu5";
+            this.pbMenu5.Size = new System.Drawing.Size(40, 68);
+            this.pbMenu5.TabIndex = 5;
+            this.pbMenu5.TabStop = false;
+            // 
+            // pbMenu2
+            // 
+            this.pbMenu2.BackColor = System.Drawing.Color.Transparent;
+            this.pbMenu2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbMenu2.Location = new System.Drawing.Point(55, 6);
+            this.pbMenu2.Name = "pbMenu2";
+            this.pbMenu2.Size = new System.Drawing.Size(40, 68);
+            this.pbMenu2.TabIndex = 4;
+            this.pbMenu2.TabStop = false;
+            // 
+            // pbMenu4
+            // 
+            this.pbMenu4.BackColor = System.Drawing.Color.Transparent;
+            this.pbMenu4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbMenu4.Location = new System.Drawing.Point(153, 6);
+            this.pbMenu4.Name = "pbMenu4";
+            this.pbMenu4.Size = new System.Drawing.Size(40, 68);
+            this.pbMenu4.TabIndex = 3;
+            this.pbMenu4.TabStop = false;
+            // 
+            // pbMenu3
+            // 
+            this.pbMenu3.BackColor = System.Drawing.Color.Transparent;
+            this.pbMenu3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbMenu3.Location = new System.Drawing.Point(104, 6);
+            this.pbMenu3.Name = "pbMenu3";
+            this.pbMenu3.Size = new System.Drawing.Size(40, 68);
+            this.pbMenu3.TabIndex = 2;
+            this.pbMenu3.TabStop = false;
+            // 
+            // pbMenu7
+            // 
+            this.pbMenu7.BackColor = System.Drawing.Color.Transparent;
+            this.pbMenu7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbMenu7.Location = new System.Drawing.Point(305, 6);
+            this.pbMenu7.Name = "pbMenu7";
+            this.pbMenu7.Size = new System.Drawing.Size(40, 68);
+            this.pbMenu7.TabIndex = 1;
+            this.pbMenu7.TabStop = false;
+            // 
+            // pbMenu1
+            // 
+            this.pbMenu1.BackColor = System.Drawing.Color.Gray;
+            this.pbMenu1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbMenu1.Location = new System.Drawing.Point(6, 6);
+            this.pbMenu1.Name = "pbMenu1";
+            this.pbMenu1.Size = new System.Drawing.Size(40, 68);
+            this.pbMenu1.TabIndex = 0;
+            this.pbMenu1.TabStop = false;
+            this.pbMenu1.Tag = "0";
             // 
             // lbl_Title
             // 
             this.lbl_Title.AutoSize = true;
             this.lbl_Title.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Title.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Title.Location = new System.Drawing.Point(12, 16);
+            this.lbl_Title.Location = new System.Drawing.Point(11, 12);
             this.lbl_Title.Name = "lbl_Title";
-            this.lbl_Title.Size = new System.Drawing.Size(711, 17);
+            this.lbl_Title.Size = new System.Drawing.Size(216, 68);
             this.lbl_Title.TabIndex = 1;
-            this.lbl_Title.Text = "「凡是被不断重复的过程，将其工具化，绑定到自动化流程之中，依靠工具，而不是经验」—— SysMagic DevOps Team 工具文化";
+            this.lbl_Title.Text = "「 凡是被不断重复的过程，将其工具化\r\n    绑定到自动化流程之中，依靠工具，\r\n    而不是经验 」    ——      工具文化\r\n    ©2015 " +
+    " SysMagic DevOps Team";
+            // 
+            // panel_Form
+            // 
+            this.panel_Form.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_Form.Location = new System.Drawing.Point(0, 0);
+            this.panel_Form.Name = "panel_Form";
+            this.panel_Form.Size = new System.Drawing.Size(896, 438);
+            this.panel_Form.TabIndex = 0;
             // 
             // Main
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(896, 553);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.panel_tabControl);
-            this.Controls.Add(this.panel_banner);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -326,23 +284,29 @@
             this.IsMdiContainer = true;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Automation Workflow Framework";
+            this.Text = "SysMagic Automation Workflow Framework";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.Load += new System.EventHandler(this.Main_Load);
-            this.panel_tabControl.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage5.ResumeLayout(false);
-            this.tabPage6.ResumeLayout(false);
-            this.tabPage7.ResumeLayout(false);
-            this.tabPage8.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.panel_banner.ResumeLayout(false);
             this.panel_banner.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbMenu6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMenu8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMenu9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMenu10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMenu5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMenu2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMenu4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMenu3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMenu7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMenu1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -350,30 +314,25 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel_banner;
-        private System.Windows.Forms.Panel panel_tabControl;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Panel panel_tabPage1;
-        private System.Windows.Forms.Panel panel_tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.Panel panel_tabPage3;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.Panel panel_tabPage4;
-        private System.Windows.Forms.Panel panel_tabPage5;
-        private System.Windows.Forms.TabPage tabPage6;
-        private System.Windows.Forms.Panel panel_tabPage6;
-        private System.Windows.Forms.TabPage tabPage7;
-        private System.Windows.Forms.Panel panel_tabPage7;
-        private System.Windows.Forms.Label lbl_Title;
-        private System.Windows.Forms.TabPage tabPage8;
-        private System.Windows.Forms.Panel panel_tabPage8;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.Panel panel_banner;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.PictureBox pbMenu6;
+        private System.Windows.Forms.PictureBox pbMenu8;
+        private System.Windows.Forms.PictureBox pbMenu9;
+        private System.Windows.Forms.PictureBox pbMenu10;
+        private System.Windows.Forms.PictureBox pbMenu5;
+        private System.Windows.Forms.PictureBox pbMenu2;
+        private System.Windows.Forms.PictureBox pbMenu4;
+        private System.Windows.Forms.PictureBox pbMenu3;
+        private System.Windows.Forms.PictureBox pbMenu7;
+        private System.Windows.Forms.PictureBox pbMenu1;
+        private System.Windows.Forms.Label lbl_Title;
+        private System.Windows.Forms.Panel panel_Form;
     }
 }
 

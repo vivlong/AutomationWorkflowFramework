@@ -1,4 +1,4 @@
-﻿namespace DeveloperTools
+﻿namespace AWF
 {
     partial class Frm_Publishing
     {
@@ -29,14 +29,16 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtFormName = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.rB_v802 = new System.Windows.Forms.RadioButton();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.lbl_programmer = new System.Windows.Forms.Label();
             this.cbo_Programmer = new System.Windows.Forms.ComboBox();
             this.lbl_trackno = new System.Windows.Forms.Label();
             this.txt_TrackNo = new System.Windows.Forms.TextBox();
-            this.btn_DownloadRequestXls = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.btn_publish = new System.Windows.Forms.Button();
             this.btn_rebuild = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -71,14 +73,15 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.txtFormName);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.rB_v802);
-            this.panel1.Controls.Add(this.progressBar1);
             this.panel1.Controls.Add(this.lbl_programmer);
             this.panel1.Controls.Add(this.cbo_Programmer);
             this.panel1.Controls.Add(this.lbl_trackno);
             this.panel1.Controls.Add(this.txt_TrackNo);
-            this.panel1.Controls.Add(this.btn_DownloadRequestXls);
             this.panel1.Controls.Add(this.btn_publish);
             this.panel1.Controls.Add(this.btn_rebuild);
             this.panel1.Controls.Add(this.label6);
@@ -107,12 +110,54 @@
             this.panel1.Controls.Add(this.txtVer);
             this.panel1.Controls.Add(this.v71);
             this.panel1.Controls.Add(this.v76);
+            this.panel1.Controls.Add(this.progressBar1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(873, 487);
             this.panel1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(523, 208);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(219, 26);
+            this.button1.TabIndex = 83;
+            this.button1.Text = "Auto Update Request";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(14, 179);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(133, 19);
+            this.label8.TabIndex = 82;
+            this.label8.Text = "Change Form Name";
+            // 
+            // txtFormName
+            // 
+            this.txtFormName.Location = new System.Drawing.Point(241, 179);
+            this.txtFormName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtFormName.Multiline = true;
+            this.txtFormName.Name = "txtFormName";
+            this.txtFormName.Size = new System.Drawing.Size(212, 55);
+            this.txtFormName.TabIndex = 81;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(757, 354);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox1.Size = new System.Drawing.Size(683, 296);
+            this.textBox1.TabIndex = 71;
+            this.textBox1.Visible = false;
             // 
             // rB_v802
             // 
@@ -129,7 +174,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(241, 236);
+            this.progressBar1.Location = new System.Drawing.Point(241, 203);
             this.progressBar1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(330, 42);
@@ -139,12 +184,12 @@
             // lbl_programmer
             // 
             this.lbl_programmer.AutoSize = true;
-            this.lbl_programmer.Location = new System.Drawing.Point(482, 132);
+            this.lbl_programmer.Location = new System.Drawing.Point(481, 136);
             this.lbl_programmer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_programmer.Name = "lbl_programmer";
-            this.lbl_programmer.Size = new System.Drawing.Size(93, 19);
+            this.lbl_programmer.Size = new System.Drawing.Size(100, 19);
             this.lbl_programmer.TabIndex = 79;
-            this.lbl_programmer.Text = "Programmer :";
+            this.lbl_programmer.Text = "需求指派对象：";
             // 
             // cbo_Programmer
             // 
@@ -156,7 +201,7 @@
             "xiaozhen",
             "liaozheng",
             "tangxc"});
-            this.cbo_Programmer.Location = new System.Drawing.Point(622, 128);
+            this.cbo_Programmer.Location = new System.Drawing.Point(622, 132);
             this.cbo_Programmer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbo_Programmer.Name = "cbo_Programmer";
             this.cbo_Programmer.Size = new System.Drawing.Size(120, 27);
@@ -169,57 +214,33 @@
             this.lbl_trackno.Location = new System.Drawing.Point(14, 132);
             this.lbl_trackno.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_trackno.Name = "lbl_trackno";
-            this.lbl_trackno.Size = new System.Drawing.Size(163, 19);
+            this.lbl_trackno.Size = new System.Drawing.Size(174, 19);
             this.lbl_trackno.TabIndex = 77;
-            this.lbl_trackno.Text = "Track No : （; or Space）";
+            this.lbl_trackno.Text = "需求编号 : （; 或 空格区分）";
             // 
             // txt_TrackNo
             // 
-            this.txt_TrackNo.Location = new System.Drawing.Point(241, 128);
+            this.txt_TrackNo.Location = new System.Drawing.Point(241, 132);
             this.txt_TrackNo.Margin = new System.Windows.Forms.Padding(4);
             this.txt_TrackNo.Multiline = true;
             this.txt_TrackNo.Name = "txt_TrackNo";
-            this.txt_TrackNo.Size = new System.Drawing.Size(212, 65);
+            this.txt_TrackNo.Size = new System.Drawing.Size(212, 27);
             this.txt_TrackNo.TabIndex = 76;
-            // 
-            // btn_DownloadRequestXls
-            // 
-            this.btn_DownloadRequestXls.Location = new System.Drawing.Point(523, 164);
-            this.btn_DownloadRequestXls.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_DownloadRequestXls.Name = "btn_DownloadRequestXls";
-            this.btn_DownloadRequestXls.Size = new System.Drawing.Size(219, 31);
-            this.btn_DownloadRequestXls.TabIndex = 75;
-            this.btn_DownloadRequestXls.Text = "Auto Export XLS to Folder";
-            this.btn_DownloadRequestXls.UseVisualStyleBackColor = true;
-            this.btn_DownloadRequestXls.Click += new System.EventHandler(this.btn_DownloadRequestXls_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(548, 394);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(683, 296);
-            this.textBox1.TabIndex = 71;
-            this.textBox1.Visible = false;
             // 
             // btn_publish
             // 
             this.btn_publish.Enabled = false;
-            this.btn_publish.Location = new System.Drawing.Point(17, 257);
+            this.btn_publish.Location = new System.Drawing.Point(17, 291);
             this.btn_publish.Margin = new System.Windows.Forms.Padding(4);
             this.btn_publish.Name = "btn_publish";
             this.btn_publish.Size = new System.Drawing.Size(172, 31);
             this.btn_publish.TabIndex = 70;
             this.btn_publish.Text = "Publish Deploy";
             this.btn_publish.UseVisualStyleBackColor = true;
-            this.btn_publish.Click += new System.EventHandler(this.btn_publish_Click);
             // 
             // btn_rebuild
             // 
-            this.btn_rebuild.Location = new System.Drawing.Point(17, 222);
+            this.btn_rebuild.Location = new System.Drawing.Point(17, 253);
             this.btn_rebuild.Margin = new System.Windows.Forms.Padding(4);
             this.btn_rebuild.Name = "btn_rebuild";
             this.btn_rebuild.Size = new System.Drawing.Size(172, 31);
@@ -231,7 +252,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(382, 363);
+            this.label6.Location = new System.Drawing.Point(382, 416);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(24, 19);
             this.label6.TabIndex = 68;
@@ -240,7 +261,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(241, 363);
+            this.label7.Location = new System.Drawing.Point(241, 416);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(45, 19);
             this.label7.TabIndex = 67;
@@ -248,7 +269,7 @@
             // 
             // txtTo
             // 
-            this.txtTo.Location = new System.Drawing.Point(416, 358);
+            this.txtTo.Location = new System.Drawing.Point(416, 411);
             this.txtTo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTo.Name = "txtTo";
             this.txtTo.Size = new System.Drawing.Size(79, 24);
@@ -257,7 +278,7 @@
             // 
             // txtFrom
             // 
-            this.txtFrom.Location = new System.Drawing.Point(294, 358);
+            this.txtFrom.Location = new System.Drawing.Point(294, 411);
             this.txtFrom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtFrom.Name = "txtFrom";
             this.txtFrom.Size = new System.Drawing.Size(79, 24);
@@ -266,7 +287,7 @@
             // 
             // cmdSourceSendto
             // 
-            this.cmdSourceSendto.Location = new System.Drawing.Point(17, 358);
+            this.cmdSourceSendto.Location = new System.Drawing.Point(17, 411);
             this.cmdSourceSendto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmdSourceSendto.Name = "cmdSourceSendto";
             this.cmdSourceSendto.Size = new System.Drawing.Size(172, 31);
@@ -277,7 +298,7 @@
             // 
             // txtFolder
             // 
-            this.txtFolder.Location = new System.Drawing.Point(241, 320);
+            this.txtFolder.Location = new System.Drawing.Point(241, 373);
             this.txtFolder.Margin = new System.Windows.Forms.Padding(4);
             this.txtFolder.Name = "txtFolder";
             this.txtFolder.ReadOnly = true;
@@ -286,7 +307,7 @@
             // 
             // cmdSelectFolder
             // 
-            this.cmdSelectFolder.Location = new System.Drawing.Point(17, 318);
+            this.cmdSelectFolder.Location = new System.Drawing.Point(17, 371);
             this.cmdSelectFolder.Margin = new System.Windows.Forms.Padding(4);
             this.cmdSelectFolder.Name = "cmdSelectFolder";
             this.cmdSelectFolder.Size = new System.Drawing.Size(172, 31);
@@ -297,7 +318,7 @@
             // 
             // cmdBackUp
             // 
-            this.cmdBackUp.Location = new System.Drawing.Point(548, 355);
+            this.cmdBackUp.Location = new System.Drawing.Point(548, 408);
             this.cmdBackUp.Margin = new System.Windows.Forms.Padding(4);
             this.cmdBackUp.Name = "cmdBackUp";
             this.cmdBackUp.Size = new System.Drawing.Size(194, 31);
@@ -321,12 +342,12 @@
             // 
             // cmd_Open
             // 
-            this.cmd_Open.Location = new System.Drawing.Point(564, 90);
+            this.cmd_Open.Location = new System.Drawing.Point(500, 90);
             this.cmd_Open.Margin = new System.Windows.Forms.Padding(4);
             this.cmd_Open.Name = "cmd_Open";
-            this.cmd_Open.Size = new System.Drawing.Size(178, 31);
+            this.cmd_Open.Size = new System.Drawing.Size(242, 31);
             this.cmd_Open.TabIndex = 58;
-            this.cmd_Open.Text = "Open EXCEL Folder";
+            this.cmd_Open.Text = "打开 当前生成版本文件夹";
             this.cmd_Open.UseVisualStyleBackColor = true;
             this.cmd_Open.Click += new System.EventHandler(this.cmdOpen_Click);
             // 
@@ -335,21 +356,21 @@
             this.cmd_CreatFolder.Location = new System.Drawing.Point(241, 90);
             this.cmd_CreatFolder.Margin = new System.Windows.Forms.Padding(4);
             this.cmd_CreatFolder.Name = "cmd_CreatFolder";
-            this.cmd_CreatFolder.Size = new System.Drawing.Size(289, 31);
+            this.cmd_CreatFolder.Size = new System.Drawing.Size(242, 31);
             this.cmd_CreatFolder.TabIndex = 57;
-            this.cmd_CreatFolder.Text = "Create Current Version EXCEL Folder";
+            this.cmd_CreatFolder.Text = " 建立 当前生成版本文件夹";
             this.cmd_CreatFolder.UseVisualStyleBackColor = true;
             this.cmd_CreatFolder.Click += new System.EventHandler(this.cmdCreatFolder_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 95);
+            this.label5.Location = new System.Drawing.Point(14, 90);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(159, 19);
+            this.label5.Size = new System.Drawing.Size(56, 19);
             this.label5.TabIndex = 56;
-            this.label5.Text = "Step 3: One by one click";
+            this.label5.Text = "Step 3: ";
             // 
             // label4
             // 
@@ -357,9 +378,9 @@
             this.label4.Location = new System.Drawing.Point(14, 49);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(157, 38);
+            this.label4.Size = new System.Drawing.Size(125, 19);
             this.label4.TabIndex = 55;
-            this.label4.Text = "Step 2 : Enter BuildNo\r\n              and Other Info";
+            this.label4.Text = "Step 2 : 确认版本号";
             // 
             // label3
             // 
@@ -367,13 +388,13 @@
             this.label3.Location = new System.Drawing.Point(14, 13);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(147, 19);
+            this.label3.Size = new System.Drawing.Size(112, 19);
             this.label3.TabIndex = 54;
-            this.label3.Text = "Step 1 : Select Version";
+            this.label3.Text = "Step 1 : 选择版本";
             // 
             // cmdPublished2Zip
             // 
-            this.cmdPublished2Zip.Location = new System.Drawing.Point(241, 202);
+            this.cmdPublished2Zip.Location = new System.Drawing.Point(241, 253);
             this.cmdPublished2Zip.Margin = new System.Windows.Forms.Padding(4);
             this.cmdPublished2Zip.Name = "cmdPublished2Zip";
             this.cmdPublished2Zip.Size = new System.Drawing.Size(212, 31);
@@ -436,7 +457,7 @@
             // 
             // cmdSendTo
             // 
-            this.cmdSendTo.Location = new System.Drawing.Point(523, 202);
+            this.cmdSendTo.Location = new System.Drawing.Point(523, 253);
             this.cmdSendTo.Margin = new System.Windows.Forms.Padding(4);
             this.cmdSendTo.Name = "cmdSendTo";
             this.cmdSendTo.Size = new System.Drawing.Size(219, 31);
@@ -559,12 +580,14 @@
         private System.Windows.Forms.Button btn_publish;
         private System.Windows.Forms.Button btn_rebuild;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button btn_DownloadRequestXls;
         private System.Windows.Forms.RadioButton v71;
         private System.Windows.Forms.Label lbl_trackno;
         private System.Windows.Forms.TextBox txt_TrackNo;
         private System.Windows.Forms.Label lbl_programmer;
         private System.Windows.Forms.ComboBox cbo_Programmer;
         private System.Windows.Forms.RadioButton rB_v802;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtFormName;
     }
 }

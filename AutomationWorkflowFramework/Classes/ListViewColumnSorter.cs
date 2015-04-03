@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Collections;
 using System.Windows.Forms;
-namespace DeveloperTools.Classes
+namespace AWF.Classes
 {
     class ListViewColumnSorter : IComparer
     {

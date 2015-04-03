@@ -5,7 +5,7 @@ using System.Data;
 using Microsoft.SqlServer.Management.Common;
 using Microsoft.SqlServer.Management.Smo;
 
-namespace DeveloperTools.Classes
+namespace AWF.Classes
 {
     public delegate void PercentCompleteChanging(object sender, PercentCompleteEventArgs e);
     public delegate void PercentCompleteDone(object sender, ServerMessageEventArgs e);

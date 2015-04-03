@@ -6,7 +6,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Windows.Forms;
 
-namespace DeveloperTools.Classes
+namespace AWF.Classes
 {
     class Modfunction
     {

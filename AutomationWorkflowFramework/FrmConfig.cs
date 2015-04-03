@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using System.Collections;
 using Newtonsoft.Json;
 
-namespace DeveloperTools
+namespace AWF
 {
     public partial class FrmConfig : Form
     {

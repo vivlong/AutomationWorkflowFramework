@@ -12,7 +12,7 @@ using System.Xml;
 using Microsoft.SqlServer.Management.Common;
 using Microsoft.SqlServer.Management.Smo;
 
-namespace DeveloperTools
+namespace AWF
 {
     public partial class Frm_RestoreDB : Form
     {

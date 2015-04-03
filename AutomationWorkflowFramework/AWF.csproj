@@ -8,8 +8,8 @@
     <ProjectGuid>{49958F2C-94C4-4574-BBF3-E9F03B2ABB30}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AutomationWorkflowFramework</RootNamespace>
-    <AssemblyName>AutomationWorkflowFramework</AssemblyName>
+    <RootNamespace>AWF</RootNamespace>
+    <AssemblyName>SAWF</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ApplicationIcon>Image.ico</ApplicationIcon>
@@ -271,7 +271,7 @@
     <Compile Include="Classes\ZipThread.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AutomationWorkflowFramework.exe.l4n">
+    <Content Include="SAWF.exe.l4n">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\DroidSans.ttf">

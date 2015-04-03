@@ -14,7 +14,7 @@ using System.Diagnostics;
 using System.Net;
 using DevComponents.DotNetBar;
 
-namespace DeveloperTools
+namespace AWF
 {
     public partial class Frm_Publishing : Office2007Form
     {
@@ -25,9 +25,6 @@ namespace DeveloperTools
         public static extern int PostMessage(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
         public const int WM_CLOSE = 0x10;
 
-        [DllImport("shell32.dll", EntryPoint = "ShellExecuteA")]
-        public static extern int ShellExecute(int hwnd, String lpOperation, String lpFile, String lpParameters, String lpDirectory, int nShowCmd);
-        
         private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         delegate void updateUI(string msg);
@@ -41,7 +38,6 @@ namespace DeveloperTools
         public Frm_Publishing()
         {
             InitializeComponent();
-            this.Font = Classes.FontHelper.SetFormFontByUsingMemoryFont();
             ShowTextDelegate = new updateUI(ShowText);
             progressBar1.Location = new Point((panel1.Width / 2 - progressBar1.Width / 2), (panel1.Height / 2 - progressBar1.Height / 2));
         }
@@ -372,7 +368,6 @@ namespace DeveloperTools
                     progressBar1.Enabled = false;
                     if (Directory.Exists(NewFolder))
                     {
-                        MessageBox.Show("Send Successful!");
                         Clipboard.Clear();
                         string specialText = txt_SpecialName.Text.Trim();
                         if (specialText != "")
@@ -380,15 +375,18 @@ namespace DeveloperTools
                             specialText = "(Special-" + specialText + ")";
                         }
                         Clipboard.SetDataObject(verName + specialText + " send to 250.");
-                        //ShellExecute(0, String.Empty, "skype:" + Classes.SaveSetting.strSkypes + "?chat", String.Empty, String.Empty, 1);
-                        if (txt_SpecialName.Text.Length > 0)
+                        DialogResult dgrt = MessageBox.Show("Send Successful! Would you like to backup source code?","Send To 250",MessageBoxButtons.YesNo);
+                        if (dgrt == System.Windows.Forms.DialogResult.OK)
                         {
-                            MessageBox.Show("The Special Version Should Be Backup Manually!");
-                            cmdSelectFolder_Click(cmdSelectFolder, e);
-                        }
-                        else
-                        {
-                            cmdBackUp_Click(cmdBackUp, e);
+                            if (txt_SpecialName.Text.Length > 0)
+                            {
+                                MessageBox.Show("The Special Version Should Be Backup Manually!");
+                                cmdSelectFolder_Click(cmdSelectFolder, e);
+                            }
+                            else
+                            {
+                                cmdBackUp_Click(cmdBackUp, e);
+                            }
                         }
                     }
                     else
@@ -684,227 +682,227 @@ namespace DeveloperTools
             textBox1.ScrollToCaret();
         }
 
-        private void btn_publish_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                blnIsDeploy = true;
-                panel1.Enabled = false;
-                textBox1.Top = txtVer.Top;
-                textBox1.Left = cmdSelectFolder.Left;
-                textBox1.Enabled = true;
-                textBox1.Visible = true;
-                Thread publish = new Thread(new ThreadStart(PublishAll));
-                publish.Start();
-                while (publish.ThreadState == System.Threading.ThreadState.Running)
-                {
-                    Application.DoEvents();
-                }
-                publish.Abort();
-                textBox1.Visible = false;
-                panel1.Enabled = true;
-            }
-            catch (Exception ex) { Log.Debug(ex.Message, ex); }
-            finally
-            {
-                textBox1.Visible = false;
-                panel1.Enabled = true;
-                blnIsDeploy = false;
-                GC.Collect();
-            }
-        }
+        //private void btn_publish_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        blnIsDeploy = true;
+        //        panel1.Enabled = false;
+        //        textBox1.Top = txtVer.Top;
+        //        textBox1.Left = cmdSelectFolder.Left;
+        //        textBox1.Enabled = true;
+        //        textBox1.Visible = true;
+        //        Thread publish = new Thread(new ThreadStart(PublishAll));
+        //        publish.Start();
+        //        while (publish.ThreadState == System.Threading.ThreadState.Running)
+        //        {
+        //            Application.DoEvents();
+        //        }
+        //        publish.Abort();
+        //        textBox1.Visible = false;
+        //        panel1.Enabled = true;
+        //    }
+        //    catch (Exception ex) { Log.Debug(ex.Message, ex); }
+        //    finally
+        //    {
+        //        textBox1.Visible = false;
+        //        panel1.Enabled = true;
+        //        blnIsDeploy = false;
+        //        GC.Collect();
+        //    }
+        //}
 
-        private void PublishAll()
-        {
-            try
-            {
-                string deploy;
-                if (blnIsDeploy) deploy = " deploy"; else deploy = "";
-                System.IO.StreamReader sr;
-                Process p = new Process();
-                p.StartInfo.FileName = Application.StartupPath + @"C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat";
-                if (Classes.Modfunction.cpu_AddressWidth == "64")
-                {
-                    p.StartInfo.Arguments = "(x86)" + deploy;
-                }
-                else
-                {
-                    p.StartInfo.Arguments = "" + deploy;
-                }
-                p.StartInfo.UseShellExecute = false;
-                p.StartInfo.RedirectStandardInput = true;
-                p.StartInfo.RedirectStandardOutput = true;
-                p.StartInfo.RedirectStandardError = true;
-                p.StartInfo.CreateNoWindow = true;
-                p.Start();
-                sr = p.StandardOutput;
-                while (!sr.EndOfStream)
-                {
-                    string str = sr.ReadLine() + "\r\n";
-                    this.BeginInvoke(ShowTextDelegate, str);
-                }
-                sr.Close();
-                p.WaitForExit();
-                p.Close();
-            }
-            catch (Exception ex) { Log.Debug(ex.Message, ex); }
-            finally { GC.Collect(); }
-        }
+        //private void PublishAll()
+        //{
+        //    try
+        //    {
+        //        string deploy;
+        //        if (blnIsDeploy) deploy = " deploy"; else deploy = "";
+        //        System.IO.StreamReader sr;
+        //        Process p = new Process();
+        //        p.StartInfo.FileName = Application.StartupPath + @"C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat";
+        //        if (Classes.Modfunction.cpu_AddressWidth == "64")
+        //        {
+        //            p.StartInfo.Arguments = "(x86)" + deploy;
+        //        }
+        //        else
+        //        {
+        //            p.StartInfo.Arguments = "" + deploy;
+        //        }
+        //        p.StartInfo.UseShellExecute = false;
+        //        p.StartInfo.RedirectStandardInput = true;
+        //        p.StartInfo.RedirectStandardOutput = true;
+        //        p.StartInfo.RedirectStandardError = true;
+        //        p.StartInfo.CreateNoWindow = true;
+        //        p.Start();
+        //        sr = p.StandardOutput;
+        //        while (!sr.EndOfStream)
+        //        {
+        //            string str = sr.ReadLine() + "\r\n";
+        //            this.BeginInvoke(ShowTextDelegate, str);
+        //        }
+        //        sr.Close();
+        //        p.WaitForExit();
+        //        p.Close();
+        //    }
+        //    catch (Exception ex) { Log.Debug(ex.Message, ex); }
+        //    finally { GC.Collect(); }
+        //}
 
-        private void btn_DownloadRequestXls_Click(object sender, EventArgs e)
-        {
-            string dtime = Classes.Modfunction.datetime_today.ToString("yyMMdd", System.Globalization.DateTimeFormatInfo.InvariantInfo);
-            string url = "";
-            string requestNos = txt_TrackNo.Text.Trim().ToString().Replace(";", ",").Replace(" ", "");
-            if (requestNos.Length < 1 || cbo_Programmer.Text.ToString().Length < 1)
-            {
-                MessageBox.Show("Track No and Dev by Must be entered!");
-                return;
-            }
-            else
-            {
-                System.Net.ServicePointManager.DefaultConnectionLimit = 120;
-                string[] requsetNo = requestNos.Split(',');
-                int[] reqNo = new int[requsetNo.Length];
-                for (int i = 0; i < requsetNo.Length; i++)
-                {
-                    reqNo[i] = int.Parse(requsetNo[i]);
-                }
-                //ArrayList list = new ArrayList(reqNo);
-                //Classes.SortingAlgorithm sort = new Classes.SortingAlgorithm();
-                //sort.BubbleSorter(list);
-                foreach (string reNo in requsetNo)
-                {
-                    int baseID = 9000;
-                    int baseRequestNo = 5508;
-                    int MNo = int.Parse(reNo);
-                    int MaxRequestID = (MNo - baseRequestNo) + baseID + 10;
-                    int MinRequestID = (MNo - baseRequestNo) + baseID - 5;
-                    string author = cbo_Programmer.SelectedItem.ToString();
-                    for (int i = MinRequestID; i <= MaxRequestID; i++)
-                    {
-                        string fileName = ".NET" + reNo.ToString() + "-" + dtime + "-" + author + ".xls";
-                        url = "http://218.6.71.82:8081/RequestForm/Attach/Request/" + i.ToString(System.Globalization.NumberFormatInfo.InvariantInfo) + "/";
-                        string filePath = url + fileName;
-                        if (IsWebResourceAvailable(filePath))
-                        {
-                            ver = GetVer();
-                            string verName = "";
-                            if (txtVer.Text != "")
-                            {
-                                verName = "Version " + ver + "." + txtVer.Text.Trim().ToString();
-                                string NewFolder = Classes.Modfunction.datetime_today.ToString("yyMMdd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + " Update(" + verName + ")";//121129 Update(Version 7.0.3.577)
-                                if (txt_SpecialName.Text != "")
-                                {
-                                    string strSpecialName = "Special-" + txt_SpecialName.Text.Replace(" ", "");
-                                    NewFolder = Classes.Modfunction.datetime_today.ToString("yyMMdd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + " Update(" + verName + ")(" + strSpecialName + ")";//121129 Update(Version 7.0.3.577)(Special)
-                                }
-                                NewFolder = Classes.Modfunction.baseDPath + @"SysFreight Update\EXCEL\" + NewFolder;
-                                if (!Directory.Exists(NewFolder))
-                                {
-                                    MessageBox.Show("Please Create Folder First.");
-                                }
-                                else
-                                {
-                                    if (!File.Exists(NewFolder + @"\" + fileName))
-                                    {
-                                        DownloadFile(filePath, NewFolder + @"\" + fileName);
-                                        StartKiller();
-                                        MessageBox.Show("Download daily requestform scucess!", "Message");
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("Please Enter Build No.");
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        //private void btn_DownloadRequestXls_Click(object sender, EventArgs e)
+        //{
+        //    string dtime = Classes.Modfunction.datetime_today.ToString("yyMMdd", System.Globalization.DateTimeFormatInfo.InvariantInfo);
+        //    string url = "";
+        //    string requestNos = txt_TrackNo.Text.Trim().ToString().Replace(";", ",").Replace(" ", "");
+        //    if (requestNos.Length < 1 || cbo_Programmer.Text.ToString().Length < 1)
+        //    {
+        //        MessageBox.Show("Track No and Dev by Must be entered!");
+        //        return;
+        //    }
+        //    else
+        //    {
+        //        System.Net.ServicePointManager.DefaultConnectionLimit = 120;
+        //        string[] requsetNo = requestNos.Split(',');
+        //        int[] reqNo = new int[requsetNo.Length];
+        //        for (int i = 0; i < requsetNo.Length; i++)
+        //        {
+        //            reqNo[i] = int.Parse(requsetNo[i]);
+        //        }
+        //        //ArrayList list = new ArrayList(reqNo);
+        //        //Classes.SortingAlgorithm sort = new Classes.SortingAlgorithm();
+        //        //sort.BubbleSorter(list);
+        //        foreach (string reNo in requsetNo)
+        //        {
+        //            int baseID = 9000;
+        //            int baseRequestNo = 5508;
+        //            int MNo = int.Parse(reNo);
+        //            int MaxRequestID = (MNo - baseRequestNo) + baseID + 10;
+        //            int MinRequestID = (MNo - baseRequestNo) + baseID - 5;
+        //            string author = cbo_Programmer.SelectedItem.ToString();
+        //            for (int i = MinRequestID; i <= MaxRequestID; i++)
+        //            {
+        //                string fileName = ".NET" + reNo.ToString() + "-" + dtime + "-" + author + ".xls";
+        //                url = "http://218.6.71.82:8081/RequestForm/Attach/Request/" + i.ToString(System.Globalization.NumberFormatInfo.InvariantInfo) + "/";
+        //                string filePath = url + fileName;
+        //                if (IsWebResourceAvailable(filePath))
+        //                {
+        //                    ver = GetVer();
+        //                    string verName = "";
+        //                    if (txtVer.Text != "")
+        //                    {
+        //                        verName = "Version " + ver + "." + txtVer.Text.Trim().ToString();
+        //                        string NewFolder = Classes.Modfunction.datetime_today.ToString("yyMMdd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + " Update(" + verName + ")";//121129 Update(Version 7.0.3.577)
+        //                        if (txt_SpecialName.Text != "")
+        //                        {
+        //                            string strSpecialName = "Special-" + txt_SpecialName.Text.Replace(" ", "");
+        //                            NewFolder = Classes.Modfunction.datetime_today.ToString("yyMMdd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + " Update(" + verName + ")(" + strSpecialName + ")";//121129 Update(Version 7.0.3.577)(Special)
+        //                        }
+        //                        NewFolder = Classes.Modfunction.baseDPath + @"SysFreight Update\EXCEL\" + NewFolder;
+        //                        if (!Directory.Exists(NewFolder))
+        //                        {
+        //                            MessageBox.Show("Please Create Folder First.");
+        //                        }
+        //                        else
+        //                        {
+        //                            if (!File.Exists(NewFolder + @"\" + fileName))
+        //                            {
+        //                                DownloadFile(filePath, NewFolder + @"\" + fileName);
+        //                                StartKiller();
+        //                                MessageBox.Show("Download daily requestform scucess!", "Message");
+        //                            }
+        //                        }
+        //                    }
+        //                    else
+        //                    {
+        //                        MessageBox.Show("Please Enter Build No.");
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
 
-        static bool IsWebResourceAvailable(string webResourceAddress)
-        {
-            GC.Collect();
-            bool isOk = false;
-            HttpWebRequest req = null;
-            HttpWebResponse res = null;
-            try
-            {
-                req = (HttpWebRequest)WebRequest.CreateDefault(new Uri(webResourceAddress));
-                req.KeepAlive = false;
-                req.Method = "HEAD";
-                req.Timeout = 1000;
-                res = (HttpWebResponse)req.GetResponse();
-                if (res.StatusCode == HttpStatusCode.OK)
-                {
-                    isOk = true;
-                }
-            }
-            catch (WebException wex)
-            {
-                System.Diagnostics.Trace.Write(wex.Message);
-                isOk = false;
-            }
-            finally
-            {
-                if (res != null)
-                {
-                    res.Close();
-                    res = null;
-                }
-                req.Abort();
-                req = null;
-                GC.Collect();
-            }
-            return isOk;
-        }
+        //static bool IsWebResourceAvailable(string webResourceAddress)
+        //{
+        //    GC.Collect();
+        //    bool isOk = false;
+        //    HttpWebRequest req = null;
+        //    HttpWebResponse res = null;
+        //    try
+        //    {
+        //        req = (HttpWebRequest)WebRequest.CreateDefault(new Uri(webResourceAddress));
+        //        req.KeepAlive = false;
+        //        req.Method = "HEAD";
+        //        req.Timeout = 1000;
+        //        res = (HttpWebResponse)req.GetResponse();
+        //        if (res.StatusCode == HttpStatusCode.OK)
+        //        {
+        //            isOk = true;
+        //        }
+        //    }
+        //    catch (WebException wex)
+        //    {
+        //        System.Diagnostics.Trace.Write(wex.Message);
+        //        isOk = false;
+        //    }
+        //    finally
+        //    {
+        //        if (res != null)
+        //        {
+        //            res.Close();
+        //            res = null;
+        //        }
+        //        req.Abort();
+        //        req = null;
+        //        GC.Collect();
+        //    }
+        //    return isOk;
+        //}
 
-        public void DownloadFile(string URL, string filename)
-        {
-            GC.Collect();
-            HttpWebRequest Myrq = null;
-            HttpWebResponse myrp = null;
-            try
-            {
-                Myrq = (HttpWebRequest)HttpWebRequest.Create(URL);
-                Myrq.KeepAlive = false;
-                myrp = (HttpWebResponse)Myrq.GetResponse();
-                long totalBytes = myrp.ContentLength;
-                System.IO.Stream st = myrp.GetResponseStream();
-                System.IO.Stream so = new System.IO.FileStream(filename, System.IO.FileMode.Create);
-                long totalDownloadedByte = 0;
-                byte[] by = new byte[1024];
-                int osize = st.Read(by, 0, (int)by.Length);
-                while (osize > 0)
-                {
-                    totalDownloadedByte = osize + totalDownloadedByte;
-                    System.Windows.Forms.Application.DoEvents();
-                    so.Write(by, 0, osize);
-                    osize = st.Read(by, 0, (int)by.Length);
-                }
-                so.Close();
-                so.Dispose();
-                st.Close();
-                st.Dispose();
-            }
-            catch (System.Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                if (myrp != null)
-                {
-                    myrp.Close();
-                    myrp = null;
-                }
-                Myrq.Abort();
-                Myrq = null;
-                GC.Collect();
-            }
-        }
+        //public void DownloadFile(string URL, string filename)
+        //{
+        //    GC.Collect();
+        //    HttpWebRequest Myrq = null;
+        //    HttpWebResponse myrp = null;
+        //    try
+        //    {
+        //        Myrq = (HttpWebRequest)HttpWebRequest.Create(URL);
+        //        Myrq.KeepAlive = false;
+        //        myrp = (HttpWebResponse)Myrq.GetResponse();
+        //        long totalBytes = myrp.ContentLength;
+        //        System.IO.Stream st = myrp.GetResponseStream();
+        //        System.IO.Stream so = new System.IO.FileStream(filename, System.IO.FileMode.Create);
+        //        long totalDownloadedByte = 0;
+        //        byte[] by = new byte[1024];
+        //        int osize = st.Read(by, 0, (int)by.Length);
+        //        while (osize > 0)
+        //        {
+        //            totalDownloadedByte = osize + totalDownloadedByte;
+        //            System.Windows.Forms.Application.DoEvents();
+        //            so.Write(by, 0, osize);
+        //            osize = st.Read(by, 0, (int)by.Length);
+        //        }
+        //        so.Close();
+        //        so.Dispose();
+        //        st.Close();
+        //        st.Dispose();
+        //    }
+        //    catch (System.Exception)
+        //    {
+        //        throw;
+        //    }
+        //    finally
+        //    {
+        //        if (myrp != null)
+        //        {
+        //            myrp.Close();
+        //            myrp = null;
+        //        }
+        //        Myrq.Abort();
+        //        Myrq = null;
+        //        GC.Collect();
+        //    }
+        //}
 
         //private void btn_UploadToCloud_Click(object sender, EventArgs e)
         //{

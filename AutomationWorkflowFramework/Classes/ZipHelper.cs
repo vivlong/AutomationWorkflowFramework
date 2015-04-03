@@ -6,7 +6,7 @@ using ICSharpCode.SharpZipLib.Checksums;
 using ICSharpCode.SharpZipLib.Zip;
 using ICSharpCode.SharpZipLib.GZip;
 
-namespace DeveloperTools.Classes
+namespace AWF.Classes
 {
     class ZipHelper
     {

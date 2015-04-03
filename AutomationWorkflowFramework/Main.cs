@@ -10,19 +10,18 @@ using System.IO;
 using System.Runtime.InteropServices;
 using DevComponents.DotNetBar;
 
-namespace DeveloperTools
+namespace AWF
 {
     public partial class Main : Office2007Form
     {
-        [DllImport("shell32.dll", EntryPoint = "ShellExecuteA")]
-        public static extern int ShellExecute(int hwnd, String lpOperation, String lpFile, String lpParameters, String lpDirectory, int nShowCmd);
-
+        //[DllImport("shell32.dll", EntryPoint = "ShellExecuteA")]
+        //public static extern int ShellExecute(int hwnd, String lpOperation, String lpFile, String lpParameters, String lpDirectory, int nShowCmd);
         private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public Main()
         {
             InitializeComponent();
-            this.Font = Classes.FontHelper.SetFormFontByUsingMemoryFont();
+            //this.Font = Classes.FontHelper.SetFormFontByUsingMemoryFont();
             Classes.Modfunction.Get_Win32_Processor();
             Classes.Modfunction.Get_Win32_BaseBoard();
             Classes.Modfunction.Get_Win32_PhysicalMemory();
@@ -35,120 +34,87 @@ namespace DeveloperTools
             //Qiniu.Conf.Config.ACCESS_KEY = "88_zth5M0BXGRvLHBJM59I3yTJbjzRAFhVZqGkKz";
             //Qiniu.Conf.Config.SECRET_KEY = "s8HnQb5fSM0vDE7kTt1Ab42nPR9lkPkuSiMDtGI-";
             Classes.Modfunction.Get_UTC_Datetime();
-            Classes.SaveSetting.GetSkypeUser();
-            Classes.SaveSetting.GetRestoreDBPath();
+            //Classes.SaveSetting.GetSkypeUser();
+            //Classes.SaveSetting.GetRestoreDBPath();
         }
 
         private void Main_Load(object sender, EventArgs e)
         {
-            toolStripStatusLabel1.Text = Classes.Modfunction.currentIP;
-            toolStripStatusLabel3.Text = Classes.Modfunction.datetime_today.ToString("yyyyMMdd HH:mm:ss");
-            if (!Classes.Modfunction.CheckForm("Frm_Publishing"))
+            this.pbMenu1.Click += new EventHandler(pbMenu1_Click);
+            this.pbMenu2.Click += new EventHandler(pbMenu2_Click);
+            this.pbMenu3.Click += new EventHandler(pbMenu3_Click);
+            this.pbMenu4.Click += new EventHandler(pbMenu4_Click);
+            this.pbMenu5.Click += new EventHandler(pbMenu5_Click);
+            this.pbMenu6.Click += new EventHandler(pbMenu6_Click);
+            this.pbMenu7.Click += new EventHandler(pbMenu7_Click);
+            this.pbMenu8.Click += new EventHandler(pbMenu8_Click);
+            this.pbMenu9.Click += new EventHandler(pbMenu9_Click);
+            this.pbMenu10.Click += new EventHandler(pbMenu10_Click);
+
+            this.toolStripStatusLabel1.Text = Classes.Modfunction.currentIP;
+            this.toolStripStatusLabel3.Text = Classes.Modfunction.datetime_today.ToString("yyyyMMdd HH:mm:ss");
+        }
+
+
+        #region  菜单各项点击事件
+        private void pbMenu1_Click(object sender, EventArgs e)
+        {
+            if (!AWF.Classes.Modfunction.CheckForm("Frm_Publishing"))
             {
-                this.panel_tabPage1.Controls.Clear();
+                this.panel_Form.Controls.Clear();
                 Frm_Publishing frmPB = new Frm_Publishing();
                 frmPB.MdiParent = this;
-                frmPB.Parent = this.panel_tabPage1;
+                frmPB.Parent = this.panel_Form;
                 frmPB.Show();
             }
         }
 
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        private void pbMenu2_Click(object sender, EventArgs e)
         {
-            switch (tabControl1.SelectedTab.Text.Trim())
+            if (!AWF.Classes.Modfunction.CheckForm("Frm_Edi"))
             {
-                case "Publish Release":
-                    if (!Classes.Modfunction.CheckForm("Frm_Publishing"))
-                    {
-                        this.panel_tabPage1.Controls.Clear();
-                        Frm_Publishing frmPB = new Frm_Publishing();
-                        frmPB.MdiParent = this;
-                        frmPB.Parent = this.panel_tabPage1;
-                        frmPB.Show();
-                    }
-                    break;
-                case "EDI":
-                    if (!Classes.Modfunction.CheckForm("Frm_Edi"))
-                    {
-                        this.panel_tabPage2.Controls.Clear();
-                        Frm_Edi Frm_Edi = new Frm_Edi();
-                        Frm_Edi.MdiParent = this;
-                        Frm_Edi.Parent = this.panel_tabPage2;
-                        Frm_Edi.Show();
-                    }
-                    break;
-                case "Backup File/Folder":
-                    if (!Classes.Modfunction.CheckForm("FrmBackupFF"))
-                    {
-                        this.panel_tabPage3.Controls.Clear();
-                        FrmBackupFF frmBackupFF = new FrmBackupFF();
-                        frmBackupFF.MdiParent = this;
-                        frmBackupFF.Parent = this.panel_tabPage3;
-                        frmBackupFF.Show();
-                    }
-                    break;
-                case "Computer Info":
-                    if (!Classes.Modfunction.CheckForm("Frm_ComputerInfo"))
-                    {
-                        this.panel_tabPage4.Controls.Clear();
-                        Frm_ComputerInfo frmCI = new Frm_ComputerInfo();
-                        frmCI.MdiParent = this;
-                        frmCI.Parent = this.panel_tabPage4;
-                        frmCI.Show();
-                    }
-                    break;
-                case "Restore Database":
-                    if (!Classes.Modfunction.CheckForm("Frm_RestoreDB"))
-                    {
-                        this.panel_tabPage5.Controls.Clear();
-                        Frm_RestoreDB frmRDB = new Frm_RestoreDB();
-                        frmRDB.MdiParent = this;
-                        frmRDB.Parent = this.panel_tabPage5;
-                        frmRDB.Show();
-                    }
-                    break;
-                case "SQL Tools":
-                    if (!Classes.Modfunction.CheckForm("Frm_SQLTool"))
-                    {
-                        this.panel_tabPage6.Controls.Clear();
-                        Frm_SQLTool frmSQLT = new Frm_SQLTool();
-                        frmSQLT.MdiParent = this;
-                        frmSQLT.Parent = this.panel_tabPage6;
-                        frmSQLT.Show();
-                    }
-                    break;
-                case "Testing":
-                    if (!Classes.Modfunction.CheckForm("Frm_Testing"))
-                    {
-                        this.panel_tabPage7.Controls.Clear();
-                        Frm_Testing frmTest = new Frm_Testing();
-                        frmTest.MdiParent = this;
-                        frmTest.Parent = this.panel_tabPage7;
-                        frmTest.Show();
-                    }
-                    break;
-                //case "Cloud Storage":
-                //    if (!Classes.Modfunction.CheckForm("FrmCloudStorage"))
-                //    {
-                //        this.panel_tabPage8.Controls.Clear();
-                //        Frm_CloudStorage frmOSS = new Frm_CloudStorage();
-                //        frmOSS.MdiParent = this;
-                //        frmOSS.Parent = this.panel_tabPage8;
-                //        frmOSS.Show();
-                //    }
-                //    break;
-                case "Config":
-                    if (!Classes.Modfunction.CheckForm("FrmConfig"))
-                    {
-                        this.panel_tabPage8.Controls.Clear();
-                        FrmConfig frmConf = new FrmConfig();
-                        frmConf.MdiParent = this;
-                        frmConf.Parent = this.panel_tabPage8;
-                        frmConf.Show();
-                    }
-                    break;
+                this.panel_Form.Controls.Clear();
+                Frm_Edi Frm_Edi = new Frm_Edi();
+                Frm_Edi.MdiParent = this;
+                Frm_Edi.Parent = this.panel_Form;
+                Frm_Edi.Show();
             }
         }
+
+        private void pbMenu3_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void pbMenu4_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void pbMenu5_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void pbMenu6_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void pbMenu7_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void pbMenu8_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void pbMenu9_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void pbMenu10_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void no_Click(object sender, EventArgs e) { }
+        #endregion
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {

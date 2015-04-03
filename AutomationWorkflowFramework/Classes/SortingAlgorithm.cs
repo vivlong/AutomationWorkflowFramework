@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Collections;
 
-namespace DeveloperTools.Classes
+namespace AWF.Classes
 {
     public class SortingAlgorithm
     {

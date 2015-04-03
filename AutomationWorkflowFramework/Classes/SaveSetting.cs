@@ -5,7 +5,7 @@ using System.Net;
 using System.Collections;
 using Newtonsoft.Json;
 
-namespace DeveloperTools.Classes
+namespace AWF.Classes
 {
     public class SaveSetting
     {

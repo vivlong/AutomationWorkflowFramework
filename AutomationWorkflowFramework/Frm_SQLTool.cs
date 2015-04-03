@@ -5,9 +5,9 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using DeveloperTools.Classes;
+using AWF.Classes;
 
-namespace DeveloperTools
+namespace AWF
 {
     public partial class Frm_SQLTool : Form
     {	

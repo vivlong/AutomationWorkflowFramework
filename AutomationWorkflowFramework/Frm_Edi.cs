@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 
-namespace DeveloperTools
+namespace AWF
 {
     public partial class Frm_Edi : Form
     {

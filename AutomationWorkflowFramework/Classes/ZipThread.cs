@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DeveloperTools.Classes
+namespace AWF.Classes
 {
     class ZipThread : ThreadHelper
     {

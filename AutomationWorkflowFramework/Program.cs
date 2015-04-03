@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace DeveloperTools
+namespace AWF
 {
     static class Program
     {
