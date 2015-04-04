@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过下列属性集
 // 控制。更改这些属性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("AutomationWorkflowFramework")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Automation Workflow Framework")]
+[assembly: AssemblyDescription("Automation Workflow Framework")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("AutomationWorkflowFramework")]
+[assembly: AssemblyCompany("SDOT")]
+[assembly: AssemblyProduct("Automation Workflow Framework")]
 [assembly: AssemblyCopyright("Copyright © SDOT 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

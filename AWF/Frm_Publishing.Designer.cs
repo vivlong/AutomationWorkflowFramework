@@ -31,20 +31,20 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.gb_Publish = new System.Windows.Forms.GroupBox();
             this.cmd_CreatFolder = new System.Windows.Forms.Button();
-            this.cmd_Open = new System.Windows.Forms.Button();
-            this.cmdPublished2Zip = new System.Windows.Forms.Button();
-            this.cmdSendTo = new System.Windows.Forms.Button();
-            this.cmdSelectFolder = new System.Windows.Forms.Button();
-            this.cmdBackUp = new System.Windows.Forms.Button();
+            this.cmd_OpenFolder = new System.Windows.Forms.Button();
+            this.cmd_Published2Zip = new System.Windows.Forms.Button();
+            this.cmd_SendTo = new System.Windows.Forms.Button();
+            this.cmd_SelectFolder = new System.Windows.Forms.Button();
+            this.cmd_BackUp = new System.Windows.Forms.Button();
             this.txtFolder = new System.Windows.Forms.TextBox();
             this.btn_rebuild = new System.Windows.Forms.Button();
             this.btn_publish = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.gb_BuildNo = new System.Windows.Forms.GroupBox();
             this.cbo_SpecialName = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtVer = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbl_BuildNo = new System.Windows.Forms.Label();
+            this.txt_BuildNo = new System.Windows.Forms.TextBox();
+            this.lbl_SpecialName = new System.Windows.Forms.Label();
             this.gb_Version = new System.Windows.Forms.GroupBox();
             this.rB_v706 = new System.Windows.Forms.RadioButton();
             this.rB_v701 = new System.Windows.Forms.RadioButton();
@@ -80,11 +80,11 @@
             this.gb_Publish.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gb_Publish.Controls.Add(this.cmd_CreatFolder);
-            this.gb_Publish.Controls.Add(this.cmd_Open);
-            this.gb_Publish.Controls.Add(this.cmdPublished2Zip);
-            this.gb_Publish.Controls.Add(this.cmdSendTo);
-            this.gb_Publish.Controls.Add(this.cmdSelectFolder);
-            this.gb_Publish.Controls.Add(this.cmdBackUp);
+            this.gb_Publish.Controls.Add(this.cmd_OpenFolder);
+            this.gb_Publish.Controls.Add(this.cmd_Published2Zip);
+            this.gb_Publish.Controls.Add(this.cmd_SendTo);
+            this.gb_Publish.Controls.Add(this.cmd_SelectFolder);
+            this.gb_Publish.Controls.Add(this.cmd_BackUp);
             this.gb_Publish.Controls.Add(this.txtFolder);
             this.gb_Publish.Controls.Add(this.btn_rebuild);
             this.gb_Publish.Controls.Add(this.btn_publish);
@@ -105,62 +105,62 @@
             this.cmd_CreatFolder.TabIndex = 57;
             this.cmd_CreatFolder.Text = " 建立 当前版本文件夹";
             this.cmd_CreatFolder.UseVisualStyleBackColor = true;
-            this.cmd_CreatFolder.Click += new System.EventHandler(this.cmdCreatFolder_Click);
+            this.cmd_CreatFolder.Click += new System.EventHandler(this.cmd_CreatFolder_Click);
             // 
-            // cmd_Open
+            // cmd_OpenFolder
             // 
-            this.cmd_Open.Location = new System.Drawing.Point(333, 24);
-            this.cmd_Open.Margin = new System.Windows.Forms.Padding(4);
-            this.cmd_Open.Name = "cmd_Open";
-            this.cmd_Open.Size = new System.Drawing.Size(212, 31);
-            this.cmd_Open.TabIndex = 58;
-            this.cmd_Open.Text = "打开 当前版本文件夹";
-            this.cmd_Open.UseVisualStyleBackColor = true;
-            this.cmd_Open.Click += new System.EventHandler(this.cmdOpen_Click);
+            this.cmd_OpenFolder.Location = new System.Drawing.Point(333, 24);
+            this.cmd_OpenFolder.Margin = new System.Windows.Forms.Padding(4);
+            this.cmd_OpenFolder.Name = "cmd_OpenFolder";
+            this.cmd_OpenFolder.Size = new System.Drawing.Size(212, 31);
+            this.cmd_OpenFolder.TabIndex = 58;
+            this.cmd_OpenFolder.Text = "打开 当前版本文件夹";
+            this.cmd_OpenFolder.UseVisualStyleBackColor = true;
+            this.cmd_OpenFolder.Click += new System.EventHandler(this.cmd_OpenFolder_Click);
             // 
-            // cmdPublished2Zip
+            // cmd_Published2Zip
             // 
-            this.cmdPublished2Zip.Location = new System.Drawing.Point(74, 104);
-            this.cmdPublished2Zip.Margin = new System.Windows.Forms.Padding(4);
-            this.cmdPublished2Zip.Name = "cmdPublished2Zip";
-            this.cmdPublished2Zip.Size = new System.Drawing.Size(212, 31);
-            this.cmdPublished2Zip.TabIndex = 52;
-            this.cmdPublished2Zip.Text = "打包发布的文件至部署文件夹";
-            this.cmdPublished2Zip.UseVisualStyleBackColor = true;
-            this.cmdPublished2Zip.Click += new System.EventHandler(this.cmdPublished2Zip_Click);
+            this.cmd_Published2Zip.Location = new System.Drawing.Point(74, 104);
+            this.cmd_Published2Zip.Margin = new System.Windows.Forms.Padding(4);
+            this.cmd_Published2Zip.Name = "cmd_Published2Zip";
+            this.cmd_Published2Zip.Size = new System.Drawing.Size(212, 31);
+            this.cmd_Published2Zip.TabIndex = 52;
+            this.cmd_Published2Zip.Text = "打包发布的文件至部署文件夹";
+            this.cmd_Published2Zip.UseVisualStyleBackColor = true;
+            this.cmd_Published2Zip.Click += new System.EventHandler(this.cmd_Published2Zip_Click);
             // 
-            // cmdSendTo
+            // cmd_SendTo
             // 
-            this.cmdSendTo.Location = new System.Drawing.Point(333, 104);
-            this.cmdSendTo.Margin = new System.Windows.Forms.Padding(4);
-            this.cmdSendTo.Name = "cmdSendTo";
-            this.cmdSendTo.Size = new System.Drawing.Size(212, 31);
-            this.cmdSendTo.TabIndex = 53;
-            this.cmdSendTo.Text = "将部署文件夹发送至250";
-            this.cmdSendTo.UseVisualStyleBackColor = true;
-            this.cmdSendTo.Click += new System.EventHandler(this.cmdSendTo_Click);
+            this.cmd_SendTo.Location = new System.Drawing.Point(333, 104);
+            this.cmd_SendTo.Margin = new System.Windows.Forms.Padding(4);
+            this.cmd_SendTo.Name = "cmd_SendTo";
+            this.cmd_SendTo.Size = new System.Drawing.Size(212, 31);
+            this.cmd_SendTo.TabIndex = 53;
+            this.cmd_SendTo.Text = "将部署文件夹发送至250";
+            this.cmd_SendTo.UseVisualStyleBackColor = true;
+            this.cmd_SendTo.Click += new System.EventHandler(this.cmd_SendTo_Click);
             // 
-            // cmdSelectFolder
+            // cmd_SelectFolder
             // 
-            this.cmdSelectFolder.Location = new System.Drawing.Point(74, 144);
-            this.cmdSelectFolder.Margin = new System.Windows.Forms.Padding(4);
-            this.cmdSelectFolder.Name = "cmdSelectFolder";
-            this.cmdSelectFolder.Size = new System.Drawing.Size(212, 31);
-            this.cmdSelectFolder.TabIndex = 61;
-            this.cmdSelectFolder.Text = "选择要压缩的文件夹";
-            this.cmdSelectFolder.UseVisualStyleBackColor = true;
-            this.cmdSelectFolder.Click += new System.EventHandler(this.cmdSelectFolder_Click);
+            this.cmd_SelectFolder.Location = new System.Drawing.Point(74, 144);
+            this.cmd_SelectFolder.Margin = new System.Windows.Forms.Padding(4);
+            this.cmd_SelectFolder.Name = "cmd_SelectFolder";
+            this.cmd_SelectFolder.Size = new System.Drawing.Size(212, 31);
+            this.cmd_SelectFolder.TabIndex = 61;
+            this.cmd_SelectFolder.Text = "选择要压缩的文件夹";
+            this.cmd_SelectFolder.UseVisualStyleBackColor = true;
+            this.cmd_SelectFolder.Click += new System.EventHandler(this.cmd_SelectFolder_Click);
             // 
-            // cmdBackUp
+            // cmd_BackUp
             // 
-            this.cmdBackUp.Location = new System.Drawing.Point(74, 184);
-            this.cmdBackUp.Margin = new System.Windows.Forms.Padding(4);
-            this.cmdBackUp.Name = "cmdBackUp";
-            this.cmdBackUp.Size = new System.Drawing.Size(212, 31);
-            this.cmdBackUp.TabIndex = 60;
-            this.cmdBackUp.Text = "备份源码";
-            this.cmdBackUp.UseVisualStyleBackColor = true;
-            this.cmdBackUp.Click += new System.EventHandler(this.cmdBackUp_Click);
+            this.cmd_BackUp.Location = new System.Drawing.Point(74, 184);
+            this.cmd_BackUp.Margin = new System.Windows.Forms.Padding(4);
+            this.cmd_BackUp.Name = "cmd_BackUp";
+            this.cmd_BackUp.Size = new System.Drawing.Size(212, 31);
+            this.cmd_BackUp.TabIndex = 60;
+            this.cmd_BackUp.Text = "备份源码";
+            this.cmd_BackUp.UseVisualStyleBackColor = true;
+            this.cmd_BackUp.Click += new System.EventHandler(this.cmd_BackUp_Click);
             // 
             // txtFolder
             // 
@@ -207,15 +207,15 @@
             this.gb_BuildNo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gb_BuildNo.Controls.Add(this.cbo_SpecialName);
-            this.gb_BuildNo.Controls.Add(this.label1);
-            this.gb_BuildNo.Controls.Add(this.txtVer);
-            this.gb_BuildNo.Controls.Add(this.label2);
+            this.gb_BuildNo.Controls.Add(this.lbl_BuildNo);
+            this.gb_BuildNo.Controls.Add(this.txt_BuildNo);
+            this.gb_BuildNo.Controls.Add(this.lbl_SpecialName);
             this.gb_BuildNo.Location = new System.Drawing.Point(12, 69);
             this.gb_BuildNo.Name = "gb_BuildNo";
             this.gb_BuildNo.Size = new System.Drawing.Size(849, 55);
             this.gb_BuildNo.TabIndex = 85;
             this.gb_BuildNo.TabStop = false;
-            this.gb_BuildNo.Text = "确认版本号";
+            this.gb_BuildNo.Text = "确认版本修订号";
             // 
             // cbo_SpecialName
             // 
@@ -225,33 +225,33 @@
             this.cbo_SpecialName.Size = new System.Drawing.Size(257, 27);
             this.cbo_SpecialName.TabIndex = 52;
             // 
-            // label1
+            // lbl_BuildNo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(135, 21);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 19);
-            this.label1.TabIndex = 44;
-            this.label1.Text = "Build No.";
+            this.lbl_BuildNo.AutoSize = true;
+            this.lbl_BuildNo.Location = new System.Drawing.Point(135, 21);
+            this.lbl_BuildNo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_BuildNo.Name = "lbl_BuildNo";
+            this.lbl_BuildNo.Size = new System.Drawing.Size(65, 19);
+            this.lbl_BuildNo.TabIndex = 44;
+            this.lbl_BuildNo.Text = "Build No.";
             // 
-            // txtVer
+            // txt_BuildNo
             // 
-            this.txtVer.Location = new System.Drawing.Point(220, 20);
-            this.txtVer.Margin = new System.Windows.Forms.Padding(4);
-            this.txtVer.Name = "txtVer";
-            this.txtVer.Size = new System.Drawing.Size(103, 24);
-            this.txtVer.TabIndex = 50;
+            this.txt_BuildNo.Location = new System.Drawing.Point(220, 20);
+            this.txt_BuildNo.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_BuildNo.Name = "txt_BuildNo";
+            this.txt_BuildNo.Size = new System.Drawing.Size(103, 24);
+            this.txt_BuildNo.TabIndex = 50;
             // 
-            // label2
+            // lbl_SpecialName
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(369, 21);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 19);
-            this.label2.TabIndex = 46;
-            this.label2.Text = "特殊版本名称";
+            this.lbl_SpecialName.AutoSize = true;
+            this.lbl_SpecialName.Location = new System.Drawing.Point(369, 21);
+            this.lbl_SpecialName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_SpecialName.Name = "lbl_SpecialName";
+            this.lbl_SpecialName.Size = new System.Drawing.Size(87, 19);
+            this.lbl_SpecialName.TabIndex = 46;
+            this.lbl_SpecialName.Text = "特殊版本名称";
             // 
             // gb_Version
             // 
@@ -283,7 +283,6 @@
             this.rB_v706.TabStop = true;
             this.rB_v706.Text = "Ver 7.0.6";
             this.rB_v706.UseVisualStyleBackColor = true;
-            this.rB_v706.CheckedChanged += new System.EventHandler(this.version_CheckedChanged);
             // 
             // rB_v701
             // 
@@ -296,7 +295,6 @@
             this.rB_v701.TabStop = true;
             this.rB_v701.Text = "Ver 7.0.1";
             this.rB_v701.UseVisualStyleBackColor = true;
-            this.rB_v701.CheckedChanged += new System.EventHandler(this.version_CheckedChanged);
             // 
             // rB_v702
             // 
@@ -309,7 +307,6 @@
             this.rB_v702.TabStop = true;
             this.rB_v702.Text = "Ver 7.0.2";
             this.rB_v702.UseVisualStyleBackColor = true;
-            this.rB_v702.CheckedChanged += new System.EventHandler(this.version_CheckedChanged);
             // 
             // rB_v703
             // 
@@ -322,7 +319,6 @@
             this.rB_v703.TabStop = true;
             this.rB_v703.Text = "Ver 7.0.3";
             this.rB_v703.UseVisualStyleBackColor = true;
-            this.rB_v703.CheckedChanged += new System.EventHandler(this.version_CheckedChanged);
             // 
             // rB_v802
             // 
@@ -335,7 +331,6 @@
             this.rB_v802.TabStop = true;
             this.rB_v802.Text = "Ver 8.0.2";
             this.rB_v802.UseVisualStyleBackColor = true;
-            this.rB_v802.CheckedChanged += new System.EventHandler(this.version_CheckedChanged);
             // 
             // rB_v704
             // 
@@ -348,7 +343,6 @@
             this.rB_v704.TabStop = true;
             this.rB_v704.Text = "Ver 7.0.4";
             this.rB_v704.UseVisualStyleBackColor = true;
-            this.rB_v704.CheckedChanged += new System.EventHandler(this.version_CheckedChanged);
             // 
             // rB_v705
             // 
@@ -361,7 +355,6 @@
             this.rB_v705.TabStop = true;
             this.rB_v705.Text = "Ver 7.0.5";
             this.rB_v705.UseVisualStyleBackColor = true;
-            this.rB_v705.CheckedChanged += new System.EventHandler(this.version_CheckedChanged);
             // 
             // rB_v801
             // 
@@ -374,7 +367,6 @@
             this.rB_v801.TabStop = true;
             this.rB_v801.Text = "Ver 8.0.1";
             this.rB_v801.UseVisualStyleBackColor = true;
-            this.rB_v801.CheckedChanged += new System.EventHandler(this.version_CheckedChanged);
             // 
             // textBox1
             // 
@@ -417,21 +409,21 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtFolder;
-        private System.Windows.Forms.Button cmdSelectFolder;
-        private System.Windows.Forms.Button cmdBackUp;
+        private System.Windows.Forms.Button cmd_SelectFolder;
+        private System.Windows.Forms.Button cmd_BackUp;
         private System.Windows.Forms.RadioButton rB_v801;
-        private System.Windows.Forms.Button cmd_Open;
+        private System.Windows.Forms.Button cmd_OpenFolder;
         private System.Windows.Forms.Button cmd_CreatFolder;
         private System.Windows.Forms.RadioButton rB_v706;
-        private System.Windows.Forms.Button cmdPublished2Zip;
+        private System.Windows.Forms.Button cmd_Published2Zip;
         private System.Windows.Forms.RadioButton rB_v705;
         private System.Windows.Forms.RadioButton rB_v704;
         private System.Windows.Forms.RadioButton rB_v703;
         private System.Windows.Forms.RadioButton rB_v702;
-        private System.Windows.Forms.Button cmdSendTo;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtVer;
+        private System.Windows.Forms.Button cmd_SendTo;
+        private System.Windows.Forms.Label lbl_SpecialName;
+        private System.Windows.Forms.Label lbl_BuildNo;
+        private System.Windows.Forms.TextBox txt_BuildNo;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button btn_publish;
         private System.Windows.Forms.Button btn_rebuild;

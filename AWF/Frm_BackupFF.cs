@@ -11,11 +11,12 @@ namespace AWF
 {
     public partial class Frm_BackupFF : Form
     {
-        public string strSourceName;
+        private string strSourceName;
 
         public Frm_BackupFF()
         {
             InitializeComponent();
+            strSourceName = "";
         }
 
         private void btn_Backup_Folders_Select_Click(object sender, EventArgs e)

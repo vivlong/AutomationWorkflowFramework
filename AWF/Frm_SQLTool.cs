@@ -11,15 +11,15 @@ namespace AWF
 {
     public partial class Frm_SQLTool : Form
     {	
-        string CDEC_SEPARATOR = ".";
-        string CTHS_SEPARATOR = ",";
-        string DataBaseName = "master";
-        string strsearviceName = "(local)";
-        string searviceName = "Sa";
-        string strMima = "";
-        Boolean blnUseWindow;
-        string strSQL = "";
-        string strConn = "";
+        private string CDEC_SEPARATOR = ".";
+        private string CTHS_SEPARATOR = ",";
+        private string DataBaseName = "master";
+        private string strsearviceName = "(local)";
+        private string searviceName = "Sa";
+        private string strMima = "";
+        private bool blnUseWindow;
+        private string strSQL = "";
+        private string strConn = "";
         public Frm_SQLTool()
         {
             InitializeComponent();

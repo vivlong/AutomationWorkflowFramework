@@ -14,22 +14,15 @@ namespace AWF
 {
     public partial class Main : Office2007Form
     {
-        //[DllImport("shell32.dll", EntryPoint = "ShellExecuteA")]
-        //public static extern int ShellExecute(int hwnd, String lpOperation, String lpFile, String lpParameters, String lpDirectory, int nShowCmd);
         private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public Main()
         {
             InitializeComponent();
             //this.Font = Classes.FontHelper.SetFormFontByUsingMemoryFont();
-            Classes.Modfunction.Get_Win32_Processor();
-            Classes.Modfunction.Get_Win32_BaseBoard();
-            Classes.Modfunction.Get_Win32_PhysicalMemory();
-            Classes.Modfunction.Get_Win32_BIOS();
             if (!Classes.Modfunction.Get_IP_Address())
             {
                 MessageBox.Show("Invalid Network Interface Controller Address!");
-                System.Environment.Exit(0); 
             }
             //Qiniu.Conf.Config.ACCESS_KEY = "88_zth5M0BXGRvLHBJM59I3yTJbjzRAFhVZqGkKz";
             //Qiniu.Conf.Config.SECRET_KEY = "s8HnQb5fSM0vDE7kTt1Ab42nPR9lkPkuSiMDtGI-";
@@ -56,105 +49,63 @@ namespace AWF
             this.pbMenu1_Click(sender, new EventArgs());
         }
 
-        #region  菜单各项点击事件
-        private void pbMenu1_Click(object sender, EventArgs e)
+        private void showMdiForm(Form frm)
         {
             this.panel_Form.Controls.Clear();
-            Frm_Request frm = new Frm_Request();
             frm.MdiParent = this;
             frm.Parent = this.panel_Form;
             frm.Dock = DockStyle.Fill;
             frm.Show();
+        }
+        #region  菜单点击事件
+        private void pbMenu1_Click(object sender, EventArgs e)
+        {
+            showMdiForm(new Frm_Request());
         }
 
         private void pbMenu2_Click(object sender, EventArgs e)
         {
-            this.panel_Form.Controls.Clear();
-            Frm_Publishing frm = new Frm_Publishing();
-            frm.MdiParent = this;
-            frm.Parent = this.panel_Form;
-            frm.Dock = DockStyle.Fill;
-            frm.Show();
+            showMdiForm(new Frm_Publishing());
         }
 
         private void pbMenu3_Click(object sender, EventArgs e)
         {
-            this.panel_Form.Controls.Clear();
-            Frm_Edi frm = new Frm_Edi();
-            frm.MdiParent = this;
-            frm.Parent = this.panel_Form;
-            frm.Dock = DockStyle.Fill;
-            frm.Show();
+            showMdiForm(new Frm_Edi());
         }
 
         private void pbMenu4_Click(object sender, EventArgs e)
         {
-            this.panel_Form.Controls.Clear();
-            Frm_BackupFF frm = new Frm_BackupFF();
-            frm.MdiParent = this;
-            frm.Parent = this.panel_Form;
-            frm.Dock = DockStyle.Fill;
-            frm.Show();
+            showMdiForm(new Frm_BackupFF());
         }
 
         private void pbMenu5_Click(object sender, EventArgs e)
         {
-            this.panel_Form.Controls.Clear();
-            Frm_RestoreDB frm = new Frm_RestoreDB();
-            frm.MdiParent = this;
-            frm.Parent = this.panel_Form;
-            frm.Dock = DockStyle.Fill;
-            frm.Show();
+            showMdiForm(new Frm_RestoreDB());
         }
 
         private void pbMenu6_Click(object sender, EventArgs e)
         {
-            this.panel_Form.Controls.Clear();
-            Frm_SQLTool frm = new Frm_SQLTool();
-            frm.MdiParent = this;
-            frm.Parent = this.panel_Form;
-            frm.Dock = DockStyle.Fill;
-            frm.Show();
+            showMdiForm(new Frm_SQLTool());
         }
 
         private void pbMenu7_Click(object sender, EventArgs e)
         {
-            this.panel_Form.Controls.Clear();
-            Frm_Testing frm = new Frm_Testing();
-            frm.MdiParent = this;
-            frm.Parent = this.panel_Form;
-            frm.Dock = DockStyle.Fill;
-            frm.Show();
+            showMdiForm(new Frm_Testing());
         }
 
         private void pbMenu8_Click(object sender, EventArgs e)
         {
-            this.panel_Form.Controls.Clear();
-            Frm_OSS frm = new Frm_OSS();
-            frm.MdiParent = this;
-            frm.Parent = this.panel_Form;
-            frm.Dock = DockStyle.Fill;
-            frm.Show();
+            showMdiForm(new Frm_OSS());
         }
 
         private void pbMenu9_Click(object sender, EventArgs e)
         {
-            this.panel_Form.Controls.Clear();
-            Frm_ComputerInfo frm = new Frm_ComputerInfo();
-            frm.MdiParent = this;
-            frm.Parent = this.panel_Form;
-            frm.Dock = DockStyle.Fill;
-            frm.Show();
+            showMdiForm(new Frm_ComputerInfo());
         }
 
         private void pbMenu10_Click(object sender, EventArgs e)
         {
-            this.panel_Form.Controls.Clear();
-            Frm_Config frm = new Frm_Config();
-            frm.MdiParent = this;
-            frm.Parent = this.panel_Form;
-            frm.Dock = DockStyle.Fill;
-            frm.Show();
+            showMdiForm(new Frm_Config());
         }
 
         private void no_Click(object sender, EventArgs e) { }

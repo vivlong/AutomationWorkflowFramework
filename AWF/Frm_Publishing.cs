@@ -18,21 +18,13 @@ namespace AWF
 {
     public partial class Frm_Publishing : Office2007Form
     {
-        [DllImport("user32.dll", EntryPoint = "FindWindow", CharSet = CharSet.Auto)]
-        private extern static IntPtr FindWindow(string lpClassName, string lpWindowName);
-
-        [DllImport("user32.dll", CharSet = CharSet.Auto)]
-        public static extern int PostMessage(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
-        public const int WM_CLOSE = 0x10;
-
         private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         delegate void updateUI(string msg);
         updateUI ShowTextDelegate;
 
-        public string ver;
         private bool blnIsDeploy;
-        public string strUpdateZipTime="";
+        private string strUpdateZipTime = "";
 
         public Frm_Publishing()
         {
@@ -43,76 +35,95 @@ namespace AWF
 
         private void Frm_Publishing_Load(object sender, EventArgs e)
         {
-            rB_v802.Checked = true;
+            this.rB_v701.CheckedChanged += new EventHandler(version_CheckedChanged);
+            this.rB_v702.CheckedChanged += new EventHandler(version_CheckedChanged);
+            this.rB_v703.CheckedChanged += new EventHandler(version_CheckedChanged);
+            this.rB_v704.CheckedChanged += new EventHandler(version_CheckedChanged);
+            this.rB_v705.CheckedChanged += new EventHandler(version_CheckedChanged);
+            this.rB_v706.CheckedChanged += new EventHandler(version_CheckedChanged);
+            this.rB_v801.CheckedChanged += new EventHandler(version_CheckedChanged);
+            this.rB_v802.CheckedChanged += new EventHandler(version_CheckedChanged);
+
             rB_v802.Focus();
+            rB_v802.Checked = true;
         }
 
         public string GetVer()
         {
+            string strVer = "";
             if (rB_v701.Checked)
             {
-                ver = "7.0.1";
+                strVer = "7.0.1";
             }
             else if (rB_v702.Checked)
             {
-                ver = "7.0.2";
+                strVer = "7.0.2";
             }
             else if (rB_v703.Checked)
             {
-                ver = "7.0.3";
+                strVer = "7.0.3";
             }
             else if (rB_v704.Checked)
             {
-                ver = "7.0.4";
+                strVer = "7.0.4";
             }
             else if (rB_v705.Checked)
             {
-                ver = "7.0.5";
+                strVer = "7.0.5";
             }
             else if (rB_v706.Checked)
             {
-                ver = "7.0.6";
+                strVer = "7.0.6";
             }
             else if (rB_v801.Checked)
             {
-                ver = "8.0.1";
+                strVer = "8.0.1";
             }
             else if (rB_v802.Checked)
             {
-                ver = "8.0.2";
+                strVer = "8.0.2";
             }
             else
             {
-                MessageBox.Show("Pls select a Version!");
+                MessageBox.Show("请选择一个版本!");
             }
-            return ver;
+            return strVer;
         }
 
-        public static void DeleteDir(string AimPath)
+        private void version_CheckedChanged(object sender, EventArgs e)
         {
-            try
+            RadioButton rb = (RadioButton)sender;
+            if (rb.Checked)
             {
-                if (AimPath[AimPath.Length - 1] != Path.DirectorySeparatorChar)
+                string strVer = GetVer();
+                string NewP = Classes.Modfunction.baseDPath + "New SysFreight Source " + strVer.Replace(".", "") + @"\SysFreight\SysFreightMain\SysFreight.vbproj.user";
+                if (AWF.Classes.Modfunction.pingIPAddress("192.168.0.236"))
                 {
-                    AimPath += Path.DirectorySeparatorChar;
-                }
-                string[] filelist = Directory.GetFileSystemEntries(AimPath);
-                foreach (string file in filelist)
-                {
-                    if (Directory.Exists(file))
+                    if (File.Exists(NewP))
                     {
-                        DeleteDir(AimPath + Path.GetFileName(file));
+                        using(StreamReader objReader = new StreamReader(NewP))
+                        {
+                            string sLine = "";
+                            ArrayList LineList = new ArrayList();
+                            while (sLine != null)
+                            {
+                                sLine = objReader.ReadLine();
+                                if (!string.IsNullOrEmpty(sLine))
+                                    LineList.Add(sLine);
+                            }
+                            string CurrentVersion = LineList[11].ToString();
+                            CurrentVersion = CurrentVersion.Replace("<ApplicationRevision>", "");
+                            CurrentVersion = CurrentVersion.Replace("</ApplicationRevision>", "");
+                            CurrentVersion = CurrentVersion.Replace(" ", "");
+                            CurrentVersion = CurrentVersion.Trim().ToString();
+                            txt_BuildNo.Text = CurrentVersion;
+                        }                        
                     }
                     else
                     {
-                        File.Delete(AimPath + Path.GetFileName(file));
+                        MessageBox.Show("This Version's Source Code Does Not Exist!");
                     }
                 }
-                Directory.Delete(AimPath, true);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
             }
         }
 
@@ -126,58 +137,48 @@ namespace AWF
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            KillMessageBox();
+            AWF.Classes.Modfunction.KillMessageBox("Message");
             ((System.Windows.Forms.Timer)sender).Stop();
-        }
+        }       
 
-        private void KillMessageBox()
+        private void cmd_CreatFolder_Click(object sender, EventArgs e)
         {
-            IntPtr ptr = FindWindow(null, "Message");
-            if (ptr != IntPtr.Zero)
-            {
-                PostMessage(ptr, WM_CLOSE, IntPtr.Zero, IntPtr.Zero);
-            }
-        }
-
-        private void cmdCreatFolder_Click(object sender, EventArgs e)
-        {
-            ver = GetVer();
+            string strVer = GetVer();
             string verName = "";
-            if (txtVer.Text != "")
+            if (!string.IsNullOrEmpty(txt_BuildNo.Text))
             {
-                verName = "Version " + ver + "." + txtVer.Text.Trim().ToString();
-                string NewFolder = Classes.Modfunction.datetime_today.ToString("yyMMdd") + " Update(" + verName + ")";//121129 Update(Version 7.0.3.577)
-                if (cbo_SpecialName.Text != "")
+                verName = "Version " + strVer + "." + txt_BuildNo.Text.Trim().ToString();
+                string NewFolder = AWF.Classes.Modfunction.datetime_today.ToString("yyMMdd") + " Update(" + verName + ")";//121129 Update(Version 7.0.3.577)
+                if (!string.IsNullOrEmpty(cbo_SpecialName.Text))
                 {
                     string strSpecialName = "Special-" + cbo_SpecialName.Text.Replace(" ","");
-                    NewFolder = Classes.Modfunction.datetime_today.ToString("yyMMdd") + " Update(" + verName + ")(" + strSpecialName + ")";//121129 Update(Version 7.0.3.577)(Special)
+                    NewFolder = AWF.Classes.Modfunction.datetime_today.ToString("yyMMdd") + " Update(" + verName + ")(" + strSpecialName + ")";//121129 Update(Version 7.0.3.577)(Special)
                 }
-                NewFolder = Classes.Modfunction.baseDPath + @"SysFreight Update\EXCEL\" + NewFolder;
+                NewFolder = AWF.Classes.Modfunction.baseDPath + @"SysFreight Update\EXCEL\" + NewFolder;
                 if (!Directory.Exists(NewFolder))
                 {
                     Directory.CreateDirectory(NewFolder);
-                    MessageBox.Show("Creat Successful!");
+                    MessageBox.Show("新建成功!");
                 }
                 else
                 {
-                    MessageBox.Show("Already exist!");
+                    MessageBox.Show("已经存在!");
                 }
             }
             else
             {
-                MessageBox.Show("Please Enter Build No.");
+                MessageBox.Show("请输入版本修订号!");
             }
         }
 
-        private void cmdOpen_Click(object sender, EventArgs e)
+        private void cmd_OpenFolder_Click(object sender, EventArgs e)
         {
-            ver = GetVer();
-            string verName = "";
-            if (txtVer.Text != "")
+            string strVer = GetVer();
+            string verName = "Version " + strVer + "." + txt_BuildNo.Text.Trim().ToString();
+            if (!string.IsNullOrEmpty(txt_BuildNo.Text))
             {
-                verName = "Version " + ver + "." + txtVer.Text.Trim().ToString();
                 string NewFolder = Classes.Modfunction.datetime_today.ToString("yyMMdd") + " Update(" + verName + ")";//121129 Update(Version 7.0.3.577)
-                if (cbo_SpecialName.Text != "")
+                if (!string.IsNullOrEmpty(cbo_SpecialName.Text))
                 {
                     string strSpecialName = "Special-" + cbo_SpecialName.Text.Replace(" ", "");
                     NewFolder = Classes.Modfunction.datetime_today.ToString("yyMMdd") + " Update(" + verName + ")(" + strSpecialName + ")";//121129 Update(Version 7.0.3.577)(Special)
@@ -194,38 +195,35 @@ namespace AWF
             }
             else
             {
-                MessageBox.Show("Please Enter Build No.");
+                MessageBox.Show("请输入版本修订号!");
             }
         }
         
-        private void cmdPublished2Zip_Click(object sender, EventArgs e)
+        private void cmd_Published2Zip_Click(object sender, EventArgs e)
         {
+            panel1.Enabled = false;
+            progressBar1.Value = 0;
+            progressBar1.Maximum = 1000;
+            progressBar1.Enabled = true;
+            progressBar1.Visible = true;
+            string strVer = GetVer();
+            string update_publish_path = AWF.Classes.Modfunction.baseDPath + @"PublishFolder\sysfreightupdate\publish";
+            string filepath = Classes.Modfunction.baseDPath + @"PublishFolder\sysfreight";
             try
             {
-                panel1.Enabled = false;
-                progressBar1.Value = 0;
-                progressBar1.Maximum = 1000;
-                progressBar1.Enabled = true;
-                progressBar1.Visible = true;
-                //
-                ver = GetVer();
-                string update_publish_path = AWF.Classes.Modfunction.baseDPath + @"PublishFolder\sysfreightupdate\publish";
-                AWF.Classes.Modfunction.deleteFilesAndFolders(update_publish_path);
-                //
-                string filepath = Classes.Modfunction.baseDPath + @"PublishFolder\sysfreight";
+                AWF.Classes.Modfunction.DeleteFilesAndFolders(update_publish_path);
                 AWF.Classes.Modfunction.copyFilesAndFolders(update_publish_path, filepath);
-                //
-                if (txtVer.Text != "")
+                if (!string.IsNullOrEmpty(txt_BuildNo.Text))
                 {
-                    string verName = "sysfreightupdate_" + ver.Replace(".", "_") + "_";
+                    string verName = "sysfreightupdate_" + strVer.Replace(".", "_") + "_";
                     string strTime = Classes.Modfunction.datetime_today.ToString("yyyyMMdd") + "_" + DateTime.Now.ToString("HHmm");
                     strUpdateZipTime = strTime;
-                    if (cbo_SpecialName.Text != "")
+                    if (!string.IsNullOrEmpty(cbo_SpecialName.Text))
                     {
                         string strSpecialName = "Special-" + cbo_SpecialName.Text.Replace(" ", "");
                         strTime += "(" + strSpecialName + ")";
                     }
-                    string ogFileName = verName + txtVer.Text.Trim().ToString() + "_" + strTime;
+                    string ogFileName = verName + txt_BuildNo.Text.Trim().ToString() + "_" + strTime;
                     string ZipName = Classes.Modfunction.baseDPath + @"PublishFolder\" + ogFileName + ".zip";
                     string SourcePatch = Classes.Modfunction.baseDPath + @"PublishFolder\sysfreightupdate";
                     string tempFolder_Master = ZipName.Substring(0, ZipName.Length - 4);
@@ -250,16 +248,16 @@ namespace AWF
                     progressBar1.Enabled = false;
                     if (File.Exists(ZipName))
                     {
-                        string xlsFolder = Classes.Modfunction.datetime_today.ToString("yyMMdd") + " Update(" + "Version " + ver + "." + txtVer.Text.Trim().ToString() + ")";
-                        if (cbo_SpecialName.Text != "")
+                        string xlsFolder = Classes.Modfunction.datetime_today.ToString("yyMMdd") + " Update(" + "Version " + strVer + "." + txt_BuildNo.Text.Trim().ToString() + ")";
+                        if (!string.IsNullOrEmpty(cbo_SpecialName.Text))
                         {
                             string strSpecialName = "Special-" + cbo_SpecialName.Text.Replace(" ", "");
-                            xlsFolder = Classes.Modfunction.datetime_today.ToString("yyMMdd") + " Update(" + "Version " + ver + "." + txtVer.Text.Trim().ToString() + ")(" + strSpecialName + ")";
+                            xlsFolder = Classes.Modfunction.datetime_today.ToString("yyMMdd") + " Update(" + "Version " + strVer + "." + txt_BuildNo.Text.Trim().ToString() + ")(" + strSpecialName + ")";
                         }
                         string xls = Classes.Modfunction.baseDPath + @"SysFreight Update\EXCEL\" + xlsFolder;
                         if (Directory.Exists(xls))
                         {
-                            File.Move(ZipName, xls + @"\" + verName + txtVer.Text.Trim().ToString() + "_" + strTime + ".zip");
+                            File.Move(ZipName, xls + @"\" + verName + txt_BuildNo.Text.Trim().ToString() + "_" + strTime + ".zip");
                         }
                         MessageBox.Show("Published to Zip Successful!");
                     }
@@ -278,33 +276,29 @@ namespace AWF
                 }
                 else
                 {
-                    MessageBox.Show("Please Enter Build No.");
+                    MessageBox.Show("请输入版本修订号!");
                 }
             }
             catch (Exception ex) { Log.Debug(ex.Message,ex); }
             finally { GC.Collect(); }
         }
 
-        private void cmdSendTo_Click(object sender, EventArgs e)
+        private void cmd_SendTo_Click(object sender, EventArgs e)
         {
-            try
+            string strVer = GetVer();
+            string verName = "Version " + strVer + "." + txt_BuildNo.Text.Trim().ToString();
+            if (!string.IsNullOrEmpty(txt_BuildNo.Text))
             {
-                Application.DoEvents();
-                ver = GetVer();
-                string verName = "";
-                if (txtVer.Text != "")
+                panel1.Enabled = false;
+                progressBar1.Value = 0;
+                progressBar1.Enabled = true;
+                progressBar1.Maximum = 10000;
+                progressBar1.Visible = true;
+                string xls = Classes.Modfunction.baseDPath + @"SysFreight Update\EXCEL\" + Classes.Modfunction.datetime_today.ToString("yyMMdd") + " Update(" + verName + ")";
+                string NewFolder = @"\\192.168.0.250\Net Application\" + Classes.Modfunction.datetime_today.ToString("yyMMdd") + " Update(" + verName + ")";//121129 Update(Version 7.0.3.577)
+                try
                 {
-                    panel1.Enabled = false;
-                    progressBar1.Value = 0;
-                    progressBar1.Enabled = true;
-                    progressBar1.Maximum = 10000;
-                    progressBar1.Visible = true;
-
-                    verName = "Version " + ver + "." + txtVer.Text.Trim().ToString();
-                    //
-                    string xls = Classes.Modfunction.baseDPath + @"SysFreight Update\EXCEL\" + Classes.Modfunction.datetime_today.ToString("yyMMdd") + " Update(" + verName + ")";
-                    string NewFolder = @"\\192.168.0.250\Net Application\" + Classes.Modfunction.datetime_today.ToString("yyMMdd") + " Update(" + verName + ")";//121129 Update(Version 7.0.3.577)
-                    if (cbo_SpecialName.Text != "")
+                    if (!string.IsNullOrEmpty(cbo_SpecialName.Text))
                     {
                         string strSpecialName = "Special-" + cbo_SpecialName.Text.Replace(" ", "");
                         xls = Classes.Modfunction.baseDPath + @"SysFreight Update\EXCEL\" + Classes.Modfunction.datetime_today.ToString("yyMMdd") + " Update(" + verName + ")(" + strSpecialName + ")";
@@ -331,7 +325,7 @@ namespace AWF
                     {
                         Clipboard.Clear();
                         string specialText = cbo_SpecialName.Text.Trim();
-                        if (specialText != "")
+                        if (!string.IsNullOrEmpty(specialText))
                         {
                             specialText = "(Special-" + specialText + ")";
                         }
@@ -342,11 +336,11 @@ namespace AWF
                             if (cbo_SpecialName.Text.Length > 0)
                             {
                                 MessageBox.Show("The Special Version Should Be Backup Manually!");
-                                cmdSelectFolder_Click(cmdSelectFolder, e);
+                                cmd_SelectFolder_Click(cmd_SelectFolder, e);
                             }
                             else
                             {
-                                cmdBackUp_Click(cmdBackUp, e);
+                                cmd_BackUp_Click(cmd_BackUp, e);
                             }
                         }
                     }
@@ -354,18 +348,18 @@ namespace AWF
                     {
                         MessageBox.Show("Send Faild!");
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Please Enter Build No.");
-                }
 
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
+                finally { GC.Collect(); }
             }
-            catch (Exception ex) { }
-            finally { GC.Collect(); }
+            else
+            {
+                MessageBox.Show("请输入版本修订号!");
+            }
         }
 
-        private void cmdSelectFolder_Click(object sender, EventArgs e)
+        private void cmd_SelectFolder_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog df = new FolderBrowserDialog();
             df.SelectedPath = Classes.Modfunction.baseDPath;
@@ -373,19 +367,19 @@ namespace AWF
              if (result == DialogResult.OK)   
              {
                  string folderPath = df.SelectedPath;
-                 if (folderPath != "")
+                 if (!string.IsNullOrEmpty(folderPath))
                  {
                      txtFolder.Text = folderPath;
                  }
             }
         }
 
-        private void cmdBackUp_Click(object sender, EventArgs e)
+        private void cmd_BackUp_Click(object sender, EventArgs e)
         {
+            string strVer = GetVer();
             try
             {
-                ver = GetVer();
-                if (txtVer.Text != "")
+                if (!string.IsNullOrEmpty(txt_BuildNo.Text))
                 {
                     panel1.Enabled = false;
                     progressBar1.Value = 0;
@@ -395,22 +389,22 @@ namespace AWF
 
                     string SourcePatch = "";
                     string strTime = Classes.Modfunction.datetime_today.ToString("yyyyMMdd") + "_" + DateTime.Now.ToString("HHmm");
-                    if (strUpdateZipTime != "")
+                    if (!string.IsNullOrEmpty(strUpdateZipTime))
                     {
                         strTime = strUpdateZipTime;
                     }
-                    if (cbo_SpecialName.Text != "")
+                    if (!string.IsNullOrEmpty(cbo_SpecialName.Text))
                     {
                         string strSpecialName = "Special-" + cbo_SpecialName.Text.Replace(" ", "");
                         strTime += "(" + strSpecialName + ")";
                     }
-                    if (txtFolder.Text != "")
+                    if (!string.IsNullOrEmpty(txtFolder.Text))
                     {
                         SourcePatch = txtFolder.Text;
-                        string NewP = Classes.Modfunction.baseDPath + @"New SysFreight Source_" + ver.Replace(".", "_") + "_" + txtVer.Text.Trim().ToString() + "_" + strTime;
+                        string NewP = Classes.Modfunction.baseDPath + @"New SysFreight Source_" + strVer.Replace(".", "_") + "_" + txt_BuildNo.Text.Trim().ToString() + "_" + strTime;
                         if (Directory.Exists(NewP))
                         {
-                            DeleteDir(NewP);
+                            AWF.Classes.Modfunction.DeleteFilesAndFolders(NewP);
                         }
                         DirectoryInfo DInfo = new DirectoryInfo(SourcePatch);
                         try
@@ -426,9 +420,9 @@ namespace AWF
                     }
                     else
                     {
-                        SourcePatch = Classes.Modfunction.baseDPath + "New SysFreight Source " + ver.Replace(".", "");
+                        SourcePatch = Classes.Modfunction.baseDPath + "New SysFreight Source " + strVer.Replace(".", "");
                     }
-                    string ZipName = Classes.Modfunction.baseDPath + "New SysFreight Source_" + ver.Replace(".", "_") + "_" + txtVer.Text.Trim().ToString() + "_" + strTime + ".zip";
+                    string ZipName = Classes.Modfunction.baseDPath + "New SysFreight Source_" + strVer.Replace(".", "_") + "_" + txt_BuildNo.Text.Trim().ToString() + "_" + strTime + ".zip";
                     Classes.ZipThread thZip = new Classes.ZipThread(SourcePatch, ZipName);
                     thZip.start();
                     while (thZip.threadState() == System.Threading.ThreadState.Running)
@@ -444,7 +438,6 @@ namespace AWF
                     progressBar1.Visible = false;
                     panel1.Enabled = true;
                     progressBar1.Enabled = false;
-                    //
                     if (File.Exists(ZipName))
                     {
                         StartKiller();
@@ -458,7 +451,7 @@ namespace AWF
                 }
                 else
                 {
-                    MessageBox.Show("Please Enter Build No. and make sure of right directory of SourceCode.");
+                    MessageBox.Show("请输入版本修订号! and make sure of right directory of SourceCode.");
                 }
             }
             catch (Exception ex)
@@ -468,88 +461,41 @@ namespace AWF
             finally { GC.Collect(); }
         }
 
-        private void version_CheckedChanged(object sender, EventArgs e)
-        {
-            RadioButton tb = (RadioButton)sender;
-            if (tb.Checked)
-            {
-                ver = GetVer();
-                string NewP = Classes.Modfunction.baseDPath + "New SysFreight Source " + ver.Replace(".", "") + @"\SysFreight\SysFreightMain\SysFreight.vbproj.user";
-                if (AWF.Classes.Modfunction.pingIPAddress("192.168.0.236"))
-                {
-                    if (File.Exists(NewP))
-                    {
-                        StreamReader objReader = new StreamReader(NewP);
-                        string sLine = "";
-                        ArrayList LineList = new ArrayList();
-                        while (sLine != null)
-                        {
-                            sLine = objReader.ReadLine();
-                            if (sLine != null && !sLine.Equals(""))
-                                LineList.Add(sLine);
-                        }
-                        objReader.Close();
-                        string CurrentVersion = LineList[11].ToString();
-                        CurrentVersion = CurrentVersion.Replace("<ApplicationRevision>", "");
-                        CurrentVersion = CurrentVersion.Replace("</ApplicationRevision>", "");
-                        CurrentVersion = CurrentVersion.Replace(" ", "");
-                        CurrentVersion = CurrentVersion.Trim().ToString();
-                        txtVer.Text = CurrentVersion;
-                    }
-                    else
-                    {
-                        MessageBox.Show("This Version's Source Code Does Not Exist!");
-                    }
-                }                
-            }
-        }
-
         private void btn_rebuild_Click(object sender, EventArgs e)
         {
-            try
+            blnIsDeploy = false;
+            panel1.Enabled = false;
+            textBox1.Top = txt_BuildNo.Top;
+            textBox1.Left = cmd_SelectFolder.Left;
+            textBox1.Enabled = true;
+            textBox1.Visible = true;
+            Thread rebuild = new Thread(new ThreadStart(RebuildAll));
+            rebuild.Start();
+            while (rebuild.ThreadState == System.Threading.ThreadState.Running)
             {
-                blnIsDeploy = false;
-                panel1.Enabled = false;
-                textBox1.Top = txtVer.Top;
-                textBox1.Left = cmdSelectFolder.Left;
-                textBox1.Enabled = true;
-                textBox1.Visible = true;
-                Thread rebuild = new Thread(new ThreadStart(RebuildAll));
-                rebuild.Start();
-                while (rebuild.ThreadState == System.Threading.ThreadState.Running)
-                {
-                    Application.DoEvents();
-                }
-                rebuild.Abort();
-                int len = textBox1.Text.Length;
-                if (textBox1.Text.Length > 0)
-                {
-                    string output = textBox1.Text.Substring(len - 50);
-                    string[] str = output.Split(',');
-                    string[] str1 = str[0].Split(':');
-                    int success = int.Parse(str1[1].Substring(0, 3));
-                    int failed = int.Parse(str[1].Substring(0, 3));
-                    int jump = int.Parse(str[2].Substring(0, 3));
-                    if (success > 0 && failed == 0 && jump == 0)
-                    {
-                        MessageBox.Show("Rebuild Success");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Rebuild Failed");
-                    }
-                }
-                textBox1.Visible = false;
-                panel1.Enabled = true;
+                Application.DoEvents();
             }
-            catch (Exception ex) { Log.Debug(ex.Message, ex); }
-            finally
+            rebuild.Abort();
+            int len = textBox1.Text.Length;
+            if (textBox1.Text.Length > 0)
             {
-                textBox1.Visible = false;
-                panel1.Enabled = true;
-                blnIsDeploy = false;
-                GC.Collect();
+                string output = textBox1.Text.Substring(len - 50);
+                string[] str = output.Split(',');
+                string[] str1 = str[0].Split(':');
+                int success = int.Parse(str1[1].Substring(0, 3));
+                int failed = int.Parse(str[1].Substring(0, 3));
+                int jump = int.Parse(str[2].Substring(0, 3));
+                if (success > 0 && failed == 0 && jump == 0)
+                {
+                    MessageBox.Show("Rebuild Success");
+                }
+                else
+                {
+                    MessageBox.Show("Rebuild Failed");
+                }
             }
+            textBox1.Visible = false;
+            panel1.Enabled = true;
         }
 
         private void RebuildAll()
@@ -728,7 +674,7 @@ namespace AWF
         //                    }
         //                    else
         //                    {
-        //                        MessageBox.Show("Please Enter Build No.");
+        //                        MessageBox.Show("请输入版本修订号!");
         //                    }
         //                }
         //            }

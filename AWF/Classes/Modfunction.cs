@@ -7,12 +7,24 @@ using System.Net.Sockets;
 using System.Windows.Forms;
 using System.IO;
 using System.Net.NetworkInformation;
+using System.Runtime.InteropServices;
 
 namespace AWF.Classes
 {
-    class Modfunction
+    public static class Modfunction
     {
+        //[DllImport("shell32.dll", EntryPoint = "ShellExecuteA")]
+        //public static extern int ShellExecute(int hwnd, String lpOperation, String lpFile, String lpParameters, String lpDirectory, int nShowCmd);
+        
+        [DllImport("user32.dll", EntryPoint = "FindWindow", CharSet = CharSet.Auto)]
+        private extern static IntPtr FindWindow(string lpClassName, string lpWindowName);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        public static extern int PostMessage(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
+        public const int WM_CLOSE = 0x10;
+
         private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        
         public static string baseDPath = "";
         public static string currentIP = "";
         public static DateTime datetime_today;
@@ -83,22 +95,40 @@ namespace AWF.Classes
             return CheckNull;
         }
 
-        public static void deleteFilesAndFolders(string update_publish_path)
+        public static void KillMessageBox(string strWindowName)
         {
-            string[] pubfiles = Directory.GetFiles(update_publish_path);
-            foreach (string file in pubfiles)
+            IntPtr ptr = FindWindow(null, strWindowName);
+            if (ptr != IntPtr.Zero)
             {
-                if (file != null && file != "")
-                    File.Delete(file);
+                PostMessage(ptr, WM_CLOSE, IntPtr.Zero, IntPtr.Zero);
             }
-            string[] pubfolders = Directory.GetDirectories(update_publish_path);
-            foreach (string folder in pubfolders)
+        }
+
+        public static void DeleteFilesAndFolders(string strTargetPath)
+        {
+            try
             {
-                if (Directory.Exists(folder))
+                if (strTargetPath[strTargetPath.Length - 1] != Path.DirectorySeparatorChar)
                 {
-                    deleteFilesAndFolders(folder);
-                    Directory.Delete(folder);
+                    strTargetPath += Path.DirectorySeparatorChar;
                 }
+                string[] filelist = Directory.GetFileSystemEntries(strTargetPath);
+                foreach (string file in filelist)
+                {
+                    if (Directory.Exists(file))
+                    {
+                        DeleteFilesAndFolders(strTargetPath + Path.GetFileName(file));
+                    }
+                    else
+                    {
+                        File.Delete(strTargetPath + Path.GetFileName(file));
+                    }
+                }
+                Directory.Delete(strTargetPath, true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
             }
         }
 

@@ -134,7 +134,7 @@ namespace AWF.Classes
                 AllFinishNotify();
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
                 //失败通知外界定制类
                 isFinish = false;

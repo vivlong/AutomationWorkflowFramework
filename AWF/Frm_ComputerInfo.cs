@@ -13,6 +13,10 @@ namespace AWF
         public Frm_ComputerInfo()
         {
             InitializeComponent();
+            Classes.Modfunction.Get_Win32_Processor();
+            Classes.Modfunction.Get_Win32_BaseBoard();
+            Classes.Modfunction.Get_Win32_PhysicalMemory();
+            Classes.Modfunction.Get_Win32_BIOS();
         }
 
         private void Frm_ComputerInfo_Load(object sender, EventArgs e)

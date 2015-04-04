@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 
 namespace AWF.Classes
 {
-    class FontHelper
+    public static class FontHelper
     {
 
         private static PrivateFontCollection p_Font;

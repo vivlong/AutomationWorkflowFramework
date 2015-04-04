@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace AWF.Classes
 {
-    public class SaveSetting
+    public static class SaveSetting
     {
         [Serializable]
         public class ConfigInfo

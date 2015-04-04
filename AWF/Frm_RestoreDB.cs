@@ -18,14 +18,14 @@ namespace AWF
     {
         private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private Classes.SMOHelper smoHelper = null;
-        public string connString = @"Server=192.168.0.230;DataBase=master;UID=sa;PWD=p@ssw0rd$;";
-        public string strXml = @"\\192.168.0.230\WebService\Web.config";
-        public string DBPath = @"N:\Customer_Database\";
-        public string DESKey = "F322186F";
-        public string DESIV = "F322186F";
-        public bool RestoreStatus = false;
-        public string fileName = "";
-        public string dataBaseName = "";
+        //private string connString = @"Server=192.168.0.230;DataBase=master;UID=sa;PWD=p@ssw0rd$;";
+        private string strXml = @"\\192.168.0.230\WebService\Web.config";
+        private string DBPath = @"N:\Customer_Database\";
+        private string DESKey = "F322186F";
+        private string DESIV = "F322186F";
+        private bool RestoreStatus = false;
+        private string fileName = "";
+        private string dataBaseName = "";
        
         public Frm_RestoreDB()
         {
@@ -132,7 +132,7 @@ namespace AWF
             if (result == DialogResult.OK)
             {
                 string FileName = df.FileName;
-                if (FileName != "")
+                if (!string.IsNullOrEmpty(FileName))
                 {
                     txtFileName.Text = FileName;
                     string strSafeName = df.SafeFileName;
@@ -162,7 +162,7 @@ namespace AWF
             if (result == DialogResult.OK)
             {
                 string folderPath = df.SelectedPath;
-                if (folderPath != "")
+                if (!string.IsNullOrEmpty(folderPath))
                 {
                     txtDBPath.Text = folderPath;
                 }

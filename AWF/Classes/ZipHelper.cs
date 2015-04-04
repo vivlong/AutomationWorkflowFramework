@@ -185,8 +185,6 @@ namespace AWF.Classes
                         entry.DateTime = Classes.Modfunction.datetime_today;
                         entry.Size = fs.Length;
 
-                        fs.Close();
-
                         crc.Reset();
                         crc.Update(buffer);
 
@@ -206,14 +204,12 @@ namespace AWF.Classes
         /// <param name="strDirectory">The STR directory.</param>
         /// <param name="password">zip 文件的密码。</param>
         /// <param name="overWrite">是否覆盖已存在的文件。</param>
-        public void UnZip(string zipedFile, string strDirectory, string password, bool overWrite)
+        public static void UnZip(string zipedFile, string strDirectory, string password, bool overWrite)
         {
-
             if (strDirectory == "")
                 strDirectory = Directory.GetCurrentDirectory();
             if (!strDirectory.EndsWith("\\"))
                 strDirectory = strDirectory + "\\";
-
             using (ZipInputStream s = new ZipInputStream(File.OpenRead(zipedFile)))
             {
                 s.Password = password;
@@ -232,7 +228,7 @@ namespace AWF.Classes
 
                     Directory.CreateDirectory(strDirectory + directoryName);
 
-                    if (fileName != "")
+                    if (!string.IsNullOrEmpty(fileName))
                     {
                         if ((File.Exists(strDirectory + directoryName + fileName) && overWrite) || (!File.Exists(strDirectory + directoryName + fileName)))
                         {
@@ -249,13 +245,10 @@ namespace AWF.Classes
                                     else
                                         break;
                                 }
-                                streamWriter.Close();
                             }
                         }
                     }
                 }
-
-                s.Close();
             }
         }
     }
