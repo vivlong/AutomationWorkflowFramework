@@ -29,88 +29,45 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtFormName = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.rB_v802 = new System.Windows.Forms.RadioButton();
-            this.lbl_programmer = new System.Windows.Forms.Label();
-            this.cbo_Programmer = new System.Windows.Forms.ComboBox();
-            this.lbl_trackno = new System.Windows.Forms.Label();
-            this.txt_TrackNo = new System.Windows.Forms.TextBox();
-            this.btn_publish = new System.Windows.Forms.Button();
-            this.btn_rebuild = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtTo = new System.Windows.Forms.TextBox();
-            this.txtFrom = new System.Windows.Forms.TextBox();
-            this.cmdSourceSendto = new System.Windows.Forms.Button();
-            this.txtFolder = new System.Windows.Forms.TextBox();
+            this.gb_Publish = new System.Windows.Forms.GroupBox();
+            this.cmd_CreatFolder = new System.Windows.Forms.Button();
+            this.cmd_Open = new System.Windows.Forms.Button();
+            this.cmdPublished2Zip = new System.Windows.Forms.Button();
+            this.cmdSendTo = new System.Windows.Forms.Button();
             this.cmdSelectFolder = new System.Windows.Forms.Button();
             this.cmdBackUp = new System.Windows.Forms.Button();
-            this.rB_v801 = new System.Windows.Forms.RadioButton();
-            this.cmd_Open = new System.Windows.Forms.Button();
-            this.cmd_CreatFolder = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cmdPublished2Zip = new System.Windows.Forms.Button();
-            this.v75 = new System.Windows.Forms.RadioButton();
-            this.rB_v704 = new System.Windows.Forms.RadioButton();
-            this.rB_v703 = new System.Windows.Forms.RadioButton();
-            this.rB_v702 = new System.Windows.Forms.RadioButton();
-            this.cmdSendTo = new System.Windows.Forms.Button();
-            this.txt_SpecialName = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.txtFolder = new System.Windows.Forms.TextBox();
+            this.btn_rebuild = new System.Windows.Forms.Button();
+            this.btn_publish = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.gb_BuildNo = new System.Windows.Forms.GroupBox();
+            this.cbo_SpecialName = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtVer = new System.Windows.Forms.TextBox();
-            this.v71 = new System.Windows.Forms.RadioButton();
-            this.v76 = new System.Windows.Forms.RadioButton();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.label2 = new System.Windows.Forms.Label();
+            this.gb_Version = new System.Windows.Forms.GroupBox();
+            this.rB_v706 = new System.Windows.Forms.RadioButton();
+            this.rB_v701 = new System.Windows.Forms.RadioButton();
+            this.rB_v702 = new System.Windows.Forms.RadioButton();
+            this.rB_v703 = new System.Windows.Forms.RadioButton();
+            this.rB_v802 = new System.Windows.Forms.RadioButton();
+            this.rB_v704 = new System.Windows.Forms.RadioButton();
+            this.rB_v705 = new System.Windows.Forms.RadioButton();
+            this.rB_v801 = new System.Windows.Forms.RadioButton();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
+            this.gb_Publish.SuspendLayout();
+            this.gb_BuildNo.SuspendLayout();
+            this.gb_Version.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.txtFormName);
+            this.panel1.Controls.Add(this.gb_Publish);
+            this.panel1.Controls.Add(this.gb_BuildNo);
+            this.panel1.Controls.Add(this.gb_Version);
             this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.rB_v802);
-            this.panel1.Controls.Add(this.lbl_programmer);
-            this.panel1.Controls.Add(this.cbo_Programmer);
-            this.panel1.Controls.Add(this.lbl_trackno);
-            this.panel1.Controls.Add(this.txt_TrackNo);
-            this.panel1.Controls.Add(this.btn_publish);
-            this.panel1.Controls.Add(this.btn_rebuild);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.txtTo);
-            this.panel1.Controls.Add(this.txtFrom);
-            this.panel1.Controls.Add(this.cmdSourceSendto);
-            this.panel1.Controls.Add(this.txtFolder);
-            this.panel1.Controls.Add(this.cmdSelectFolder);
-            this.panel1.Controls.Add(this.cmdBackUp);
-            this.panel1.Controls.Add(this.rB_v801);
-            this.panel1.Controls.Add(this.cmd_Open);
-            this.panel1.Controls.Add(this.cmd_CreatFolder);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.cmdPublished2Zip);
-            this.panel1.Controls.Add(this.v75);
-            this.panel1.Controls.Add(this.rB_v704);
-            this.panel1.Controls.Add(this.rB_v703);
-            this.panel1.Controls.Add(this.rB_v702);
-            this.panel1.Controls.Add(this.cmdSendTo);
-            this.panel1.Controls.Add(this.txt_SpecialName);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.txtVer);
-            this.panel1.Controls.Add(this.v71);
-            this.panel1.Controls.Add(this.v76);
-            this.panel1.Controls.Add(this.progressBar1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
@@ -118,325 +75,233 @@
             this.panel1.Size = new System.Drawing.Size(873, 454);
             this.panel1.TabIndex = 0;
             // 
-            // button1
+            // gb_Publish
             // 
-            this.button1.Location = new System.Drawing.Point(523, 208);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(219, 26);
-            this.button1.TabIndex = 83;
-            this.button1.Text = "Auto Update Request";
-            this.button1.UseVisualStyleBackColor = true;
+            this.gb_Publish.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gb_Publish.Controls.Add(this.cmd_CreatFolder);
+            this.gb_Publish.Controls.Add(this.cmd_Open);
+            this.gb_Publish.Controls.Add(this.cmdPublished2Zip);
+            this.gb_Publish.Controls.Add(this.cmdSendTo);
+            this.gb_Publish.Controls.Add(this.cmdSelectFolder);
+            this.gb_Publish.Controls.Add(this.cmdBackUp);
+            this.gb_Publish.Controls.Add(this.txtFolder);
+            this.gb_Publish.Controls.Add(this.btn_rebuild);
+            this.gb_Publish.Controls.Add(this.btn_publish);
+            this.gb_Publish.Controls.Add(this.progressBar1);
+            this.gb_Publish.Location = new System.Drawing.Point(12, 126);
+            this.gb_Publish.Name = "gb_Publish";
+            this.gb_Publish.Size = new System.Drawing.Size(849, 225);
+            this.gb_Publish.TabIndex = 86;
+            this.gb_Publish.TabStop = false;
+            this.gb_Publish.Text = "发布版本";
             // 
-            // label8
+            // cmd_CreatFolder
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(14, 179);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(133, 19);
-            this.label8.TabIndex = 82;
-            this.label8.Text = "Change Form Name";
+            this.cmd_CreatFolder.Location = new System.Drawing.Point(74, 24);
+            this.cmd_CreatFolder.Margin = new System.Windows.Forms.Padding(4);
+            this.cmd_CreatFolder.Name = "cmd_CreatFolder";
+            this.cmd_CreatFolder.Size = new System.Drawing.Size(212, 31);
+            this.cmd_CreatFolder.TabIndex = 57;
+            this.cmd_CreatFolder.Text = " 建立 当前版本文件夹";
+            this.cmd_CreatFolder.UseVisualStyleBackColor = true;
+            this.cmd_CreatFolder.Click += new System.EventHandler(this.cmdCreatFolder_Click);
             // 
-            // txtFormName
+            // cmd_Open
             // 
-            this.txtFormName.Location = new System.Drawing.Point(241, 179);
-            this.txtFormName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtFormName.Multiline = true;
-            this.txtFormName.Name = "txtFormName";
-            this.txtFormName.Size = new System.Drawing.Size(212, 55);
-            this.txtFormName.TabIndex = 81;
+            this.cmd_Open.Location = new System.Drawing.Point(333, 24);
+            this.cmd_Open.Margin = new System.Windows.Forms.Padding(4);
+            this.cmd_Open.Name = "cmd_Open";
+            this.cmd_Open.Size = new System.Drawing.Size(212, 31);
+            this.cmd_Open.TabIndex = 58;
+            this.cmd_Open.Text = "打开 当前版本文件夹";
+            this.cmd_Open.UseVisualStyleBackColor = true;
+            this.cmd_Open.Click += new System.EventHandler(this.cmdOpen_Click);
             // 
-            // textBox1
+            // cmdPublished2Zip
             // 
-            this.textBox1.Location = new System.Drawing.Point(757, 354);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(683, 296);
-            this.textBox1.TabIndex = 71;
-            this.textBox1.Visible = false;
+            this.cmdPublished2Zip.Location = new System.Drawing.Point(74, 104);
+            this.cmdPublished2Zip.Margin = new System.Windows.Forms.Padding(4);
+            this.cmdPublished2Zip.Name = "cmdPublished2Zip";
+            this.cmdPublished2Zip.Size = new System.Drawing.Size(212, 31);
+            this.cmdPublished2Zip.TabIndex = 52;
+            this.cmdPublished2Zip.Text = "打包发布的文件至部署文件夹";
+            this.cmdPublished2Zip.UseVisualStyleBackColor = true;
+            this.cmdPublished2Zip.Click += new System.EventHandler(this.cmdPublished2Zip_Click);
             // 
-            // rB_v802
+            // cmdSendTo
             // 
-            this.rB_v802.AutoSize = true;
-            this.rB_v802.Location = new System.Drawing.Point(658, 11);
-            this.rB_v802.Margin = new System.Windows.Forms.Padding(4);
-            this.rB_v802.Name = "rB_v802";
-            this.rB_v802.Size = new System.Drawing.Size(82, 23);
-            this.rB_v802.TabIndex = 80;
-            this.rB_v802.TabStop = true;
-            this.rB_v802.Text = "Ver 8.0.2";
-            this.rB_v802.UseVisualStyleBackColor = true;
-            this.rB_v802.CheckedChanged += new System.EventHandler(this.version_CheckedChanged);
+            this.cmdSendTo.Location = new System.Drawing.Point(333, 104);
+            this.cmdSendTo.Margin = new System.Windows.Forms.Padding(4);
+            this.cmdSendTo.Name = "cmdSendTo";
+            this.cmdSendTo.Size = new System.Drawing.Size(212, 31);
+            this.cmdSendTo.TabIndex = 53;
+            this.cmdSendTo.Text = "将部署文件夹发送至250";
+            this.cmdSendTo.UseVisualStyleBackColor = true;
+            this.cmdSendTo.Click += new System.EventHandler(this.cmdSendTo_Click);
             // 
-            // lbl_programmer
+            // cmdSelectFolder
             // 
-            this.lbl_programmer.AutoSize = true;
-            this.lbl_programmer.Location = new System.Drawing.Point(481, 136);
-            this.lbl_programmer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_programmer.Name = "lbl_programmer";
-            this.lbl_programmer.Size = new System.Drawing.Size(100, 19);
-            this.lbl_programmer.TabIndex = 79;
-            this.lbl_programmer.Text = "需求指派对象：";
+            this.cmdSelectFolder.Location = new System.Drawing.Point(74, 144);
+            this.cmdSelectFolder.Margin = new System.Windows.Forms.Padding(4);
+            this.cmdSelectFolder.Name = "cmdSelectFolder";
+            this.cmdSelectFolder.Size = new System.Drawing.Size(212, 31);
+            this.cmdSelectFolder.TabIndex = 61;
+            this.cmdSelectFolder.Text = "选择要压缩的文件夹";
+            this.cmdSelectFolder.UseVisualStyleBackColor = true;
+            this.cmdSelectFolder.Click += new System.EventHandler(this.cmdSelectFolder_Click);
             // 
-            // cbo_Programmer
+            // cmdBackUp
             // 
-            this.cbo_Programmer.DisplayMember = "Name";
-            this.cbo_Programmer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbo_Programmer.FormattingEnabled = true;
-            this.cbo_Programmer.Items.AddRange(new object[] {
-            "decheng",
-            "xiaozhen",
-            "liaozheng",
-            "tangxc"});
-            this.cbo_Programmer.Location = new System.Drawing.Point(622, 132);
-            this.cbo_Programmer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cbo_Programmer.Name = "cbo_Programmer";
-            this.cbo_Programmer.Size = new System.Drawing.Size(120, 27);
-            this.cbo_Programmer.TabIndex = 78;
-            this.cbo_Programmer.ValueMember = "Name";
-            // 
-            // lbl_trackno
-            // 
-            this.lbl_trackno.AutoSize = true;
-            this.lbl_trackno.Location = new System.Drawing.Point(14, 132);
-            this.lbl_trackno.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_trackno.Name = "lbl_trackno";
-            this.lbl_trackno.Size = new System.Drawing.Size(174, 19);
-            this.lbl_trackno.TabIndex = 77;
-            this.lbl_trackno.Text = "需求编号 : （; 或 空格区分）";
-            // 
-            // txt_TrackNo
-            // 
-            this.txt_TrackNo.Location = new System.Drawing.Point(241, 132);
-            this.txt_TrackNo.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_TrackNo.Multiline = true;
-            this.txt_TrackNo.Name = "txt_TrackNo";
-            this.txt_TrackNo.Size = new System.Drawing.Size(212, 27);
-            this.txt_TrackNo.TabIndex = 76;
-            // 
-            // btn_publish
-            // 
-            this.btn_publish.Enabled = false;
-            this.btn_publish.Location = new System.Drawing.Point(17, 291);
-            this.btn_publish.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_publish.Name = "btn_publish";
-            this.btn_publish.Size = new System.Drawing.Size(172, 31);
-            this.btn_publish.TabIndex = 70;
-            this.btn_publish.Text = "Publish Deploy";
-            this.btn_publish.UseVisualStyleBackColor = true;
-            // 
-            // btn_rebuild
-            // 
-            this.btn_rebuild.Location = new System.Drawing.Point(17, 253);
-            this.btn_rebuild.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_rebuild.Name = "btn_rebuild";
-            this.btn_rebuild.Size = new System.Drawing.Size(172, 31);
-            this.btn_rebuild.TabIndex = 69;
-            this.btn_rebuild.Text = "Rebuild All";
-            this.btn_rebuild.UseVisualStyleBackColor = true;
-            this.btn_rebuild.Click += new System.EventHandler(this.btn_rebuild_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(382, 403);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(24, 19);
-            this.label6.TabIndex = 68;
-            this.label6.Text = "To";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(241, 403);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(45, 19);
-            this.label7.TabIndex = 67;
-            this.label7.Text = "From ";
-            // 
-            // txtTo
-            // 
-            this.txtTo.Location = new System.Drawing.Point(416, 398);
-            this.txtTo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtTo.Name = "txtTo";
-            this.txtTo.Size = new System.Drawing.Size(79, 24);
-            this.txtTo.TabIndex = 66;
-            this.txtTo.Text = "131218";
-            // 
-            // txtFrom
-            // 
-            this.txtFrom.Location = new System.Drawing.Point(294, 398);
-            this.txtFrom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtFrom.Name = "txtFrom";
-            this.txtFrom.Size = new System.Drawing.Size(79, 24);
-            this.txtFrom.TabIndex = 65;
-            this.txtFrom.Text = "131218";
-            // 
-            // cmdSourceSendto
-            // 
-            this.cmdSourceSendto.Location = new System.Drawing.Point(17, 398);
-            this.cmdSourceSendto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cmdSourceSendto.Name = "cmdSourceSendto";
-            this.cmdSourceSendto.Size = new System.Drawing.Size(172, 31);
-            this.cmdSourceSendto.TabIndex = 64;
-            this.cmdSourceSendto.Text = " Backup/Send Source to 250";
-            this.cmdSourceSendto.UseVisualStyleBackColor = true;
-            this.cmdSourceSendto.Click += new System.EventHandler(this.cmdSourceSendto_Click);
+            this.cmdBackUp.Location = new System.Drawing.Point(74, 184);
+            this.cmdBackUp.Margin = new System.Windows.Forms.Padding(4);
+            this.cmdBackUp.Name = "cmdBackUp";
+            this.cmdBackUp.Size = new System.Drawing.Size(212, 31);
+            this.cmdBackUp.TabIndex = 60;
+            this.cmdBackUp.Text = "备份源码";
+            this.cmdBackUp.UseVisualStyleBackColor = true;
+            this.cmdBackUp.Click += new System.EventHandler(this.cmdBackUp_Click);
             // 
             // txtFolder
             // 
-            this.txtFolder.Location = new System.Drawing.Point(241, 360);
+            this.txtFolder.Location = new System.Drawing.Point(333, 148);
             this.txtFolder.Margin = new System.Windows.Forms.Padding(4);
             this.txtFolder.Name = "txtFolder";
             this.txtFolder.ReadOnly = true;
             this.txtFolder.Size = new System.Drawing.Size(501, 24);
             this.txtFolder.TabIndex = 62;
             // 
-            // cmdSelectFolder
+            // btn_rebuild
             // 
-            this.cmdSelectFolder.Location = new System.Drawing.Point(17, 358);
-            this.cmdSelectFolder.Margin = new System.Windows.Forms.Padding(4);
-            this.cmdSelectFolder.Name = "cmdSelectFolder";
-            this.cmdSelectFolder.Size = new System.Drawing.Size(172, 31);
-            this.cmdSelectFolder.TabIndex = 61;
-            this.cmdSelectFolder.Text = "Select Folder To ZIP";
-            this.cmdSelectFolder.UseVisualStyleBackColor = true;
-            this.cmdSelectFolder.Click += new System.EventHandler(this.cmdSelectFolder_Click);
+            this.btn_rebuild.Location = new System.Drawing.Point(74, 64);
+            this.btn_rebuild.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_rebuild.Name = "btn_rebuild";
+            this.btn_rebuild.Size = new System.Drawing.Size(212, 31);
+            this.btn_rebuild.TabIndex = 69;
+            this.btn_rebuild.Text = "编译并生成";
+            this.btn_rebuild.UseVisualStyleBackColor = true;
+            this.btn_rebuild.Click += new System.EventHandler(this.btn_rebuild_Click);
             // 
-            // cmdBackUp
+            // btn_publish
             // 
-            this.cmdBackUp.Location = new System.Drawing.Point(548, 395);
-            this.cmdBackUp.Margin = new System.Windows.Forms.Padding(4);
-            this.cmdBackUp.Name = "cmdBackUp";
-            this.cmdBackUp.Size = new System.Drawing.Size(194, 31);
-            this.cmdBackUp.TabIndex = 60;
-            this.cmdBackUp.Text = "BackUp SourceCode";
-            this.cmdBackUp.UseVisualStyleBackColor = true;
-            this.cmdBackUp.Click += new System.EventHandler(this.cmdBackUp_Click);
+            this.btn_publish.Enabled = false;
+            this.btn_publish.Location = new System.Drawing.Point(333, 64);
+            this.btn_publish.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_publish.Name = "btn_publish";
+            this.btn_publish.Size = new System.Drawing.Size(212, 31);
+            this.btn_publish.TabIndex = 70;
+            this.btn_publish.Text = "发布";
+            this.btn_publish.UseVisualStyleBackColor = true;
             // 
-            // rB_v801
+            // progressBar1
             // 
-            this.rB_v801.AutoSize = true;
-            this.rB_v801.Location = new System.Drawing.Point(549, 11);
-            this.rB_v801.Margin = new System.Windows.Forms.Padding(4);
-            this.rB_v801.Name = "rB_v801";
-            this.rB_v801.Size = new System.Drawing.Size(82, 23);
-            this.rB_v801.TabIndex = 59;
-            this.rB_v801.TabStop = true;
-            this.rB_v801.Text = "Ver 8.0.1";
-            this.rB_v801.UseVisualStyleBackColor = true;
-            this.rB_v801.CheckedChanged += new System.EventHandler(this.version_CheckedChanged);
+            this.progressBar1.Location = new System.Drawing.Point(247, 95);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(330, 42);
+            this.progressBar1.TabIndex = 63;
+            this.progressBar1.Visible = false;
             // 
-            // cmd_Open
+            // gb_BuildNo
             // 
-            this.cmd_Open.Location = new System.Drawing.Point(500, 90);
-            this.cmd_Open.Margin = new System.Windows.Forms.Padding(4);
-            this.cmd_Open.Name = "cmd_Open";
-            this.cmd_Open.Size = new System.Drawing.Size(242, 31);
-            this.cmd_Open.TabIndex = 58;
-            this.cmd_Open.Text = "打开 当前生成版本文件夹";
-            this.cmd_Open.UseVisualStyleBackColor = true;
-            this.cmd_Open.Click += new System.EventHandler(this.cmdOpen_Click);
+            this.gb_BuildNo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gb_BuildNo.Controls.Add(this.cbo_SpecialName);
+            this.gb_BuildNo.Controls.Add(this.label1);
+            this.gb_BuildNo.Controls.Add(this.txtVer);
+            this.gb_BuildNo.Controls.Add(this.label2);
+            this.gb_BuildNo.Location = new System.Drawing.Point(12, 69);
+            this.gb_BuildNo.Name = "gb_BuildNo";
+            this.gb_BuildNo.Size = new System.Drawing.Size(849, 55);
+            this.gb_BuildNo.TabIndex = 85;
+            this.gb_BuildNo.TabStop = false;
+            this.gb_BuildNo.Text = "确认版本号";
             // 
-            // cmd_CreatFolder
+            // cbo_SpecialName
             // 
-            this.cmd_CreatFolder.Location = new System.Drawing.Point(241, 90);
-            this.cmd_CreatFolder.Margin = new System.Windows.Forms.Padding(4);
-            this.cmd_CreatFolder.Name = "cmd_CreatFolder";
-            this.cmd_CreatFolder.Size = new System.Drawing.Size(242, 31);
-            this.cmd_CreatFolder.TabIndex = 57;
-            this.cmd_CreatFolder.Text = " 建立 当前生成版本文件夹";
-            this.cmd_CreatFolder.UseVisualStyleBackColor = true;
-            this.cmd_CreatFolder.Click += new System.EventHandler(this.cmdCreatFolder_Click);
+            this.cbo_SpecialName.FormattingEnabled = true;
+            this.cbo_SpecialName.Location = new System.Drawing.Point(473, 18);
+            this.cbo_SpecialName.Name = "cbo_SpecialName";
+            this.cbo_SpecialName.Size = new System.Drawing.Size(257, 27);
+            this.cbo_SpecialName.TabIndex = 52;
             // 
-            // label5
+            // label1
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 90);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 19);
-            this.label5.TabIndex = 56;
-            this.label5.Text = "Step 3: ";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(135, 21);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 19);
+            this.label1.TabIndex = 44;
+            this.label1.Text = "Build No.";
             // 
-            // label4
+            // txtVer
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 49);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(125, 19);
-            this.label4.TabIndex = 55;
-            this.label4.Text = "Step 2 : 确认版本号";
+            this.txtVer.Location = new System.Drawing.Point(220, 20);
+            this.txtVer.Margin = new System.Windows.Forms.Padding(4);
+            this.txtVer.Name = "txtVer";
+            this.txtVer.Size = new System.Drawing.Size(103, 24);
+            this.txtVer.TabIndex = 50;
             // 
-            // label3
+            // label2
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 13);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(112, 19);
-            this.label3.TabIndex = 54;
-            this.label3.Text = "Step 1 : 选择版本";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(369, 21);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(87, 19);
+            this.label2.TabIndex = 46;
+            this.label2.Text = "特殊版本名称";
             // 
-            // cmdPublished2Zip
+            // gb_Version
             // 
-            this.cmdPublished2Zip.Location = new System.Drawing.Point(241, 253);
-            this.cmdPublished2Zip.Margin = new System.Windows.Forms.Padding(4);
-            this.cmdPublished2Zip.Name = "cmdPublished2Zip";
-            this.cmdPublished2Zip.Size = new System.Drawing.Size(212, 31);
-            this.cmdPublished2Zip.TabIndex = 52;
-            this.cmdPublished2Zip.Text = "Get Published to Zip";
-            this.cmdPublished2Zip.UseVisualStyleBackColor = true;
-            this.cmdPublished2Zip.Click += new System.EventHandler(this.cmdPublished2Zip_Click);
+            this.gb_Version.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gb_Version.Controls.Add(this.rB_v706);
+            this.gb_Version.Controls.Add(this.rB_v701);
+            this.gb_Version.Controls.Add(this.rB_v702);
+            this.gb_Version.Controls.Add(this.rB_v703);
+            this.gb_Version.Controls.Add(this.rB_v802);
+            this.gb_Version.Controls.Add(this.rB_v704);
+            this.gb_Version.Controls.Add(this.rB_v705);
+            this.gb_Version.Controls.Add(this.rB_v801);
+            this.gb_Version.Location = new System.Drawing.Point(12, 12);
+            this.gb_Version.Name = "gb_Version";
+            this.gb_Version.Size = new System.Drawing.Size(849, 55);
+            this.gb_Version.TabIndex = 84;
+            this.gb_Version.TabStop = false;
+            this.gb_Version.Text = "选择版本";
             // 
-            // v75
+            // rB_v706
             // 
-            this.v75.AutoSize = true;
-            this.v75.Location = new System.Drawing.Point(549, 11);
-            this.v75.Margin = new System.Windows.Forms.Padding(4);
-            this.v75.Name = "v75";
-            this.v75.Size = new System.Drawing.Size(82, 23);
-            this.v75.TabIndex = 48;
-            this.v75.TabStop = true;
-            this.v75.Text = "Ver 7.0.5";
-            this.v75.UseVisualStyleBackColor = true;
-            this.v75.CheckedChanged += new System.EventHandler(this.version_CheckedChanged);
+            this.rB_v706.AutoSize = true;
+            this.rB_v706.Location = new System.Drawing.Point(564, 19);
+            this.rB_v706.Margin = new System.Windows.Forms.Padding(4);
+            this.rB_v706.Name = "rB_v706";
+            this.rB_v706.Size = new System.Drawing.Size(82, 23);
+            this.rB_v706.TabIndex = 49;
+            this.rB_v706.TabStop = true;
+            this.rB_v706.Text = "Ver 7.0.6";
+            this.rB_v706.UseVisualStyleBackColor = true;
+            this.rB_v706.CheckedChanged += new System.EventHandler(this.version_CheckedChanged);
             // 
-            // rB_v704
+            // rB_v701
             // 
-            this.rB_v704.AutoSize = true;
-            this.rB_v704.Location = new System.Drawing.Point(440, 11);
-            this.rB_v704.Margin = new System.Windows.Forms.Padding(4);
-            this.rB_v704.Name = "rB_v704";
-            this.rB_v704.Size = new System.Drawing.Size(82, 23);
-            this.rB_v704.TabIndex = 47;
-            this.rB_v704.TabStop = true;
-            this.rB_v704.Text = "Ver 7.0.4";
-            this.rB_v704.UseVisualStyleBackColor = true;
-            this.rB_v704.CheckedChanged += new System.EventHandler(this.version_CheckedChanged);
-            // 
-            // rB_v703
-            // 
-            this.rB_v703.AutoSize = true;
-            this.rB_v703.Location = new System.Drawing.Point(331, 11);
-            this.rB_v703.Margin = new System.Windows.Forms.Padding(4);
-            this.rB_v703.Name = "rB_v703";
-            this.rB_v703.Size = new System.Drawing.Size(82, 23);
-            this.rB_v703.TabIndex = 45;
-            this.rB_v703.TabStop = true;
-            this.rB_v703.Text = "Ver 7.0.3";
-            this.rB_v703.UseVisualStyleBackColor = true;
-            this.rB_v703.CheckedChanged += new System.EventHandler(this.version_CheckedChanged);
+            this.rB_v701.AutoSize = true;
+            this.rB_v701.Location = new System.Drawing.Point(74, 19);
+            this.rB_v701.Margin = new System.Windows.Forms.Padding(4);
+            this.rB_v701.Name = "rB_v701";
+            this.rB_v701.Size = new System.Drawing.Size(82, 23);
+            this.rB_v701.TabIndex = 42;
+            this.rB_v701.TabStop = true;
+            this.rB_v701.Text = "Ver 7.0.1";
+            this.rB_v701.UseVisualStyleBackColor = true;
+            this.rB_v701.CheckedChanged += new System.EventHandler(this.version_CheckedChanged);
             // 
             // rB_v702
             // 
             this.rB_v702.AutoSize = true;
-            this.rB_v702.Location = new System.Drawing.Point(222, 11);
+            this.rB_v702.Location = new System.Drawing.Point(172, 19);
             this.rB_v702.Margin = new System.Windows.Forms.Padding(4);
             this.rB_v702.Name = "rB_v702";
             this.rB_v702.Size = new System.Drawing.Size(82, 23);
@@ -446,92 +311,86 @@
             this.rB_v702.UseVisualStyleBackColor = true;
             this.rB_v702.CheckedChanged += new System.EventHandler(this.version_CheckedChanged);
             // 
-            // cmdSendTo
+            // rB_v703
             // 
-            this.cmdSendTo.Location = new System.Drawing.Point(523, 253);
-            this.cmdSendTo.Margin = new System.Windows.Forms.Padding(4);
-            this.cmdSendTo.Name = "cmdSendTo";
-            this.cmdSendTo.Size = new System.Drawing.Size(219, 31);
-            this.cmdSendTo.TabIndex = 53;
-            this.cmdSendTo.Text = "Send Updated to 250";
-            this.cmdSendTo.UseVisualStyleBackColor = true;
-            this.cmdSendTo.Click += new System.EventHandler(this.cmdSendTo_Click);
+            this.rB_v703.AutoSize = true;
+            this.rB_v703.Location = new System.Drawing.Point(270, 19);
+            this.rB_v703.Margin = new System.Windows.Forms.Padding(4);
+            this.rB_v703.Name = "rB_v703";
+            this.rB_v703.Size = new System.Drawing.Size(82, 23);
+            this.rB_v703.TabIndex = 45;
+            this.rB_v703.TabStop = true;
+            this.rB_v703.Text = "Ver 7.0.3";
+            this.rB_v703.UseVisualStyleBackColor = true;
+            this.rB_v703.CheckedChanged += new System.EventHandler(this.version_CheckedChanged);
             // 
-            // txt_SpecialName
+            // rB_v802
             // 
-            this.txt_SpecialName.Location = new System.Drawing.Point(591, 45);
-            this.txt_SpecialName.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_SpecialName.Name = "txt_SpecialName";
-            this.txt_SpecialName.Size = new System.Drawing.Size(151, 24);
-            this.txt_SpecialName.TabIndex = 51;
+            this.rB_v802.AutoSize = true;
+            this.rB_v802.Location = new System.Drawing.Point(760, 19);
+            this.rB_v802.Margin = new System.Windows.Forms.Padding(4);
+            this.rB_v802.Name = "rB_v802";
+            this.rB_v802.Size = new System.Drawing.Size(82, 23);
+            this.rB_v802.TabIndex = 80;
+            this.rB_v802.TabStop = true;
+            this.rB_v802.Text = "Ver 8.0.2";
+            this.rB_v802.UseVisualStyleBackColor = true;
+            this.rB_v802.CheckedChanged += new System.EventHandler(this.version_CheckedChanged);
             // 
-            // label2
+            // rB_v704
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(475, 49);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 19);
-            this.label2.TabIndex = 46;
-            this.label2.Text = "Special Name";
+            this.rB_v704.AutoSize = true;
+            this.rB_v704.Location = new System.Drawing.Point(368, 19);
+            this.rB_v704.Margin = new System.Windows.Forms.Padding(4);
+            this.rB_v704.Name = "rB_v704";
+            this.rB_v704.Size = new System.Drawing.Size(82, 23);
+            this.rB_v704.TabIndex = 47;
+            this.rB_v704.TabStop = true;
+            this.rB_v704.Text = "Ver 7.0.4";
+            this.rB_v704.UseVisualStyleBackColor = true;
+            this.rB_v704.CheckedChanged += new System.EventHandler(this.version_CheckedChanged);
             // 
-            // label1
+            // rB_v705
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(241, 49);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 19);
-            this.label1.TabIndex = 44;
-            this.label1.Text = "Build No.";
+            this.rB_v705.AutoSize = true;
+            this.rB_v705.Location = new System.Drawing.Point(466, 19);
+            this.rB_v705.Margin = new System.Windows.Forms.Padding(4);
+            this.rB_v705.Name = "rB_v705";
+            this.rB_v705.Size = new System.Drawing.Size(82, 23);
+            this.rB_v705.TabIndex = 48;
+            this.rB_v705.TabStop = true;
+            this.rB_v705.Text = "Ver 7.0.5";
+            this.rB_v705.UseVisualStyleBackColor = true;
+            this.rB_v705.CheckedChanged += new System.EventHandler(this.version_CheckedChanged);
             // 
-            // txtVer
+            // rB_v801
             // 
-            this.txtVer.Location = new System.Drawing.Point(326, 45);
-            this.txtVer.Margin = new System.Windows.Forms.Padding(4);
-            this.txtVer.Name = "txtVer";
-            this.txtVer.Size = new System.Drawing.Size(103, 24);
-            this.txtVer.TabIndex = 50;
+            this.rB_v801.AutoSize = true;
+            this.rB_v801.Location = new System.Drawing.Point(662, 19);
+            this.rB_v801.Margin = new System.Windows.Forms.Padding(4);
+            this.rB_v801.Name = "rB_v801";
+            this.rB_v801.Size = new System.Drawing.Size(82, 23);
+            this.rB_v801.TabIndex = 59;
+            this.rB_v801.TabStop = true;
+            this.rB_v801.Text = "Ver 8.0.1";
+            this.rB_v801.UseVisualStyleBackColor = true;
+            this.rB_v801.CheckedChanged += new System.EventHandler(this.version_CheckedChanged);
             // 
-            // v71
+            // textBox1
             // 
-            this.v71.AutoSize = true;
-            this.v71.Location = new System.Drawing.Point(222, 11);
-            this.v71.Margin = new System.Windows.Forms.Padding(4);
-            this.v71.Name = "v71";
-            this.v71.Size = new System.Drawing.Size(82, 23);
-            this.v71.TabIndex = 42;
-            this.v71.TabStop = true;
-            this.v71.Text = "Ver 7.0.1";
-            this.v71.UseVisualStyleBackColor = true;
-            this.v71.CheckedChanged += new System.EventHandler(this.version_CheckedChanged);
-            // 
-            // v76
-            // 
-            this.v76.AutoSize = true;
-            this.v76.Location = new System.Drawing.Point(440, 11);
-            this.v76.Margin = new System.Windows.Forms.Padding(4);
-            this.v76.Name = "v76";
-            this.v76.Size = new System.Drawing.Size(82, 23);
-            this.v76.TabIndex = 49;
-            this.v76.TabStop = true;
-            this.v76.Text = "Ver 7.0.6";
-            this.v76.UseVisualStyleBackColor = true;
-            this.v76.CheckedChanged += new System.EventHandler(this.version_CheckedChanged);
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(241, 203);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(330, 42);
-            this.progressBar1.TabIndex = 63;
-            this.progressBar1.Visible = false;
+            this.textBox1.Location = new System.Drawing.Point(355, 361);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox1.Size = new System.Drawing.Size(758, 331);
+            this.textBox1.TabIndex = 71;
+            this.textBox1.Visible = false;
             // 
             // Frm_Publishing
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(873, 454);
             this.Controls.Add(this.panel1);
@@ -544,6 +403,12 @@
             this.Load += new System.EventHandler(this.Frm_Publishing_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.gb_Publish.ResumeLayout(false);
+            this.gb_Publish.PerformLayout();
+            this.gb_BuildNo.ResumeLayout(false);
+            this.gb_BuildNo.PerformLayout();
+            this.gb_Version.ResumeLayout(false);
+            this.gb_Version.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -557,37 +422,25 @@
         private System.Windows.Forms.RadioButton rB_v801;
         private System.Windows.Forms.Button cmd_Open;
         private System.Windows.Forms.Button cmd_CreatFolder;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RadioButton v76;
+        private System.Windows.Forms.RadioButton rB_v706;
         private System.Windows.Forms.Button cmdPublished2Zip;
-        private System.Windows.Forms.RadioButton v75;
+        private System.Windows.Forms.RadioButton rB_v705;
         private System.Windows.Forms.RadioButton rB_v704;
         private System.Windows.Forms.RadioButton rB_v703;
         private System.Windows.Forms.RadioButton rB_v702;
         private System.Windows.Forms.Button cmdSendTo;
-        private System.Windows.Forms.TextBox txt_SpecialName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtVer;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtTo;
-        private System.Windows.Forms.TextBox txtFrom;
-        private System.Windows.Forms.Button cmdSourceSendto;
         private System.Windows.Forms.Button btn_publish;
         private System.Windows.Forms.Button btn_rebuild;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.RadioButton v71;
-        private System.Windows.Forms.Label lbl_trackno;
-        private System.Windows.Forms.TextBox txt_TrackNo;
-        private System.Windows.Forms.Label lbl_programmer;
-        private System.Windows.Forms.ComboBox cbo_Programmer;
+        private System.Windows.Forms.RadioButton rB_v701;
         private System.Windows.Forms.RadioButton rB_v802;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtFormName;
+        private System.Windows.Forms.GroupBox gb_Version;
+        private System.Windows.Forms.GroupBox gb_BuildNo;
+        private System.Windows.Forms.ComboBox cbo_SpecialName;
+        private System.Windows.Forms.GroupBox gb_Publish;
     }
 }

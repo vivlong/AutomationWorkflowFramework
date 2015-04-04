@@ -5,6 +5,7 @@ using System.Management;
 using System.Net;
 using System.Net.Sockets;
 using System.Windows.Forms;
+using System.IO;
 using System.Net.NetworkInformation;
 
 namespace AWF.Classes
@@ -80,6 +81,45 @@ namespace AWF.Classes
                 CheckNull = varResult.ToString();
             }
             return CheckNull;
+        }
+
+        public static void deleteFilesAndFolders(string update_publish_path)
+        {
+            string[] pubfiles = Directory.GetFiles(update_publish_path);
+            foreach (string file in pubfiles)
+            {
+                if (file != null && file != "")
+                    File.Delete(file);
+            }
+            string[] pubfolders = Directory.GetDirectories(update_publish_path);
+            foreach (string folder in pubfolders)
+            {
+                if (Directory.Exists(folder))
+                {
+                    deleteFilesAndFolders(folder);
+                    Directory.Delete(folder);
+                }
+            }
+        }
+
+        public static void copyFilesAndFolders(string update_publish_path, string filepath)
+        {
+            string[] files = Directory.GetFiles(filepath);
+            foreach (string file in files)
+            {
+                string name = Path.GetFileName(file);
+                string dest = Path.Combine(update_publish_path, name);
+                File.Move(file, dest);
+            }
+            string[] folders = Directory.GetDirectories(filepath);
+            foreach (string folder in folders)
+            {
+                string n = folder.Substring(folder.LastIndexOf("\\") + 1);
+                if (n != "crystalreports" && n != "mdac28" && n != "dotnetfx" && n != "sysfreightupdate")
+                {
+                    Directory.Move(folder, update_publish_path + "\\" + n);
+                }
+            }
         }
 
         public static void Get_Win32_Processor()
@@ -306,7 +346,7 @@ namespace AWF.Classes
         {
             bool blnPing = false;
             Ping pingSender = new Ping();
-            PingReply reply = pingSender.Send(strIP, 120);
+            PingReply reply = pingSender.Send(strIP, 60);
             if (reply.Status == IPStatus.Success)
             {
                 blnPing = true;

@@ -1,6 +1,6 @@
 ﻿namespace AWF
 {
-    partial class FrmConfig
+    partial class Frm_Config
     {
         /// <summary>
         /// Required designer variable.

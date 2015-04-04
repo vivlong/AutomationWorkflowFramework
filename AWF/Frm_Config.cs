@@ -10,9 +10,9 @@ using Newtonsoft.Json;
 
 namespace AWF
 {
-    public partial class FrmConfig : Form
+    public partial class Frm_Config : Form
     {
-        public FrmConfig()
+        public Frm_Config()
         {
             InitializeComponent();
         }

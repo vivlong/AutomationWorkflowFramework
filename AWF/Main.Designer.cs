@@ -35,17 +35,17 @@
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel_banner = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.pbMenu6 = new System.Windows.Forms.PictureBox();
-            this.pbMenu8 = new System.Windows.Forms.PictureBox();
-            this.pbMenu9 = new System.Windows.Forms.PictureBox();
-            this.pbMenu10 = new System.Windows.Forms.PictureBox();
-            this.pbMenu5 = new System.Windows.Forms.PictureBox();
-            this.pbMenu2 = new System.Windows.Forms.PictureBox();
-            this.pbMenu4 = new System.Windows.Forms.PictureBox();
-            this.pbMenu3 = new System.Windows.Forms.PictureBox();
-            this.pbMenu7 = new System.Windows.Forms.PictureBox();
-            this.pbMenu1 = new System.Windows.Forms.PictureBox();
+            this.panel_Menu = new System.Windows.Forms.Panel();
+            this.btn_Menu10 = new System.Windows.Forms.Button();
+            this.btn_Menu9 = new System.Windows.Forms.Button();
+            this.btn_Menu8 = new System.Windows.Forms.Button();
+            this.btn_Menu7 = new System.Windows.Forms.Button();
+            this.btn_Menu6 = new System.Windows.Forms.Button();
+            this.btn_Menu5 = new System.Windows.Forms.Button();
+            this.btn_Menu4 = new System.Windows.Forms.Button();
+            this.btn_Menu3 = new System.Windows.Forms.Button();
+            this.btn_Menu2 = new System.Windows.Forms.Button();
+            this.btn_Menu1 = new System.Windows.Forms.Button();
             this.lbl_Title = new System.Windows.Forms.Label();
             this.panel_Form = new System.Windows.Forms.Panel();
             this.statusStrip1.SuspendLayout();
@@ -54,17 +54,7 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.panel_banner.SuspendLayout();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMenu6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMenu8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMenu9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMenu10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMenu5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMenu2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMenu4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMenu3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMenu7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMenu1)).BeginInit();
+            this.panel_Menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -126,7 +116,7 @@
             this.panel_banner.BackColor = System.Drawing.Color.Transparent;
             this.panel_banner.BackgroundImage = global::AWF.Properties.Resources.devFreight2;
             this.panel_banner.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel_banner.Controls.Add(this.panel4);
+            this.panel_banner.Controls.Add(this.panel_Menu);
             this.panel_banner.Controls.Add(this.lbl_Title);
             this.panel_banner.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_banner.Location = new System.Drawing.Point(0, 0);
@@ -134,125 +124,174 @@
             this.panel_banner.Size = new System.Drawing.Size(896, 88);
             this.panel_banner.TabIndex = 3;
             // 
-            // panel4
+            // panel_Menu
             // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.BackColor = System.Drawing.Color.Transparent;
-            this.panel4.Controls.Add(this.pbMenu6);
-            this.panel4.Controls.Add(this.pbMenu8);
-            this.panel4.Controls.Add(this.pbMenu9);
-            this.panel4.Controls.Add(this.pbMenu10);
-            this.panel4.Controls.Add(this.pbMenu5);
-            this.panel4.Controls.Add(this.pbMenu2);
-            this.panel4.Controls.Add(this.pbMenu4);
-            this.panel4.Controls.Add(this.pbMenu3);
-            this.panel4.Controls.Add(this.pbMenu7);
-            this.panel4.Controls.Add(this.pbMenu1);
-            this.panel4.Location = new System.Drawing.Point(346, 4);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(550, 77);
-            this.panel4.TabIndex = 23;
+            this.panel_Menu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel_Menu.BackColor = System.Drawing.Color.Transparent;
+            this.panel_Menu.Controls.Add(this.btn_Menu10);
+            this.panel_Menu.Controls.Add(this.btn_Menu9);
+            this.panel_Menu.Controls.Add(this.btn_Menu8);
+            this.panel_Menu.Controls.Add(this.btn_Menu7);
+            this.panel_Menu.Controls.Add(this.btn_Menu6);
+            this.panel_Menu.Controls.Add(this.btn_Menu5);
+            this.panel_Menu.Controls.Add(this.btn_Menu4);
+            this.panel_Menu.Controls.Add(this.btn_Menu3);
+            this.panel_Menu.Controls.Add(this.btn_Menu2);
+            this.panel_Menu.Controls.Add(this.btn_Menu1);
+            this.panel_Menu.Location = new System.Drawing.Point(346, 4);
+            this.panel_Menu.Name = "panel_Menu";
+            this.panel_Menu.Size = new System.Drawing.Size(550, 77);
+            this.panel_Menu.TabIndex = 23;
             // 
-            // pbMenu6
+            // btn_Menu10
             // 
-            this.pbMenu6.BackColor = System.Drawing.Color.Indigo;
-            this.pbMenu6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbMenu6.Location = new System.Drawing.Point(255, 6);
-            this.pbMenu6.Name = "pbMenu6";
-            this.pbMenu6.Size = new System.Drawing.Size(40, 68);
-            this.pbMenu6.TabIndex = 9;
-            this.pbMenu6.TabStop = false;
+            this.btn_Menu10.BackColor = System.Drawing.Color.Black;
+            this.btn_Menu10.CausesValidation = false;
+            this.btn_Menu10.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Menu10.FlatAppearance.BorderSize = 0;
+            this.btn_Menu10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Menu10.ForeColor = System.Drawing.Color.White;
+            this.btn_Menu10.Location = new System.Drawing.Point(455, 6);
+            this.btn_Menu10.Name = "btn_Menu10";
+            this.btn_Menu10.Size = new System.Drawing.Size(40, 68);
+            this.btn_Menu10.TabIndex = 19;
+            this.btn_Menu10.Text = "配置";
+            this.btn_Menu10.UseVisualStyleBackColor = false;
             // 
-            // pbMenu8
+            // btn_Menu9
             // 
-            this.pbMenu8.BackColor = System.Drawing.Color.Silver;
-            this.pbMenu8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbMenu8.Location = new System.Drawing.Point(355, 6);
-            this.pbMenu8.Name = "pbMenu8";
-            this.pbMenu8.Size = new System.Drawing.Size(40, 68);
-            this.pbMenu8.TabIndex = 8;
-            this.pbMenu8.TabStop = false;
+            this.btn_Menu9.BackColor = System.Drawing.Color.White;
+            this.btn_Menu9.CausesValidation = false;
+            this.btn_Menu9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Menu9.FlatAppearance.BorderSize = 0;
+            this.btn_Menu9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Menu9.ForeColor = System.Drawing.Color.Black;
+            this.btn_Menu9.Location = new System.Drawing.Point(405, 6);
+            this.btn_Menu9.Name = "btn_Menu9";
+            this.btn_Menu9.Size = new System.Drawing.Size(40, 68);
+            this.btn_Menu9.TabIndex = 18;
+            this.btn_Menu9.Text = "PC信息";
+            this.btn_Menu9.UseVisualStyleBackColor = false;
             // 
-            // pbMenu9
+            // btn_Menu8
             // 
-            this.pbMenu9.BackColor = System.Drawing.Color.White;
-            this.pbMenu9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbMenu9.Location = new System.Drawing.Point(405, 6);
-            this.pbMenu9.Name = "pbMenu9";
-            this.pbMenu9.Size = new System.Drawing.Size(40, 68);
-            this.pbMenu9.TabIndex = 7;
-            this.pbMenu9.TabStop = false;
+            this.btn_Menu8.BackColor = System.Drawing.Color.Silver;
+            this.btn_Menu8.CausesValidation = false;
+            this.btn_Menu8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Menu8.FlatAppearance.BorderSize = 0;
+            this.btn_Menu8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Menu8.ForeColor = System.Drawing.Color.Black;
+            this.btn_Menu8.Location = new System.Drawing.Point(355, 6);
+            this.btn_Menu8.Name = "btn_Menu8";
+            this.btn_Menu8.Size = new System.Drawing.Size(40, 68);
+            this.btn_Menu8.TabIndex = 17;
+            this.btn_Menu8.Text = "云存储";
+            this.btn_Menu8.UseVisualStyleBackColor = false;
             // 
-            // pbMenu10
+            // btn_Menu7
             // 
-            this.pbMenu10.BackColor = System.Drawing.Color.Black;
-            this.pbMenu10.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbMenu10.Location = new System.Drawing.Point(455, 6);
-            this.pbMenu10.Name = "pbMenu10";
-            this.pbMenu10.Size = new System.Drawing.Size(40, 68);
-            this.pbMenu10.TabIndex = 6;
-            this.pbMenu10.TabStop = false;
+            this.btn_Menu7.BackColor = System.Drawing.Color.Purple;
+            this.btn_Menu7.CausesValidation = false;
+            this.btn_Menu7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Menu7.FlatAppearance.BorderSize = 0;
+            this.btn_Menu7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Menu7.ForeColor = System.Drawing.Color.White;
+            this.btn_Menu7.Location = new System.Drawing.Point(305, 6);
+            this.btn_Menu7.Name = "btn_Menu7";
+            this.btn_Menu7.Size = new System.Drawing.Size(40, 68);
+            this.btn_Menu7.TabIndex = 16;
+            this.btn_Menu7.Text = "测试";
+            this.btn_Menu7.UseVisualStyleBackColor = false;
             // 
-            // pbMenu5
+            // btn_Menu6
             // 
-            this.pbMenu5.BackColor = System.Drawing.Color.Blue;
-            this.pbMenu5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbMenu5.Location = new System.Drawing.Point(205, 6);
-            this.pbMenu5.Name = "pbMenu5";
-            this.pbMenu5.Size = new System.Drawing.Size(40, 68);
-            this.pbMenu5.TabIndex = 5;
-            this.pbMenu5.TabStop = false;
+            this.btn_Menu6.BackColor = System.Drawing.Color.Indigo;
+            this.btn_Menu6.CausesValidation = false;
+            this.btn_Menu6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Menu6.FlatAppearance.BorderSize = 0;
+            this.btn_Menu6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Menu6.ForeColor = System.Drawing.Color.White;
+            this.btn_Menu6.Location = new System.Drawing.Point(255, 6);
+            this.btn_Menu6.Name = "btn_Menu6";
+            this.btn_Menu6.Size = new System.Drawing.Size(40, 68);
+            this.btn_Menu6.TabIndex = 15;
+            this.btn_Menu6.Text = "脚本";
+            this.btn_Menu6.UseVisualStyleBackColor = false;
             // 
-            // pbMenu2
+            // btn_Menu5
             // 
-            this.pbMenu2.BackColor = System.Drawing.Color.OrangeRed;
-            this.pbMenu2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbMenu2.Location = new System.Drawing.Point(55, 6);
-            this.pbMenu2.Name = "pbMenu2";
-            this.pbMenu2.Size = new System.Drawing.Size(40, 68);
-            this.pbMenu2.TabIndex = 4;
-            this.pbMenu2.TabStop = false;
+            this.btn_Menu5.BackColor = System.Drawing.Color.Blue;
+            this.btn_Menu5.CausesValidation = false;
+            this.btn_Menu5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Menu5.FlatAppearance.BorderSize = 0;
+            this.btn_Menu5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Menu5.ForeColor = System.Drawing.Color.White;
+            this.btn_Menu5.Location = new System.Drawing.Point(205, 6);
+            this.btn_Menu5.Name = "btn_Menu5";
+            this.btn_Menu5.Size = new System.Drawing.Size(40, 68);
+            this.btn_Menu5.TabIndex = 14;
+            this.btn_Menu5.Text = "数据库";
+            this.btn_Menu5.UseVisualStyleBackColor = false;
             // 
-            // pbMenu4
+            // btn_Menu4
             // 
-            this.pbMenu4.BackColor = System.Drawing.Color.Green;
-            this.pbMenu4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbMenu4.Location = new System.Drawing.Point(153, 6);
-            this.pbMenu4.Name = "pbMenu4";
-            this.pbMenu4.Size = new System.Drawing.Size(40, 68);
-            this.pbMenu4.TabIndex = 3;
-            this.pbMenu4.TabStop = false;
+            this.btn_Menu4.BackColor = System.Drawing.Color.Green;
+            this.btn_Menu4.CausesValidation = false;
+            this.btn_Menu4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Menu4.FlatAppearance.BorderSize = 0;
+            this.btn_Menu4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Menu4.ForeColor = System.Drawing.Color.White;
+            this.btn_Menu4.Location = new System.Drawing.Point(153, 6);
+            this.btn_Menu4.Name = "btn_Menu4";
+            this.btn_Menu4.Size = new System.Drawing.Size(40, 68);
+            this.btn_Menu4.TabIndex = 13;
+            this.btn_Menu4.Text = "备份";
+            this.btn_Menu4.UseVisualStyleBackColor = false;
             // 
-            // pbMenu3
+            // btn_Menu3
             // 
-            this.pbMenu3.BackColor = System.Drawing.Color.Yellow;
-            this.pbMenu3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbMenu3.Location = new System.Drawing.Point(104, 6);
-            this.pbMenu3.Name = "pbMenu3";
-            this.pbMenu3.Size = new System.Drawing.Size(40, 68);
-            this.pbMenu3.TabIndex = 2;
-            this.pbMenu3.TabStop = false;
+            this.btn_Menu3.BackColor = System.Drawing.Color.Yellow;
+            this.btn_Menu3.CausesValidation = false;
+            this.btn_Menu3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Menu3.FlatAppearance.BorderSize = 0;
+            this.btn_Menu3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Menu3.ForeColor = System.Drawing.Color.Black;
+            this.btn_Menu3.Location = new System.Drawing.Point(104, 6);
+            this.btn_Menu3.Name = "btn_Menu3";
+            this.btn_Menu3.Size = new System.Drawing.Size(40, 68);
+            this.btn_Menu3.TabIndex = 12;
+            this.btn_Menu3.Text = "EDI";
+            this.btn_Menu3.UseVisualStyleBackColor = false;
             // 
-            // pbMenu7
+            // btn_Menu2
             // 
-            this.pbMenu7.BackColor = System.Drawing.Color.Purple;
-            this.pbMenu7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbMenu7.Location = new System.Drawing.Point(305, 6);
-            this.pbMenu7.Name = "pbMenu7";
-            this.pbMenu7.Size = new System.Drawing.Size(40, 68);
-            this.pbMenu7.TabIndex = 1;
-            this.pbMenu7.TabStop = false;
+            this.btn_Menu2.BackColor = System.Drawing.Color.OrangeRed;
+            this.btn_Menu2.CausesValidation = false;
+            this.btn_Menu2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Menu2.FlatAppearance.BorderSize = 0;
+            this.btn_Menu2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Menu2.ForeColor = System.Drawing.Color.White;
+            this.btn_Menu2.Location = new System.Drawing.Point(55, 6);
+            this.btn_Menu2.Name = "btn_Menu2";
+            this.btn_Menu2.Size = new System.Drawing.Size(40, 68);
+            this.btn_Menu2.TabIndex = 11;
+            this.btn_Menu2.Text = "发布";
+            this.btn_Menu2.UseVisualStyleBackColor = false;
             // 
-            // pbMenu1
+            // btn_Menu1
             // 
-            this.pbMenu1.BackColor = System.Drawing.Color.Red;
-            this.pbMenu1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbMenu1.Location = new System.Drawing.Point(6, 6);
-            this.pbMenu1.Name = "pbMenu1";
-            this.pbMenu1.Size = new System.Drawing.Size(40, 68);
-            this.pbMenu1.TabIndex = 0;
-            this.pbMenu1.TabStop = false;
-            this.pbMenu1.Tag = "0";
+            this.btn_Menu1.BackColor = System.Drawing.Color.Red;
+            this.btn_Menu1.CausesValidation = false;
+            this.btn_Menu1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Menu1.FlatAppearance.BorderSize = 0;
+            this.btn_Menu1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Menu1.ForeColor = System.Drawing.Color.White;
+            this.btn_Menu1.Location = new System.Drawing.Point(5, 6);
+            this.btn_Menu1.Name = "btn_Menu1";
+            this.btn_Menu1.Size = new System.Drawing.Size(40, 68);
+            this.btn_Menu1.TabIndex = 10;
+            this.btn_Menu1.Text = "需求";
+            this.btn_Menu1.UseVisualStyleBackColor = false;
             // 
             // lbl_Title
             // 
@@ -299,17 +338,7 @@
             this.splitContainer1.ResumeLayout(false);
             this.panel_banner.ResumeLayout(false);
             this.panel_banner.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbMenu6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMenu8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMenu9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMenu10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMenu5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMenu2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMenu4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMenu3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMenu7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMenu1)).EndInit();
+            this.panel_Menu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -323,19 +352,19 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Panel panel_banner;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.PictureBox pbMenu6;
-        private System.Windows.Forms.PictureBox pbMenu8;
-        private System.Windows.Forms.PictureBox pbMenu9;
-        private System.Windows.Forms.PictureBox pbMenu10;
-        private System.Windows.Forms.PictureBox pbMenu5;
-        private System.Windows.Forms.PictureBox pbMenu2;
-        private System.Windows.Forms.PictureBox pbMenu4;
-        private System.Windows.Forms.PictureBox pbMenu3;
-        private System.Windows.Forms.PictureBox pbMenu7;
-        private System.Windows.Forms.PictureBox pbMenu1;
+        private System.Windows.Forms.Panel panel_Menu;
         private System.Windows.Forms.Label lbl_Title;
         private System.Windows.Forms.Panel panel_Form;
+        private System.Windows.Forms.Button btn_Menu1;
+        private System.Windows.Forms.Button btn_Menu2;
+        private System.Windows.Forms.Button btn_Menu3;
+        private System.Windows.Forms.Button btn_Menu4;
+        private System.Windows.Forms.Button btn_Menu5;
+        private System.Windows.Forms.Button btn_Menu6;
+        private System.Windows.Forms.Button btn_Menu7;
+        private System.Windows.Forms.Button btn_Menu8;
+        private System.Windows.Forms.Button btn_Menu9;
+        private System.Windows.Forms.Button btn_Menu10;
     }
 }
 

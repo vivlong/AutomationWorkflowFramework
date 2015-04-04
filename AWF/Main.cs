@@ -40,98 +40,121 @@ namespace AWF
 
         private void Main_Load(object sender, EventArgs e)
         {
-            this.pbMenu1.Click += new EventHandler(pbMenu1_Click);
-            this.pbMenu2.Click += new EventHandler(pbMenu2_Click);
-            this.pbMenu3.Click += new EventHandler(pbMenu3_Click);
-            this.pbMenu4.Click += new EventHandler(pbMenu4_Click);
-            this.pbMenu5.Click += new EventHandler(pbMenu5_Click);
-            this.pbMenu6.Click += new EventHandler(pbMenu6_Click);
-            this.pbMenu7.Click += new EventHandler(pbMenu7_Click);
-            this.pbMenu8.Click += new EventHandler(pbMenu8_Click);
-            this.pbMenu9.Click += new EventHandler(pbMenu9_Click);
-            this.pbMenu10.Click += new EventHandler(pbMenu10_Click);
+            this.btn_Menu1.Click += new EventHandler(pbMenu1_Click);
+            this.btn_Menu2.Click += new EventHandler(pbMenu2_Click);
+            this.btn_Menu3.Click += new EventHandler(pbMenu3_Click);
+            this.btn_Menu4.Click += new EventHandler(pbMenu4_Click);
+            this.btn_Menu5.Click += new EventHandler(pbMenu5_Click);
+            this.btn_Menu6.Click += new EventHandler(pbMenu6_Click);
+            this.btn_Menu7.Click += new EventHandler(pbMenu7_Click);
+            this.btn_Menu8.Click += new EventHandler(pbMenu8_Click);
+            this.btn_Menu9.Click += new EventHandler(pbMenu9_Click);
+            this.btn_Menu10.Click += new EventHandler(pbMenu10_Click);
 
             this.toolStripStatusLabel1.Text = Classes.Modfunction.currentIP;
             this.toolStripStatusLabel3.Text = Classes.Modfunction.datetime_today.ToString("yyyyMMdd HH:mm:ss");
             this.pbMenu1_Click(sender, new EventArgs());
         }
 
-        #region  判断一个窗体是否存在，不存在就显示，存在则不显示
-        private bool CheckForm(string FormName)
-        {
-            foreach (Form form in MdiChildren)
-            {
-                if (form.Name == FormName)
-                {
-                    if (form.WindowState == FormWindowState.Minimized)
-                    {
-                        form.WindowState = FormWindowState.Maximized;
-                    }
-                    form.Activate();
-                    return true;
-                }
-            }
-            return false;
-        }
-        #endregion
-
         #region  菜单各项点击事件
         private void pbMenu1_Click(object sender, EventArgs e)
         {
-            if (!CheckForm("Frm_Publishing"))
-            {
-                this.panel_Form.Controls.Clear();
-                Frm_Publishing frmPB = new Frm_Publishing();
-                frmPB.MdiParent = this;
-                frmPB.Parent = this.panel_Form;
-                frmPB.Dock = DockStyle.Fill;
-                frmPB.Show();
-            }
+            this.panel_Form.Controls.Clear();
+            Frm_Request frm = new Frm_Request();
+            frm.MdiParent = this;
+            frm.Parent = this.panel_Form;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
         }
 
         private void pbMenu2_Click(object sender, EventArgs e)
         {
-            if (!CheckForm("Frm_Edi"))
-            {
-                this.panel_Form.Controls.Clear();
-                Frm_Edi Frm_Edi = new Frm_Edi();
-                Frm_Edi.MdiParent = this;
-                Frm_Edi.Parent = this.panel_Form;
-                Frm_Edi.Dock = DockStyle.Fill;
-                Frm_Edi.Show();
-            }
+            this.panel_Form.Controls.Clear();
+            Frm_Publishing frm = new Frm_Publishing();
+            frm.MdiParent = this;
+            frm.Parent = this.panel_Form;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
         }
 
         private void pbMenu3_Click(object sender, EventArgs e)
         {
+            this.panel_Form.Controls.Clear();
+            Frm_Edi frm = new Frm_Edi();
+            frm.MdiParent = this;
+            frm.Parent = this.panel_Form;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
         }
 
         private void pbMenu4_Click(object sender, EventArgs e)
         {
+            this.panel_Form.Controls.Clear();
+            Frm_BackupFF frm = new Frm_BackupFF();
+            frm.MdiParent = this;
+            frm.Parent = this.panel_Form;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
         }
 
         private void pbMenu5_Click(object sender, EventArgs e)
         {
+            this.panel_Form.Controls.Clear();
+            Frm_RestoreDB frm = new Frm_RestoreDB();
+            frm.MdiParent = this;
+            frm.Parent = this.panel_Form;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
         }
 
         private void pbMenu6_Click(object sender, EventArgs e)
         {
+            this.panel_Form.Controls.Clear();
+            Frm_SQLTool frm = new Frm_SQLTool();
+            frm.MdiParent = this;
+            frm.Parent = this.panel_Form;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
         }
 
         private void pbMenu7_Click(object sender, EventArgs e)
         {
+            this.panel_Form.Controls.Clear();
+            Frm_Testing frm = new Frm_Testing();
+            frm.MdiParent = this;
+            frm.Parent = this.panel_Form;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
         }
 
         private void pbMenu8_Click(object sender, EventArgs e)
         {
+            this.panel_Form.Controls.Clear();
+            Frm_OSS frm = new Frm_OSS();
+            frm.MdiParent = this;
+            frm.Parent = this.panel_Form;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
         }
 
         private void pbMenu9_Click(object sender, EventArgs e)
         {
+            this.panel_Form.Controls.Clear();
+            Frm_ComputerInfo frm = new Frm_ComputerInfo();
+            frm.MdiParent = this;
+            frm.Parent = this.panel_Form;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
         }
 
         private void pbMenu10_Click(object sender, EventArgs e)
         {
+            this.panel_Form.Controls.Clear();
+            Frm_Config frm = new Frm_Config();
+            frm.MdiParent = this;
+            frm.Parent = this.panel_Form;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
         }
 
         private void no_Click(object sender, EventArgs e) { }

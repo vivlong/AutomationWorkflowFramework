@@ -31,7 +31,6 @@ namespace AWF
         updateUI ShowTextDelegate;
 
         public string ver;
-        public string strSourceName;
         private bool blnIsDeploy;
         public string strUpdateZipTime="";
 
@@ -50,7 +49,7 @@ namespace AWF
 
         public string GetVer()
         {
-            if (v71.Checked)
+            if (rB_v701.Checked)
             {
                 ver = "7.0.1";
             }
@@ -66,11 +65,11 @@ namespace AWF
             {
                 ver = "7.0.4";
             }
-            else if (v75.Checked)
+            else if (rB_v705.Checked)
             {
                 ver = "7.0.5";
             }
-            else if (v76.Checked)
+            else if (rB_v706.Checked)
             {
                 ver = "7.0.6";
             }
@@ -148,9 +147,9 @@ namespace AWF
             {
                 verName = "Version " + ver + "." + txtVer.Text.Trim().ToString();
                 string NewFolder = Classes.Modfunction.datetime_today.ToString("yyMMdd") + " Update(" + verName + ")";//121129 Update(Version 7.0.3.577)
-                if (txt_SpecialName.Text != "")
+                if (cbo_SpecialName.Text != "")
                 {
-                    string strSpecialName = "Special-" + txt_SpecialName.Text.Replace(" ","");
+                    string strSpecialName = "Special-" + cbo_SpecialName.Text.Replace(" ","");
                     NewFolder = Classes.Modfunction.datetime_today.ToString("yyMMdd") + " Update(" + verName + ")(" + strSpecialName + ")";//121129 Update(Version 7.0.3.577)(Special)
                 }
                 NewFolder = Classes.Modfunction.baseDPath + @"SysFreight Update\EXCEL\" + NewFolder;
@@ -178,9 +177,9 @@ namespace AWF
             {
                 verName = "Version " + ver + "." + txtVer.Text.Trim().ToString();
                 string NewFolder = Classes.Modfunction.datetime_today.ToString("yyMMdd") + " Update(" + verName + ")";//121129 Update(Version 7.0.3.577)
-                if (txt_SpecialName.Text != "")
+                if (cbo_SpecialName.Text != "")
                 {
-                    string strSpecialName = "Special-" + txt_SpecialName.Text.Replace(" ", "");
+                    string strSpecialName = "Special-" + cbo_SpecialName.Text.Replace(" ", "");
                     NewFolder = Classes.Modfunction.datetime_today.ToString("yyMMdd") + " Update(" + verName + ")(" + strSpecialName + ")";//121129 Update(Version 7.0.3.577)(Special)
                 }
                 NewFolder = Classes.Modfunction.baseDPath + @"SysFreight Update\EXCEL\" + NewFolder;
@@ -198,45 +197,7 @@ namespace AWF
                 MessageBox.Show("Please Enter Build No.");
             }
         }
-
-        private void deleteFilesAndFolders(string update_publish_path)
-        {
-            string[] pubfiles = Directory.GetFiles(update_publish_path);
-            foreach (string file in pubfiles)
-            {
-                if (file != null && file != "")
-                    File.Delete(file);
-            }
-            string[] pubfolders = Directory.GetDirectories(update_publish_path);
-            foreach (string folder in pubfolders)
-            {
-                if (Directory.Exists(folder))
-                {
-                    deleteFilesAndFolders(folder);
-                    Directory.Delete(folder);
-                }
-            }
-        }
-
-        private void copyFilesAndFolders(string update_publish_path, string filepath)
-        {
-            string[] files = Directory.GetFiles(filepath);
-            foreach (string file in files)
-            {
-                string name = Path.GetFileName(file);
-                string dest = Path.Combine(update_publish_path, name);
-                File.Move(file, dest);
-            }
-            string[] folders = Directory.GetDirectories(filepath);
-            foreach (string folder in folders)
-            {
-                string n = folder.Substring(folder.LastIndexOf("\\") + 1);
-                if (n != "crystalreports" && n != "mdac28" && n != "dotnetfx" && n != "sysfreightupdate")
-                {
-                    Directory.Move(folder, update_publish_path + "\\" + n);
-                }
-            }
-        }
+        
         private void cmdPublished2Zip_Click(object sender, EventArgs e)
         {
             try
@@ -248,20 +209,20 @@ namespace AWF
                 progressBar1.Visible = true;
                 //
                 ver = GetVer();
-                string update_publish_path = Classes.Modfunction.baseDPath + @"PublishFolder\sysfreightupdate\publish";
-                deleteFilesAndFolders(update_publish_path);
+                string update_publish_path = AWF.Classes.Modfunction.baseDPath + @"PublishFolder\sysfreightupdate\publish";
+                AWF.Classes.Modfunction.deleteFilesAndFolders(update_publish_path);
                 //
                 string filepath = Classes.Modfunction.baseDPath + @"PublishFolder\sysfreight";
-                copyFilesAndFolders(update_publish_path, filepath);
+                AWF.Classes.Modfunction.copyFilesAndFolders(update_publish_path, filepath);
                 //
                 if (txtVer.Text != "")
                 {
                     string verName = "sysfreightupdate_" + ver.Replace(".", "_") + "_";
                     string strTime = Classes.Modfunction.datetime_today.ToString("yyyyMMdd") + "_" + DateTime.Now.ToString("HHmm");
                     strUpdateZipTime = strTime;
-                    if (txt_SpecialName.Text != "")
+                    if (cbo_SpecialName.Text != "")
                     {
-                        string strSpecialName = "Special-" + txt_SpecialName.Text.Replace(" ", "");
+                        string strSpecialName = "Special-" + cbo_SpecialName.Text.Replace(" ", "");
                         strTime += "(" + strSpecialName + ")";
                     }
                     string ogFileName = verName + txtVer.Text.Trim().ToString() + "_" + strTime;
@@ -290,9 +251,9 @@ namespace AWF
                     if (File.Exists(ZipName))
                     {
                         string xlsFolder = Classes.Modfunction.datetime_today.ToString("yyMMdd") + " Update(" + "Version " + ver + "." + txtVer.Text.Trim().ToString() + ")";
-                        if (txt_SpecialName.Text != "")
+                        if (cbo_SpecialName.Text != "")
                         {
-                            string strSpecialName = "Special-" + txt_SpecialName.Text.Replace(" ", "");
+                            string strSpecialName = "Special-" + cbo_SpecialName.Text.Replace(" ", "");
                             xlsFolder = Classes.Modfunction.datetime_today.ToString("yyMMdd") + " Update(" + "Version " + ver + "." + txtVer.Text.Trim().ToString() + ")(" + strSpecialName + ")";
                         }
                         string xls = Classes.Modfunction.baseDPath + @"SysFreight Update\EXCEL\" + xlsFolder;
@@ -343,9 +304,9 @@ namespace AWF
                     //
                     string xls = Classes.Modfunction.baseDPath + @"SysFreight Update\EXCEL\" + Classes.Modfunction.datetime_today.ToString("yyMMdd") + " Update(" + verName + ")";
                     string NewFolder = @"\\192.168.0.250\Net Application\" + Classes.Modfunction.datetime_today.ToString("yyMMdd") + " Update(" + verName + ")";//121129 Update(Version 7.0.3.577)
-                    if (txt_SpecialName.Text != "")
+                    if (cbo_SpecialName.Text != "")
                     {
-                        string strSpecialName = "Special-" + txt_SpecialName.Text.Replace(" ", "");
+                        string strSpecialName = "Special-" + cbo_SpecialName.Text.Replace(" ", "");
                         xls = Classes.Modfunction.baseDPath + @"SysFreight Update\EXCEL\" + Classes.Modfunction.datetime_today.ToString("yyMMdd") + " Update(" + verName + ")(" + strSpecialName + ")";
                         NewFolder = @"\\192.168.0.250\Net Application\" + Classes.Modfunction.datetime_today.ToString("yyMMdd") + " Update(" + verName + ")(" + strSpecialName + ")";//121129 Update(Version 7.0.3.577)
                     }
@@ -369,7 +330,7 @@ namespace AWF
                     if (Directory.Exists(NewFolder))
                     {
                         Clipboard.Clear();
-                        string specialText = txt_SpecialName.Text.Trim();
+                        string specialText = cbo_SpecialName.Text.Trim();
                         if (specialText != "")
                         {
                             specialText = "(Special-" + specialText + ")";
@@ -378,7 +339,7 @@ namespace AWF
                         DialogResult dgrt = MessageBox.Show("Send Successful! Would you like to backup source code?","Send To 250",MessageBoxButtons.YesNo);
                         if (dgrt == System.Windows.Forms.DialogResult.OK)
                         {
-                            if (txt_SpecialName.Text.Length > 0)
+                            if (cbo_SpecialName.Text.Length > 0)
                             {
                                 MessageBox.Show("The Special Version Should Be Backup Manually!");
                                 cmdSelectFolder_Click(cmdSelectFolder, e);
@@ -438,9 +399,9 @@ namespace AWF
                     {
                         strTime = strUpdateZipTime;
                     }
-                    if (txt_SpecialName.Text != "")
+                    if (cbo_SpecialName.Text != "")
                     {
-                        string strSpecialName = "Special-" + txt_SpecialName.Text.Replace(" ", "");
+                        string strSpecialName = "Special-" + cbo_SpecialName.Text.Replace(" ", "");
                         strTime += "(" + strSpecialName + ")";
                     }
                     if (txtFolder.Text != "")
@@ -540,56 +501,6 @@ namespace AWF
                         MessageBox.Show("This Version's Source Code Does Not Exist!");
                     }
                 }                
-            }
-        }
-
-        private void cmdSourceSendto_Click(object sender, EventArgs e)
-        {
-            string OriginalPath = @"\\192.168.0.250\Net Application";
-            string DestinationPath = @"\\192.168.0.250\chiyung\Net";
-            string[] files = Directory.GetDirectories(OriginalPath);
-            int intStart = int.Parse(this.txtFrom.Text);
-            int intTo = int.Parse(this.txtTo.Text);
-            foreach (string file in files)
-            {
-                string name = Path.GetFileName(file);
-                int intNew = 0;
-                if (name.Length > 6)
-                    intNew = int.Parse(name.Substring(0, 6));
-                if (intNew >= intStart && intNew <= intTo)
-                {
-                    if (!Directory.Exists(DestinationPath + @"\" + name))
-                        Directory.CreateDirectory(DestinationPath + @"\" + name);
-                    SendFolderAllField(file, DestinationPath + @"\" + name);
-                    this.strSourceName = @"New SysFreight Source" + this.strSourceName.Substring(@"sysfreightupdate_".Length - 1);
-                    string strNewSourceName = Classes.Modfunction.baseDPath + this.strSourceName;
-                    string nameNew = Path.GetFileName(strNewSourceName);
-                    string dest = Path.Combine(DestinationPath + @"\" + name, nameNew);
-                    File.Copy(strNewSourceName, dest, true);
-                }
-            }
-        }
-
-        private void SendFolderAllField(string strSource, string strTo)
-        {
-            string[] files = Directory.GetFiles(strSource);
-            foreach (string file in files)
-            {
-                string name = Path.GetFileName(file);
-                string dest = Path.Combine(strTo, name);
-                File.Copy(file, dest, true);
-                if (name.Length > @"sysfreightupdate_".Length && name.Substring(0, @"sysfreightupdate_".Length) == @"sysfreightupdate_")
-                {
-                    strSourceName = name;
-                }
-            }
-            files = Directory.GetDirectories(strSource);
-            foreach (string file in files)
-            {
-                string name = Path.GetFileName(file);
-                if (!Directory.Exists(strTo + @"\" + name))
-                    Directory.CreateDirectory(strTo + @"\" + name);
-                SendFolderAllField(file, strTo + @"\" + name);
             }
         }
 
@@ -795,9 +706,9 @@ namespace AWF
         //                    {
         //                        verName = "Version " + ver + "." + txtVer.Text.Trim().ToString();
         //                        string NewFolder = Classes.Modfunction.datetime_today.ToString("yyMMdd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + " Update(" + verName + ")";//121129 Update(Version 7.0.3.577)
-        //                        if (txt_SpecialName.Text != "")
+        //                        if (cbo_SpecialName.Text != "")
         //                        {
-        //                            string strSpecialName = "Special-" + txt_SpecialName.Text.Replace(" ", "");
+        //                            string strSpecialName = "Special-" + cbo_SpecialName.Text.Replace(" ", "");
         //                            NewFolder = Classes.Modfunction.datetime_today.ToString("yyMMdd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + " Update(" + verName + ")(" + strSpecialName + ")";//121129 Update(Version 7.0.3.577)(Special)
         //                        }
         //                        NewFolder = Classes.Modfunction.baseDPath + @"SysFreight Update\EXCEL\" + NewFolder;
