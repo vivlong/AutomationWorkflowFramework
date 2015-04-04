@@ -53,30 +53,51 @@ namespace AWF
 
             this.toolStripStatusLabel1.Text = Classes.Modfunction.currentIP;
             this.toolStripStatusLabel3.Text = Classes.Modfunction.datetime_today.ToString("yyyyMMdd HH:mm:ss");
+            this.pbMenu1_Click(sender, new EventArgs());
         }
 
+        #region  判断一个窗体是否存在，不存在就显示，存在则不显示
+        private bool CheckForm(string FormName)
+        {
+            foreach (Form form in MdiChildren)
+            {
+                if (form.Name == FormName)
+                {
+                    if (form.WindowState == FormWindowState.Minimized)
+                    {
+                        form.WindowState = FormWindowState.Maximized;
+                    }
+                    form.Activate();
+                    return true;
+                }
+            }
+            return false;
+        }
+        #endregion
 
         #region  菜单各项点击事件
         private void pbMenu1_Click(object sender, EventArgs e)
         {
-            if (!AWF.Classes.Modfunction.CheckForm("Frm_Publishing"))
+            if (!CheckForm("Frm_Publishing"))
             {
                 this.panel_Form.Controls.Clear();
                 Frm_Publishing frmPB = new Frm_Publishing();
                 frmPB.MdiParent = this;
                 frmPB.Parent = this.panel_Form;
+                frmPB.Dock = DockStyle.Fill;
                 frmPB.Show();
             }
         }
 
         private void pbMenu2_Click(object sender, EventArgs e)
         {
-            if (!AWF.Classes.Modfunction.CheckForm("Frm_Edi"))
+            if (!CheckForm("Frm_Edi"))
             {
                 this.panel_Form.Controls.Clear();
                 Frm_Edi Frm_Edi = new Frm_Edi();
                 Frm_Edi.MdiParent = this;
                 Frm_Edi.Parent = this.panel_Form;
+                Frm_Edi.Dock = DockStyle.Fill;
                 Frm_Edi.Show();
             }
         }

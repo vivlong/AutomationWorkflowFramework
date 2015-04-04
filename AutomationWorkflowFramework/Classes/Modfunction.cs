@@ -5,6 +5,7 @@ using System.Management;
 using System.Net;
 using System.Net.Sockets;
 using System.Windows.Forms;
+using System.Net.NetworkInformation;
 
 namespace AWF.Classes
 {
@@ -66,25 +67,6 @@ namespace AWF.Classes
         public static string BIOS_SoftwareElementID = "";
         public static string BIOS_TargetOperatingSystem = "";
         public static string BIOS_Version = "";
-
-        #region  判断一个窗体是否存在，不存在就显示，存在则不显示
-        public static bool CheckForm(string FormName)
-        {
-            foreach (Form form in Application.OpenForms)
-            {
-                if (form.Name == FormName)
-                {
-                    if (form.WindowState == FormWindowState.Minimized)
-                    {
-                        form.WindowState = FormWindowState.Maximized;
-                    }
-                    form.Activate();
-                    return true;
-                }
-            }
-            return false;
-        }
-        #endregion
 
         public static object CheckNull(object varResult)
         {
@@ -319,5 +301,18 @@ namespace AWF.Classes
             if (datetime_today.Year != 2015)
                 datetime_today = datetime_today.AddYears(1);
         }
+
+        public static bool pingIPAddress(string strIP)
+        {
+            bool blnPing = false;
+            Ping pingSender = new Ping();
+            PingReply reply = pingSender.Send(strIP, 120);
+            if (reply.Status == IPStatus.Success)
+            {
+                blnPing = true;
+            }
+            return blnPing;
+        }
+
     }
 }

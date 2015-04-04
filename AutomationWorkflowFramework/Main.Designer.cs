@@ -69,13 +69,16 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.AllowMerge = false;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel3});
             this.statusStrip1.Location = new System.Drawing.Point(0, 531);
             this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.statusStrip1.Size = new System.Drawing.Size(896, 22);
+            this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -114,7 +117,8 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panel_Form);
             this.splitContainer1.Size = new System.Drawing.Size(896, 531);
-            this.splitContainer1.SplitterDistance = 89;
+            this.splitContainer1.SplitterDistance = 88;
+            this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 7;
             // 
             // panel_banner
@@ -127,7 +131,7 @@
             this.panel_banner.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_banner.Location = new System.Drawing.Point(0, 0);
             this.panel_banner.Name = "panel_banner";
-            this.panel_banner.Size = new System.Drawing.Size(896, 89);
+            this.panel_banner.Size = new System.Drawing.Size(896, 88);
             this.panel_banner.TabIndex = 3;
             // 
             // panel4
@@ -151,7 +155,7 @@
             // 
             // pbMenu6
             // 
-            this.pbMenu6.BackColor = System.Drawing.Color.Transparent;
+            this.pbMenu6.BackColor = System.Drawing.Color.Indigo;
             this.pbMenu6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMenu6.Location = new System.Drawing.Point(255, 6);
             this.pbMenu6.Name = "pbMenu6";
@@ -161,7 +165,7 @@
             // 
             // pbMenu8
             // 
-            this.pbMenu8.BackColor = System.Drawing.Color.Transparent;
+            this.pbMenu8.BackColor = System.Drawing.Color.Silver;
             this.pbMenu8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMenu8.Location = new System.Drawing.Point(355, 6);
             this.pbMenu8.Name = "pbMenu8";
@@ -171,7 +175,7 @@
             // 
             // pbMenu9
             // 
-            this.pbMenu9.BackColor = System.Drawing.Color.Transparent;
+            this.pbMenu9.BackColor = System.Drawing.Color.White;
             this.pbMenu9.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMenu9.Location = new System.Drawing.Point(405, 6);
             this.pbMenu9.Name = "pbMenu9";
@@ -181,7 +185,7 @@
             // 
             // pbMenu10
             // 
-            this.pbMenu10.BackColor = System.Drawing.Color.Transparent;
+            this.pbMenu10.BackColor = System.Drawing.Color.Black;
             this.pbMenu10.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMenu10.Location = new System.Drawing.Point(455, 6);
             this.pbMenu10.Name = "pbMenu10";
@@ -191,7 +195,7 @@
             // 
             // pbMenu5
             // 
-            this.pbMenu5.BackColor = System.Drawing.Color.Transparent;
+            this.pbMenu5.BackColor = System.Drawing.Color.Blue;
             this.pbMenu5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMenu5.Location = new System.Drawing.Point(205, 6);
             this.pbMenu5.Name = "pbMenu5";
@@ -201,7 +205,7 @@
             // 
             // pbMenu2
             // 
-            this.pbMenu2.BackColor = System.Drawing.Color.Transparent;
+            this.pbMenu2.BackColor = System.Drawing.Color.OrangeRed;
             this.pbMenu2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMenu2.Location = new System.Drawing.Point(55, 6);
             this.pbMenu2.Name = "pbMenu2";
@@ -211,7 +215,7 @@
             // 
             // pbMenu4
             // 
-            this.pbMenu4.BackColor = System.Drawing.Color.Transparent;
+            this.pbMenu4.BackColor = System.Drawing.Color.Green;
             this.pbMenu4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMenu4.Location = new System.Drawing.Point(153, 6);
             this.pbMenu4.Name = "pbMenu4";
@@ -221,7 +225,7 @@
             // 
             // pbMenu3
             // 
-            this.pbMenu3.BackColor = System.Drawing.Color.Transparent;
+            this.pbMenu3.BackColor = System.Drawing.Color.Yellow;
             this.pbMenu3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMenu3.Location = new System.Drawing.Point(104, 6);
             this.pbMenu3.Name = "pbMenu3";
@@ -231,7 +235,7 @@
             // 
             // pbMenu7
             // 
-            this.pbMenu7.BackColor = System.Drawing.Color.Transparent;
+            this.pbMenu7.BackColor = System.Drawing.Color.Purple;
             this.pbMenu7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMenu7.Location = new System.Drawing.Point(305, 6);
             this.pbMenu7.Name = "pbMenu7";
@@ -241,7 +245,7 @@
             // 
             // pbMenu1
             // 
-            this.pbMenu1.BackColor = System.Drawing.Color.Gray;
+            this.pbMenu1.BackColor = System.Drawing.Color.Red;
             this.pbMenu1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMenu1.Location = new System.Drawing.Point(6, 6);
             this.pbMenu1.Name = "pbMenu1";
@@ -255,7 +259,7 @@
             this.lbl_Title.AutoSize = true;
             this.lbl_Title.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Title.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Title.Location = new System.Drawing.Point(11, 12);
+            this.lbl_Title.Location = new System.Drawing.Point(19, 12);
             this.lbl_Title.Name = "lbl_Title";
             this.lbl_Title.Size = new System.Drawing.Size(216, 68);
             this.lbl_Title.TabIndex = 1;
@@ -264,7 +268,6 @@
             // 
             // panel_Form
             // 
-            this.panel_Form.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_Form.Location = new System.Drawing.Point(0, 0);
             this.panel_Form.Name = "panel_Form";
             this.panel_Form.Size = new System.Drawing.Size(896, 438);

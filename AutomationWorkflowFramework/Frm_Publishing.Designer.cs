@@ -34,7 +34,6 @@
             this.txtFormName = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.rB_v802 = new System.Windows.Forms.RadioButton();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.lbl_programmer = new System.Windows.Forms.Label();
             this.cbo_Programmer = new System.Windows.Forms.ComboBox();
             this.lbl_trackno = new System.Windows.Forms.Label();
@@ -67,6 +66,7 @@
             this.txtVer = new System.Windows.Forms.TextBox();
             this.v71 = new System.Windows.Forms.RadioButton();
             this.v76 = new System.Windows.Forms.RadioButton();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -115,7 +115,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(873, 487);
+            this.panel1.Size = new System.Drawing.Size(873, 454);
             this.panel1.TabIndex = 0;
             // 
             // button1
@@ -171,15 +171,6 @@
             this.rB_v802.Text = "Ver 8.0.2";
             this.rB_v802.UseVisualStyleBackColor = true;
             this.rB_v802.CheckedChanged += new System.EventHandler(this.version_CheckedChanged);
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(241, 203);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(330, 42);
-            this.progressBar1.TabIndex = 63;
-            this.progressBar1.Visible = false;
             // 
             // lbl_programmer
             // 
@@ -252,7 +243,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(382, 416);
+            this.label6.Location = new System.Drawing.Point(382, 403);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(24, 19);
             this.label6.TabIndex = 68;
@@ -261,7 +252,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(241, 416);
+            this.label7.Location = new System.Drawing.Point(241, 403);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(45, 19);
             this.label7.TabIndex = 67;
@@ -269,7 +260,7 @@
             // 
             // txtTo
             // 
-            this.txtTo.Location = new System.Drawing.Point(416, 411);
+            this.txtTo.Location = new System.Drawing.Point(416, 398);
             this.txtTo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTo.Name = "txtTo";
             this.txtTo.Size = new System.Drawing.Size(79, 24);
@@ -278,7 +269,7 @@
             // 
             // txtFrom
             // 
-            this.txtFrom.Location = new System.Drawing.Point(294, 411);
+            this.txtFrom.Location = new System.Drawing.Point(294, 398);
             this.txtFrom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtFrom.Name = "txtFrom";
             this.txtFrom.Size = new System.Drawing.Size(79, 24);
@@ -287,7 +278,7 @@
             // 
             // cmdSourceSendto
             // 
-            this.cmdSourceSendto.Location = new System.Drawing.Point(17, 411);
+            this.cmdSourceSendto.Location = new System.Drawing.Point(17, 398);
             this.cmdSourceSendto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmdSourceSendto.Name = "cmdSourceSendto";
             this.cmdSourceSendto.Size = new System.Drawing.Size(172, 31);
@@ -298,7 +289,7 @@
             // 
             // txtFolder
             // 
-            this.txtFolder.Location = new System.Drawing.Point(241, 373);
+            this.txtFolder.Location = new System.Drawing.Point(241, 360);
             this.txtFolder.Margin = new System.Windows.Forms.Padding(4);
             this.txtFolder.Name = "txtFolder";
             this.txtFolder.ReadOnly = true;
@@ -307,7 +298,7 @@
             // 
             // cmdSelectFolder
             // 
-            this.cmdSelectFolder.Location = new System.Drawing.Point(17, 371);
+            this.cmdSelectFolder.Location = new System.Drawing.Point(17, 358);
             this.cmdSelectFolder.Margin = new System.Windows.Forms.Padding(4);
             this.cmdSelectFolder.Name = "cmdSelectFolder";
             this.cmdSelectFolder.Size = new System.Drawing.Size(172, 31);
@@ -318,7 +309,7 @@
             // 
             // cmdBackUp
             // 
-            this.cmdBackUp.Location = new System.Drawing.Point(548, 408);
+            this.cmdBackUp.Location = new System.Drawing.Point(548, 395);
             this.cmdBackUp.Margin = new System.Windows.Forms.Padding(4);
             this.cmdBackUp.Name = "cmdBackUp";
             this.cmdBackUp.Size = new System.Drawing.Size(194, 31);
@@ -528,12 +519,21 @@
             this.v76.UseVisualStyleBackColor = true;
             this.v76.CheckedChanged += new System.EventHandler(this.version_CheckedChanged);
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(241, 203);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(330, 42);
+            this.progressBar1.TabIndex = 63;
+            this.progressBar1.Visible = false;
+            // 
             // Frm_Publishing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(873, 487);
+            this.ClientSize = new System.Drawing.Size(873, 454);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

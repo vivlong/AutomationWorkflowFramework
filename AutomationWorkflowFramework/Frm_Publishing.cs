@@ -514,29 +514,32 @@ namespace AWF
             {
                 ver = GetVer();
                 string NewP = Classes.Modfunction.baseDPath + "New SysFreight Source " + ver.Replace(".", "") + @"\SysFreight\SysFreightMain\SysFreight.vbproj.user";
-                if (File.Exists(NewP))
+                if (AWF.Classes.Modfunction.pingIPAddress("192.168.0.236"))
                 {
-                    StreamReader objReader = new StreamReader(NewP);
-                    string sLine = "";
-                    ArrayList LineList = new ArrayList();
-                    while (sLine != null)
+                    if (File.Exists(NewP))
                     {
-                        sLine = objReader.ReadLine();
-                        if (sLine != null && !sLine.Equals(""))
-                            LineList.Add(sLine);
+                        StreamReader objReader = new StreamReader(NewP);
+                        string sLine = "";
+                        ArrayList LineList = new ArrayList();
+                        while (sLine != null)
+                        {
+                            sLine = objReader.ReadLine();
+                            if (sLine != null && !sLine.Equals(""))
+                                LineList.Add(sLine);
+                        }
+                        objReader.Close();
+                        string CurrentVersion = LineList[11].ToString();
+                        CurrentVersion = CurrentVersion.Replace("<ApplicationRevision>", "");
+                        CurrentVersion = CurrentVersion.Replace("</ApplicationRevision>", "");
+                        CurrentVersion = CurrentVersion.Replace(" ", "");
+                        CurrentVersion = CurrentVersion.Trim().ToString();
+                        txtVer.Text = CurrentVersion;
                     }
-                    objReader.Close();
-                    string CurrentVersion = LineList[11].ToString();
-                    CurrentVersion = CurrentVersion.Replace("<ApplicationRevision>", "");
-                    CurrentVersion = CurrentVersion.Replace("</ApplicationRevision>", "");
-                    CurrentVersion = CurrentVersion.Replace(" ", "");
-                    CurrentVersion = CurrentVersion.Trim().ToString();
-                    txtVer.Text = CurrentVersion;
-                }
-                else
-                {
-                    MessageBox.Show("This Version's Source Code Does Not Exist!");
-                }
+                    else
+                    {
+                        MessageBox.Show("This Version's Source Code Does Not Exist!");
+                    }
+                }                
             }
         }
 
