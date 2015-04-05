@@ -49,7 +49,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(750, 189);
+            this.panel1.Size = new System.Drawing.Size(750, 321);
             this.panel1.TabIndex = 0;
             // 
             // label2
@@ -97,17 +97,17 @@
             this.txtSkype.Size = new System.Drawing.Size(454, 69);
             this.txtSkype.TabIndex = 75;
             // 
-            // FrmConfig
+            // Frm_Config
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(750, 189);
+            this.ClientSize = new System.Drawing.Size(750, 321);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "FrmConfig";
+            this.Name = "Frm_Config";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Frm_Testing";
             this.Load += new System.EventHandler(this.FrmConfig_Load);

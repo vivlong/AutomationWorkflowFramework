@@ -527,14 +527,25 @@ namespace AWF.Classes
         {
             return ExecuteDataset(connection, commandType, commandText, (SqlParameter[])null);
         }
+        
+        /// <summary> 
+        /// 执行指定数据库连接字符串的命令,返回DataTable. 
+        /// </summary> 
+        /// <remarks> 
+        /// 示例:  
+        ///  DataTable dt = ExecuteDataTable(connString, CommandType.StoredProcedure, "GetOrders"); 
+        /// </remarks> 
+        /// <param name="connection">一个有效的数据库连接字符串</param>
+        /// <param name="commandText">存储过程名或T-SQL语句</param> 
+        /// <returns>返回一个包含结果集的DataTable</returns> 
         public static DataTable ExecuteDataTable(string connectionString, string commandText)
         {
-              DataTable dt=null;
-              DataSet ds = SqlHelper.ExecuteDataset(connectionString, CommandType.Text, commandText);
-              if (ds.Tables.Count > 0)
-              {
-                  dt = ds.Tables[0];
-              }
+            DataTable dt=null;
+            DataSet ds = SqlHelper.ExecuteDataset(connectionString, CommandType.Text, commandText);
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                dt = ds.Tables[0];
+            }
             return dt;
         }
         /// <summary> 

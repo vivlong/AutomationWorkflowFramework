@@ -140,6 +140,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>DLL\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NPOI">
+      <HintPath>DLL\NPOI.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -178,6 +181,12 @@
     </Compile>
     <Compile Include="Frm_Publishing.Designer.cs">
       <DependentUpon>Frm_Publishing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_RequestXls.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_RequestXls.Designer.cs">
+      <DependentUpon>Frm_RequestXls.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_RestoreDB.cs">
       <SubType>Form</SubType>
@@ -226,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Request.resx">
       <DependentUpon>Frm_Request.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_RequestXls.resx">
+      <DependentUpon>Frm_RequestXls.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_RestoreDB.resx">
       <DependentUpon>Frm_RestoreDB.cs</DependentUpon>

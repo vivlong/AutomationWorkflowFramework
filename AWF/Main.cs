@@ -95,7 +95,7 @@ namespace AWF
 
         private void pbMenu8_Click(object sender, EventArgs e)
         {
-            showMdiForm(new Frm_OSS());
+            showMdiForm(new Frm_RequestXls());
         }
 
         private void pbMenu9_Click(object sender, EventArgs e)

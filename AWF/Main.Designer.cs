@@ -64,10 +64,10 @@
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel3});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 531);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 580);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.statusStrip1.Size = new System.Drawing.Size(896, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(952, 22);
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
@@ -106,7 +106,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panel_Form);
-            this.splitContainer1.Size = new System.Drawing.Size(896, 531);
+            this.splitContainer1.Size = new System.Drawing.Size(952, 580);
             this.splitContainer1.SplitterDistance = 88;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 7;
@@ -121,7 +121,7 @@
             this.panel_banner.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_banner.Location = new System.Drawing.Point(0, 0);
             this.panel_banner.Name = "panel_banner";
-            this.panel_banner.Size = new System.Drawing.Size(896, 88);
+            this.panel_banner.Size = new System.Drawing.Size(952, 88);
             this.panel_banner.TabIndex = 3;
             // 
             // panel_Menu
@@ -138,7 +138,7 @@
             this.panel_Menu.Controls.Add(this.btn_Menu3);
             this.panel_Menu.Controls.Add(this.btn_Menu2);
             this.panel_Menu.Controls.Add(this.btn_Menu1);
-            this.panel_Menu.Location = new System.Drawing.Point(346, 4);
+            this.panel_Menu.Location = new System.Drawing.Point(402, 4);
             this.panel_Menu.Name = "panel_Menu";
             this.panel_Menu.Size = new System.Drawing.Size(550, 77);
             this.panel_Menu.TabIndex = 23;
@@ -185,7 +185,7 @@
             this.btn_Menu8.Name = "btn_Menu8";
             this.btn_Menu8.Size = new System.Drawing.Size(40, 68);
             this.btn_Menu8.TabIndex = 17;
-            this.btn_Menu8.Text = "云存储";
+            this.btn_Menu8.Text = "文档整理";
             this.btn_Menu8.UseVisualStyleBackColor = false;
             // 
             // btn_Menu7
@@ -307,16 +307,17 @@
             // 
             // panel_Form
             // 
+            this.panel_Form.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_Form.Location = new System.Drawing.Point(0, 0);
             this.panel_Form.Name = "panel_Form";
-            this.panel_Form.Size = new System.Drawing.Size(896, 438);
+            this.panel_Form.Size = new System.Drawing.Size(952, 491);
             this.panel_Form.TabIndex = 0;
             // 
             // Main
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(896, 553);
+            this.ClientSize = new System.Drawing.Size(952, 602);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
             this.DoubleBuffered = true;

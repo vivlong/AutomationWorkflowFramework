@@ -12,11 +12,10 @@ using System.Collections;
 using System.Threading;
 using System.Diagnostics;
 using System.Net;
-using DevComponents.DotNetBar;
 
 namespace AWF
 {
-    public partial class Frm_Publishing : Office2007Form
+    public partial class Frm_Publishing : Form
     {
         private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
