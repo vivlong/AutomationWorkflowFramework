@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btn_Backup_Folders_Start = new System.Windows.Forms.Button();
-            this.txt_Backup_Folder_path = new System.Windows.Forms.TextBox();
-            this.btn_Backup_Folders_Select = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtTo = new System.Windows.Forms.TextBox();
             this.txtFrom = new System.Windows.Forms.TextBox();
             this.cmdSourceSendto = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_Backup_Folders_Start = new System.Windows.Forms.Button();
+            this.txt_Backup_Folder_path = new System.Windows.Forms.TextBox();
+            this.btn_Backup_Folders_Select = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -57,6 +57,53 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(541, 421);
             this.panel1.TabIndex = 0;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(397, 169);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(21, 14);
+            this.label6.TabIndex = 73;
+            this.label6.Text = "To";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(256, 169);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(42, 14);
+            this.label7.TabIndex = 72;
+            this.label7.Text = "From ";
+            // 
+            // txtTo
+            // 
+            this.txtTo.Location = new System.Drawing.Point(431, 164);
+            this.txtTo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtTo.Name = "txtTo";
+            this.txtTo.Size = new System.Drawing.Size(79, 22);
+            this.txtTo.TabIndex = 71;
+            this.txtTo.Text = "131218";
+            // 
+            // txtFrom
+            // 
+            this.txtFrom.Location = new System.Drawing.Point(309, 164);
+            this.txtFrom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtFrom.Name = "txtFrom";
+            this.txtFrom.Size = new System.Drawing.Size(79, 22);
+            this.txtFrom.TabIndex = 70;
+            this.txtFrom.Text = "131218";
+            // 
+            // cmdSourceSendto
+            // 
+            this.cmdSourceSendto.Location = new System.Drawing.Point(12, 159);
+            this.cmdSourceSendto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmdSourceSendto.Name = "cmdSourceSendto";
+            this.cmdSourceSendto.Size = new System.Drawing.Size(218, 31);
+            this.cmdSourceSendto.TabIndex = 69;
+            this.cmdSourceSendto.Text = " Backup/Send Source to 250";
+            this.cmdSourceSendto.UseVisualStyleBackColor = true;
+            this.cmdSourceSendto.Click += new System.EventHandler(this.cmdSourceSendto_Click);
             // 
             // groupBox2
             // 
@@ -100,54 +147,7 @@
             this.btn_Backup_Folders_Select.UseVisualStyleBackColor = true;
             this.btn_Backup_Folders_Select.Click += new System.EventHandler(this.btn_Backup_Folders_Select_Click);
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(396, 200);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(21, 14);
-            this.label6.TabIndex = 73;
-            this.label6.Text = "To";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(255, 200);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(42, 14);
-            this.label7.TabIndex = 72;
-            this.label7.Text = "From ";
-            // 
-            // txtTo
-            // 
-            this.txtTo.Location = new System.Drawing.Point(430, 195);
-            this.txtTo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtTo.Name = "txtTo";
-            this.txtTo.Size = new System.Drawing.Size(79, 22);
-            this.txtTo.TabIndex = 71;
-            this.txtTo.Text = "131218";
-            // 
-            // txtFrom
-            // 
-            this.txtFrom.Location = new System.Drawing.Point(308, 195);
-            this.txtFrom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtFrom.Name = "txtFrom";
-            this.txtFrom.Size = new System.Drawing.Size(79, 22);
-            this.txtFrom.TabIndex = 70;
-            this.txtFrom.Text = "131218";
-            // 
-            // cmdSourceSendto
-            // 
-            this.cmdSourceSendto.Location = new System.Drawing.Point(31, 195);
-            this.cmdSourceSendto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cmdSourceSendto.Name = "cmdSourceSendto";
-            this.cmdSourceSendto.Size = new System.Drawing.Size(172, 31);
-            this.cmdSourceSendto.TabIndex = 69;
-            this.cmdSourceSendto.Text = " Backup/Send Source to 250";
-            this.cmdSourceSendto.UseVisualStyleBackColor = true;
-            this.cmdSourceSendto.Click += new System.EventHandler(this.cmdSourceSendto_Click);
-            // 
-            // FrmBackupFF
+            // Frm_BackupFF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -157,7 +157,7 @@
             this.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "FrmBackupFF";
+            this.Name = "Frm_BackupFF";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Frm_BackupFF";
             this.panel1.ResumeLayout(false);

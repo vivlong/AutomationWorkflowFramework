@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Collections;
 using Newtonsoft.Json;
+using System.IO;
 
 namespace AWF
 {
@@ -39,6 +40,11 @@ namespace AWF
             parameters.Add("json", json);
             if(Classes.SaveSetting.SetConfig(parameters))
                 MessageBox.Show("Save Sccuess!");
+        }
+
+        private void btn_SaveConf_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

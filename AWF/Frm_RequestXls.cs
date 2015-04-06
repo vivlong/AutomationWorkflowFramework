@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.HSSF.Util;
+using Newtonsoft.Json;
 
 namespace AWF
 {
@@ -33,18 +34,7 @@ namespace AWF
             connString = @"Server=" + txt_SqlAddress.Text + ";DataBase=" + cbm_database.Text + ";UID=" + txt_user.Text + ";PWD=" + txt_password.Text + ";";
             dt = AWF.Classes.SqlHelper.ExecuteDataTable(connString, strCommand);
             Get_TableName(strTableName);
-            FileWrite(txt_user.Text, txt_password.Text, cbm_database.Text, txt_SqlAddress.Text);
-        }
-
-        public void FileWrite(string userName, string passWord, string databaseName, string sqlAdd)
-        {
-            using (StreamWriter sw = new StreamWriter(Application.StartupPath + "\\userInfo.txt", false))
-            {
-                sw.WriteLine("Server=" + sqlAdd);
-                sw.WriteLine("databaseName=" + databaseName);
-                sw.WriteLine("userName=" + userName);
-                sw.WriteLine("Password=" + passWord);
-            }
+            AWF.Classes.ConfHelper.SaveConf(txt_SqlAddress.Text, cbm_database.Text, txt_user.Text, txt_password.Text);
         }
 
         //导出
@@ -301,34 +291,16 @@ namespace AWF
 
         private void Frm_RequestXls_Load(object sender, EventArgs e)
         {
-            using (StreamReader sw = new StreamReader(Application.StartupPath + "\\userInfo.txt"))
-            {
-                string a = sw.ReadLine();
-                while (!string.IsNullOrEmpty(a))
-                {
-                    string strName = a.Substring(0, a.IndexOf("="));
-                    string strValue = a.Substring(a.IndexOf("=") + 1);
-                    if (strName == "Server")
-                    {
-                        txt_SqlAddress.Text = strValue;
-                    }
-                    if (strName == "databaseName")
-                    {
-                        cbm_database.Text = strValue;
-                    }
-                    if (strName == "userName")
-                    {
-                        txt_user.Text = strValue;
-                    }
-                    if (strName == "Password")
-                    {
-                        txt_password.Text = strValue;
-                    }
-                    a = sw.ReadLine();
-                    this.connString = @"Server=" + txt_SqlAddress.Text + ";DataBase=" + cbm_database.Text + ";UID=" + txt_user.Text + ";PWD=" + txt_password.Text + ";";
-                }
-            }
+            AWF.Classes.ConfHelper.confJson cj = new Classes.ConfHelper.confJson();
+            string strConfPath = System.Windows.Forms.Application.StartupPath + @"\config.json";
+            cj = AWF.Classes.ConfHelper.GetConf(strConfPath);
+            txt_SqlAddress.Text = cj.RequestXls.DbServer;
+            cbm_database.Text = cj.RequestXls.DbName;
+            txt_user.Text = cj.RequestXls.DbUid;
+            txt_password.Text = cj.RequestXls.DbPwd;
+            this.connString = @"Server=" + txt_SqlAddress.Text + ";DataBase=" + cbm_database.Text + ";UID=" + txt_user.Text + ";PWD=" + txt_password.Text + ";";
         }
+
         private void Get_TableName(string strT)
         {
             string strCommand = "SELECT Name FROM SysColumns WHERE id=Object_Id('" + strT + "')";

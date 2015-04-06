@@ -152,6 +152,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\ConfHelper.cs" />
     <Compile Include="Classes\FontHelper.cs" />
     <Compile Include="Classes\HttpHelper.cs" />
     <Compile Include="Classes\HttpLoadFile.cs" />
