@@ -263,7 +263,7 @@ namespace AWF
                 pbDBAction.Step = 1;
                 smoHelper.RestoreDB(txtFileName.Text.Trim(), txtDatabaseName.Text.Trim(), txtDBPath.Text.Trim());
             }
-            catch (Exception ex) { Log.Debug(ex.Message, ex); }
+            catch (Exception ex) { Log.Debug(ex.Message, ex); MessageBox.Show(ex.Message); }
             finally { panel1.Enabled = true; GC.Collect(); }
         }
 

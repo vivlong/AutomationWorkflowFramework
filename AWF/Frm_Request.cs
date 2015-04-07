@@ -22,9 +22,5 @@ namespace AWF
         {
             InitializeComponent();
         }
-
-        private void Frm_Publishing_Load(object sender, EventArgs e)
-        {
-        }
     }
 }

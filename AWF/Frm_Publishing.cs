@@ -120,7 +120,7 @@ namespace AWF
                     }
                     else
                     {
-                        MessageBox.Show("This Version's Source Code Does Not Exist!");
+                        MessageBox.Show("当前版本源码路径不存在!");
                     }
                 }
             }
@@ -329,12 +329,12 @@ namespace AWF
                             specialText = "(Special-" + specialText + ")";
                         }
                         Clipboard.SetDataObject(verName + specialText + " send to 250.");
-                        DialogResult dgrt = MessageBox.Show("Send Successful! Would you like to backup source code?","Send To 250",MessageBoxButtons.YesNo);
+                        DialogResult dgrt = MessageBox.Show("发送成功! 需要立即备份源码吗?","Message",MessageBoxButtons.YesNo);
                         if (dgrt == System.Windows.Forms.DialogResult.OK)
                         {
                             if (cbo_SpecialName.Text.Length > 0)
                             {
-                                MessageBox.Show("The Special Version Should Be Backup Manually!");
+                                MessageBox.Show("特殊版本需要手动选择路径来备份哟!");
                                 cmd_SelectFolder_Click(cmd_SelectFolder, e);
                             }
                             else
@@ -345,7 +345,7 @@ namespace AWF
                     }
                     else
                     {
-                        MessageBox.Show("Send Faild!");
+                        MessageBox.Show("发送失败!");
                     }
 
                 }

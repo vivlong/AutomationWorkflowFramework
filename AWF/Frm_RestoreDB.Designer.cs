@@ -133,7 +133,7 @@
             this.txtDBPath.Name = "txtDBPath";
             this.txtDBPath.Size = new System.Drawing.Size(446, 23);
             this.txtDBPath.TabIndex = 69;
-            this.txtDBPath.Text = "N:\\Customer_Database\\";
+            this.txtDBPath.Text = "D:\\Customer_Database\\";
             // 
             // btnDBPath
             // 
