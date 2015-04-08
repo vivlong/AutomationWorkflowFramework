@@ -79,6 +79,7 @@
             // 
             this.gb_Publish.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gb_Publish.Controls.Add(this.progressBar1);
             this.gb_Publish.Controls.Add(this.cmd_CreatFolder);
             this.gb_Publish.Controls.Add(this.cmd_OpenFolder);
             this.gb_Publish.Controls.Add(this.cmd_Published2Zip);
@@ -88,7 +89,6 @@
             this.gb_Publish.Controls.Add(this.txtFolder);
             this.gb_Publish.Controls.Add(this.btn_rebuild);
             this.gb_Publish.Controls.Add(this.btn_publish);
-            this.gb_Publish.Controls.Add(this.progressBar1);
             this.gb_Publish.Location = new System.Drawing.Point(12, 126);
             this.gb_Publish.Name = "gb_Publish";
             this.gb_Publish.Size = new System.Drawing.Size(849, 225);
@@ -173,6 +173,7 @@
             // 
             // btn_rebuild
             // 
+            this.btn_rebuild.Enabled = false;
             this.btn_rebuild.Location = new System.Drawing.Point(74, 64);
             this.btn_rebuild.Margin = new System.Windows.Forms.Padding(4);
             this.btn_rebuild.Name = "btn_rebuild";

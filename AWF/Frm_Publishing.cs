@@ -29,7 +29,7 @@ namespace AWF
         {
             InitializeComponent();
             ShowTextDelegate = new updateUI(ShowText);
-            progressBar1.Location = new Point((panel1.Width / 2 - progressBar1.Width / 2), (panel1.Height / 2 - progressBar1.Height / 2));
+            progressBar1.Location = new Point((gb_Publish.Width / 2 - progressBar1.Width / 2), (gb_Publish.Height / 2 - progressBar1.Height / 2));
         }
 
         private void Frm_Publishing_Load(object sender, EventArgs e)
@@ -211,6 +211,10 @@ namespace AWF
             try
             {
                 AWF.Classes.Modfunction.DeleteFilesAndFolders(update_publish_path);
+                if (!Directory.Exists(update_publish_path))
+                {
+                    Directory.CreateDirectory(update_publish_path);
+                }
                 AWF.Classes.Modfunction.copyFilesAndFolders(update_publish_path, filepath);
                 if (!string.IsNullOrEmpty(txt_BuildNo.Text))
                 {

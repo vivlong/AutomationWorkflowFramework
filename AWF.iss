@@ -1,11 +1,9 @@
-; 脚本由 Inno Setup 脚本向导 生成！
-; 有关创建 Inno Setup 脚本文件的详细资料请查阅帮助文档！
 
 #define MyAppName "AutomationWorkflowFramework"
 #define MyAppVersion "1.0.0.42"
 #define MyAppPublisher "SDOT"
 #define MyAppURL "http://www.sysfreight.net"
-#define MyAppExeName "AutomationWorkflowFramework.exe"
+#define MyAppExeName "SAWF.exe"
 
 [Setup]
 ; 注: AppId的值为单独标识该应用程序。
@@ -37,28 +35,28 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "F:\projects\AutomationWorkflowFramework\AutomationWorkflowFramework\bin\Debug\AutomationWorkflowFramework.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "F:\projects\AutomationWorkflowFramework\AutomationWorkflowFramework\bin\Debug\AutomationWorkflowFramework.exe.config"; DestDir: "{app}"; Flags: ignoreversion
-Source: "F:\projects\AutomationWorkflowFramework\AutomationWorkflowFramework\bin\Debug\AutomationWorkflowFramework.exe.l4n"; DestDir: "{app}"; Flags: ignoreversion
-Source: "F:\projects\AutomationWorkflowFramework\AutomationWorkflowFramework\bin\Debug\AutomationWorkflowFramework.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "F:\projects\AutomationWorkflowFramework\AutomationWorkflowFramework\bin\Debug\build.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "F:\projects\AutomationWorkflowFramework\AutomationWorkflowFramework\bin\Debug\DevComponents.DotNetBar2.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "F:\projects\AutomationWorkflowFramework\AutomationWorkflowFramework\bin\Debug\ICSharpCode.SharpZipLib.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "F:\projects\AutomationWorkflowFramework\AutomationWorkflowFramework\bin\Debug\log4net.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "F:\projects\AutomationWorkflowFramework\AutomationWorkflowFramework\bin\Debug\Microsoft.SqlServer.ConnectionInfo.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "F:\projects\AutomationWorkflowFramework\AutomationWorkflowFramework\bin\Debug\Microsoft.SqlServer.Dmf.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "F:\projects\AutomationWorkflowFramework\AutomationWorkflowFramework\bin\Debug\Microsoft.SqlServer.Management.Sdk.Sfc.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "F:\projects\AutomationWorkflowFramework\AutomationWorkflowFramework\bin\Debug\Microsoft.SqlServer.RegSvrEnum.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "F:\projects\AutomationWorkflowFramework\AutomationWorkflowFramework\bin\Debug\Microsoft.SqlServer.ServiceBrokerEnum.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "F:\projects\AutomationWorkflowFramework\AutomationWorkflowFramework\bin\Debug\Microsoft.SqlServer.Smo.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "F:\projects\AutomationWorkflowFramework\AutomationWorkflowFramework\bin\Debug\Microsoft.SqlServer.SmoExtended.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "F:\projects\AutomationWorkflowFramework\AutomationWorkflowFramework\bin\Debug\Microsoft.SqlServer.SqlClrProvider.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "F:\projects\AutomationWorkflowFramework\AutomationWorkflowFramework\bin\Debug\Microsoft.SqlServer.SqlEnum.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "F:\projects\AutomationWorkflowFramework\AutomationWorkflowFramework\bin\Debug\Newtonsoft.Json.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "F:\projects\AutomationWorkflowFramework\AutomationWorkflowFramework\bin\Debug\Newtonsoft.Json.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "F:\projects\AutomationWorkflowFramework\AutomationWorkflowFramework\bin\Debug\Newtonsoft.Json.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "F:\projects\AutomationWorkflowFramework\AutomationWorkflowFramework\bin\Debug\publish.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "F:\projects\AutomationWorkflowFramework\AutomationWorkflowFramework\bin\Debug\Resources\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "F:\projects\AutomationWorkflowFramework\AWF\bin\Debug\SAWF.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "F:\projects\AutomationWorkflowFramework\AWF\bin\Debug\SAWF.exe.config"; DestDir: "{app}"; Flags: ignoreversion
+Source: "F:\projects\AutomationWorkflowFramework\AWF\bin\Debug\SAWF.exe.l4n"; DestDir: "{app}"; Flags: ignoreversion
+Source: "F:\projects\AutomationWorkflowFramework\AWF\bin\Debug\SAWF.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "F:\projects\AutomationWorkflowFramework\AWF\bin\Debug\build.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "F:\projects\AutomationWorkflowFramework\AWF\bin\Debug\DevComponents.DotNetBar2.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "F:\projects\AutomationWorkflowFramework\AWF\bin\Debug\ICSharpCode.SharpZipLib.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "F:\projects\AutomationWorkflowFramework\AWF\bin\Debug\log4net.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "F:\projects\AutomationWorkflowFramework\AWF\bin\Debug\NPOI.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "F:\projects\AutomationWorkflowFramework\AWF\bin\Debug\Microsoft.SqlServer.ConnectionInfo.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "F:\projects\AutomationWorkflowFramework\AWF\bin\Debug\Microsoft.SqlServer.Dmf.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "F:\projects\AutomationWorkflowFramework\AWF\bin\Debug\Microsoft.SqlServer.Management.Sdk.Sfc.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "F:\projects\AutomationWorkflowFramework\AWF\bin\Debug\Microsoft.SqlServer.RegSvrEnum.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "F:\projects\AutomationWorkflowFramework\AWF\bin\Debug\Microsoft.SqlServer.ServiceBrokerEnum.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "F:\projects\AutomationWorkflowFramework\AWF\bin\Debug\Microsoft.SqlServer.Smo.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "F:\projects\AutomationWorkflowFramework\AWF\bin\Debug\Microsoft.SqlServer.SmoExtended.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "F:\projects\AutomationWorkflowFramework\AWF\bin\Debug\Microsoft.SqlServer.SqlClrProvider.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "F:\projects\AutomationWorkflowFramework\AWF\bin\Debug\Microsoft.SqlServer.SqlEnum.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "F:\projects\AutomationWorkflowFramework\AWF\bin\Debug\Newtonsoft.Json.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "F:\projects\AutomationWorkflowFramework\AWF\bin\Debug\Newtonsoft.Json.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "F:\projects\AutomationWorkflowFramework\AWF\bin\Debug\Newtonsoft.Json.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "F:\projects\AutomationWorkflowFramework\AWF\bin\Debug\publish.bat"; DestDir: "{app}"; Flags: ignoreversion
 ; 注意: 不要在任何共享系统文件上使用“Flags: ignoreversion”
 
 [Icons]
