@@ -35,6 +35,7 @@ namespace AWF
             dt = AWF.Classes.SqlHelper.ExecuteDataTable(connString, strCommand);
             Get_TableName(strTableName);
             AWF.Classes.ConfHelper.SaveConf(txt_SqlAddress.Text, cbm_database.Text, txt_user.Text, txt_password.Text);
+            MessageBox.Show("数据库连接成功");
         }
 
         //导出
@@ -51,119 +52,226 @@ namespace AWF
             //不允许dataGridView显示添加行，负责导出时会报最后一行未实例化错误
             dataGridView1.AllowUserToAddRows = false;
 
-            FileStream readfile = new FileStream(fileDialog.FileName, FileMode.Open, FileAccess.Read);
-
-            //HSSFWorkbook适合word2003 XSSFWorkbook适应2007
-            HSSFWorkbook workbook = new HSSFWorkbook(readfile);
-            //工作蒲
-            //  ISheet mySheetG = workbook.GetSheet(sheetName); 
             try
             {
-                ISheet mySheet = workbook.CreateSheet(sheetName);
-                //设置表格的宽度
-                mySheet.SetColumnWidth(2, 50 * 256);
-                mySheet.SetColumnWidth(3, 40 * 256);
 
-                //mySheet.DefaultColumnWidth = 1* 256;             
-                ICellStyle styleHead = workbook.CreateCellStyle();
-                IFont font = workbook.CreateFont();
-                font.FontHeightInPoints = 10;
-                font.Boldweight = (short)NPOI.SS.UserModel.FontBoldWeight.Bold;
-                styleHead.SetFont(font);
-                styleHead.FillPattern = FillPattern.SolidForeground;
-                styleHead.FillForegroundColor = HSSFColor.Yellow.Index;
+                FileStream readfile = new FileStream(fileDialog.FileName, FileMode.Open, FileAccess.Read);
 
-                ICellStyle style1 = workbook.CreateCellStyle();
-                style1.FillPattern = FillPattern.SolidForeground;
-                style1.FillForegroundColor = HSSFColor.Yellow.Index;
-
-                // HSSFRow mySourceStyleRow = (HSSFRow)mySheet.GetRow(InsertRowIndex - 1);
-                HSSFRow mySourceStyleRow = (HSSFRow)mySheet.CreateRow(0);
-
+                //HSSFWorkbook适合word2003 XSSFWorkbook适应2007
+                HSSFWorkbook workbook = new HSSFWorkbook(readfile);
+                //工作蒲
+                //  ISheet mySheetG = workbook.GetSheet(sheetName); 
                 try
                 {
-                    mySheet.ShiftRows(1, mySheet.LastRowNum, rowCount, true, true);
+                    ISheet mySheet = workbook.CreateSheet(sheetName);
+                    //设置表格的宽度
+                    mySheet.SetColumnWidth(2, 50 * 256);
+                    mySheet.SetColumnWidth(3, 30 * 256);
+                    mySheet.SetColumnWidth(4, 12 * 256);
+                    mySheet.SetColumnWidth(5, 12 * 256);
+                    mySheet.SetColumnWidth(6, 12 * 256);
+                    mySheet.SetColumnWidth(7, 12 * 256);
+                    mySheet.SetColumnWidth(8, 12 * 256);
+                    mySheet.SetColumnWidth(9, 12 * 256);
+                    mySheet.SetColumnWidth(10, 12 * 256);
+                    mySheet.SetColumnWidth(11, 12 * 256);
 
-                    for (int i = 1; i < rowCount; i++)
+
+
+
+                    //mySheet.DefaultColumnWidth = 1* 256;             
+                    ICellStyle styleHead = workbook.CreateCellStyle();
+                    IFont font = workbook.CreateFont();
+                    font.FontHeightInPoints = 12;
+                    font.Boldweight = (short)NPOI.SS.UserModel.FontBoldWeight.Bold;
+                    styleHead.SetFont(font);
+                    styleHead.FillPattern = FillPattern.SolidForeground;
+                    styleHead.FillForegroundColor = HSSFColor.Yellow.Index;
+                    styleHead.BorderBottom = NPOI.SS.UserModel.BorderStyle.Thin;
+                    styleHead.BorderLeft = NPOI.SS.UserModel.BorderStyle.Thin;
+                    styleHead.BorderRight = NPOI.SS.UserModel.BorderStyle.Thin;
+                    styleHead.BorderTop = NPOI.SS.UserModel.BorderStyle.Thin;
+
+
+                    ICellStyle style1 = workbook.CreateCellStyle();
+                    style1.FillPattern = FillPattern.SolidForeground;
+                    style1.FillForegroundColor = HSSFColor.Yellow.Index;
+                    style1.WrapText = true;
+                    style1.Indention = 0;
+                    style1.BorderBottom = NPOI.SS.UserModel.BorderStyle.Thin;
+                    style1.BorderLeft = NPOI.SS.UserModel.BorderStyle.Thin;
+                    style1.BorderRight = NPOI.SS.UserModel.BorderStyle.Thin;
+                    style1.BorderTop = NPOI.SS.UserModel.BorderStyle.Thin;
+
+
+                    ICellStyle TodayComletedTaskStyle = workbook.CreateCellStyle();
+                    TodayComletedTaskStyle.FillPattern = FillPattern.SolidForeground;
+                    TodayComletedTaskStyle.FillForegroundColor = HSSFColor.Yellow.Index;
+                    IFont TodayCompletedTaskfont = workbook.CreateFont();
+                    TodayCompletedTaskfont.Color = HSSFColor.OliveGreen.Red.Index;
+                    TodayComletedTaskStyle.SetFont(TodayCompletedTaskfont);
+                    TodayComletedTaskStyle.BorderBottom = NPOI.SS.UserModel.BorderStyle.Thin;
+                    TodayComletedTaskStyle.BorderLeft = NPOI.SS.UserModel.BorderStyle.Thin;
+                    TodayComletedTaskStyle.BorderRight = NPOI.SS.UserModel.BorderStyle.Thin;
+                    TodayComletedTaskStyle.BorderTop = NPOI.SS.UserModel.BorderStyle.Thin;
+
+                    ICellStyle headCellStyle = workbook.CreateCellStyle();
+                    headCellStyle.FillPattern = FillPattern.SolidForeground;
+                    headCellStyle.FillForegroundColor = HSSFColor.Yellow.Index;
+                    IFont headCellfont = workbook.CreateFont();
+                    headCellfont.Color = HSSFColor.OliveGreen.Red.Index;
+                    headCellfont.FontHeightInPoints = 12;
+                    headCellfont.Boldweight = (short)NPOI.SS.UserModel.FontBoldWeight.Bold;
+                    headCellStyle.SetFont(headCellfont);
+
+                    // HSSFRow mySourceStyleRow = (HSSFRow)mySheet.GetRow(InsertRowIndex - 1);
+                    HSSFRow mySourceStyleRow = (HSSFRow)mySheet.CreateRow(0);
+
+                    try
                     {
-                        HSSFRow targetRow = null;
-                        HSSFCell sourceCell = null;
-                        HSSFCell targetCell = null;
-                        mySheet.DefaultRowHeight = 1 / 10 * 200;
+                        mySheet.ShiftRows(1, mySheet.LastRowNum, rowCount, true, true);
 
-                        targetRow = (HSSFRow)mySheet.CreateRow(i + 1);
-                        for (int m = mySourceStyleRow.FirstCellNum - 1; m < mySourceStyleRow.LastCellNum; m++)
+                        for (int i = 1; i < rowCount; i++)
                         {
-                            sourceCell = (HSSFCell)mySourceStyleRow.GetCell(m);
-                            if (sourceCell == null)
-                                continue;
-                            targetCell = (HSSFCell)targetRow.CreateCell(m);
-                            //targetCell.Encoding = sourceCell.Encoding;
-                            targetCell.CellStyle = sourceCell.CellStyle;
-                            targetCell.SetCellType(sourceCell.CellType);
+                            HSSFRow targetRow = null;
+                            HSSFCell sourceCell = null;
+                            HSSFCell targetCell = null;
+                            mySheet.DefaultRowHeight = 1 / 10 * 200;
+
+                            targetRow = (HSSFRow)mySheet.CreateRow(i + 1);
+                            for (int m = mySourceStyleRow.FirstCellNum - 1; m < mySourceStyleRow.LastCellNum; m++)
+                            {
+                                sourceCell = (HSSFCell)mySourceStyleRow.GetCell(m);
+                                if (sourceCell == null)
+                                    continue;
+                                targetCell = (HSSFCell)targetRow.CreateCell(m);
+                                //targetCell.Encoding = sourceCell.Encoding;
+                                targetCell.CellStyle = sourceCell.CellStyle;
+                                targetCell.SetCellType(sourceCell.CellType);
+                            }
+
+
                         }
                     }
-                }
-                catch { }
+                    catch { }
 
-                HSSFRow firstTargetRow = (HSSFRow)mySheet.GetRow(1);
-                HSSFCell firstSourceCell = null;
-                HSSFCell firstTargetCell = null;
-                for (int m = mySourceStyleRow.FirstCellNum; m < mySourceStyleRow.LastCellNum; m++)
-                {
-                    firstSourceCell = (HSSFCell)mySourceStyleRow.GetCell(m);
-                    if (firstSourceCell == null)
-                        continue;
-                    firstTargetCell = (HSSFCell)firstTargetRow.CreateCell(m);
-                    //   firstTargetCell.Encoding = firstSourceCell.Encoding;
-                    firstTargetCell.CellStyle = firstSourceCell.CellStyle;
-                    firstTargetCell.SetCellType(firstSourceCell.CellType);
-                }
 
-                IRow rowHead = mySheet.CreateRow(0);
-                string[] strColumName = new string[12];
-                strColumName[0] = "TrackNo";
-                strColumName[1] = "Form";
-                strColumName[11] = "RequestDescription";
-                strColumName[3] = "TodayCompletedtasks";
-                strColumName[4] = "FixVersion";
-                strColumName[5] = "CompleteByName";
-                strColumName[6] = "ActualCompletionDate";
-                strColumName[7] = "ProgrammingSummary";
-                strColumName[8] = "TestByName";
-                strColumName[9] = "TestDate";
-                strColumName[10] = "TestResultFlag";
-                strColumName[2] = "TestSummary";
-                //填写表头
-                for (int i = 0; i < dataGridView1.Columns.Count; i++)
-                {
-                    rowHead.CreateCell(i, CellType.String).SetCellValue(dataGridView1.Columns[strColumName[i]].HeaderText.ToString());
-                    rowHead.Cells[i].CellStyle = styleHead;
-
-                }
-
-                //填写内容
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                {
-                    IRow row = mySheet.CreateRow(i + 1);
-                    for (int j = 0; j < dataGridView1.Columns.Count; j++)
+                    HSSFRow firstTargetRow = (HSSFRow)mySheet.GetRow(1);
+                    HSSFCell firstSourceCell = null;
+                    HSSFCell firstTargetCell = null;
+                    for (int m = mySourceStyleRow.FirstCellNum; m < mySourceStyleRow.LastCellNum; m++)
                     {
-                        row.CreateCell(j, CellType.String).SetCellValue(dataGridView1.Rows[i].Cells[strColumName[j]].Value.ToString());
-                        row.Cells[j].CellStyle = style1;
+                        firstSourceCell = (HSSFCell)mySourceStyleRow.GetCell(m);
+                        if (firstSourceCell == null)
+                            continue;
+                        firstTargetCell = (HSSFCell)firstTargetRow.CreateCell(m);
+                        //   firstTargetCell.Encoding = firstSourceCell.Encoding;
+                        firstTargetCell.CellStyle = firstSourceCell.CellStyle;
+                        firstTargetCell.SetCellType(firstSourceCell.CellType);
                     }
+
+                    IRow rowHead = mySheet.CreateRow(0);
+                    string[] strColumName = new string[12];
+                    strColumName[0] = "TrackNo";
+                    strColumName[3] = "TodayCompletedtasks";
+                    strColumName[4] = "FixVersion";
+                    strColumName[6] = "ActualCompletionDate";
+                    strColumName[7] = "ProgrammingSummary";
+                    strColumName[11] = "TestSummary";
+                    strColumName[1] = "Form";
+                    strColumName[2] = "RequestDescription";
+                    strColumName[5] = "CompleteByName";
+                    strColumName[8] = "TestByName";
+                    strColumName[9] = "TestDate";
+                    strColumName[10] = "TestResult";
+
+
+
+                    //填写表头
+                    for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                    {
+
+                        rowHead.CreateCell(i, CellType.String).SetCellValue(dataGridView1.Columns[strColumName[i]].HeaderText.ToString());
+
+                        if (i == 3)
+                        {
+
+                            rowHead.Cells[3].CellStyle = headCellStyle;
+                            rowHead.HeightInPoints = 2 * mySheet.DefaultRowHeight * 1 / 20;
+                        }
+                        else
+                        {
+                            rowHead.Cells[i].CellStyle = styleHead;
+                            rowHead.HeightInPoints = 2 * mySheet.DefaultRowHeight * 1 / 20;
+
+                        }
+                    }
+
+
+                    //填写内容
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    {
+                        IRow row = mySheet.CreateRow(i + 1);
+
+                        for (int j = 0; j < dataGridView1.Columns.Count; j++)
+                        {
+
+
+                            if (j == 6)
+                            {
+                                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+                                row.CreateCell(j, CellType.String).SetCellValue(System.DateTime.Now.ToString(System.Threading.Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern = "dd MMM,yyyy"));
+                            }
+                            else if (j == 9)
+                            {
+                                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+                                row.CreateCell(j, CellType.String).SetCellValue(System.DateTime.Now.ToString(System.Threading.Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern = "dd MMM,yyyy"));
+                            }
+
+                            else
+                            {
+
+                                row.CreateCell(j, CellType.String).SetCellValue(dataGridView1.Rows[i].Cells[strColumName[j]].Value.ToString());
+
+                            }
+
+
+
+                            if (j == 3)
+                            {
+                                row.Cells[3].CellStyle = TodayComletedTaskStyle;
+                                row.HeightInPoints = 3 * mySheet.DefaultRowHeight / 20;
+                            }
+                            else
+                            {
+                                row.Cells[j].CellStyle = style1;
+                                row.HeightInPoints = 3 * mySheet.DefaultRowHeight / 20;
+
+                            }
+
+                        }
+                    }
+
+                    using (FileStream stream = File.OpenWrite(fileDialog.FileName))
+                    {
+
+                        workbook.Write(stream);
+                        stream.Close();
+                        readfile.Close();
+                    }
+                    MessageBox.Show("导出数据成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    GC.Collect();
                 }
 
-                using (FileStream stream = File.OpenWrite(fileDialog.FileName))
+                catch
                 {
-                    workbook.Write(stream);
-                    readfile.Close();
+                    MessageBox.Show("你所创建的表已存在");
                 }
-                MessageBox.Show("导出数据成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                GC.Collect();
             }
             catch
             {
-                MessageBox.Show("你所创建的表已存在");
+
+                MessageBox.Show("请先关闭当前的Excel文件");
             }
         }
 
@@ -180,112 +288,130 @@ namespace AWF
             }
             //不允许dataGridView显示添加行，负责导出时会报最后一行未实例化错误
             dataGridView2.AllowUserToAddRows = false;
-
-            FileStream readfile = new FileStream(fileDialog.FileName, FileMode.Open, FileAccess.Read);
-            HSSFWorkbook workbook = new HSSFWorkbook(readfile);
-            //工作蒲
-
-            //ISheet mySheet = workbook.CreateSheet(sheetName);
-            //try catch用于HSSFRow mySourceStyleRow = (HSSFRow)mySheet.CreateRow(0);的错误
             try
             {
-                ISheet mySheet = workbook.GetSheet(sheetName2);
-                mySheet.SetColumnWidth(0, 12 * 256);
-                mySheet.SetColumnWidth(3, 25 * 256);
-                mySheet.SetColumnWidth(6, 25 * 256);
-                mySheet.SetColumnWidth(7, 25 * 256);
-                mySheet.SetColumnWidth(8, 25 * 256);
-                //  mySheet.DefaultRowHeight = 1/20;
-                // HSSFRow mySourceStyleRow = (HSSFRow)mySheet.GetRow(InsertRowIndex - 1);
-                ICellStyle styleExp2 = workbook.CreateCellStyle();
-                IFont font = workbook.CreateFont();
-                font.FontHeightInPoints = 10;
-                font.Boldweight = (short)NPOI.SS.UserModel.FontBoldWeight.Bold;
-                styleExp2.SetFont(font);
+                FileStream readfile = new FileStream(fileDialog.FileName, FileMode.Open, FileAccess.Read);
+                HSSFWorkbook workbook = new HSSFWorkbook(readfile);
+                //工作蒲
 
-                HSSFRow mySourceStyleRow = (HSSFRow)mySheet.CreateRow(0);
-
+                //ISheet mySheet = workbook.CreateSheet(sheetName);
+                //try catch用于HSSFRow mySourceStyleRow = (HSSFRow)mySheet.CreateRow(0);的错误
                 try
                 {
-                    mySheet.ShiftRows(1, mySheet.LastRowNum, rowCount, true, false);
-                    for (int i = 1; i < rowCount; i++)
+                    ISheet mySheet = workbook.GetSheet(sheetName2);
+                    mySheet.SetColumnWidth(0, 12 * 256);
+                    mySheet.SetColumnWidth(3, 25 * 256);
+                    mySheet.SetColumnWidth(6, 25 * 256);
+                    mySheet.SetColumnWidth(7, 25 * 256);
+                    mySheet.SetColumnWidth(8, 25 * 256);
+                    //  mySheet.DefaultRowHeight = 1/20;
+                    // HSSFRow mySourceStyleRow = (HSSFRow)mySheet.GetRow(InsertRowIndex - 1);
+                    ICellStyle styleExp2 = workbook.CreateCellStyle();
+                    IFont font = workbook.CreateFont();
+                    font.FontHeightInPoints = 10;
+                    font.Boldweight = (short)NPOI.SS.UserModel.FontBoldWeight.Bold;
+                    styleExp2.SetFont(font);
+
+                    HSSFRow mySourceStyleRow = (HSSFRow)mySheet.CreateRow(0);
+
+                    try
                     {
-                        HSSFRow targetRow = null;
-                        HSSFCell sourceCell = null;
-                        HSSFCell targetCell = null;
-                        targetRow = (HSSFRow)mySheet.CreateRow(i + 1);
-                        for (int m = mySourceStyleRow.FirstCellNum - 1; m < mySourceStyleRow.LastCellNum; m++)
+                        mySheet.ShiftRows(1, mySheet.LastRowNum, rowCount, true, false);
+                        for (int i = 1; i < rowCount; i++)
                         {
-                            sourceCell = (HSSFCell)mySourceStyleRow.GetCell(m);
-                            if (sourceCell == null)
-                                continue;
-                            targetCell = (HSSFCell)targetRow.CreateCell(m);
-                            //targetCell.Encoding = sourceCell.Encoding;
-                            targetCell.CellStyle = sourceCell.CellStyle;
-                            targetCell.SetCellType(sourceCell.CellType);
+                            HSSFRow targetRow = null;
+                            HSSFCell sourceCell = null;
+                            HSSFCell targetCell = null;
+                            targetRow = (HSSFRow)mySheet.CreateRow(i + 1);
+                            for (int m = mySourceStyleRow.FirstCellNum - 1; m < mySourceStyleRow.LastCellNum; m++)
+                            {
+                                sourceCell = (HSSFCell)mySourceStyleRow.GetCell(m);
+                                if (sourceCell == null)
+                                    continue;
+                                targetCell = (HSSFCell)targetRow.CreateCell(m);
+                                //targetCell.Encoding = sourceCell.Encoding;
+                                targetCell.CellStyle = sourceCell.CellStyle;
+                                targetCell.SetCellType(sourceCell.CellType);
+                            }
                         }
                     }
-                }
 
+                    catch
+                    {
+                        //MessageBox.Show("error");
+
+                    }
+                    HSSFRow firstTargetRow = (HSSFRow)mySheet.GetRow(1);
+                    HSSFCell firstSourceCell = null;
+                    HSSFCell firstTargetCell = null;
+                    for (int m = mySourceStyleRow.FirstCellNum; m < mySourceStyleRow.LastCellNum; m++)
+                    {
+                        firstSourceCell = (HSSFCell)mySourceStyleRow.GetCell(m);
+                        if (firstSourceCell == null)
+                            continue;
+                        firstTargetCell = (HSSFCell)firstTargetRow.CreateCell(m);
+                        //   firstTargetCell.Encoding = firstSourceCell.Encoding;
+                        firstTargetCell.CellStyle = firstSourceCell.CellStyle;
+                        firstTargetCell.SetCellType(firstSourceCell.CellType);
+                    }
+
+                    IRow rowHead = mySheet.CreateRow(0);
+
+                    //填写表头
+                    for (int i = 0; i < dataGridView2.Columns.Count; i++)
+                    {
+                        rowHead.CreateCell(i, CellType.String).SetCellValue(dataGridView2.Columns[i].HeaderText.ToString());
+                        rowHead.Cells[i].CellStyle = styleExp2;
+                        rowHead.HeightInPoints = 2 * mySheet.DefaultRowHeight * 1 / 20;
+                    }
+
+                    //填写内容
+                    for (int i = 0; i < dataGridView2.Rows.Count; i++)
+                    {
+                        IRow row = mySheet.CreateRow(i + 1);
+                        for (int j = 0; j < dataGridView2.Columns.Count; j++)
+                        {
+                            if (j == 0)
+                            {
+                                // row.CreateCell(j, CellType.String).SetCellValue(System.DateTime.Now.ToString("dd MM yyyy"));
+                                //   row.CreateCell(j, CellType.String).SetCellValue(System.DateTime.Now.GetDateTimeFormats("dd MMM yyyy"));
+                                //   select CONVERT(varchar(100), GETDATE(), 106) as date from sasr1;
+                                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+                                // row.CreateCell(j, CellType.String).SetCellValue(System.Threading.Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern = "yyyy/MM/dd");
+                                row.CreateCell(j, CellType.String).SetCellValue(System.DateTime.Now.ToString(System.Threading.Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern = "dd MMM,yyyy"));
+                                row.HeightInPoints = 2 * mySheet.DefaultRowHeight / 20;
+
+                            }
+                            else
+                            {
+                                row.CreateCell(j, CellType.String).SetCellValue(dataGridView2.Rows[i].Cells[j].Value.ToString());
+                                row.HeightInPoints = 2 * mySheet.DefaultRowHeight / 20;
+
+                            }
+
+                        }
+
+
+                    }
+
+                    using (FileStream stream = File.OpenWrite(fileDialog.FileName))
+                    {
+                        workbook.Write(stream);
+                        stream.Close();
+                    }
+                    MessageBox.Show("导出数据成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    GC.Collect();
+                }
                 catch
                 {
-                    //MessageBox.Show("error");
-
+                    MessageBox.Show("所填写的名字不存在");
                 }
-                HSSFRow firstTargetRow = (HSSFRow)mySheet.GetRow(1);
-                HSSFCell firstSourceCell = null;
-                HSSFCell firstTargetCell = null;
-                for (int m = mySourceStyleRow.FirstCellNum; m < mySourceStyleRow.LastCellNum; m++)
-                {
-                    firstSourceCell = (HSSFCell)mySourceStyleRow.GetCell(m);
-                    if (firstSourceCell == null)
-                        continue;
-                    firstTargetCell = (HSSFCell)firstTargetRow.CreateCell(m);
-                    //   firstTargetCell.Encoding = firstSourceCell.Encoding;
-                    firstTargetCell.CellStyle = firstSourceCell.CellStyle;
-                    firstTargetCell.SetCellType(firstSourceCell.CellType);
-                }
-
-                IRow rowHead = mySheet.CreateRow(0);
-
-                //填写表头
-                for (int i = 0; i < dataGridView2.Columns.Count; i++)
-                {
-                    rowHead.CreateCell(i, CellType.String).SetCellValue(dataGridView2.Columns[i].HeaderText.ToString());
-                    rowHead.Cells[i].CellStyle = styleExp2;
-                }
-
-                //填写内容
-                for (int i = 0; i < dataGridView2.Rows.Count; i++)
-                {
-                    IRow row = mySheet.CreateRow(i + 1);
-                    for (int j = 0; j < dataGridView2.Columns.Count; j++)
-                    {
-                        if (j == 0)
-                        {
-                            // row.CreateCell(j, CellType.String).SetCellValue(System.DateTime.Now.ToString("dd MM yyyy"));
-                            //   row.CreateCell(j, CellType.String).SetCellValue(System.DateTime.Now.GetDateTimeFormats("dd MMM yyyy"));
-                            //   select CONVERT(varchar(100), GETDATE(), 106) as date from sasr1;
-                            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
-                            // row.CreateCell(j, CellType.String).SetCellValue(System.Threading.Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern = "yyyy/MM/dd");
-                            row.CreateCell(j, CellType.String).SetCellValue(System.DateTime.Now.ToString(System.Threading.Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern = "dd MMM,yyyy"));
-                        }
-                        else
-                        {
-                            row.CreateCell(j, CellType.String).SetCellValue(dataGridView2.Rows[i].Cells[j].Value.ToString());
-                        }
-                    }
-                }
-                using (FileStream stream = File.OpenWrite(fileDialog.FileName))
-                {
-                    workbook.Write(stream);
-                }
-                MessageBox.Show("导出数据成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                GC.Collect();
             }
             catch
-            {
-                MessageBox.Show("所填写的名字不存在");
+            { 
+               
+                    MessageBox.Show("请先关闭当前的Excel文件");
+            
             }
         }
 
@@ -356,6 +482,37 @@ namespace AWF
                     //  strSelect = "Select TrackNo,''as TodayCompletedtasks,FixVersion,ActualCompletionDate,ProgrammingSummary,TestSummary,Form,RequestDescription,CompleteByName,TestByName,TestDate,TestResultFlag as TestResult from sasr1";
                     strSelect = "Select TrackNo,Form,RequestDescription,''as TodayCompletedtasks,FixVersion,CompleteByName,ActualCompletionDate,ProgrammingSummary,TestByName,TestDate,TestResultFlag,TestSummary  from sasr1";
 
+                //    MessageBox.Show("请连接数据库");
+                }
+
+                else if (strCb1 == "sasr1.ActualCompletionDate")
+                {
+                    //查找某一年
+                    if (strTx4.Length <= 4)
+                    {
+                        strSelect = "Select TrackNo,''as TodayCompletedtasks,FixVersion,ActualCompletionDate,ProgrammingSummary,TestSummary,Form,RequestDescription,CompleteByName,TestByName,TestDate,TestResultFlag as TestResult from sasr1 where " + strCb1 + " " + "like" + " " + "'%" + strTx4 + "%'";
+                    }
+                    else
+                    {
+                        //查找具体某一天
+                        DateTime date = Convert.ToDateTime(strTx4);
+                        strSelect = "Select TrackNo,''as TodayCompletedtasks,FixVersion,ActualCompletionDate,ProgrammingSummary,TestSummary,Form,RequestDescription,CompleteByName,TestByName,TestDate,TestResultFlag as TestResult from sasr1 where ActualCompletionDate='" + date + "'";
+                    }
+                }
+                else if (strCb1 == "sasr1.TestDate")
+                {
+                    //查找某一年
+                    if (strTx4.Length <= 4)
+                    {
+                        strSelect = "Select TrackNo,''as TodayCompletedtasks,FixVersion,ActualCompletionDate,ProgrammingSummary,TestSummary,Form,RequestDescription,CompleteByName,TestByName,TestDate,TestResultFlag as TestResult from sasr1 where " + strCb1 + " " + "like" + " " + "'%" + strTx4 + "%'";
+                    }
+                    else
+                    {
+                        //查找具体某一天
+                        DateTime date = Convert.ToDateTime(strTx4);
+                        strSelect = "Select TrackNo,''as TodayCompletedtasks,FixVersion,ActualCompletionDate,ProgrammingSummary,TestSummary,Form,RequestDescription,CompleteByName,TestByName,TestDate,TestResultFlag as TestResult from sasr1 where ActualCompletionDate='" + date + "'";
+                    }
+
                 }
                 else
                 {
@@ -381,6 +538,37 @@ namespace AWF
                     //strSasr2 = "select CONVERT(varchar(100), GETDATE(), 106) as Date,TrackNo,TableName,FieldName,Type,LEN,SPFlag,TriggerFlag,Remark from Sasr2 ";
                     strSasr2 = "select b.ActualCompletionDate as Date, a.TrackNo,a.TableName,a.FieldName,a.Type as DateType,a.LEN as Length,a.SPFlag as StoreProcedureName,a.TriggerName,a.Remark from Sasr2 a,sasr1 b where a.TrackNo=b.TrackNo";
                 }
+
+                else if (strCb1 == "sasr1.ActualCompletionDate")
+                {
+                    //查找某一年
+                    if (strTx4.Length <= 4)
+                    {
+                        strSasr2 = "Select TrackNo,''as TodayCompletedtasks,FixVersion,ActualCompletionDate,ProgrammingSummary,TestSummary,Form,RequestDescription,CompleteByName,TestByName,TestDate,TestResultFlag as TestResult from sasr1 where " + strCb1 + " " + "like" + " " + "'%" + strTx4 + "%'";
+                    }
+                    else
+                    {
+                        //查找具体某一天
+                        DateTime date = Convert.ToDateTime(strTx4);
+                        strSasr2 = "Select TrackNo,''as TodayCompletedtasks,FixVersion,ActualCompletionDate,ProgrammingSummary,TestSummary,Form,RequestDescription,CompleteByName,TestByName,TestDate,TestResultFlag as TestResult from sasr1 where ActualCompletionDate='" + date + "'";
+                    }
+                }
+
+                else if (strCb1 == "sasr1.TestDate")
+                {
+                    //查找某一年
+                    if (strTx4.Length <= 4)
+                    {
+                        strSasr2 = "Select TrackNo,''as TodayCompletedtasks,FixVersion,ActualCompletionDate,ProgrammingSummary,TestSummary,Form,RequestDescription,CompleteByName,TestByName,TestDate,TestResultFlag as TestResult from sasr1 where " + strCb1 + " " + "like" + " " + "'%" + strTx4 + "%'";
+                    }
+                    else
+                    {
+                        //查找具体某一天
+                        DateTime date = Convert.ToDateTime(strTx4);
+                        strSasr2 = "Select TrackNo,''as TodayCompletedtasks,FixVersion,ActualCompletionDate,ProgrammingSummary,TestSummary,Form,RequestDescription,CompleteByName,TestByName,TestDate,TestResultFlag as TestResult from sasr1 where ActualCompletionDate='" + date + "'";
+                    }
+                }
+
                 else
                 {
                     //   strSasr2 = "select CONVERT(varchar(100), GETDATE(), 106) as Date,TrackNo,TableName,FieldName,Type,LEN,SPFlag,TriggerFlag,Remark from Sasr2 where " + strCb1 + " " + "like" + " " + "'%" + strTx4 + "%'"; 
@@ -423,7 +611,17 @@ namespace AWF
             string date2 = String.Format("{0:yyMMdd}", date1).ToString();
             int date3 = int.Parse(date2);
             // string fileSource = @"\\192.168.0.250\Net Application\" + date3 + " Update(Version 7.0.3." + fileSourceDir + ")";
-            string fileSource = @"\\192.168.0.250\Net Application\110905 Update(Version " + vlue + "." + fileSourceDir + ")";
+            string fileSource = @"\\192.168.0.250\Net Application\" + date1.ToString("yyMMdd") + " Update(Version " + vlue + "." + fileSourceDir + ")";
+            while (!Directory.Exists(fileSource))
+            {
+
+                date1 = date1.AddDays(-1);
+                fileSource = @"\\192.168.0.250\Net Application\" + date1.ToString("yyMMdd") + " Update(Version " + vlue + "." + fileSourceDir + ")";
+                if (date1.Date < DateTime.Now.AddYears(-3))
+                {
+                    return;
+                }
+            }
             //创建的版本号+1
             int filebackupDir = fileSourceDir + 1;
             //时间
@@ -481,6 +679,7 @@ namespace AWF
             {
                 Serverlist.Clear();
                 cbm_Table.Items.Clear();
+                cbm_Table.Text = "";
                 strTableName = "sasr1";
                 Get_TableName(strTableName);
             }
