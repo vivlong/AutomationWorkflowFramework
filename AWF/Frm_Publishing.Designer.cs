@@ -30,6 +30,7 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.gb_Publish = new System.Windows.Forms.GroupBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.cmd_CreatFolder = new System.Windows.Forms.Button();
             this.cmd_OpenFolder = new System.Windows.Forms.Button();
             this.cmd_Published2Zip = new System.Windows.Forms.Button();
@@ -39,7 +40,6 @@
             this.txtFolder = new System.Windows.Forms.TextBox();
             this.btn_rebuild = new System.Windows.Forms.Button();
             this.btn_publish = new System.Windows.Forms.Button();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.gb_BuildNo = new System.Windows.Forms.GroupBox();
             this.cbo_SpecialName = new System.Windows.Forms.ComboBox();
             this.lbl_BuildNo = new System.Windows.Forms.Label();
@@ -95,6 +95,15 @@
             this.gb_Publish.TabIndex = 86;
             this.gb_Publish.TabStop = false;
             this.gb_Publish.Text = "发布版本";
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(504, 63);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(330, 42);
+            this.progressBar1.TabIndex = 63;
+            this.progressBar1.Visible = false;
             // 
             // cmd_CreatFolder
             // 
@@ -193,15 +202,6 @@
             this.btn_publish.TabIndex = 70;
             this.btn_publish.Text = "发布";
             this.btn_publish.UseVisualStyleBackColor = true;
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(247, 95);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(330, 42);
-            this.progressBar1.TabIndex = 63;
-            this.progressBar1.Visible = false;
             // 
             // gb_BuildNo
             // 
