@@ -34,7 +34,7 @@ namespace AWF
             connString = @"Server=" + txt_SqlAddress.Text + ";DataBase=" + cbm_database.Text + ";UID=" + txt_user.Text + ";PWD=" + txt_password.Text + ";";
             dt = AWF.Classes.SqlHelper.ExecuteDataTable(connString, strCommand);
             Get_TableName(strTableName);
-            AWF.Classes.ConfHelper.SaveConf(txt_SqlAddress.Text, cbm_database.Text, txt_user.Text, txt_password.Text);
+            AWF.Classes.ConfHelper.SaveConf(txt_SqlAddress.Text, cbm_database.Text, txt_user.Text, txt_password.Text,tex_url.Text);
             MessageBox.Show("数据库连接成功");
         }
 
@@ -51,10 +51,8 @@ namespace AWF
             }
             //不允许dataGridView显示添加行，负责导出时会报最后一行未实例化错误
             dataGridView1.AllowUserToAddRows = false;
-
             try
             {
-
                 FileStream readfile = new FileStream(fileDialog.FileName, FileMode.Open, FileAccess.Read);
 
                 //HSSFWorkbook适合word2003 XSSFWorkbook适应2007
@@ -77,9 +75,6 @@ namespace AWF
                     mySheet.SetColumnWidth(11, 12 * 256);
 
 
-
-
-                    //mySheet.DefaultColumnWidth = 1* 256;             
                     ICellStyle styleHead = workbook.CreateCellStyle();
                     IFont font = workbook.CreateFont();
                     font.FontHeightInPoints = 12;
@@ -127,6 +122,7 @@ namespace AWF
                     // HSSFRow mySourceStyleRow = (HSSFRow)mySheet.GetRow(InsertRowIndex - 1);
                     HSSFRow mySourceStyleRow = (HSSFRow)mySheet.CreateRow(0);
 
+
                     try
                     {
                         mySheet.ShiftRows(1, mySheet.LastRowNum, rowCount, true, true);
@@ -149,12 +145,9 @@ namespace AWF
                                 targetCell.CellStyle = sourceCell.CellStyle;
                                 targetCell.SetCellType(sourceCell.CellType);
                             }
-
-
                         }
                     }
                     catch { }
-
 
                     HSSFRow firstTargetRow = (HSSFRow)mySheet.GetRow(1);
                     HSSFCell firstSourceCell = null;
@@ -183,14 +176,10 @@ namespace AWF
                     strColumName[5] = "CompleteByName";
                     strColumName[8] = "TestByName";
                     strColumName[9] = "TestDate";
-                    strColumName[10] = "TestResult";
-
-
-
+                    strColumName[10] = "TestResultFlag";
                     //填写表头
                     for (int i = 0; i < dataGridView1.Columns.Count; i++)
                     {
-
                         rowHead.CreateCell(i, CellType.String).SetCellValue(dataGridView1.Columns[strColumName[i]].HeaderText.ToString());
 
                         if (i == 3)
@@ -205,8 +194,8 @@ namespace AWF
                             rowHead.HeightInPoints = 2 * mySheet.DefaultRowHeight * 1 / 20;
 
                         }
-                    }
 
+                    }
 
                     //填写内容
                     for (int i = 0; i < dataGridView1.Rows.Count; i++)
@@ -249,6 +238,8 @@ namespace AWF
 
                             }
 
+
+
                         }
                     }
 
@@ -268,12 +259,13 @@ namespace AWF
                     MessageBox.Show("你所创建的表已存在");
                 }
             }
-            catch
+            catch 
             {
-
                 MessageBox.Show("请先关闭当前的Excel文件");
             }
         }
+ 
+
 
         public static void ExportToExcel2(DataGridView dataGridView2, string sheetName2)
         {
@@ -424,6 +416,7 @@ namespace AWF
             cbm_database.Text = cj.RequestXls.DbName;
             txt_user.Text = cj.RequestXls.DbUid;
             txt_password.Text = cj.RequestXls.DbPwd;
+            tex_url.Text = cj.RequestXls.TextUrl;
             this.connString = @"Server=" + txt_SqlAddress.Text + ";DataBase=" + cbm_database.Text + ";UID=" + txt_user.Text + ";PWD=" + txt_password.Text + ";";
         }
 
@@ -480,7 +473,7 @@ namespace AWF
                 if (strCb1 == "")
                 {
                     //  strSelect = "Select TrackNo,''as TodayCompletedtasks,FixVersion,ActualCompletionDate,ProgrammingSummary,TestSummary,Form,RequestDescription,CompleteByName,TestByName,TestDate,TestResultFlag as TestResult from sasr1";
-                    strSelect = "Select TrackNo,Form,RequestDescription,''as TodayCompletedtasks,FixVersion,CompleteByName,ActualCompletionDate,ProgrammingSummary,TestByName,TestDate,TestResultFlag,TestSummary  from sasr1";
+                    strSelect = "Select TrackNo,Form,RequestDescription,''as TodayCompletedtasks,FixVersion,CompleteByName,ActualCompletionDate,ProgrammingSummary,TestByName,TestDate,TestResultFlag as TestResult,TestSummary  from sasr1";
 
                 //    MessageBox.Show("请连接数据库");
                 }
@@ -605,18 +598,20 @@ namespace AWF
 
         private void btn_Copy_Click(object sender, EventArgs e)
         {
+           
             int fileSourceDir = int.Parse(txt_versionName.Text.Trim());
             string vlue = com_version.SelectedItem.ToString();
             DateTime date1 = DateTime.Now;
             string date2 = String.Format("{0:yyMMdd}", date1).ToString();
             int date3 = int.Parse(date2);
             // string fileSource = @"\\192.168.0.250\Net Application\" + date3 + " Update(Version 7.0.3." + fileSourceDir + ")";
-            string fileSource = @"\\192.168.0.250\Net Application\" + date1.ToString("yyMMdd") + " Update(Version " + vlue + "." + fileSourceDir + ")";
+           // string fileSource = @"\\192.168.0.250\Net Application\" + date1.ToString("yyMMdd") + " Update(Version " + vlue + "." + fileSourceDir + ")";
+            string fileSource = @"\\" + tex_url.Text.ToString()+ @"\" + date1.ToString("yyMMdd") + " Update(Version " + vlue + "." + fileSourceDir + ")";
             while (!Directory.Exists(fileSource))
             {
 
                 date1 = date1.AddDays(-1);
-                fileSource = @"\\192.168.0.250\Net Application\" + date1.ToString("yyMMdd") + " Update(Version " + vlue + "." + fileSourceDir + ")";
+                fileSource = @"\\" + tex_url.Text.ToString()+ @"\" + date1.ToString("yyMMdd") + " Update(Version " + vlue + "." + fileSourceDir + ")";
                 if (date1.Date < DateTime.Now.AddYears(-3))
                 {
                     return;
@@ -626,7 +621,8 @@ namespace AWF
             int filebackupDir = fileSourceDir + 1;
             //时间
             int date4 = date3;
-            string backupDir = @"D:\Request By Deo\" + date4 + " Update(Version 7.0.3." + filebackupDir + ")";
+            //此路径是与复制文件夹同一路径
+            string backupDir = @"\\" + tex_url.Text.ToString() + @"\" + date4 + " Update(Version 7.0.3." + filebackupDir + ")";
             tex_url.Text = backupDir;
             //    string fileType = "xls";
             CopyAllFiles(fileSource, backupDir);
