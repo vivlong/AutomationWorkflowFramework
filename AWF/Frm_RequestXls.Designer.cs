@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cbm_Table = new System.Windows.Forms.ComboBox();
             this.btn_Copy = new System.Windows.Forms.Button();
@@ -57,6 +57,11 @@
             this.txt_edition = new System.Windows.Forms.TextBox();
             this.btn_ExportPage2 = new System.Windows.Forms.Button();
             this.dgv_sasr2 = new System.Windows.Forms.DataGridView();
+            this.cmdVersionSearch = new System.Windows.Forms.Button();
+            this.lblCount = new System.Windows.Forms.Label();
+            this.txtPublishDate = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.gb_ConnetDB.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -68,6 +73,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.txtPublishDate);
+            this.panel1.Controls.Add(this.cmdVersionSearch);
             this.panel1.Controls.Add(this.cbm_Table);
             this.panel1.Controls.Add(this.btn_Copy);
             this.panel1.Controls.Add(this.tex_url);
@@ -86,16 +94,16 @@
             // cbm_Table
             // 
             this.cbm_Table.FormattingEnabled = true;
-            this.cbm_Table.Location = new System.Drawing.Point(230, 58);
+            this.cbm_Table.Location = new System.Drawing.Point(238, 58);
             this.cbm_Table.Name = "cbm_Table";
-            this.cbm_Table.Size = new System.Drawing.Size(152, 27);
+            this.cbm_Table.Size = new System.Drawing.Size(181, 27);
             this.cbm_Table.TabIndex = 39;
             // 
             // btn_Copy
             // 
-            this.btn_Copy.Location = new System.Drawing.Point(712, 89);
+            this.btn_Copy.Location = new System.Drawing.Point(834, 87);
             this.btn_Copy.Name = "btn_Copy";
-            this.btn_Copy.Size = new System.Drawing.Size(75, 23);
+            this.btn_Copy.Size = new System.Drawing.Size(75, 26);
             this.btn_Copy.TabIndex = 35;
             this.btn_Copy.Text = "保存";
             this.btn_Copy.UseVisualStyleBackColor = true;
@@ -103,16 +111,16 @@
             // 
             // tex_url
             // 
-            this.tex_url.Location = new System.Drawing.Point(388, 87);
+            this.tex_url.Location = new System.Drawing.Point(534, 88);
             this.tex_url.Name = "tex_url";
-            this.tex_url.Size = new System.Drawing.Size(302, 24);
+            this.tex_url.Size = new System.Drawing.Size(298, 24);
             this.tex_url.TabIndex = 38;
             // 
             // txt_versionName
             // 
-            this.txt_versionName.Location = new System.Drawing.Point(297, 88);
+            this.txt_versionName.Location = new System.Drawing.Point(303, 88);
             this.txt_versionName.Name = "txt_versionName";
-            this.txt_versionName.Size = new System.Drawing.Size(85, 24);
+            this.txt_versionName.Size = new System.Drawing.Size(152, 24);
             this.txt_versionName.TabIndex = 37;
             // 
             // com_version
@@ -125,16 +133,17 @@
             "8.0.1",
             "8.0.2",
             "8.0.3"});
-            this.com_version.Location = new System.Drawing.Point(230, 87);
+            this.com_version.Location = new System.Drawing.Point(239, 87);
             this.com_version.Name = "com_version";
             this.com_version.Size = new System.Drawing.Size(61, 27);
             this.com_version.TabIndex = 36;
+            this.com_version.SelectedValueChanged += new System.EventHandler(this.com_version_SelectedValueChanged);
             // 
             // btn_Search
             // 
-            this.btn_Search.Location = new System.Drawing.Point(712, 59);
+            this.btn_Search.Location = new System.Drawing.Point(833, 56);
             this.btn_Search.Name = "btn_Search";
-            this.btn_Search.Size = new System.Drawing.Size(75, 23);
+            this.btn_Search.Size = new System.Drawing.Size(75, 26);
             this.btn_Search.TabIndex = 33;
             this.btn_Search.Text = "查找";
             this.btn_Search.UseVisualStyleBackColor = true;
@@ -142,9 +151,9 @@
             // 
             // txt_search
             // 
-            this.txt_search.Location = new System.Drawing.Point(388, 58);
+            this.txt_search.Location = new System.Drawing.Point(425, 58);
             this.txt_search.Name = "txt_search";
-            this.txt_search.Size = new System.Drawing.Size(302, 24);
+            this.txt_search.Size = new System.Drawing.Size(402, 24);
             this.txt_search.TabIndex = 32;
             // 
             // gb_ConnetDB
@@ -236,9 +245,9 @@
             // 
             // btn_Connect
             // 
-            this.btn_Connect.Location = new System.Drawing.Point(829, 16);
+            this.btn_Connect.Location = new System.Drawing.Point(829, 14);
             this.btn_Connect.Name = "btn_Connect";
-            this.btn_Connect.Size = new System.Drawing.Size(78, 25);
+            this.btn_Connect.Size = new System.Drawing.Size(78, 28);
             this.btn_Connect.TabIndex = 41;
             this.btn_Connect.Text = "连接";
             this.btn_Connect.UseVisualStyleBackColor = true;
@@ -260,6 +269,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.lblCount);
             this.tabPage1.Controls.Add(this.txt_editionSasr1);
             this.tabPage1.Controls.Add(this.btn_Export);
             this.tabPage1.Controls.Add(this.dgv_sars1);
@@ -274,15 +284,15 @@
             // txt_editionSasr1
             // 
             this.txt_editionSasr1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txt_editionSasr1.Location = new System.Drawing.Point(96, 332);
+            this.txt_editionSasr1.Location = new System.Drawing.Point(96, 320);
             this.txt_editionSasr1.Name = "txt_editionSasr1";
-            this.txt_editionSasr1.Size = new System.Drawing.Size(100, 24);
+            this.txt_editionSasr1.Size = new System.Drawing.Size(333, 24);
             this.txt_editionSasr1.TabIndex = 17;
             // 
             // btn_Export
             // 
             this.btn_Export.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_Export.Location = new System.Drawing.Point(14, 332);
+            this.btn_Export.Location = new System.Drawing.Point(14, 320);
             this.btn_Export.Name = "btn_Export";
             this.btn_Export.Size = new System.Drawing.Size(75, 23);
             this.btn_Export.TabIndex = 13;
@@ -299,19 +309,20 @@
             this.dgv_sars1.Location = new System.Drawing.Point(3, 3);
             this.dgv_sars1.Name = "dgv_sars1";
             this.dgv_sars1.RowTemplate.Height = 23;
-            this.dgv_sars1.Size = new System.Drawing.Size(1136, 327);
+            this.dgv_sars1.Size = new System.Drawing.Size(1136, 315);
             this.dgv_sars1.TabIndex = 12;
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.txt_ReDes);
             this.tabPage2.Controls.Add(this.txt_edition);
             this.tabPage2.Controls.Add(this.btn_ExportPage2);
             this.tabPage2.Controls.Add(this.dgv_sasr2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 28);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1142, 369);
+            this.tabPage2.Size = new System.Drawing.Size(1142, 363);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "filed";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -350,19 +361,65 @@
             this.dgv_sasr2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv_sasr2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_sasr2.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_sasr2.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_sasr2.Location = new System.Drawing.Point(0, 6);
             this.dgv_sasr2.Name = "dgv_sasr2";
             this.dgv_sasr2.RowTemplate.Height = 23;
             this.dgv_sasr2.Size = new System.Drawing.Size(846, 330);
             this.dgv_sasr2.TabIndex = 0;
+            // 
+            // cmdVersionSearch
+            // 
+            this.cmdVersionSearch.Location = new System.Drawing.Point(457, 87);
+            this.cmdVersionSearch.Name = "cmdVersionSearch";
+            this.cmdVersionSearch.Size = new System.Drawing.Size(75, 27);
+            this.cmdVersionSearch.TabIndex = 41;
+            this.cmdVersionSearch.Text = "查找";
+            this.cmdVersionSearch.UseVisualStyleBackColor = true;
+            this.cmdVersionSearch.Click += new System.EventHandler(this.cmdVersionSearch_Click);
+            // 
+            // lblCount
+            // 
+            this.lblCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblCount.AutoSize = true;
+            this.lblCount.Location = new System.Drawing.Point(525, 325);
+            this.lblCount.Name = "lblCount";
+            this.lblCount.Size = new System.Drawing.Size(45, 19);
+            this.lblCount.TabIndex = 18;
+            this.lblCount.Text = "label1";
+            // 
+            // txtPublishDate
+            // 
+            this.txtPublishDate.Location = new System.Drawing.Point(109, 60);
+            this.txtPublishDate.Name = "txtPublishDate";
+            this.txtPublishDate.Size = new System.Drawing.Size(101, 24);
+            this.txtPublishDate.TabIndex = 42;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(15, 62);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 19);
+            this.label1.TabIndex = 43;
+            this.label1.Text = "生成日期";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 341);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 19);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "label1";
             // 
             // Frm_RequestXls
             // 
@@ -419,6 +476,11 @@
         private System.Windows.Forms.Label lbl_DbPwd;
         private System.Windows.Forms.TextBox txt_password;
         private System.Windows.Forms.Button btn_Connect;
+        private System.Windows.Forms.Button cmdVersionSearch;
+        private System.Windows.Forms.Label lblCount;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtPublishDate;
+        private System.Windows.Forms.Label label2;
 
     }
 }

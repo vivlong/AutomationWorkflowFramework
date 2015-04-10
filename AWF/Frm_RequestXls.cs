@@ -30,7 +30,7 @@ namespace AWF
         private void btn_Connect_Click(object sender, EventArgs e)
         {
             dt.Clear();
-            string strCommand = "Select TrackNo,Form,RequestDescription,''as TodayCompletedtasks,FixVersion,CompleteByName,ActualCompletionDate,ProgrammingSummary,TestByName,TestDate,TestResultFlag,TestSummary from sasr1";
+            string strCommand = "Select TrackNo,''as [Today Completed tasks],FixVersion as [Fix Version],ActualCompletionDate as[Actual Completion Date],ProgrammingSummary as[Programming Summary],TestSummary as[Test Summary],Form,RequestDescription as [Request Description],CompleteByName as[Complete By Name],TestByName as[Test By Name],TestDate as[Test Date],TestResultFlag as [Test Result] from sasr1";
             connString = @"Server=" + txt_SqlAddress.Text + ";DataBase=" + cbm_database.Text + ";UID=" + txt_user.Text + ";PWD=" + txt_password.Text + ";";
             dt = AWF.Classes.SqlHelper.ExecuteDataTable(connString, strCommand);
             Get_TableName(strTableName);
@@ -47,7 +47,7 @@ namespace AWF
             if (fileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 //   return;
-                MessageBox.Show("确定添加表");
+              //  MessageBox.Show("确定添加表");
             }
             //不允许dataGridView显示添加行，负责导出时会报最后一行未实例化错误
             dataGridView1.AllowUserToAddRows = false;
@@ -74,14 +74,25 @@ namespace AWF
                     mySheet.SetColumnWidth(10, 12 * 256);
                     mySheet.SetColumnWidth(11, 12 * 256);
 
+                    //设置字体的颜色
+                    //ICellStyle style_Body = workbook.CreateCellStyle();
+                    //IFont font_Body = workbook.CreateFont();
+                    //font_Body.Boldweight = (short)NPOI.SS.UserModel.FontBoldWeight.Bold;
+                    //font_Body.FontHeightInPoints = 10;
+                    //style_Body.SetFont(font_Body);
+
 
                     ICellStyle styleHead = workbook.CreateCellStyle();
                     IFont font = workbook.CreateFont();
-                    font.FontHeightInPoints = 12;
+                    font.FontHeightInPoints = 10;
+                    font.FontName = "Arial Unicode MS";
                     font.Boldweight = (short)NPOI.SS.UserModel.FontBoldWeight.Bold;
                     styleHead.SetFont(font);
                     styleHead.FillPattern = FillPattern.SolidForeground;
                     styleHead.FillForegroundColor = HSSFColor.Yellow.Index;
+                    styleHead.WrapText = true;
+                    styleHead.Alignment = NPOI.SS.UserModel.HorizontalAlignment.Center;
+                    styleHead.VerticalAlignment = NPOI.SS.UserModel.VerticalAlignment.Center;
                     styleHead.BorderBottom = NPOI.SS.UserModel.BorderStyle.Thin;
                     styleHead.BorderLeft = NPOI.SS.UserModel.BorderStyle.Thin;
                     styleHead.BorderRight = NPOI.SS.UserModel.BorderStyle.Thin;
@@ -89,8 +100,15 @@ namespace AWF
 
 
                     ICellStyle style1 = workbook.CreateCellStyle();
+                         IFont fontStyle= workbook.CreateFont();
+                     fontStyle.FontName = "Arial Unicode MS";
+                    fontStyle.FontHeightInPoints = 10;
+
+                    style1.SetFont(fontStyle);
                     style1.FillPattern = FillPattern.SolidForeground;
-                    style1.FillForegroundColor = HSSFColor.Yellow.Index;
+                     style1.FillForegroundColor = HSSFColor.Yellow.Index;
+                     style1.Alignment = NPOI.SS.UserModel.HorizontalAlignment.Center;
+                     style1.VerticalAlignment = NPOI.SS.UserModel.VerticalAlignment.Center;
                     style1.WrapText = true;
                     style1.Indention = 0;
                     style1.BorderBottom = NPOI.SS.UserModel.BorderStyle.Thin;
@@ -103,8 +121,11 @@ namespace AWF
                     TodayComletedTaskStyle.FillPattern = FillPattern.SolidForeground;
                     TodayComletedTaskStyle.FillForegroundColor = HSSFColor.Yellow.Index;
                     IFont TodayCompletedTaskfont = workbook.CreateFont();
+                    TodayCompletedTaskfont.FontName = "Arial Unicode MS";
                     TodayCompletedTaskfont.Color = HSSFColor.OliveGreen.Red.Index;
                     TodayComletedTaskStyle.SetFont(TodayCompletedTaskfont);
+                    TodayComletedTaskStyle.Alignment = NPOI.SS.UserModel.HorizontalAlignment.Center;
+                    TodayComletedTaskStyle.VerticalAlignment = NPOI.SS.UserModel.VerticalAlignment.Center;
                     TodayComletedTaskStyle.BorderBottom = NPOI.SS.UserModel.BorderStyle.Thin;
                     TodayComletedTaskStyle.BorderLeft = NPOI.SS.UserModel.BorderStyle.Thin;
                     TodayComletedTaskStyle.BorderRight = NPOI.SS.UserModel.BorderStyle.Thin;
@@ -113,9 +134,12 @@ namespace AWF
                     ICellStyle headCellStyle = workbook.CreateCellStyle();
                     headCellStyle.FillPattern = FillPattern.SolidForeground;
                     headCellStyle.FillForegroundColor = HSSFColor.Yellow.Index;
+                    headCellStyle.Alignment = NPOI.SS.UserModel.HorizontalAlignment.Center;
+                    headCellStyle.VerticalAlignment = NPOI.SS.UserModel.VerticalAlignment.Center;
                     IFont headCellfont = workbook.CreateFont();
                     headCellfont.Color = HSSFColor.OliveGreen.Red.Index;
-                    headCellfont.FontHeightInPoints = 12;
+                    headCellfont.FontHeightInPoints = 10;
+                    headCellfont.FontName = "Arial Unicode MS";
                     headCellfont.Boldweight = (short)NPOI.SS.UserModel.FontBoldWeight.Bold;
                     headCellStyle.SetFont(headCellfont);
 
@@ -165,18 +189,18 @@ namespace AWF
 
                     IRow rowHead = mySheet.CreateRow(0);
                     string[] strColumName = new string[12];
-                    strColumName[0] = "TrackNo";
-                    strColumName[3] = "TodayCompletedtasks";
-                    strColumName[4] = "FixVersion";
-                    strColumName[6] = "ActualCompletionDate";
-                    strColumName[7] = "ProgrammingSummary";
-                    strColumName[11] = "TestSummary";
+                    strColumName[0] = "Track No";
+                    strColumName[3] = "Today Completed tasks";
+                    strColumName[4] = "Fix Version";
+                    strColumName[6] = "Actual Completion Date";
+                    strColumName[7] = "Programming Summary";
+                    strColumName[11] = "Test Summary";
                     strColumName[1] = "Form";
-                    strColumName[2] = "RequestDescription";
-                    strColumName[5] = "CompleteByName";
-                    strColumName[8] = "TestByName";
-                    strColumName[9] = "TestDate";
-                    strColumName[10] = "TestResultFlag";
+                    strColumName[2] = "Request Description";
+                    strColumName[5] = "Complete By Name";
+                    strColumName[8] = "Test By Name";
+                    strColumName[9] = "Test Date";
+                    strColumName[10] = "Test Result";
                     //填写表头
                     for (int i = 0; i < dataGridView1.Columns.Count; i++)
                     {
@@ -210,18 +234,21 @@ namespace AWF
                             {
                                 System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
                                 row.CreateCell(j, CellType.String).SetCellValue(System.DateTime.Now.ToString(System.Threading.Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern = "dd MMM,yyyy"));
+                                row.Cells[6].CellStyle = style1;      
                             }
                             else if (j == 9)
                             {
                                 System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
                                 row.CreateCell(j, CellType.String).SetCellValue(System.DateTime.Now.ToString(System.Threading.Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern = "dd MMM,yyyy"));
+                                row.Cells[9].CellStyle = style1; 
                             }
 
                             else
                             {
 
                                 row.CreateCell(j, CellType.String).SetCellValue(dataGridView1.Rows[i].Cells[strColumName[j]].Value.ToString());
-
+                                row.Cells[j].CellStyle = style1; 
+                           
                             }
 
 
@@ -301,8 +328,25 @@ namespace AWF
                     ICellStyle styleExp2 = workbook.CreateCellStyle();
                     IFont font = workbook.CreateFont();
                     font.FontHeightInPoints = 10;
+                    font.FontName = "Arial Unicode MS";
                     font.Boldweight = (short)NPOI.SS.UserModel.FontBoldWeight.Bold;
+                    styleExp2.BorderBottom = NPOI.SS.UserModel.BorderStyle.Thin;
+                      styleExp2.BorderLeft = NPOI.SS.UserModel.BorderStyle.Thin;
+                    styleExp2.BorderRight = NPOI.SS.UserModel.BorderStyle.Thin;
+                    styleExp2.BorderTop = NPOI.SS.UserModel.BorderStyle.Thin;
                     styleExp2.SetFont(font);
+
+
+                    ICellStyle styleExpCell = workbook.CreateCellStyle();
+                    IFont fontExpCell = workbook.CreateFont();
+                    font.FontHeightInPoints = 10;
+                    font.FontName = "Arial Unicode MS";
+               
+                    styleExpCell.BorderBottom = NPOI.SS.UserModel.BorderStyle.Thin;
+                    styleExpCell.BorderLeft = NPOI.SS.UserModel.BorderStyle.Thin;
+                    styleExpCell.BorderRight = NPOI.SS.UserModel.BorderStyle.Thin;
+                    styleExpCell.BorderTop = NPOI.SS.UserModel.BorderStyle.Thin;
+                    styleExpCell.SetFont(fontExpCell);
 
                     HSSFRow mySourceStyleRow = (HSSFRow)mySheet.CreateRow(0);
 
@@ -372,12 +416,14 @@ namespace AWF
                                 // row.CreateCell(j, CellType.String).SetCellValue(System.Threading.Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern = "yyyy/MM/dd");
                                 row.CreateCell(j, CellType.String).SetCellValue(System.DateTime.Now.ToString(System.Threading.Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern = "dd MMM,yyyy"));
                                 row.HeightInPoints = 2 * mySheet.DefaultRowHeight / 20;
+                                row.Cells[0].CellStyle = styleExpCell;
 
                             }
                             else
                             {
                                 row.CreateCell(j, CellType.String).SetCellValue(dataGridView2.Rows[i].Cells[j].Value.ToString());
                                 row.HeightInPoints = 2 * mySheet.DefaultRowHeight / 20;
+                                row.Cells[j].CellStyle = styleExpCell;
 
                             }
 
@@ -418,6 +464,19 @@ namespace AWF
             txt_password.Text = cj.RequestXls.DbPwd;
             tex_url.Text = cj.RequestXls.TextUrl;
             this.connString = @"Server=" + txt_SqlAddress.Text + ";DataBase=" + cbm_database.Text + ";UID=" + txt_user.Text + ";PWD=" + txt_password.Text + ";";
+            Get_TableName(strTableName);
+            try
+            {
+                DataTable dt1 = AWF.Classes.SqlHelper.ExecuteDataTable(connString, "Select GetDate()");
+                if (dt1 != null)
+                {
+                    this.txtPublishDate.Text = Convert.ToDateTime(dt1.Rows[0][0]).ToString("yyyy-MM-dd");
+                }
+            }
+            catch { }
+
+           
+           
         }
 
         private void Get_TableName(string strT)
@@ -462,18 +521,24 @@ namespace AWF
             }
         }
 
+        private string sqlSafe(string strValue)
+        {
+            return strValue.Replace("'", "''");
+        }
+
         private void btn_Search_Click(object sender, EventArgs e)
         {
             string strCb1 = cbm_Table.Text;
-            string strSelect;
-            string strTx4 = txt_search.Text;
+            string strSelect,strFitler;
+            string strTx4 = sqlSafe(txt_search.Text);
+            strSelect = "Select TrackNo AS [Track No],''as [Today Completed tasks],FixVersion as [Fix Version],ActualCompletionDate as[Actual Completion Date],ProgrammingSummary as[Programming Summary],TestSummary as[Test Summary],Form,RequestDescription as [Request Description],CompleteByName as[Complete By Name],TestByName as[Test By Name],TestDate as[Test Date],TestResultFlag as [Test Result] from sasr1 ";
+            string strSasr2 = "select Sasr1.ActualCompletionDate as Date, Sasr2.TrackNo,Sasr2.TableName,Sasr2.FieldName,Sasr2.Type as DateType,Sasr2.LEN as Length,Sasr2.SPFlag as StoreProcedureName,Sasr2.TriggerName,Sasr2.Remark from Sasr2 ,sasr1 where Sasr2.TrackNo=sasr1.TrackNo";
             if (tabControl1.SelectedTab == tabPage1)
             {
                 dt.Clear();
                 if (strCb1 == "")
                 {
-                    //  strSelect = "Select TrackNo,''as TodayCompletedtasks,FixVersion,ActualCompletionDate,ProgrammingSummary,TestSummary,Form,RequestDescription,CompleteByName,TestByName,TestDate,TestResultFlag as TestResult from sasr1";
-                    strSelect = "Select TrackNo,Form,RequestDescription,''as TodayCompletedtasks,FixVersion,CompleteByName,ActualCompletionDate,ProgrammingSummary,TestByName,TestDate,TestResultFlag as TestResult,TestSummary  from sasr1";
+                  // strSelect = "Select TrackNo,Form,RequestDescription,''as TodayCompletedtasks,FixVersion,CompleteByName,ActualCompletionDate,ProgrammingSummary,TestByName,TestDate,TestResultFlag as TestResult,TestSummary  from sasr1";
 
                 //    MessageBox.Show("请连接数据库");
                 }
@@ -483,13 +548,13 @@ namespace AWF
                     //查找某一年
                     if (strTx4.Length <= 4)
                     {
-                        strSelect = "Select TrackNo,''as TodayCompletedtasks,FixVersion,ActualCompletionDate,ProgrammingSummary,TestSummary,Form,RequestDescription,CompleteByName,TestByName,TestDate,TestResultFlag as TestResult from sasr1 where " + strCb1 + " " + "like" + " " + "'%" + strTx4 + "%'";
+                        strSelect = strSelect + " where " + strCb1 + " " + "like" + " " + "'%" + strTx4 + "%'";
                     }
                     else
                     {
                         //查找具体某一天
                         DateTime date = Convert.ToDateTime(strTx4);
-                        strSelect = "Select TrackNo,''as TodayCompletedtasks,FixVersion,ActualCompletionDate,ProgrammingSummary,TestSummary,Form,RequestDescription,CompleteByName,TestByName,TestDate,TestResultFlag as TestResult from sasr1 where ActualCompletionDate='" + date + "'";
+                        strSelect = strSelect + " where ActualCompletionDate='" + date + "'";
                     }
                 }
                 else if (strCb1 == "sasr1.TestDate")
@@ -497,39 +562,40 @@ namespace AWF
                     //查找某一年
                     if (strTx4.Length <= 4)
                     {
-                        strSelect = "Select TrackNo,''as TodayCompletedtasks,FixVersion,ActualCompletionDate,ProgrammingSummary,TestSummary,Form,RequestDescription,CompleteByName,TestByName,TestDate,TestResultFlag as TestResult from sasr1 where " + strCb1 + " " + "like" + " " + "'%" + strTx4 + "%'";
+                        strSelect = strSelect + " where " + strCb1 + " " + "like" + " " + "'%" + strTx4 + "%'";
                     }
                     else
                     {
                         //查找具体某一天
                         DateTime date = Convert.ToDateTime(strTx4);
-                        strSelect = "Select TrackNo,''as TodayCompletedtasks,FixVersion,ActualCompletionDate,ProgrammingSummary,TestSummary,Form,RequestDescription,CompleteByName,TestByName,TestDate,TestResultFlag as TestResult from sasr1 where ActualCompletionDate='" + date + "'";
+                        strSelect = strSelect + " where ActualCompletionDate='" + date + "'";
                     }
 
                 }
                 else
                 {
-                    // "Select TrackNo,Form,RequestDescription,''as TodayCompletedtasks,FixVersion,CompleteByName,ActualCompletionDate,ProgrammingSummary,TestByName,TestDate,TestResultFlag,TestSummary  from sasr1
-                    strSelect = "Select TrackNo,Form,RequestDescription,''as TodayCompletedtasks,FixVersion,CompleteByName,ActualCompletionDate,ProgrammingSummary,TestByName,TestDate,TestResultFlag,TestSummary  from sasr1 where " + strCb1 + " " + "like" + " " + "'%" + strTx4 + "%'";
+                    // "Select TrackNo,Form,RequestDescription,''as  [Today Completed tasks],FixVersion,CompleteByName,ActualCompletionDate,ProgrammingSummary,TestByName,TestDate,TestResultFlag,TestSummary  from sasr1
+                //    strSelect = "Select TrackNo,Form,RequestDescription,''as TodayCompletedtasks,FixVersion,CompleteByName,ActualCompletionDate,ProgrammingSummary,TestByName,TestDate,TestResultFlag,TestSummary  from sasr1 where " + strCb1 + " " + "like" + " " + "'%" + strTx4 + "%'";
+                    strSelect = strSelect + " where " + strCb1 + " " + "like" + " " + "'%" + strTx4 + "%'";      
                 }
+                //strSelect = strSelect + strFitler;
                 DataTable dt2 = new DataTable();
                 dt2 = AWF.Classes.SqlHelper.ExecuteDataTable(connString, strSelect);
                 dgv_sars1.DataSource = dt2;
-                dgv_sars1.Columns["TrackNo"].ReadOnly = true;
+                dgv_sars1.Columns["Track No"].ReadOnly = true;
                 dgv_sars1.AllowUserToResizeRows = true;
                 dgv_sars1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
                 dgv_sars1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
                 dgv_sars1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-                dgv_sars1.Columns["TodayCompletedtasks"].DefaultCellStyle.ForeColor = System.Drawing.Color.Red;
+                dgv_sars1.Columns["Today Completed tasks"].DefaultCellStyle.ForeColor = System.Drawing.Color.Red;
                 dgv_sars1.RowsDefaultCellStyle.BackColor = Color.Yellow;
             }
             else
             {
-                string strSasr2;
                 if (strCb1 == "")
                 {
                     //strSasr2 = "select CONVERT(varchar(100), GETDATE(), 106) as Date,TrackNo,TableName,FieldName,Type,LEN,SPFlag,TriggerFlag,Remark from Sasr2 ";
-                    strSasr2 = "select b.ActualCompletionDate as Date, a.TrackNo,a.TableName,a.FieldName,a.Type as DateType,a.LEN as Length,a.SPFlag as StoreProcedureName,a.TriggerName,a.Remark from Sasr2 a,sasr1 b where a.TrackNo=b.TrackNo";
+                 
                 }
 
                 else if (strCb1 == "sasr1.ActualCompletionDate")
@@ -537,13 +603,13 @@ namespace AWF
                     //查找某一年
                     if (strTx4.Length <= 4)
                     {
-                        strSasr2 = "Select TrackNo,''as TodayCompletedtasks,FixVersion,ActualCompletionDate,ProgrammingSummary,TestSummary,Form,RequestDescription,CompleteByName,TestByName,TestDate,TestResultFlag as TestResult from sasr1 where " + strCb1 + " " + "like" + " " + "'%" + strTx4 + "%'";
+                        strSasr2 =strSasr2 +" AND " + strCb1 + " " + "like" + " " + "'%" + strTx4 + "%'";
                     }
                     else
                     {
                         //查找具体某一天
                         DateTime date = Convert.ToDateTime(strTx4);
-                        strSasr2 = "Select TrackNo,''as TodayCompletedtasks,FixVersion,ActualCompletionDate,ProgrammingSummary,TestSummary,Form,RequestDescription,CompleteByName,TestByName,TestDate,TestResultFlag as TestResult from sasr1 where ActualCompletionDate='" + date + "'";
+                        strSasr2 = strSasr2 + " AND ActualCompletionDate='" + date + "'";
                     }
                 }
 
@@ -552,20 +618,20 @@ namespace AWF
                     //查找某一年
                     if (strTx4.Length <= 4)
                     {
-                        strSasr2 = "Select TrackNo,''as TodayCompletedtasks,FixVersion,ActualCompletionDate,ProgrammingSummary,TestSummary,Form,RequestDescription,CompleteByName,TestByName,TestDate,TestResultFlag as TestResult from sasr1 where " + strCb1 + " " + "like" + " " + "'%" + strTx4 + "%'";
+                        strSasr2 = strSasr2 + " AND " + strCb1 + " " + "like" + " " + "'%" + strTx4 + "%'";
                     }
                     else
                     {
                         //查找具体某一天
                         DateTime date = Convert.ToDateTime(strTx4);
-                        strSasr2 = "Select TrackNo,''as TodayCompletedtasks,FixVersion,ActualCompletionDate,ProgrammingSummary,TestSummary,Form,RequestDescription,CompleteByName,TestByName,TestDate,TestResultFlag as TestResult from sasr1 where ActualCompletionDate='" + date + "'";
+                        strSasr2 = strSasr2 + " AND ActualCompletionDate='" + date + "'";
                     }
                 }
 
                 else
                 {
                     //   strSasr2 = "select CONVERT(varchar(100), GETDATE(), 106) as Date,TrackNo,TableName,FieldName,Type,LEN,SPFlag,TriggerFlag,Remark from Sasr2 where " + strCb1 + " " + "like" + " " + "'%" + strTx4 + "%'"; 
-                    strSasr2 = "select Sasr1.ActualCompletionDate as Date, Sasr2.TrackNo,Sasr2.TableName,Sasr2.FieldName,Sasr2.Type as DateType,Sasr2.LEN as Length,Sasr2.SPFlag as StoreProcedureName,Sasr2.TriggerName,Sasr2.Remark from Sasr2 ,sasr1  where Sasr2.TrackNo=Sasr1.TrackNo and " + strCb1 + " " + "like" + " " + "'%" + strTx4 + "%'";
+                    strSasr2 = strSasr2 + " and " + strCb1 + " " + "like" + " " + "'%" + strTx4 + "%'";
                 }
                 DataTable dt_page2 = new DataTable();
                 dt_page2 = AWF.Classes.SqlHelper.ExecuteDataTable(connString, strSasr2);
@@ -621,8 +687,9 @@ namespace AWF
             int filebackupDir = fileSourceDir + 1;
             //时间
             int date4 = date3;
-            //此路径是与复制文件夹同一路径
-            string backupDir = @"\\" + tex_url.Text.ToString() + @"\" + date4 + " Update(Version 7.0.3." + filebackupDir + ")";
+            //此路径是与复制文件夹同一路径 自己本机测试的话要自己新建文件夹存储
+            // string backupDir = @"\\" + tex_url.Text.ToString() + @"\" + date4 + " Update(Version " + vlue + "." + filebackupDir + ")";
+            string backupDir = @"D:\Request By Deo\" + date4 + " Update(Version " + vlue + "." + filebackupDir + ")";
             tex_url.Text = backupDir;
             //    string fileType = "xls";
             CopyAllFiles(fileSource, backupDir);
@@ -685,6 +752,98 @@ namespace AWF
                 strTableName = "sasr2";
                 Get_TableName(strTableName);
             }
+        }
+
+        private void com_version_SelectedValueChanged(object sender, EventArgs e)
+        {
+            string NewP = Classes.Modfunction.baseDPath + "New SysFreight Source " + this.com_version .SelectedItem.ToString().Replace(".", "") + @"\SysFreight\SysFreightMain\SysFreight.vbproj.user";
+            if (AWF.Classes.Modfunction.pingIPAddress("192.168.0.236"))
+            {
+                if (File.Exists(NewP))
+                {
+                    using (StreamReader objReader = new StreamReader(NewP))
+                    {
+                        string sLine = "";
+                        System.Collections.ArrayList LineList = new System.Collections.ArrayList();
+                        while (sLine != null)
+                        {
+                            sLine = objReader.ReadLine();
+                            if (!string.IsNullOrEmpty(sLine))
+                                LineList.Add(sLine);
+                        }
+                        string CurrentVersion = LineList[11].ToString();
+                        CurrentVersion = CurrentVersion.Replace("<ApplicationRevision>", "");
+                        CurrentVersion = CurrentVersion.Replace("</ApplicationRevision>", "");
+                        CurrentVersion = CurrentVersion.Replace(" ", "");
+                        CurrentVersion = CurrentVersion.Trim().ToString();
+                        txt_versionName.Text =( int.Parse(CurrentVersion)-1).ToString();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("当前版本源码路径不存在!");
+                }
+            }
+        }
+
+        private void cmdVersionSearch_Click(object sender, EventArgs e)
+        {
+            string strSelect, strFitler, strFitler2;
+            strSelect = "Select TrackNo AS [Track No],case (right(rtrim(isnull(ProgrammingSummary,'')),4)) when 'Done' then 'Fix this request form' else '' end as [Today Completed tasks],FixVersion as [Fix Version],ActualCompletionDate as[Actual Completion Date],ProgrammingSummary as[Programming Summary],TestSummary as[Test Summary],Form,RequestDescription as [Request Description],CompleteByName as[Complete By Name],TestByName as[Test By Name],TestDate as[Test Date],TestResultFlag as [Test Result] from sasr1 ";
+            string strSasr2 = "select b.ActualCompletionDate as Date, a.TrackNo,a.TableName,a.FieldName,a.Type as DateType,a.LEN as Length,a.SPFlag as StoreProcedureName,a.TriggerName,a.Remark from Sasr2 a,sasr1 b where a.TrackNo=b.TrackNo";
+            strFitler = " FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + "%' AND convert(char(10),ActualCompletionDate,20)='" + this.txtPublishDate.Text + "'";
+            strFitler2 = " b.FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + "%' AND convert(char(10),a.ModifyAt,20)='" + this.txtPublishDate.Text + "'";
+            strSelect = strSelect + " Where " + strFitler;
+            strSasr2 = strSasr2 + " AND " + strFitler2;
+            DataTable dt_Select = new DataTable();
+            dt_Select = AWF.Classes.SqlHelper.ExecuteDataTable(connString, strSelect);
+            for (int intI = 0; intI < dt_Select.Rows.Count; intI++)
+            {
+                if (dt_Select.Rows[intI]["Today Completed tasks"] == null || dt_Select.Rows[intI]["Today Completed tasks"] =="")
+                {
+                    string strFixInfo;
+                    int intIndex = 0;
+                    intIndex = dt_Select.Rows[intI]["Programming Summary"].ToString().IndexOf(this.txtPublishDate.Text.Substring(3).Replace ("-",""));
+                    strFixInfo = dt_Select.Rows[intI]["Programming Summary"].ToString().Substring(intIndex-1);
+                    string[] strInfo;
+                    if (strFixInfo.IndexOf(":")>0)
+                    { 
+                    strInfo = strFixInfo.Substring(strFixInfo.IndexOf(":")).Split( ':');
+                    string Fix;
+                    Fix = "";
+                    if (dt_Select.Rows[intI]["Test Summary"].ToString().IndexOf(strInfo[1].Trim()) > 0)
+                    {
+                        Fix = dt_Select.Rows[intI]["Test Summary"].ToString().Substring(dt_Select.Rows[intI]["Test Summary"].ToString().IndexOf(strInfo[1].Trim()) +strInfo[1].Trim().Length  + 1);
+                        dt_Select.Rows[intI]["Today Completed tasks"] = Fix;
+                    }
+                    if (Fix == "")
+                    {
+                        string strProgr = dt_Select.Rows[intI]["Programming Summary"].ToString();
+                        strProgr=strProgr.Substring(strProgr.LastIndexOf( this.com_version.SelectedItem.ToString()));
+
+                        if (dt_Select.Rows[intI]["Test Summary"].ToString().IndexOf(strProgr.Trim()) > 0)
+                    {
+                        Fix = dt_Select.Rows[intI]["Test Summary"].ToString().Substring(dt_Select.Rows[intI]["Test Summary"].ToString().IndexOf(strProgr.Trim()) + strProgr.Trim().Length + 1);
+                        dt_Select.Rows[intI]["Today Completed tasks"] = Fix;
+                    }
+                    }
+                    }
+                }
+            }
+                dgv_sars1.DataSource = dt_Select; 
+            dgv_sars1.Columns["Track No"].ReadOnly = true;
+            dgv_sars1.AllowUserToResizeRows = true;
+            dgv_sars1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
+            dgv_sars1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dgv_sars1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgv_sars1.Columns["Today Completed tasks"].DefaultCellStyle.ForeColor = System.Drawing.Color.Red;
+            dgv_sars1.RowsDefaultCellStyle.BackColor = Color.Yellow;
+            DataTable dt_Select2 = new DataTable();
+            dt_Select2 = AWF.Classes.SqlHelper.ExecuteDataTable(connString, strSasr2);
+            dgv_sasr2.DataSource = dt_Select2;
+            lblCount.Text = "总行数 ： " + (dgv_sars1.Rows.Count-1).ToString();
+            label2.Text = "总行数 ： " + (dgv_sasr2.Rows.Count - 1).ToString();
+            txt_editionSasr1.Text = DateTime.Now.ToString("yyMMdd") + " V_" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text;
         }
     }
 }
