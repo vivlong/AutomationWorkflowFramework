@@ -17,6 +17,8 @@ namespace AWF.Classes
                 public string DbName { get; set; }
                 public string DbUid { get; set; }
                 public string DbPwd { get; set; }
+
+                public string TextUrl { get;set;}
             }
             public requestXls RequestXls;
         }
@@ -43,7 +45,7 @@ namespace AWF.Classes
             return cj;
         }
 
-        public static void SaveConf(string strDbServer, string strDbName, string strDbUid, string strDbPwd)
+        public static void SaveConf(string strDbServer, string strDbName, string strDbUid, string strDbPwd, string strTextUrl)
         {
             confJson cj = new confJson();
             string strConfPath = System.Windows.Forms.Application.StartupPath + @"\config.json";
@@ -52,6 +54,8 @@ namespace AWF.Classes
             cj.RequestXls.DbName = strDbName;
             cj.RequestXls.DbUid = strDbUid;
             cj.RequestXls.DbPwd = strDbPwd;
+            cj.RequestXls.TextUrl = strTextUrl;
+
             try
             {
                 using (StreamWriter sw = new StreamWriter(strConfPath, false))
