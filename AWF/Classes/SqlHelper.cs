@@ -575,7 +575,7 @@ namespace AWF.Classes
                 DataSet ds = new DataSet();
 
                 // 填充DataSet. 
-                da.Fill(ds);
+                 da.Fill(ds);
 
                 cmd.Parameters.Clear();
 
