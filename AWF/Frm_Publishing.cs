@@ -334,7 +334,7 @@ namespace AWF
                         }
                         Clipboard.SetDataObject(verName + specialText + " send to 250.");
                         DialogResult dgrt = MessageBox.Show("发送成功! 需要立即备份源码吗?","Message",MessageBoxButtons.YesNo);
-                        if (dgrt == System.Windows.Forms.DialogResult.OK)
+                        if (dgrt == System.Windows.Forms.DialogResult.Yes)
                         {
                             if (cbo_SpecialName.Text.Length > 0)
                             {
