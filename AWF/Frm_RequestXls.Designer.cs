@@ -323,7 +323,7 @@
             // 
             this.lblCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblCount.AutoSize = true;
-            this.lblCount.Location = new System.Drawing.Point(525, 313);
+            this.lblCount.Location = new System.Drawing.Point(1069, 295);
             this.lblCount.Name = "lblCount";
             this.lblCount.Size = new System.Drawing.Size(45, 19);
             this.lblCount.TabIndex = 18;
@@ -332,15 +332,15 @@
             // txt_editionSasr1
             // 
             this.txt_editionSasr1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txt_editionSasr1.Location = new System.Drawing.Point(96, 308);
+            this.txt_editionSasr1.Location = new System.Drawing.Point(96, 290);
             this.txt_editionSasr1.Name = "txt_editionSasr1";
-            this.txt_editionSasr1.Size = new System.Drawing.Size(333, 24);
+            this.txt_editionSasr1.Size = new System.Drawing.Size(776, 24);
             this.txt_editionSasr1.TabIndex = 17;
             // 
             // btn_Export
             // 
             this.btn_Export.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_Export.Location = new System.Drawing.Point(14, 308);
+            this.btn_Export.Location = new System.Drawing.Point(14, 290);
             this.btn_Export.Name = "btn_Export";
             this.btn_Export.Size = new System.Drawing.Size(75, 23);
             this.btn_Export.TabIndex = 13;
@@ -350,6 +350,7 @@
             // 
             // dgv_sars1
             // 
+            this.dgv_sars1.AllowUserToAddRows = false;
             this.dgv_sars1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -357,8 +358,10 @@
             this.dgv_sars1.Location = new System.Drawing.Point(3, 3);
             this.dgv_sars1.Name = "dgv_sars1";
             this.dgv_sars1.RowTemplate.Height = 23;
-            this.dgv_sars1.Size = new System.Drawing.Size(1136, 303);
+            this.dgv_sars1.Size = new System.Drawing.Size(1136, 285);
             this.dgv_sars1.TabIndex = 12;
+            this.dgv_sars1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_sars1_CellFormatting);
+            this.dgv_sars1.CellValueNeeded += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.dgv_sars1_CellValueNeeded);
             // 
             // tabPage2
             // 
@@ -397,7 +400,7 @@
             // txt_edition
             // 
             this.txt_edition.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_edition.Location = new System.Drawing.Point(933, 312);
+            this.txt_edition.Location = new System.Drawing.Point(139, 339);
             this.txt_edition.Name = "txt_edition";
             this.txt_edition.Size = new System.Drawing.Size(100, 24);
             this.txt_edition.TabIndex = 16;
@@ -406,7 +409,7 @@
             // btn_ExportPage2
             // 
             this.btn_ExportPage2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_ExportPage2.Location = new System.Drawing.Point(852, 313);
+            this.btn_ExportPage2.Location = new System.Drawing.Point(58, 337);
             this.btn_ExportPage2.Name = "btn_ExportPage2";
             this.btn_ExportPage2.Size = new System.Drawing.Size(75, 23);
             this.btn_ExportPage2.TabIndex = 1;
@@ -416,6 +419,7 @@
             // 
             // dgv_sasr2
             // 
+            this.dgv_sasr2.AllowUserToAddRows = false;
             this.dgv_sasr2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv_sasr2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
