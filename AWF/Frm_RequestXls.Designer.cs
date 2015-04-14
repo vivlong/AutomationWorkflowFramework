@@ -28,8 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.disCurrentDate = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtPublishDate = new System.Windows.Forms.TextBox();
+            this.cmdVersionSearch = new System.Windows.Forms.Button();
             this.cbm_Table = new System.Windows.Forms.ComboBox();
             this.btn_Copy = new System.Windows.Forms.Button();
             this.tex_url = new System.Windows.Forms.TextBox();
@@ -49,19 +53,16 @@
             this.btn_Connect = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lblCount = new System.Windows.Forms.Label();
             this.txt_editionSasr1 = new System.Windows.Forms.TextBox();
             this.btn_Export = new System.Windows.Forms.Button();
             this.dgv_sars1 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
             this.txt_ReDes = new System.Windows.Forms.TextBox();
             this.txt_edition = new System.Windows.Forms.TextBox();
             this.btn_ExportPage2 = new System.Windows.Forms.Button();
             this.dgv_sasr2 = new System.Windows.Forms.DataGridView();
-            this.cmdVersionSearch = new System.Windows.Forms.Button();
-            this.lblCount = new System.Windows.Forms.Label();
-            this.txtPublishDate = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.gb_ConnetDB.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -73,6 +74,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.disCurrentDate);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtPublishDate);
             this.panel1.Controls.Add(this.cmdVersionSearch);
@@ -90,6 +92,42 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1152, 498);
             this.panel1.TabIndex = 0;
+            // 
+            // disCurrentDate
+            // 
+            this.disCurrentDate.AutoSize = true;
+            this.disCurrentDate.Location = new System.Drawing.Point(34, 74);
+            this.disCurrentDate.Name = "disCurrentDate";
+            this.disCurrentDate.Size = new System.Drawing.Size(45, 19);
+            this.disCurrentDate.TabIndex = 44;
+            this.disCurrentDate.Text = "label3";
+            this.disCurrentDate.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(15, 62);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 19);
+            this.label1.TabIndex = 43;
+            this.label1.Text = "生成日期";
+            // 
+            // txtPublishDate
+            // 
+            this.txtPublishDate.Location = new System.Drawing.Point(109, 60);
+            this.txtPublishDate.Name = "txtPublishDate";
+            this.txtPublishDate.Size = new System.Drawing.Size(101, 24);
+            this.txtPublishDate.TabIndex = 42;
+            // 
+            // cmdVersionSearch
+            // 
+            this.cmdVersionSearch.Location = new System.Drawing.Point(457, 87);
+            this.cmdVersionSearch.Name = "cmdVersionSearch";
+            this.cmdVersionSearch.Size = new System.Drawing.Size(75, 27);
+            this.cmdVersionSearch.TabIndex = 41;
+            this.cmdVersionSearch.Text = "查找";
+            this.cmdVersionSearch.UseVisualStyleBackColor = true;
+            this.cmdVersionSearch.Click += new System.EventHandler(this.cmdVersionSearch_Click);
             // 
             // cbm_Table
             // 
@@ -281,10 +319,20 @@
             this.tabPage1.Text = "Version Update tasks";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // lblCount
+            // 
+            this.lblCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblCount.AutoSize = true;
+            this.lblCount.Location = new System.Drawing.Point(525, 313);
+            this.lblCount.Name = "lblCount";
+            this.lblCount.Size = new System.Drawing.Size(45, 19);
+            this.lblCount.TabIndex = 18;
+            this.lblCount.Text = "label1";
+            // 
             // txt_editionSasr1
             // 
             this.txt_editionSasr1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txt_editionSasr1.Location = new System.Drawing.Point(96, 320);
+            this.txt_editionSasr1.Location = new System.Drawing.Point(96, 308);
             this.txt_editionSasr1.Name = "txt_editionSasr1";
             this.txt_editionSasr1.Size = new System.Drawing.Size(333, 24);
             this.txt_editionSasr1.TabIndex = 17;
@@ -292,7 +340,7 @@
             // btn_Export
             // 
             this.btn_Export.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_Export.Location = new System.Drawing.Point(14, 320);
+            this.btn_Export.Location = new System.Drawing.Point(14, 308);
             this.btn_Export.Name = "btn_Export";
             this.btn_Export.Size = new System.Drawing.Size(75, 23);
             this.btn_Export.TabIndex = 13;
@@ -309,7 +357,7 @@
             this.dgv_sars1.Location = new System.Drawing.Point(3, 3);
             this.dgv_sars1.Name = "dgv_sars1";
             this.dgv_sars1.RowTemplate.Height = 23;
-            this.dgv_sars1.Size = new System.Drawing.Size(1136, 315);
+            this.dgv_sars1.Size = new System.Drawing.Size(1136, 303);
             this.dgv_sars1.TabIndex = 12;
             // 
             // tabPage2
@@ -326,6 +374,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "filed";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 335);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 19);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "label1";
             // 
             // txt_ReDes
             // 
@@ -361,65 +419,19 @@
             this.dgv_sasr2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv_sasr2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_sasr2.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_sasr2.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_sasr2.Location = new System.Drawing.Point(0, 6);
             this.dgv_sasr2.Name = "dgv_sasr2";
             this.dgv_sasr2.RowTemplate.Height = 23;
             this.dgv_sasr2.Size = new System.Drawing.Size(846, 330);
             this.dgv_sasr2.TabIndex = 0;
-            // 
-            // cmdVersionSearch
-            // 
-            this.cmdVersionSearch.Location = new System.Drawing.Point(457, 87);
-            this.cmdVersionSearch.Name = "cmdVersionSearch";
-            this.cmdVersionSearch.Size = new System.Drawing.Size(75, 27);
-            this.cmdVersionSearch.TabIndex = 41;
-            this.cmdVersionSearch.Text = "查找";
-            this.cmdVersionSearch.UseVisualStyleBackColor = true;
-            this.cmdVersionSearch.Click += new System.EventHandler(this.cmdVersionSearch_Click);
-            // 
-            // lblCount
-            // 
-            this.lblCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblCount.AutoSize = true;
-            this.lblCount.Location = new System.Drawing.Point(525, 325);
-            this.lblCount.Name = "lblCount";
-            this.lblCount.Size = new System.Drawing.Size(45, 19);
-            this.lblCount.TabIndex = 18;
-            this.lblCount.Text = "label1";
-            // 
-            // txtPublishDate
-            // 
-            this.txtPublishDate.Location = new System.Drawing.Point(109, 60);
-            this.txtPublishDate.Name = "txtPublishDate";
-            this.txtPublishDate.Size = new System.Drawing.Size(101, 24);
-            this.txtPublishDate.TabIndex = 42;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 62);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 19);
-            this.label1.TabIndex = 43;
-            this.label1.Text = "生成日期";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 341);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 19);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "label1";
             // 
             // Frm_RequestXls
             // 
@@ -481,6 +493,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtPublishDate;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label disCurrentDate;
 
     }
 }
