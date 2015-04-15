@@ -70,6 +70,7 @@ namespace AWF
                 try
                 {
                     ISheet mySheet = workbook.CreateSheet(sheetName);
+                    workbook.SetActiveSheet(workbook.GetSheetIndex(mySheet));
                     //设置表格的宽度
                     mySheet.SetColumnWidth(2, 50 * 256);
                     mySheet.SetColumnWidth(3, 30 * 256);
@@ -349,12 +350,16 @@ namespace AWF
                 catch
                 {
                     MessageBox.Show("你所创建的表已存在");
+                    dataGridView1.AllowUserToAddRows = true;
+                  
                     return false;
                 }
             }
             catch 
             {
                 MessageBox.Show("请先关闭当前的Excel文件");
+                dataGridView1.AllowUserToAddRows = true;
+                  
                 return false;
             }
         }
@@ -581,6 +586,7 @@ namespace AWF
                 if (ExportToExcel(dgv_sars1, editon, "") == true)
                 {
                     MessageBox.Show("导出数据成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dgv_sars1.AllowUserToAddRows = true;
                 }
             }
         }
@@ -667,7 +673,7 @@ namespace AWF
                 dgv_sars1.AllowUserToResizeRows = true;
                 dgv_sars1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
                 dgv_sars1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-                dgv_sars1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                dgv_sars1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;           
                 dgv_sars1.Columns["Today Completed tasks"].DefaultCellStyle.ForeColor = System.Drawing.Color.Red;
                 dgv_sars1.RowsDefaultCellStyle.BackColor = Color.Yellow;
             }
@@ -767,11 +773,11 @@ namespace AWF
             //创建的版本号+1
             int filebackupDir = fileSourceDir + 1;
             //时间
-            int date4 = date3;
+            int date4 = int.Parse(this.txtPublishDate .Text.Replace("-","").Substring(2));
        
             //此路径是与复制文件夹同一路径 自己本机测试的话要自己新建文件夹存储
-        //  string backupDir = @"\\" + tex_url.Text.ToString() + @"\" + date4 + " Update(Version " + vlue + "." + filebackupDir + ")";
-          string backupDir =  @"\\" + tex_url.Text.ToString() + @"\" + date4 + " Update(Version " + vlue + "." + filebackupDir + ")";
+           // string backupDir = @"D:\Request By Deo\" + date4 + " Update(Version " + vlue + "." + filebackupDir + ")";
+              string backupDir =  @"\\" + tex_url.Text.ToString() + @"\" + date4 + " Update(Version " + vlue + "." + filebackupDir + ")";
             tex_url.Text = backupDir;
             //    string fileType = "xls";
             CopyAllFiles(fileSource, backupDir);
@@ -874,9 +880,12 @@ namespace AWF
 
         private void cmdVersionSearch_Click(object sender, EventArgs e)
         {
+             tex_url.Text = "192.168.0.250\\Net Application";
             string strSelect, strFitler, strFitler2;
             strSelect = "Select TrackNo AS [Track No],case (right(rtrim(isnull(ProgrammingSummary,'')),4)) when 'Done' then 'Fix this request form' else '' end as [Today Completed tasks],FixVersion as [Fix Version],ActualCompletionDate as[Actual Completion Date],ProgrammingSummary as[Programming Summary],TestSummary as[Test Summary],Form,RequestDescription as [Request Description],CompleteByName as[Complete By Name],TestByName as[Test By Name],TestDate as[Test Date],TestResultFlag as [Test Result] from sasr1 ";
             string strSasr2 = "select b.ActualCompletionDate as Date, a.TrackNo,a.TableName,a.FieldName,a.Type as DateType,a.LEN as Length,a.SPFlag as StoreProcedureName,a.TriggerName,a.Remark from Sasr2 a,sasr1 b where a.TrackNo=b.TrackNo";
+            
+            
             if (disCurrentDate.Text == this.txtPublishDate.Text)
             {
                 strFitler = " FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + "%' AND convert(char(10),ActualCompletionDate,20)='" + this.txtPublishDate.Text + "'";
@@ -884,7 +893,7 @@ namespace AWF
             }
             else
             {
-                strFitler = "(( FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + "%' AND convert(char(10),ActualCompletionDate,20)='" + this.txtPublishDate.Text + "') OR ( FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + "%' AND ProgrammingSummary like '%" + this.txtPublishDate.Text.Trim().Replace("-","").Substring(3) + "%'))";
+                strFitler = "(( FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + "%' AND convert(char(10),ActualCompletionDate,20)='" + this.txtPublishDate.Text + "') OR ( FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + "%'))";
                 strFitler2 = "(( b.FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + "%' AND convert(char(10),a.ModifyAt,20)='" + this.txtPublishDate.Text + "'))";
             }
             strSelect = strSelect + " Where " + strFitler + " order by TrackNo desc";
@@ -893,46 +902,69 @@ namespace AWF
             dt_Select = AWF.Classes.SqlHelper.ExecuteDataTable(connString, strSelect);
             for (int intI = 0; intI < dt_Select.Rows.Count; intI++)
             {
-                if (dt_Select.Rows[intI]["Test Result"].ToString() == "Y")
+
+
+                if (dt_Select.Rows[intI]["Test Result"].ToString() == "Y" || dt_Select.Rows[intI]["Test Result"].ToString() == null || dt_Select.Rows[intI]["Test Result"].ToString()=="")
                 {
 
                     dt_Select.Rows[intI]["Today Completed tasks"] = "Fix this request form";
                 }
-                else if (dt_Select.Rows[intI]["Today Completed tasks"] == null ||dt_Select.Rows[intI]["Today Completed tasks"].ToString()=="")
-                   {
+
+                else if (dt_Select.Rows[intI]["Today Completed tasks"] == null || dt_Select.Rows[intI]["Today Completed tasks"].ToString() == "")
+                {
                     string strFixInfo;
                     int intIndex = 0;
-                    intIndex = dt_Select.Rows[intI]["Programming Summary"].ToString().IndexOf(this.txtPublishDate.Text.Substring(3).Replace ("-",""));
-                    strFixInfo = dt_Select.Rows[intI]["Programming Summary"].ToString().Substring(intIndex-1);
+                    intIndex = dt_Select.Rows[intI]["Programming Summary"].ToString().IndexOf(this.txtPublishDate.Text.Substring(3).Replace("-", ""));
+                    if (intIndex <= 0) { intIndex = 1; }
+                    strFixInfo = dt_Select.Rows[intI]["Programming Summary"].ToString().Substring(intIndex - 1);
                     string[] strInfo;
-                    if (strFixInfo.IndexOf(":")>0)
-                    { 
-                    strInfo = strFixInfo.Substring(strFixInfo.IndexOf(":")).Split( ':');
-                    string Fix;
-                    Fix = "";
-                    if (dt_Select.Rows[intI]["Test Summary"].ToString().IndexOf(strInfo[1].Trim()) > 0)
+                    if (strFixInfo.IndexOf(":") > 0)
                     {
-                        Fix = dt_Select.Rows[intI]["Test Summary"].ToString().Substring(dt_Select.Rows[intI]["Test Summary"].ToString().IndexOf(strInfo[1].Trim()) +strInfo[1].Trim().Length  + 1);
-                        dt_Select.Rows[intI]["Today Completed tasks"] = Fix;
-                    }
-                    if (Fix == "")
-                    {
-                        string strProgr = dt_Select.Rows[intI]["Programming Summary"].ToString();
-                        strProgr=strProgr.Substring(strProgr.LastIndexOf( this.com_version.SelectedItem.ToString()));
+                        strInfo = strFixInfo.Substring(strFixInfo.IndexOf(":")).Split(':');
+                        string Fix;
+                        Fix = "";
+                        if (dt_Select.Rows[intI]["Test Summary"].ToString().IndexOf(strInfo[1].Trim()) > 0)
+                        {
+                            Fix = dt_Select.Rows[intI]["Test Summary"].ToString().Substring(dt_Select.Rows[intI]["Test Summary"].ToString().IndexOf(strInfo[1].Trim())- 1);
+                            dt_Select.Rows[intI]["Today Completed tasks"] ="Fix " + Fix;
+                        }
+                        if (Fix == "")
+                        {
+                            string strProgr = dt_Select.Rows[intI]["Programming Summary"].ToString();
+                            strProgr = strProgr.Substring(strProgr.LastIndexOf(this.com_version.SelectedItem.ToString()));
 
-                        if (dt_Select.Rows[intI]["Test Summary"].ToString().IndexOf(strProgr.Trim()) > 0)
-                    {
-                        Fix = dt_Select.Rows[intI]["Test Summary"].ToString().Substring(dt_Select.Rows[intI]["Test Summary"].ToString().IndexOf(strProgr.Trim()) + strProgr.Trim().Length + 1);
-                        dt_Select.Rows[intI]["Today Completed tasks"] = Fix;
-                    }
-                    }
+                            if (dt_Select.Rows[intI]["Test Summary"].ToString().IndexOf(strProgr.Trim()) > 0)
+                            {
+                                Fix = dt_Select.Rows[intI]["Test Summary"].ToString().Substring(dt_Select.Rows[intI]["Test Summary"].ToString().IndexOf(strProgr.Trim()));
+                                string strReject = dt_Select.Rows[intI]["Test Summary"].ToString().Substring(0,dt_Select.Rows[intI]["Test Summary"].ToString().IndexOf(strProgr.Trim())-1);
+                                if (strReject.LastIndexOf("\n") > 0)
+                                { strReject = strReject.Substring(strReject.LastIndexOf("\n") + "\n".Length); }
+
+                                dt_Select.Rows[intI]["Today Completed tasks"] ="Fix " + strReject + Fix;
+                            }
+                        }
+                        if (Fix == "")
+                        {
+                            string strProgr = strInfo[strInfo.Length -1];
+                            strProgr = strProgr.Trim().Substring(5).Trim();
+                            Fix = "";
+                            if (dt_Select.Rows[intI]["Request Description"].ToString().IndexOf(strProgr.Trim()) > 0)
+                            {
+                                Fix = dt_Select.Rows[intI]["Request Description"].ToString().Substring(dt_Select.Rows[intI]["Request Description"].ToString().IndexOf(strProgr.Trim())  );
+                                string strReject = dt_Select.Rows[intI]["Request Description"].ToString().Substring(0, dt_Select.Rows[intI]["Request Description"].ToString().IndexOf(strProgr.Trim()) );
+                                if (strReject.LastIndexOf("\n") > 0)
+                                { strReject = strReject.Substring(strReject.LastIndexOf("\n")+"\n".Length ); }
+                                dt_Select.Rows[intI]["Today Completed tasks"] = "Fix " + strReject + Fix;
+                            }
+                        }
+
                     }
                 }
             }
                 dgv_sars1.DataSource = dt_Select; 
             dgv_sars1.Columns["Track No"].ReadOnly = true;
             dgv_sars1.AllowUserToResizeRows = true;
-            dgv_sars1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
+            dgv_sars1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgv_sars1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dgv_sars1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
          
@@ -941,10 +973,10 @@ namespace AWF
             DataTable dt_Select2 = new DataTable();
             dt_Select2 = AWF.Classes.SqlHelper.ExecuteDataTable(connString, strSasr2);
             dgv_sasr2.DataSource = dt_Select2;
-            lblCount.Text = "总行数 ： " + (dgv_sars1.Rows.Count).ToString();
+            lblCount.Text = "总行数 ： " + (dgv_sars1.Rows.Count-1).ToString();
             label2.Text = "总行数 ： " + (dgv_sasr2.Rows.Count).ToString();
             FieldCount = dgv_sasr2.Rows.Count ;
-            txt_editionSasr1.Text = DateTime.Now.ToString("yyMMdd") + " V_" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text;
+            txt_editionSasr1.Text = this.txtPublishDate.Text.Replace("-", "").Substring(2) + " V_" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text;
         }
 
         private void dgv_sars1_CellValueNeeded(object sender, DataGridViewCellValueEventArgs e)
@@ -966,5 +998,59 @@ namespace AWF
                     e.Value = e.Value.ToString().Trim();
             }
         }
+
+        private void dgv_sars1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+            String strdag_sasr1 = dgv_sars1.Columns[dgv_sars1.CurrentCell.ColumnIndex].HeaderText;
+           if(e.RowIndex>=0 && e.ColumnIndex>=0)
+           {
+               String str_dgv_sasr1_value = dgv_sars1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+              string strSelect = "";
+              txt_RequestDescripiton.Text =  str_dgv_sasr1_value;
+             // DataTable dt_Select = new DataTable();
+
+       
+
+             //  if (strdag_sasr1 == "Request Description")
+             //{ 
+          
+             //   strSelect = "select RequestDescription from sasr1 Where RequestDescription=" + "'" + str_dgv_sasr1_value + "'";
+             //   dt_Select = AWF.Classes.SqlHelper.ExecuteDataTable(connString, strSelect);
+             //   for(int intI = 0; intI < dt_Select.Rows.Count; intI++)
+             //  {
+             //   string strValue = dt_Select.Rows[intI][0].ToString();
+             //   txt_RequestDescripiton.Text = strValue;
+
+             //    }
+              //}
+
+              // else if (strdag_sasr1 == "Track No")
+              // {
+              //     strSelect = "select TrackNo from sasr1 Where TrackNo=" + "'" + str_dgv_sasr1_value + "'";
+              //     dt_Select = AWF.Classes.SqlHelper.ExecuteDataTable(connString, strSelect);
+              //     for (int intI = 0; intI < dt_Select.Rows.Count; intI++)
+              //     {
+              //         string strValue = dt_Select.Rows[intI][0].ToString();
+              //         txt_RequestDescripiton.Text = strValue;
+
+              //     }
+              // }
+
+           }
+
+           
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmdUpdateGrid_Click(object sender, EventArgs e)
+        {
+            dgv_sars1.CurrentCell .Value = this.txt_RequestDescripiton.Text;
+        }
+   
     }
 }
