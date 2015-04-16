@@ -41,33 +41,40 @@ namespace AWF
         }
 
         //导出
-        public static void ExportToExcel(DataGridView dataGridView1, string sheetName)
+        public static Boolean ExportToExcel(DataGridView dataGridView1, string sheetName,string strFilePathAndName)
         {
+            if (dataGridView1.RowCount == 0) { return false ; }
             int rowCount = dataGridView1.RowCount;
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.Filter = "Microsoft Excel|*.xls";
-            if (fileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (strFilePathAndName==null || strFilePathAndName == "")
             {
-                //   return;
-              //  MessageBox.Show("确定添加表");
-            }
+                OpenFileDialog fileDialog = new OpenFileDialog();
+                fileDialog.Filter = "Microsoft Excel|*.xls";
+                if (fileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    strFilePathAndName = fileDialog.FileName;
+                    //   return;
+                    //  MessageBox.Show("确定添加表");
+                }
+            }            
             //不允许dataGridView显示添加行，负责导出时会报最后一行未实例化错误
             dataGridView1.AllowUserToAddRows = false;
             try
             {
-                FileStream readfile = new FileStream(fileDialog.FileName, FileMode.Open, FileAccess.Read);
-
+                FileStream readfile = new FileStream(strFilePathAndName, FileMode.Open, FileAccess.Read);
+          
                 //HSSFWorkbook适合word2003 XSSFWorkbook适应2007
                 HSSFWorkbook workbook = new HSSFWorkbook(readfile);
+          
                 //工作蒲
                 //  ISheet mySheetG = workbook.GetSheet(sheetName); 
                 try
                 {
                     ISheet mySheet = workbook.CreateSheet(sheetName);
+                    workbook.SetActiveSheet(workbook.GetSheetIndex(mySheet));
                     //设置表格的宽度
                     mySheet.SetColumnWidth(2, 50 * 256);
                     mySheet.SetColumnWidth(3, 30 * 256);
-                    mySheet.SetColumnWidth(4, 9* 256);
+                    mySheet.SetColumnWidth(4, 11* 256);
                     mySheet.SetColumnWidth(5, 12 * 256);
                     mySheet.SetColumnWidth(6, 12 * 256);
                     mySheet.SetColumnWidth(7, 12 * 256);
@@ -110,9 +117,10 @@ namespace AWF
                      style1.FillForegroundColor = HSSFColor.Yellow.Index;
                      style1.Alignment = NPOI.SS.UserModel.HorizontalAlignment.Left;
                      style1.VerticalAlignment = NPOI.SS.UserModel.VerticalAlignment.Center;
-                    style1.WrapText = true;
+                   style1.WrapText = true;
                     //缩进
                     style1.Indention = 0;
+                  
                     style1.BorderBottom = NPOI.SS.UserModel.BorderStyle.Thin;
                     style1.BorderLeft = NPOI.SS.UserModel.BorderStyle.Thin;
                     style1.BorderRight = NPOI.SS.UserModel.BorderStyle.Thin;
@@ -146,6 +154,7 @@ namespace AWF
                     TodayCompletedTaskfont.FontName = "Arial Unicode MS";
                     TodayCompletedTaskfont.Color = HSSFColor.OliveGreen.Red.Index;
                     TodayComletedTaskStyle.SetFont(TodayCompletedTaskfont);
+                    TodayComletedTaskStyle.WrapText = true;
                     TodayComletedTaskStyle.Alignment = NPOI.SS.UserModel.HorizontalAlignment.Left;
                     TodayComletedTaskStyle.VerticalAlignment = NPOI.SS.UserModel.VerticalAlignment.Center;
                     TodayComletedTaskStyle.BorderBottom = NPOI.SS.UserModel.BorderStyle.Thin;
@@ -232,12 +241,12 @@ namespace AWF
                         {
 
                             rowHead.Cells[3].CellStyle = headCellStyle;
-                            rowHead.HeightInPoints = 2 * mySheet.DefaultRowHeight * 1 / 20;
+                            rowHead.HeightInPoints = 4* mySheet.DefaultRowHeight * 1 / 20;
                         }
                         else
                         {
                             rowHead.Cells[i].CellStyle = styleHead;
-                            rowHead.HeightInPoints = 2 * mySheet.DefaultRowHeight * 1 / 20;
+                            rowHead.HeightInPoints = 4 * mySheet.DefaultRowHeight * 1 / 20;
 
                         }
 
@@ -250,36 +259,53 @@ namespace AWF
 
                         for (int j = 0; j < dataGridView1.Columns.Count; j++)
                         {
-
-                               if (j == 6)
+                            if (j == 2)
                             {
-                               System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
-                              //  row.CreateCell(j, CellType.String).SetCellValue(System.DateTime.Now.ToString(System.Threading.Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern = "dd MMM,yyyy"));
+                                string strValue="";
+                                strValue=dataGridView1.Rows[i].Cells[strColumName[j]].Value.ToString();
+                                while (strValue.IndexOf("  ")>0)
+                                {
+                                 strValue=   strValue.Replace("  ", " ");
+                                }
+                               strValue= strValue.Replace("\n", "\t");
+                           
+                                row.CreateCell(j, CellType.String).SetCellValue(strValue);  
+                            
+                            }
+
+                            else if (j == 6)
+                            {
+                                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
                                 string strValue = "";
 
                                 if (dataGridView1.Rows[i].Cells[strColumName[j]].Value != null && dataGridView1.Rows[i].Cells[strColumName[j]].Value.ToString().Length > 0)
                                 {
                                     strValue = ((DateTime)dataGridView1.Rows[i].Cells[strColumName[j]].Value).ToString("dd MMM,yyyy");
                                 }
+
                                 row.CreateCell(j, CellType.String).SetCellValue(strValue);
+
+
                             }
                             else if (j == 9)
                             {
                                 System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
                                 string strValue = "";
+
                                 if (dataGridView1.Rows[i].Cells[strColumName[j]].Value != null && dataGridView1.Rows[i].Cells[strColumName[j]].Value.ToString().Length > 0)
                                 {
                                     strValue = ((DateTime)dataGridView1.Rows[i].Cells[strColumName[j]].Value).ToString("dd MMM,yyyy");
                                 }
-                                row.CreateCell(j, CellType.String).SetCellValue(strValue);                               
+
+                                row.CreateCell(j, CellType.String).SetCellValue(strValue);
                             }
 
 
                             else
                             {
-                                  
-                              
-                                    row.CreateCell(j, CellType.String).SetCellValue(dataGridView1.Rows[i].Cells[strColumName[j]].Value.ToString());
+
+
+                                row.CreateCell(j, CellType.String).SetCellValue(dataGridView1.Rows[i].Cells[strColumName[j]].Value.ToString().Trim());
 
                             }
 
@@ -309,47 +335,57 @@ namespace AWF
                         }
                     }
 
-                    using (FileStream stream = File.OpenWrite(fileDialog.FileName))
+                    using (FileStream stream = File.OpenWrite(strFilePathAndName))
                     {
 
                         workbook.Write(stream);
                         stream.Close();
                         readfile.Close();
                     }
-                    MessageBox.Show("导出数据成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("导出数据成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     GC.Collect();
+                    return true;
                 }
 
                 catch
                 {
                     MessageBox.Show("你所创建的表已存在");
+                    dataGridView1.AllowUserToAddRows = true;
+                  
+                    return false;
                 }
             }
             catch 
             {
                 MessageBox.Show("请先关闭当前的Excel文件");
+                dataGridView1.AllowUserToAddRows = true;
+                  
+                return false;
             }
         }
  
 
 
-        public void ExportToExcel2(DataGridView dataGridView2, string sheetName2)
+        public Boolean ExportToExcel2(DataGridView dataGridView2, string sheetName2,string strFileName)
         {
-            if (label2.Text == "") { return; }
+            if (this.dgv_sasr2.RowCount == 0) { return false ; }
+            if (label2.Text == "") { return false ; }
             int rowCount = FieldCount;
-
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.Filter = "Microsoft Excel|*.xls";
-            if (fileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (strFileName == null || strFileName == "")
             {
-                //MessageBox.Show("确定插入数据吗");
-                //  return;
+                OpenFileDialog fileDialog = new OpenFileDialog();
+                fileDialog.Filter = "Microsoft Excel|*.xls";
+                if (fileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    strFileName = fileDialog.FileName;
+                }
             }
+            
             //不允许dataGridView显示添加行，负责导出时会报最后一行未实例化错误
             dataGridView2.AllowUserToAddRows = false;
             try
             {
-                FileStream readfile = new FileStream(fileDialog.FileName, FileMode.Open, FileAccess.Read);
+                FileStream readfile = new FileStream(strFileName, FileMode.Open, FileAccess.Read);
                 HSSFWorkbook workbook = new HSSFWorkbook(readfile);
                 //工作蒲
 
@@ -473,24 +509,26 @@ namespace AWF
 
                     }
 
-                    using (FileStream stream = File.OpenWrite(fileDialog.FileName))
+                    using (FileStream stream = File.OpenWrite(strFileName))
                     {
                         workbook.Write(stream);
                         stream.Close();
                     }
-                    MessageBox.Show("导出数据成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("导出数据成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     GC.Collect();
+                    return true;
                 }
                 catch
                 {
                     MessageBox.Show("所填写的名字不存在");
+                    return false;
                 }
             }
             catch
             { 
                
                     MessageBox.Show("请先关闭当前的Excel文件");
-            
+                    return false;
             }
         }
 
@@ -545,7 +583,11 @@ namespace AWF
             }
             else
             {
-                ExportToExcel(dgv_sars1, editon);
+                if (ExportToExcel(dgv_sars1, editon, "") == true)
+                {
+                    MessageBox.Show("导出数据成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dgv_sars1.AllowUserToAddRows = true;
+                }
             }
         }
 
@@ -559,7 +601,10 @@ namespace AWF
             }
             else
             {
-                ExportToExcel2(dgv_sasr2, editon);
+               if( ExportToExcel2(dgv_sasr2, editon,"")==true)
+               {
+                   MessageBox.Show("导出数据成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+               }
             }
         }
 
@@ -628,7 +673,7 @@ namespace AWF
                 dgv_sars1.AllowUserToResizeRows = true;
                 dgv_sars1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
                 dgv_sars1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-                dgv_sars1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                dgv_sars1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;           
                 dgv_sars1.Columns["Today Completed tasks"].DefaultCellStyle.ForeColor = System.Drawing.Color.Red;
                 dgv_sars1.RowsDefaultCellStyle.BackColor = Color.Yellow;
             }
@@ -706,8 +751,8 @@ namespace AWF
 
         private void btn_Copy_Click(object sender, EventArgs e)
         {
-           
-            int fileSourceDir = int.Parse(txt_versionName.Text.Trim());
+           if(MessageBox.Show ("确认核对完所有信息，Request信息和数据库修改，并要做导出操作？","保存",MessageBoxButtons.YesNo)==  System.Windows.Forms.DialogResult.No ){return ;}
+            int fileSourceDir = int.Parse(txt_versionName.Text.Trim())-1;
             string vlue = com_version.SelectedItem.ToString();
             DateTime date1 = DateTime.Now;
             string date2 = String.Format("{0:yyMMdd}", date1).ToString();
@@ -728,13 +773,17 @@ namespace AWF
             //创建的版本号+1
             int filebackupDir = fileSourceDir + 1;
             //时间
-            int date4 = date3;
+            int date4 = int.Parse(this.txtPublishDate .Text.Replace("-","").Substring(2));
+       
             //此路径是与复制文件夹同一路径 自己本机测试的话要自己新建文件夹存储
-       string backupDir = @"\\" + tex_url.Text.ToString() + @"\" + date4 + " Update(Version " + vlue + "." + filebackupDir + ")";
-   // string backupDir = @"D:\Request By Deo\" + date4 + " Update(Version " + vlue + "." + filebackupDir + ")";
+           // string backupDir = @"D:\Request By Deo\" + date4 + " Update(Version " + vlue + "." + filebackupDir + ")";
+              string backupDir =  @"\\" + tex_url.Text.ToString() + @"\" + date4 + " Update(Version " + vlue + "." + filebackupDir + ")";
             tex_url.Text = backupDir;
             //    string fileType = "xls";
             CopyAllFiles(fileSource, backupDir);
+           ExportToExcel(dgv_sars1, this.txt_editionSasr1.Text.Trim (), backupDir + @"\Version" + vlue + ".xx Update tasks.xls");
+            ExportToExcel2(dgv_sasr2, txt_edition.Text.Trim(), backupDir + @"\Database Change & App List " + vlue.Replace (".","") + ".xls");
+            MessageBox.Show("导出数据成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         //dataGridView 单元格结束编辑时间
@@ -819,6 +868,7 @@ namespace AWF
                         CurrentVersion = CurrentVersion.Replace(" ", "");
                         CurrentVersion = CurrentVersion.Trim().ToString();
                         txt_versionName.Text =( int.Parse(CurrentVersion)-1).ToString();
+                        tex_url.Text = "192.168.0.250\\Net Application";
                     }
                 }
                 else
@@ -830,9 +880,12 @@ namespace AWF
 
         private void cmdVersionSearch_Click(object sender, EventArgs e)
         {
+             tex_url.Text = "192.168.0.250\\Net Application";
             string strSelect, strFitler, strFitler2;
             strSelect = "Select TrackNo AS [Track No],case (right(rtrim(isnull(ProgrammingSummary,'')),4)) when 'Done' then 'Fix this request form' else '' end as [Today Completed tasks],FixVersion as [Fix Version],ActualCompletionDate as[Actual Completion Date],ProgrammingSummary as[Programming Summary],TestSummary as[Test Summary],Form,RequestDescription as [Request Description],CompleteByName as[Complete By Name],TestByName as[Test By Name],TestDate as[Test Date],TestResultFlag as [Test Result] from sasr1 ";
             string strSasr2 = "select b.ActualCompletionDate as Date, a.TrackNo,a.TableName,a.FieldName,a.Type as DateType,a.LEN as Length,a.SPFlag as StoreProcedureName,a.TriggerName,a.Remark from Sasr2 a,sasr1 b where a.TrackNo=b.TrackNo";
+            
+            
             if (disCurrentDate.Text == this.txtPublishDate.Text)
             {
                 strFitler = " FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + "%' AND convert(char(10),ActualCompletionDate,20)='" + this.txtPublishDate.Text + "'";
@@ -840,61 +893,164 @@ namespace AWF
             }
             else
             {
-                strFitler = "(( FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + "%' AND convert(char(10),ActualCompletionDate,20)='" + this.txtPublishDate.Text + "') OR ( FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + "%' AND ProgrammingSummary like '%" + this.txtPublishDate.Text.Trim().Replace("-","").Substring(3) + "%'))";
-                strFitler2 = "(( b.FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + "%' AND convert(char(10),a.ModifyAt,20)='" + this.txtPublishDate.Text + "') or ( b.FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + "%' AND b.ProgrammingSummary like '%" + this.txtPublishDate.Text.Trim().Replace("-", "").Substring(3) + "%'))";
+                strFitler = "(( FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + "%' AND convert(char(10),ActualCompletionDate,20)='" + this.txtPublishDate.Text + "') OR ( FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + "%'))";
+                strFitler2 = "(( b.FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + "%' AND convert(char(10),a.ModifyAt,20)='" + this.txtPublishDate.Text + "'))";
             }
             strSelect = strSelect + " Where " + strFitler + " order by TrackNo desc";
-            strSasr2 = strSasr2 + " AND " + strFitler2 + " Order by a.TableName";
+            strSasr2 = strSasr2 + " AND " + strFitler2 + " Order by b.TrackNo desc,a.TableName";
             DataTable dt_Select = new DataTable();
             dt_Select = AWF.Classes.SqlHelper.ExecuteDataTable(connString, strSelect);
             for (int intI = 0; intI < dt_Select.Rows.Count; intI++)
             {
-                if (dt_Select.Rows[intI]["Today Completed tasks"] == null || dt_Select.Rows[intI]["Today Completed tasks"] =="")
+
+
+                if (dt_Select.Rows[intI]["Test Result"].ToString() == "Y" || dt_Select.Rows[intI]["Test Result"].ToString() == null || dt_Select.Rows[intI]["Test Result"].ToString()=="")
+                {
+
+                    dt_Select.Rows[intI]["Today Completed tasks"] = "Fix this request form";
+                }
+
+                else if (dt_Select.Rows[intI]["Today Completed tasks"] == null || dt_Select.Rows[intI]["Today Completed tasks"].ToString() == "")
                 {
                     string strFixInfo;
                     int intIndex = 0;
-                    intIndex = dt_Select.Rows[intI]["Programming Summary"].ToString().IndexOf(this.txtPublishDate.Text.Substring(3).Replace ("-",""));
-                    strFixInfo = dt_Select.Rows[intI]["Programming Summary"].ToString().Substring(intIndex-1);
+                    intIndex = dt_Select.Rows[intI]["Programming Summary"].ToString().IndexOf(this.txtPublishDate.Text.Substring(3).Replace("-", ""));
+                    if (intIndex <= 0) { intIndex = 1; }
+                    strFixInfo = dt_Select.Rows[intI]["Programming Summary"].ToString().Substring(intIndex - 1);
                     string[] strInfo;
-                    if (strFixInfo.IndexOf(":")>0)
-                    { 
-                    strInfo = strFixInfo.Substring(strFixInfo.IndexOf(":")).Split( ':');
-                    string Fix;
-                    Fix = "";
-                    if (dt_Select.Rows[intI]["Test Summary"].ToString().IndexOf(strInfo[1].Trim()) > 0)
+                    if (strFixInfo.IndexOf(":") > 0)
                     {
-                        Fix = dt_Select.Rows[intI]["Test Summary"].ToString().Substring(dt_Select.Rows[intI]["Test Summary"].ToString().IndexOf(strInfo[1].Trim()) +strInfo[1].Trim().Length  + 1);
-                        dt_Select.Rows[intI]["Today Completed tasks"] = Fix;
-                    }
-                    if (Fix == "")
-                    {
-                        string strProgr = dt_Select.Rows[intI]["Programming Summary"].ToString();
-                        strProgr=strProgr.Substring(strProgr.LastIndexOf( this.com_version.SelectedItem.ToString()));
+                        strInfo = strFixInfo.Substring(strFixInfo.IndexOf(":")).Split(':');
+                        string Fix;
+                        Fix = "";
+                        if (dt_Select.Rows[intI]["Test Summary"].ToString().IndexOf(strInfo[1].Trim()) > 0)
+                        {
+                            Fix = dt_Select.Rows[intI]["Test Summary"].ToString().Substring(dt_Select.Rows[intI]["Test Summary"].ToString().IndexOf(strInfo[1].Trim())- 1);
+                            dt_Select.Rows[intI]["Today Completed tasks"] ="Fix " + Fix;
+                        }
+                        if (Fix == "")
+                        {
+                            string strProgr = dt_Select.Rows[intI]["Programming Summary"].ToString();
+                            strProgr = strProgr.Substring(strProgr.LastIndexOf(this.com_version.SelectedItem.ToString()));
 
-                        if (dt_Select.Rows[intI]["Test Summary"].ToString().IndexOf(strProgr.Trim()) > 0)
-                    {
-                        Fix = dt_Select.Rows[intI]["Test Summary"].ToString().Substring(dt_Select.Rows[intI]["Test Summary"].ToString().IndexOf(strProgr.Trim()) + strProgr.Trim().Length + 1);
-                        dt_Select.Rows[intI]["Today Completed tasks"] = Fix;
-                    }
-                    }
+                            if (dt_Select.Rows[intI]["Test Summary"].ToString().IndexOf(strProgr.Trim()) > 0)
+                            {
+                                Fix = dt_Select.Rows[intI]["Test Summary"].ToString().Substring(dt_Select.Rows[intI]["Test Summary"].ToString().IndexOf(strProgr.Trim()));
+                                string strReject = dt_Select.Rows[intI]["Test Summary"].ToString().Substring(0,dt_Select.Rows[intI]["Test Summary"].ToString().IndexOf(strProgr.Trim())-1);
+                                if (strReject.LastIndexOf("\n") > 0)
+                                { strReject = strReject.Substring(strReject.LastIndexOf("\n") + "\n".Length); }
+
+                                dt_Select.Rows[intI]["Today Completed tasks"] ="Fix " + strReject + Fix;
+                            }
+                        }
+                        if (Fix == "")
+                        {
+                            string strProgr = strInfo[strInfo.Length -1];
+                            strProgr = strProgr.Trim().Substring(5).Trim();
+                            Fix = "";
+                            if (dt_Select.Rows[intI]["Request Description"].ToString().IndexOf(strProgr.Trim()) > 0)
+                            {
+                                Fix = dt_Select.Rows[intI]["Request Description"].ToString().Substring(dt_Select.Rows[intI]["Request Description"].ToString().IndexOf(strProgr.Trim())  );
+                                string strReject = dt_Select.Rows[intI]["Request Description"].ToString().Substring(0, dt_Select.Rows[intI]["Request Description"].ToString().IndexOf(strProgr.Trim()) );
+                                if (strReject.LastIndexOf("\n") > 0)
+                                { strReject = strReject.Substring(strReject.LastIndexOf("\n")+"\n".Length ); }
+                                dt_Select.Rows[intI]["Today Completed tasks"] = "Fix " + strReject + Fix;
+                            }
+                        }
+
                     }
                 }
             }
                 dgv_sars1.DataSource = dt_Select; 
             dgv_sars1.Columns["Track No"].ReadOnly = true;
             dgv_sars1.AllowUserToResizeRows = true;
-            dgv_sars1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
+            dgv_sars1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgv_sars1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dgv_sars1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+         
             dgv_sars1.Columns["Today Completed tasks"].DefaultCellStyle.ForeColor = System.Drawing.Color.Red;
             dgv_sars1.RowsDefaultCellStyle.BackColor = Color.Yellow;
             DataTable dt_Select2 = new DataTable();
             dt_Select2 = AWF.Classes.SqlHelper.ExecuteDataTable(connString, strSasr2);
             dgv_sasr2.DataSource = dt_Select2;
             lblCount.Text = "总行数 ： " + (dgv_sars1.Rows.Count-1).ToString();
-            label2.Text = "总行数 ： " + (dgv_sasr2.Rows.Count - 1).ToString();
-            FieldCount = dgv_sasr2.Rows.Count - 1;
-            txt_editionSasr1.Text = DateTime.Now.ToString("yyMMdd") + " V_" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text;
+            label2.Text = "总行数 ： " + (dgv_sasr2.Rows.Count).ToString();
+            FieldCount = dgv_sasr2.Rows.Count ;
+            txt_editionSasr1.Text = this.txtPublishDate.Text.Replace("-", "").Substring(2) + " V_" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text;
         }
+
+        private void dgv_sars1_CellValueNeeded(object sender, DataGridViewCellValueEventArgs e)
+        {
+            switch (dgv_sars1.Columns[e.ColumnIndex].Name)
+            {
+                case "Request Description":
+
+                    e.Value = dgv_sars1.Rows[e.RowIndex].Cells[dgv_sars1.Columns[e.ColumnIndex].Name].Value.ToString().Trim();
+                    break;
+            } 
+               
+        }
+
+        private void dgv_sars1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            {
+                if (e.Value is string)
+                    e.Value = e.Value.ToString().Trim();
+            }
+        }
+
+        private void dgv_sars1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+            String strdag_sasr1 = dgv_sars1.Columns[dgv_sars1.CurrentCell.ColumnIndex].HeaderText;
+           if(e.RowIndex>=0 && e.ColumnIndex>=0)
+           {
+               String str_dgv_sasr1_value = dgv_sars1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+              string strSelect = "";
+              txt_RequestDescripiton.Text =  str_dgv_sasr1_value;
+             // DataTable dt_Select = new DataTable();
+
+       
+
+             //  if (strdag_sasr1 == "Request Description")
+             //{ 
+          
+             //   strSelect = "select RequestDescription from sasr1 Where RequestDescription=" + "'" + str_dgv_sasr1_value + "'";
+             //   dt_Select = AWF.Classes.SqlHelper.ExecuteDataTable(connString, strSelect);
+             //   for(int intI = 0; intI < dt_Select.Rows.Count; intI++)
+             //  {
+             //   string strValue = dt_Select.Rows[intI][0].ToString();
+             //   txt_RequestDescripiton.Text = strValue;
+
+             //    }
+              //}
+
+              // else if (strdag_sasr1 == "Track No")
+              // {
+              //     strSelect = "select TrackNo from sasr1 Where TrackNo=" + "'" + str_dgv_sasr1_value + "'";
+              //     dt_Select = AWF.Classes.SqlHelper.ExecuteDataTable(connString, strSelect);
+              //     for (int intI = 0; intI < dt_Select.Rows.Count; intI++)
+              //     {
+              //         string strValue = dt_Select.Rows[intI][0].ToString();
+              //         txt_RequestDescripiton.Text = strValue;
+
+              //     }
+              // }
+
+           }
+
+           
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmdUpdateGrid_Click(object sender, EventArgs e)
+        {
+            dgv_sars1.CurrentCell .Value = this.txt_RequestDescripiton.Text;
+        }
+   
     }
 }
