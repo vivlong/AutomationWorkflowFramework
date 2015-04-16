@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txt_ProgramingSummary = new System.Windows.Forms.TextBox();
+            this.cmd_Update = new System.Windows.Forms.Button();
             this.txt_TestSummary = new System.Windows.Forms.TextBox();
             this.cmd_Load = new System.Windows.Forms.Button();
             this.grd_sasr1 = new System.Windows.Forms.DataGridView();
@@ -53,8 +55,6 @@
             this.cbo_Programmer = new System.Windows.Forms.ComboBox();
             this.lbl_trackno = new System.Windows.Forms.Label();
             this.txt_TrackNo = new System.Windows.Forms.TextBox();
-            this.cmd_Update = new System.Windows.Forms.Button();
-            this.txt_ProgramingSummary = new System.Windows.Forms.TextBox();
             this.chk_Today = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_sasr1)).BeginInit();
@@ -84,6 +84,28 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(873, 454);
             this.panel1.TabIndex = 0;
+            // 
+            // txt_ProgramingSummary
+            // 
+            this.txt_ProgramingSummary.Location = new System.Drawing.Point(26, 355);
+            this.txt_ProgramingSummary.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txt_ProgramingSummary.Multiline = true;
+            this.txt_ProgramingSummary.Name = "txt_ProgramingSummary";
+            this.txt_ProgramingSummary.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txt_ProgramingSummary.Size = new System.Drawing.Size(411, 75);
+            this.txt_ProgramingSummary.TabIndex = 109;
+            this.txt_ProgramingSummary.TextChanged += new System.EventHandler(this.txt_ProgramingSummary_TextChanged);
+            // 
+            // cmd_Update
+            // 
+            this.cmd_Update.Location = new System.Drawing.Point(734, 119);
+            this.cmd_Update.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmd_Update.Name = "cmd_Update";
+            this.cmd_Update.Size = new System.Drawing.Size(100, 26);
+            this.cmd_Update.TabIndex = 108;
+            this.cmd_Update.Text = "Update";
+            this.cmd_Update.UseVisualStyleBackColor = true;
+            this.cmd_Update.Click += new System.EventHandler(this.cmd_Update_Click);
             // 
             // txt_TestSummary
             // 
@@ -188,6 +210,7 @@
             this.txt_BuildNo.Name = "txt_BuildNo";
             this.txt_BuildNo.Size = new System.Drawing.Size(103, 24);
             this.txt_BuildNo.TabIndex = 50;
+            this.txt_BuildNo.TextChanged += new System.EventHandler(this.txt_BuildNo_TextChanged);
             // 
             // lbl_SpecialName
             // 
@@ -360,28 +383,6 @@
             this.txt_TrackNo.Size = new System.Drawing.Size(95, 27);
             this.txt_TrackNo.TabIndex = 91;
             this.txt_TrackNo.Leave += new System.EventHandler(this.txt_TrackNo_Leave);
-            // 
-            // cmd_Update
-            // 
-            this.cmd_Update.Location = new System.Drawing.Point(734, 119);
-            this.cmd_Update.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.cmd_Update.Name = "cmd_Update";
-            this.cmd_Update.Size = new System.Drawing.Size(100, 26);
-            this.cmd_Update.TabIndex = 108;
-            this.cmd_Update.Text = "Update";
-            this.cmd_Update.UseVisualStyleBackColor = true;
-            this.cmd_Update.Click += new System.EventHandler(this.cmd_Update_Click);
-            // 
-            // txt_ProgramingSummary
-            // 
-            this.txt_ProgramingSummary.Location = new System.Drawing.Point(26, 355);
-            this.txt_ProgramingSummary.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txt_ProgramingSummary.Multiline = true;
-            this.txt_ProgramingSummary.Name = "txt_ProgramingSummary";
-            this.txt_ProgramingSummary.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txt_ProgramingSummary.Size = new System.Drawing.Size(411, 75);
-            this.txt_ProgramingSummary.TabIndex = 109;
-            this.txt_ProgramingSummary.TextChanged += new System.EventHandler(this.txt_ProgramingSummary_TextChanged);
             // 
             // chk_Today
             // 
