@@ -170,7 +170,7 @@
             this.btn_Menu9.Name = "btn_Menu9";
             this.btn_Menu9.Size = new System.Drawing.Size(40, 68);
             this.btn_Menu9.TabIndex = 18;
-            this.btn_Menu9.Text = "PC信息";
+            this.btn_Menu9.Text = "R\r\nD\r\nB";
             this.btn_Menu9.UseVisualStyleBackColor = false;
             // 
             // btn_Menu8
