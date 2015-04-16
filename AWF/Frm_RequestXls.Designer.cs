@@ -29,7 +29,14 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.disCurrentDate = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtPublishDate = new System.Windows.Forms.TextBox();
+            this.cmdVersionSearch = new System.Windows.Forms.Button();
             this.cbm_Table = new System.Windows.Forms.ComboBox();
             this.btn_Copy = new System.Windows.Forms.Button();
             this.tex_url = new System.Windows.Forms.TextBox();
@@ -49,14 +56,18 @@
             this.btn_Connect = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.txt_RequestDescripiton = new System.Windows.Forms.TextBox();
+            this.lblCount = new System.Windows.Forms.Label();
             this.txt_editionSasr1 = new System.Windows.Forms.TextBox();
             this.btn_Export = new System.Windows.Forms.Button();
             this.dgv_sars1 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
             this.txt_ReDes = new System.Windows.Forms.TextBox();
             this.txt_edition = new System.Windows.Forms.TextBox();
             this.btn_ExportPage2 = new System.Windows.Forms.Button();
             this.dgv_sasr2 = new System.Windows.Forms.DataGridView();
+            this.cmdUpdateGrid = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.gb_ConnetDB.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -68,6 +79,10 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.disCurrentDate);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.txtPublishDate);
+            this.panel1.Controls.Add(this.cmdVersionSearch);
             this.panel1.Controls.Add(this.cbm_Table);
             this.panel1.Controls.Add(this.btn_Copy);
             this.panel1.Controls.Add(this.tex_url);
@@ -83,19 +98,55 @@
             this.panel1.Size = new System.Drawing.Size(1152, 498);
             this.panel1.TabIndex = 0;
             // 
+            // disCurrentDate
+            // 
+            this.disCurrentDate.AutoSize = true;
+            this.disCurrentDate.Location = new System.Drawing.Point(34, 74);
+            this.disCurrentDate.Name = "disCurrentDate";
+            this.disCurrentDate.Size = new System.Drawing.Size(45, 19);
+            this.disCurrentDate.TabIndex = 44;
+            this.disCurrentDate.Text = "label3";
+            this.disCurrentDate.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(15, 62);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 19);
+            this.label1.TabIndex = 43;
+            this.label1.Text = "生成日期";
+            // 
+            // txtPublishDate
+            // 
+            this.txtPublishDate.Location = new System.Drawing.Point(109, 60);
+            this.txtPublishDate.Name = "txtPublishDate";
+            this.txtPublishDate.Size = new System.Drawing.Size(101, 24);
+            this.txtPublishDate.TabIndex = 42;
+            // 
+            // cmdVersionSearch
+            // 
+            this.cmdVersionSearch.Location = new System.Drawing.Point(457, 87);
+            this.cmdVersionSearch.Name = "cmdVersionSearch";
+            this.cmdVersionSearch.Size = new System.Drawing.Size(75, 27);
+            this.cmdVersionSearch.TabIndex = 41;
+            this.cmdVersionSearch.Text = "查找";
+            this.cmdVersionSearch.UseVisualStyleBackColor = true;
+            this.cmdVersionSearch.Click += new System.EventHandler(this.cmdVersionSearch_Click);
+            // 
             // cbm_Table
             // 
             this.cbm_Table.FormattingEnabled = true;
-            this.cbm_Table.Location = new System.Drawing.Point(230, 58);
+            this.cbm_Table.Location = new System.Drawing.Point(238, 58);
             this.cbm_Table.Name = "cbm_Table";
-            this.cbm_Table.Size = new System.Drawing.Size(152, 27);
+            this.cbm_Table.Size = new System.Drawing.Size(181, 27);
             this.cbm_Table.TabIndex = 39;
             // 
             // btn_Copy
             // 
-            this.btn_Copy.Location = new System.Drawing.Point(712, 89);
+            this.btn_Copy.Location = new System.Drawing.Point(834, 87);
             this.btn_Copy.Name = "btn_Copy";
-            this.btn_Copy.Size = new System.Drawing.Size(75, 23);
+            this.btn_Copy.Size = new System.Drawing.Size(75, 26);
             this.btn_Copy.TabIndex = 35;
             this.btn_Copy.Text = "保存";
             this.btn_Copy.UseVisualStyleBackColor = true;
@@ -103,16 +154,16 @@
             // 
             // tex_url
             // 
-            this.tex_url.Location = new System.Drawing.Point(388, 87);
+            this.tex_url.Location = new System.Drawing.Point(534, 88);
             this.tex_url.Name = "tex_url";
-            this.tex_url.Size = new System.Drawing.Size(302, 24);
+            this.tex_url.Size = new System.Drawing.Size(298, 24);
             this.tex_url.TabIndex = 38;
             // 
             // txt_versionName
             // 
-            this.txt_versionName.Location = new System.Drawing.Point(297, 88);
+            this.txt_versionName.Location = new System.Drawing.Point(303, 88);
             this.txt_versionName.Name = "txt_versionName";
-            this.txt_versionName.Size = new System.Drawing.Size(85, 24);
+            this.txt_versionName.Size = new System.Drawing.Size(152, 24);
             this.txt_versionName.TabIndex = 37;
             // 
             // com_version
@@ -125,16 +176,17 @@
             "8.0.1",
             "8.0.2",
             "8.0.3"});
-            this.com_version.Location = new System.Drawing.Point(230, 87);
+            this.com_version.Location = new System.Drawing.Point(239, 87);
             this.com_version.Name = "com_version";
             this.com_version.Size = new System.Drawing.Size(61, 27);
             this.com_version.TabIndex = 36;
+            this.com_version.SelectedValueChanged += new System.EventHandler(this.com_version_SelectedValueChanged);
             // 
             // btn_Search
             // 
-            this.btn_Search.Location = new System.Drawing.Point(712, 59);
+            this.btn_Search.Location = new System.Drawing.Point(833, 56);
             this.btn_Search.Name = "btn_Search";
-            this.btn_Search.Size = new System.Drawing.Size(75, 23);
+            this.btn_Search.Size = new System.Drawing.Size(75, 26);
             this.btn_Search.TabIndex = 33;
             this.btn_Search.Text = "查找";
             this.btn_Search.UseVisualStyleBackColor = true;
@@ -142,9 +194,9 @@
             // 
             // txt_search
             // 
-            this.txt_search.Location = new System.Drawing.Point(388, 58);
+            this.txt_search.Location = new System.Drawing.Point(425, 58);
             this.txt_search.Name = "txt_search";
-            this.txt_search.Size = new System.Drawing.Size(302, 24);
+            this.txt_search.Size = new System.Drawing.Size(402, 24);
             this.txt_search.TabIndex = 32;
             // 
             // gb_ConnetDB
@@ -236,9 +288,9 @@
             // 
             // btn_Connect
             // 
-            this.btn_Connect.Location = new System.Drawing.Point(829, 16);
+            this.btn_Connect.Location = new System.Drawing.Point(829, 14);
             this.btn_Connect.Name = "btn_Connect";
-            this.btn_Connect.Size = new System.Drawing.Size(78, 25);
+            this.btn_Connect.Size = new System.Drawing.Size(78, 28);
             this.btn_Connect.TabIndex = 41;
             this.btn_Connect.Text = "连接";
             this.btn_Connect.UseVisualStyleBackColor = true;
@@ -251,38 +303,62 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(1, 92);
+            this.tabControl1.Location = new System.Drawing.Point(1, 90);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1150, 395);
+            this.tabControl1.Size = new System.Drawing.Size(1150, 408);
             this.tabControl1.TabIndex = 23;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.cmdUpdateGrid);
+            this.tabPage1.Controls.Add(this.txt_RequestDescripiton);
+            this.tabPage1.Controls.Add(this.lblCount);
             this.tabPage1.Controls.Add(this.txt_editionSasr1);
             this.tabPage1.Controls.Add(this.btn_Export);
             this.tabPage1.Controls.Add(this.dgv_sars1);
             this.tabPage1.Location = new System.Drawing.Point(4, 28);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1142, 363);
+            this.tabPage1.Size = new System.Drawing.Size(1142, 376);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Version Update tasks";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // txt_RequestDescripiton
+            // 
+            this.txt_RequestDescripiton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_RequestDescripiton.Location = new System.Drawing.Point(346, 280);
+            this.txt_RequestDescripiton.Multiline = true;
+            this.txt_RequestDescripiton.Name = "txt_RequestDescripiton";
+            this.txt_RequestDescripiton.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txt_RequestDescripiton.Size = new System.Drawing.Size(789, 88);
+            this.txt_RequestDescripiton.TabIndex = 19;
+            // 
+            // lblCount
+            // 
+            this.lblCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblCount.AutoSize = true;
+            this.lblCount.Location = new System.Drawing.Point(18, 321);
+            this.lblCount.Name = "lblCount";
+            this.lblCount.Size = new System.Drawing.Size(45, 19);
+            this.lblCount.TabIndex = 18;
+            this.lblCount.Text = "label1";
+            // 
             // txt_editionSasr1
             // 
             this.txt_editionSasr1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txt_editionSasr1.Location = new System.Drawing.Point(96, 332);
+            this.txt_editionSasr1.Location = new System.Drawing.Point(96, 280);
             this.txt_editionSasr1.Name = "txt_editionSasr1";
-            this.txt_editionSasr1.Size = new System.Drawing.Size(100, 24);
+            this.txt_editionSasr1.Size = new System.Drawing.Size(236, 24);
             this.txt_editionSasr1.TabIndex = 17;
             // 
             // btn_Export
             // 
             this.btn_Export.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_Export.Location = new System.Drawing.Point(14, 332);
+            this.btn_Export.Location = new System.Drawing.Point(14, 280);
             this.btn_Export.Name = "btn_Export";
             this.btn_Export.Size = new System.Drawing.Size(75, 23);
             this.btn_Export.TabIndex = 13;
@@ -292,29 +368,56 @@
             // 
             // dgv_sars1
             // 
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_sars1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_sars1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgv_sars1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_sars1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_sars1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_sars1.Location = new System.Drawing.Point(3, 3);
             this.dgv_sars1.Name = "dgv_sars1";
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_sars1.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_sars1.RowTemplate.Height = 23;
-            this.dgv_sars1.Size = new System.Drawing.Size(1136, 327);
+            this.dgv_sars1.Size = new System.Drawing.Size(1136, 271);
             this.dgv_sars1.TabIndex = 12;
+            this.dgv_sars1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_sars1_CellFormatting);
+            this.dgv_sars1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_sars1_CellMouseClick);
+            this.dgv_sars1.CellValueNeeded += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.dgv_sars1_CellValueNeeded);
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.txt_ReDes);
             this.tabPage2.Controls.Add(this.txt_edition);
             this.tabPage2.Controls.Add(this.btn_ExportPage2);
             this.tabPage2.Controls.Add(this.dgv_sasr2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 28);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1142, 369);
+            this.tabPage2.Size = new System.Drawing.Size(1142, 376);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "filed";
             this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(5, 337);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 19);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "label1";
             // 
             // txt_ReDes
             // 
@@ -327,8 +430,8 @@
             // 
             // txt_edition
             // 
-            this.txt_edition.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_edition.Location = new System.Drawing.Point(933, 312);
+            this.txt_edition.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txt_edition.Location = new System.Drawing.Point(137, 344);
             this.txt_edition.Name = "txt_edition";
             this.txt_edition.Size = new System.Drawing.Size(100, 24);
             this.txt_edition.TabIndex = 16;
@@ -336,8 +439,8 @@
             // 
             // btn_ExportPage2
             // 
-            this.btn_ExportPage2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_ExportPage2.Location = new System.Drawing.Point(852, 313);
+            this.btn_ExportPage2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn_ExportPage2.Location = new System.Drawing.Point(52, 346);
             this.btn_ExportPage2.Name = "btn_ExportPage2";
             this.btn_ExportPage2.Size = new System.Drawing.Size(75, 23);
             this.btn_ExportPage2.TabIndex = 1;
@@ -347,22 +450,34 @@
             // 
             // dgv_sasr2
             // 
+            this.dgv_sasr2.AllowUserToAddRows = false;
             this.dgv_sasr2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv_sasr2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_sasr2.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_sasr2.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgv_sasr2.Location = new System.Drawing.Point(0, 6);
             this.dgv_sasr2.Name = "dgv_sasr2";
             this.dgv_sasr2.RowTemplate.Height = 23;
-            this.dgv_sasr2.Size = new System.Drawing.Size(846, 330);
+            this.dgv_sasr2.Size = new System.Drawing.Size(846, 327);
             this.dgv_sasr2.TabIndex = 0;
+            // 
+            // cmdUpdateGrid
+            // 
+            this.cmdUpdateGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cmdUpdateGrid.Location = new System.Drawing.Point(265, 310);
+            this.cmdUpdateGrid.Name = "cmdUpdateGrid";
+            this.cmdUpdateGrid.Size = new System.Drawing.Size(75, 23);
+            this.cmdUpdateGrid.TabIndex = 20;
+            this.cmdUpdateGrid.Text = "修改";
+            this.cmdUpdateGrid.UseVisualStyleBackColor = true;
+            this.cmdUpdateGrid.Click += new System.EventHandler(this.cmdUpdateGrid_Click);
             // 
             // Frm_RequestXls
             // 
@@ -419,6 +534,14 @@
         private System.Windows.Forms.Label lbl_DbPwd;
         private System.Windows.Forms.TextBox txt_password;
         private System.Windows.Forms.Button btn_Connect;
+        private System.Windows.Forms.Button cmdVersionSearch;
+        private System.Windows.Forms.Label lblCount;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtPublishDate;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label disCurrentDate;
+        private System.Windows.Forms.TextBox txt_RequestDescripiton;
+        private System.Windows.Forms.Button cmdUpdateGrid;
 
     }
 }
