@@ -389,25 +389,25 @@ namespace AWF
 
                        }
                        if (Classes.Modfunction.CheckNull(grd_sasr1.Rows[i].Cells["TestResultFlag"].Value).ToString() == "Y")
-                      {
-                      DialogResult aa = MessageBox.Show("该Request Form 已经Pass了，确定是否更新？", "Message", MessageBoxButtons.YesNo);
-                      if (aa == System.Windows.Forms.DialogResult.Yes)
-                      { 
-                        strSQL = "Update Sasr1 set FixVersion ='" + Classes.Modfunction.CheckNull(grd_sasr1.Rows[i].Cells["FixVersion"].Value).ToString() + "' , ActualCompletionDate ='" + grd_sasr1.Rows[i].Cells["ActualCompletionDate"].Value.ToString() + "' , ProgrammingSummary ='" + m_programmerSummary + "'";
-                        strSQL = strSQL + " , FormName ='" +Classes.Modfunction.CheckNull( grd_sasr1.Rows[i].Cells["FormName"].Value).ToString() + "' Where TrackNo='" + grd_sasr1.Rows[i].Cells["TrackNo"].Value.ToString() + "'";
+                       {
+                           DialogResult aa = MessageBox.Show("该Request Form 已经Pass了，确定是否更新？", "Message", MessageBoxButtons.YesNo);
+                           if (aa == System.Windows.Forms.DialogResult.Yes)
+                           {
+                               strSQL = "Update Sasr1 set FixVersion ='" + Classes.Modfunction.CheckNull(grd_sasr1.Rows[i].Cells["FixVersion"].Value).ToString() + "' , ActualCompletionDate ='" + grd_sasr1.Rows[i].Cells["ActualCompletionDate"].Value.ToString() + "' , ProgrammingSummary ='" + m_programmerSummary + "' , CompleteByName ='" + cbo_Programmer.Text  + "'";
+                               strSQL = strSQL + " , FormName ='" + Classes.Modfunction.CheckNull(grd_sasr1.Rows[i].Cells["FormName"].Value).ToString() + "' Where TrackNo='" + grd_sasr1.Rows[i].Cells["TrackNo"].Value.ToString() + "'";
 
-                         int j = SqlHelper.ExecuteNonQuery(strConn, CommandType.Text, strSQL); 
-                      
-                      }
+                               int j = SqlHelper.ExecuteNonQuery(strConn, CommandType.Text, strSQL);
 
-                      else
-                      {
-                          strSQL = "Update Sasr1 set FixVersion ='" + Classes.Modfunction.CheckNull(grd_sasr1.Rows[i].Cells["FixVersion"].Value).ToString() + "' , ActualCompletionDate ='" + grd_sasr1.Rows[i].Cells["ActualCompletionDate"].Value.ToString() + "' , ProgrammingSummary ='" + m_programmerSummary + "'";
-                          strSQL = strSQL + " , FormName ='" + Classes.Modfunction.CheckNull(grd_sasr1.Rows[i].Cells["FormName"].Value).ToString() + "' Where TrackNo='" + grd_sasr1.Rows[i].Cells["TrackNo"].Value.ToString() + "'";
+                           }
+                       }
+                       else
+                       {
+                           strSQL = "Update Sasr1 set FixVersion ='" + Classes.Modfunction.CheckNull(grd_sasr1.Rows[i].Cells["FixVersion"].Value).ToString() + "' , ActualCompletionDate ='" + grd_sasr1.Rows[i].Cells["ActualCompletionDate"].Value.ToString() + "' , ProgrammingSummary ='" + m_programmerSummary + "' , CompleteByName ='" + cbo_Programmer.Text + "'";
+                           strSQL = strSQL + " , FormName ='" + Classes.Modfunction.CheckNull(grd_sasr1.Rows[i].Cells["FormName"].Value).ToString() + "' Where TrackNo='" + grd_sasr1.Rows[i].Cells["TrackNo"].Value.ToString() + "'";
 
-                          int j = SqlHelper.ExecuteNonQuery(strConn, CommandType.Text, strSQL); 
+                           int j = SqlHelper.ExecuteNonQuery(strConn, CommandType.Text, strSQL);
 
-                      }
+                       }
                   }
                      //  m_strActualCompletionDate = "";
 
@@ -416,7 +416,14 @@ namespace AWF
                    
                    }
                    MessageBox.Show("恭喜你，填写成功！");
-               }
+             
+        }
+
+        private void txt_BuildNo_TextChanged(object sender, EventArgs e)
+        {
+            string strVer = GetVer();
+            m_VersionName = strVer + "." + txt_BuildNo.Text.ToString();
+
         }
       
     }

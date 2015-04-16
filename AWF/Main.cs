@@ -100,7 +100,7 @@ namespace AWF
 
         private void pbMenu9_Click(object sender, EventArgs e)
         {
-            showMdiForm(new Frm_ComputerInfo());
+            showMdiForm(new frm_RequestDB());
         }
 
         private void pbMenu10_Click(object sender, EventArgs e)
