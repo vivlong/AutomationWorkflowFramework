@@ -81,6 +81,35 @@ namespace AWF.Classes
         public static string BIOS_TargetOperatingSystem = "";
         public static string BIOS_Version = "";
 
+        public static string CSHORT_DATE_PATTERN = "dd-MM-yy";
+        public static string CLONG_DATE_PATTERN = "dd-MMM-yy";
+        public static string CSHORT_LDATE_PATTERN = "dd-MM-yyyy";
+        public static string CSHORT_LDATE_PATTERNMask = "00-00-0000";
+        public static string CSHORT_DATETIME_PATTERNMask = "00-00-0000 00:00";
+        public static string CLONG_LDATE_PATTERN = "dd-MMM-yyyy";
+        public static string CLONG_LDATETIMESS_PATTERN = "dd-MMM-yyyy HH:mm:ss";
+        public static string CUSEDATABASE_LDATE_PATTERN = "yyyy-MM-dd";
+        public static string CUSEDATABASE_DATETIME_PATTERN = "yyyy-MM-dd HH:mm";
+        public static string CUSEDATABASE_DATETIMESS_PATTERN = "yyyy-MM-dd HH:mm:ss";
+        public static string CSHORT_DATETIME_PATTERN = "dd-MM-yy HH:mm";
+        public static string CLONG_DATETIME_PATTERN = "dd-MMM-yy HH:mm";
+        public static string CLONG_DATETIMESS_PATTERN = "dd-MMM-yy HH:mm:ss";
+        public static string CSHORT_LDATETIME_PATTERN = "dd-MM-yyyy HH:mm";
+        public static string CLONG_LDATETIME_PATTERN = "dd-MMM-yyyy HH:mm";
+        public static string CSHORT_TIME_PATTERN = "HH:mm";
+        public static string CLONG_TIME_PATTERN = "HH:mm";
+        public static string CNULL_DATE_PATTERN = "dd/MM/yyyy";
+        public static string CNULL_SHORTDATE_PATTERN = "dd/MM/yy";
+        public static string CNULL_DATE = "31/12/1899";
+        public static string CNULL_DATE1 = "31-12-1899";
+        public static string CBLANK_TIME = "  :  ";
+        public static string CBLANK_DATE = "  -  -";
+        public static string CMONTH_FORMAT = "0000/00";
+        public static string CBLANK_MONTH = "    /  ";
+        public static string CSHORT_DATE_FORMAT = "##-##-##";
+        public static string CLONG_DATE_FORMAT = "00->L<LL-00";
+        public static string CSHORT_DATETIME_FORMAT = "00-00-00 00:00";
+        public static string CLONG_DATETIME_FORMAT = "00->L<LL-00 00:00";
         public static object CheckNull(object varResult)
         {
             object CheckNull =  "";                                                     											
@@ -91,6 +120,146 @@ namespace AWF.Classes
             else
             {
                 CheckNull = varResult.ToString();
+            }
+            return CheckNull;
+        }
+
+        public static object CheckNull(object varResult, short DataType)
+        {
+            //DataType 0 = String                                                                           												
+            //DataType 1 = Numeric                                                                           												
+            //DataType 2 = Datetime
+            if(DataType==2){
+                if(System.Threading.Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.IndexOf("MM")<= 0){
+                    string[] str = System.Threading.Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.Split('/');
+                    if(str.Length == 3){
+                         for(Int16 intI = 0; intI<=str.Length - 1;intI++){
+                            if(str[intI].IndexOf("M") > 0){                                
+                                str[intI] = "12";
+                            }
+                            else if(str[intI].IndexOf("d") > 0){
+                                str[intI] = "31";
+                            }
+                            else if(str[intI].IndexOf("y") > 0){
+                                str[intI] = "1899";
+                            }
+                         }
+                        CNULL_DATE = str[0] + "/" + str[1] + "/" + str[2];
+                        CNULL_DATE1 = str[0] + "-" + str[1] + "-" + str[2];
+                    }
+                }
+            }
+            object CheckNull = null;     
+            int outResult;      
+            DateTime outDtResult;                                    											
+            if(varResult == null)
+            {
+                switch (DataType) {
+                    case 1:
+                        CheckNull = 0;
+                        break;
+                    case 2:
+                        CheckNull = Convert.ToDateTime(CNULL_DATE);
+                        break;
+                    case 0:
+                        CheckNull = "";
+                        break;
+                    default:                                                                  												
+                        switch(varResult.GetType().Name){
+                            case "String":
+                            case "Char":
+                                CheckNull = "";
+                                break;
+                            case "Int16":
+                            case "Int32":
+                            case "Int64":
+                            case "Decimal":
+                            case "Double":
+                            case "Single":
+                                CheckNull = 0;
+                                break;
+                            case "Datetime":
+                                CheckNull = Convert.ToDateTime(CNULL_DATE);
+                                break;
+                            default: 
+                                CheckNull = "";
+                                break;
+                        }
+                        break;
+                }
+            }
+            else
+            {
+                switch (DataType){
+                    case 1:
+                        int I;
+                        if(int.TryParse(varResult.ToString(),out outResult)){
+                            if(varResult.GetType().Name == "String" || varResult.GetType().Name == "Char") {
+                                CheckNull = varResult.ToString();
+                            }
+                            else{
+                                CheckNull = varResult;
+                            }
+                        }
+                        else{
+                            CheckNull = 0;
+                        }
+                        break;
+                    case 2:
+                        if(varResult.GetType().Name == "String"){
+                            varResult = varResult.ToString().Replace("  :", "");
+                        }
+                        if (DateTime.TryParse(varResult.ToString(), out outDtResult))
+                        {
+                            if(varResult.GetType().Name == "String"){
+                                CheckNull = Convert.ToDateTime(varResult);
+                            }
+                            else{
+                                CheckNull = varResult;
+                            }
+                        }
+                        else{
+                            CheckNull = Convert.ToDateTime(CNULL_DATE);
+                        }
+                        break;
+                    case 0:
+                        CheckNull = varResult.ToString();
+                        break;
+                    default:                                                                          												
+                        switch(varResult.GetType().Name){
+                            case "String":
+                            case "Char":
+                                CheckNull = varResult;
+                                break;
+                            case "Int16":
+                            case "Int32":
+                            case "Int64":
+                            case "Decimal":
+                            case "Double":
+                            case "Single":
+                                if(int.TryParse(varResult.ToString(),out outResult)){
+                                    CheckNull = varResult;
+                                }
+                                else{
+                                    CheckNull = 0;
+                                }
+                                break;
+                            case "Datetime":
+                                string strDate = varResult.ToString();
+                                strDate = strDate.Replace("  :", "00:00");
+                                if(DateTime.TryParse(strDate,out outDtResult)){
+                                    CheckNull = strDate;
+                                }
+                                else{
+                                    CheckNull =  Convert.ToDateTime(CNULL_DATE);
+                                }
+                                break;
+                            default:
+                                CheckNull = "";
+                                break;
+                        }
+                        break;
+                }
             }
             return CheckNull;
         }
