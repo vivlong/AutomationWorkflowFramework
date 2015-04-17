@@ -158,6 +158,7 @@
             this.cmdAddField.TabIndex = 129;
             this.cmdAddField.Text = "Add";
             this.cmdAddField.UseVisualStyleBackColor = true;
+            this.cmdAddField.Click += new System.EventHandler(this.cmdAddField_Click);
             // 
             // txt_FieldType
             // 
@@ -250,7 +251,7 @@
             // cbo_Table
             // 
             this.cbo_Table.FormattingEnabled = true;
-            this.cbo_Table.Location = new System.Drawing.Point(289, 34);
+            this.cbo_Table.Location = new System.Drawing.Point(292, 34);
             this.cbo_Table.Name = "cbo_Table";
             this.cbo_Table.Size = new System.Drawing.Size(123, 20);
             this.cbo_Table.TabIndex = 119;
@@ -376,6 +377,7 @@
             this.txt_TrackNo.Name = "txt_TrackNo";
             this.txt_TrackNo.Size = new System.Drawing.Size(404, 20);
             this.txt_TrackNo.TabIndex = 91;
+            this.txt_TrackNo.Leave += new System.EventHandler(this.txt_TrackNo_Leave);
             // 
             // frm_RequestDB
             // 
