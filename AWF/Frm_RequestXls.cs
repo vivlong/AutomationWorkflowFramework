@@ -135,6 +135,7 @@ namespace AWF
                     IFont fontstyleCACT = workbook.CreateFont();
                     fontstyleCACT.FontName = "Arial Unicode MS";
                     fontstyleCACT.FontHeightInPoints = 10;
+                    styleCACT.WrapText = true;
                     styleCACT.SetFont(fontstyleCACT);
                     styleCACT.FillPattern = FillPattern.SolidForeground;
                     styleCACT.FillForegroundColor = HSSFColor.Yellow.Index;
@@ -418,7 +419,8 @@ namespace AWF
                     IFont fontExpCell = workbook.CreateFont();
                     font.FontHeightInPoints = 12;
                     font.FontName = "Arial Unicode MS";
-               
+                    styleExpCell.VerticalAlignment = VerticalAlignment.Center;
+                    styleExpCell.Alignment = NPOI.SS.UserModel.HorizontalAlignment.Left;
                     styleExpCell.BorderBottom = NPOI.SS.UserModel.BorderStyle.Thin;
                     styleExpCell.BorderLeft = NPOI.SS.UserModel.BorderStyle.Thin;
                     styleExpCell.BorderRight = NPOI.SS.UserModel.BorderStyle.Thin;
@@ -776,12 +778,17 @@ namespace AWF
             int date4 = int.Parse(this.txtPublishDate .Text.Replace("-","").Substring(2));
        
             //此路径是与复制文件夹同一路径 自己本机测试的话要自己新建文件夹存储
-           // string backupDir = @"D:\Request By Deo\" + date4 + " Update(Version " + vlue + "." + filebackupDir + ")";
-              string backupDir =  @"\\" + tex_url.Text.ToString() + @"\" + date4 + " Update(Version " + vlue + "." + filebackupDir + ")";
+         //    string backupDir = @"D:\Request By Deo\" + date4 + " Update(Version " + vlue + "." + filebackupDir + ")";
+             string backupDir =  @"\\" + tex_url.Text.ToString() + @"\" + date4 + " Update(Version " + vlue + "." + filebackupDir + ")";
             tex_url.Text = backupDir;
             //    string fileType = "xls";
             CopyAllFiles(fileSource, backupDir);
-           ExportToExcel(dgv_sars1, this.txt_editionSasr1.Text.Trim (), backupDir + @"\Version" + vlue + ".xx Update tasks.xls");
+            string strExcelName= backupDir + @"\Version " + vlue + ".xx Update tasks.xls";
+            if ((File.Exists(strExcelName))==false )
+            {
+                strExcelName = backupDir + @"\Version" + vlue + ".xx Update tasks.xls";
+            }
+            ExportToExcel(dgv_sars1, this.txt_editionSasr1.Text.Trim(), strExcelName);
             ExportToExcel2(dgv_sasr2, txt_edition.Text.Trim(), backupDir + @"\Database Change & App List " + vlue.Replace (".","") + ".xls");
             MessageBox.Show("导出数据成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -888,7 +895,7 @@ namespace AWF
             
             if (disCurrentDate.Text == this.txtPublishDate.Text)
             {
-                strFitler = " FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + "%' AND convert(char(10),ActualCompletionDate,20)='" + this.txtPublishDate.Text + "'";
+                strFitler = " (FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + "%' AND convert(char(10),ActualCompletionDate,20)='" + this.txtPublishDate.Text + "')  OR ( FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + "%')";
                 strFitler2 = " b.FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + "%' AND convert(char(10),a.ModifyAt,20)='" + this.txtPublishDate.Text + "'";
             }
             else
@@ -1002,7 +1009,7 @@ namespace AWF
         private void dgv_sars1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
 
-            String strdag_sasr1 = dgv_sars1.Columns[dgv_sars1.CurrentCell.ColumnIndex].HeaderText;
+           // String strdag_sasr1 = dgv_sars1.Columns[dgv_sars1.CurrentCell.ColumnIndex].HeaderText;
            if(e.RowIndex>=0 && e.ColumnIndex>=0)
            {
                String str_dgv_sasr1_value = dgv_sars1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
