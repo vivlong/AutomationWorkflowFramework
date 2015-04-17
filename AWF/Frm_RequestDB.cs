@@ -55,6 +55,11 @@ namespace AWF
                 this.clb_tb.DataSource = dt;
                 this.clb_tb.DisplayMember = "Name";
                 this.clb_tb.ValueMember = "Value";
+                DataTable dtNew = dt.Clone();
+                this.clb_newadd.DataSource = dtNew;
+                this.clb_newadd.DisplayMember = "Name";
+                this.clb_newadd.ValueMember = "Value";
+
                 //for (int intI = 1; intI < dt.Rows.Count; intI++)
                 //{
                 //    clb_tb.Items.Add (dt.Rows[intI]["Name"]);
@@ -134,8 +139,11 @@ namespace AWF
            {
                if (clb_tb.GetItemChecked(i))
                {
-                   clb_newadd.Items.Add(clb_tb.Items[i]);
-               }
+                   DataRow Row;
+                   //((DataRowView)clb_tb.Items[i]).ItemArray;
+                   ((DataTable)(this.clb_newadd.DataSource)).Rows.Add(((DataRowView)clb_tb.Items[i]).Row.ItemArray );
+                   //clb_newadd.Items.Add((DataRow)clb_tb.Items[i]);
+              }
 
 
            }
@@ -218,7 +226,7 @@ namespace AWF
                     string Dtype = dv["type"].ToString();
                     string TableName = dv["Tablename"].ToString();
                     string Dlen = "";
-                    if (Dtype.IndexOf('(') != 0)
+                    if (Dtype.IndexOf('(') > 0)
                     {
                         Dlen = Dtype.ToString().Substring(Dtype.IndexOf('('), Dtype.Length - Dtype.IndexOf('('));
                         Dtype = Dtype.ToString().Substring(0, Dtype.IndexOf('('));
@@ -240,5 +248,37 @@ namespace AWF
             return m_strsql;
 
         }
+
+         private void cmdAddField_Click(object sender, EventArgs e)
+         {
+           DataRow row = ((DataTable)(this.clb_newadd.DataSource)).NewRow();
+             row["name"] = txt_FieldName.Text;
+             row["type"] = txt_FieldType.Text;
+             row["value"] = 1;
+             row["tablename"] = cbo_Table.Text;
+             ((DataTable)(this.clb_newadd.DataSource)).Rows.Add(row);
+             this.clb_newadd.DisplayMember = "Name";
+             this.clb_newadd.ValueMember = "Value";
+         }
+
+         private void txt_TrackNo_Leave(object sender, EventArgs e)
+         {
+             string[] var;
+             var = txt_TrackNo.Text.Split(',');
+             string strsql;
+             string m_strConn = "server=" + strsearviceName + ";uid=" + searviceName + ";pwd=" + strMima + ";database= RequestForm";
+             strsql = "select MAX(lineItemNo+1) as MaxLineItemNo from Sasr2 where TrackNo ='" + var[0] + "'";
+             DataTable dt = SqlHelper.ExecuteDataTable(m_strConn, strsql);
+             if (dt.Rows.Count > 0)
+             {
+                 if (!string.IsNullOrEmpty(dt.Rows[0][0].ToString()))
+                 { textBox1.Text = dt.Rows[0][0].ToString(); }
+                 else
+                 {
+                     textBox1.Text = "1";
+                 }
+
+             }
+         }
     }
 }

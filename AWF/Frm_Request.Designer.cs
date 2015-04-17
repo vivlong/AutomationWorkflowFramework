@@ -211,6 +211,7 @@
             this.txt_BuildNo.Size = new System.Drawing.Size(103, 24);
             this.txt_BuildNo.TabIndex = 50;
             this.txt_BuildNo.TextChanged += new System.EventHandler(this.txt_BuildNo_TextChanged);
+            this.txt_BuildNo.Leave += new System.EventHandler(this.txt_BuildNo_Leave);
             // 
             // lbl_SpecialName
             // 

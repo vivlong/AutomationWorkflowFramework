@@ -246,7 +246,8 @@ namespace AWF
             {
                 if (!string.IsNullOrEmpty(cbo_Programmer.Text.ToString()))
                 { m_strFilter = m_strFilter + "And AssignToName ='" + cbo_Programmer.Text.ToString() + "'"; }
-                
+                if (!string.IsNullOrEmpty(txt_TrackNo.Text.ToString()))
+                { m_strFilter = m_strFilter + "And TrackNo ='" + txt_TrackNo.Text.ToString() + "'"; }
              }
 
             if (m_strFilter !="()")
@@ -286,7 +287,7 @@ namespace AWF
                     else
                     {
                      // dt.Rows[i]["ProgrammingSummary"] = Classes.Modfunction.datetime_today.ToString("yyMMdd") + "(" + m_VersionName + ")" + cbo_Programmer.Text.ToString() + " done ";
-             
+                        dt.Rows[i]["ProgrammingSummary"] = Classes.Modfunction.datetime_today.ToString("yyMMdd") + "(" + m_VersionName + ")" + cbo_Programmer.Text.ToString() + " done ";
                     }
                    
                 }
@@ -356,7 +357,7 @@ namespace AWF
         {
             if(!string.IsNullOrEmpty(cbo_SpecialName.Text.ToString()))
             {
-                m_VersionName = m_VersionName + "(Special" + cbo_SpecialName.Text.ToString() + ")";
+                m_VersionName = m_VersionName + "(Special-" + cbo_SpecialName.Text.ToString() + ")";
             }
         }
 
@@ -423,7 +424,20 @@ namespace AWF
         {
             string strVer = GetVer();
             m_VersionName = strVer + "." + txt_BuildNo.Text.ToString();
+            if (!string.IsNullOrEmpty(cbo_SpecialName.Text.ToString()))
+            {
+                m_VersionName = m_VersionName + "(Special-" + cbo_SpecialName.Text.ToString() + ")";
+            }
+        }
 
+        private void txt_BuildNo_Leave(object sender, EventArgs e)
+        {
+            string strVer = GetVer();
+            m_VersionName = strVer + "." + txt_BuildNo.Text.ToString();
+            if (!string.IsNullOrEmpty(cbo_SpecialName.Text.ToString()))
+            {
+                m_VersionName = m_VersionName + "(Special-" + cbo_SpecialName.Text.ToString() + ")";
+            }
         }
       
     }
