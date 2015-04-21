@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.disCurrentDate = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -56,6 +56,7 @@
             this.btn_Connect = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.cmdUpdateGrid = new System.Windows.Forms.Button();
             this.txt_RequestDescripiton = new System.Windows.Forms.TextBox();
             this.lblCount = new System.Windows.Forms.Label();
             this.txt_editionSasr1 = new System.Windows.Forms.TextBox();
@@ -67,7 +68,6 @@
             this.txt_edition = new System.Windows.Forms.TextBox();
             this.btn_ExportPage2 = new System.Windows.Forms.Button();
             this.dgv_sasr2 = new System.Windows.Forms.DataGridView();
-            this.cmdUpdateGrid = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.gb_ConnetDB.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -326,11 +326,22 @@
             this.tabPage1.Text = "Version Update tasks";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // cmdUpdateGrid
+            // 
+            this.cmdUpdateGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cmdUpdateGrid.Location = new System.Drawing.Point(258, 298);
+            this.cmdUpdateGrid.Name = "cmdUpdateGrid";
+            this.cmdUpdateGrid.Size = new System.Drawing.Size(75, 23);
+            this.cmdUpdateGrid.TabIndex = 20;
+            this.cmdUpdateGrid.Text = "修改";
+            this.cmdUpdateGrid.UseVisualStyleBackColor = true;
+            this.cmdUpdateGrid.Click += new System.EventHandler(this.cmdUpdateGrid_Click);
+            // 
             // txt_RequestDescripiton
             // 
             this.txt_RequestDescripiton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_RequestDescripiton.Location = new System.Drawing.Point(346, 280);
+            this.txt_RequestDescripiton.Location = new System.Drawing.Point(346, 268);
             this.txt_RequestDescripiton.Multiline = true;
             this.txt_RequestDescripiton.Name = "txt_RequestDescripiton";
             this.txt_RequestDescripiton.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -341,7 +352,7 @@
             // 
             this.lblCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblCount.AutoSize = true;
-            this.lblCount.Location = new System.Drawing.Point(18, 321);
+            this.lblCount.Location = new System.Drawing.Point(24, 308);
             this.lblCount.Name = "lblCount";
             this.lblCount.Size = new System.Drawing.Size(45, 19);
             this.lblCount.TabIndex = 18;
@@ -350,7 +361,7 @@
             // txt_editionSasr1
             // 
             this.txt_editionSasr1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txt_editionSasr1.Location = new System.Drawing.Point(96, 280);
+            this.txt_editionSasr1.Location = new System.Drawing.Point(96, 268);
             this.txt_editionSasr1.Name = "txt_editionSasr1";
             this.txt_editionSasr1.Size = new System.Drawing.Size(236, 24);
             this.txt_editionSasr1.TabIndex = 17;
@@ -358,7 +369,7 @@
             // btn_Export
             // 
             this.btn_Export.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_Export.Location = new System.Drawing.Point(14, 280);
+            this.btn_Export.Location = new System.Drawing.Point(14, 268);
             this.btn_Export.Name = "btn_Export";
             this.btn_Export.Size = new System.Drawing.Size(75, 23);
             this.btn_Export.TabIndex = 13;
@@ -368,26 +379,26 @@
             // 
             // dgv_sars1
             // 
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_sars1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_sars1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle18;
             this.dgv_sars1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv_sars1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_sars1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F);
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_sars1.DefaultCellStyle = dataGridViewCellStyle19;
             this.dgv_sars1.Location = new System.Drawing.Point(3, 3);
             this.dgv_sars1.Name = "dgv_sars1";
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_sars1.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_sars1.RowsDefaultCellStyle = dataGridViewCellStyle20;
             this.dgv_sars1.RowTemplate.Height = 23;
-            this.dgv_sars1.Size = new System.Drawing.Size(1136, 271);
+            this.dgv_sars1.Size = new System.Drawing.Size(1136, 259);
             this.dgv_sars1.TabIndex = 12;
             this.dgv_sars1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_sars1_CellFormatting);
             this.dgv_sars1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_sars1_CellMouseClick);
@@ -413,7 +424,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(5, 337);
+            this.label2.Location = new System.Drawing.Point(4, 342);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 19);
             this.label2.TabIndex = 19;
@@ -431,7 +442,7 @@
             // txt_edition
             // 
             this.txt_edition.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txt_edition.Location = new System.Drawing.Point(137, 344);
+            this.txt_edition.Location = new System.Drawing.Point(166, 340);
             this.txt_edition.Name = "txt_edition";
             this.txt_edition.Size = new System.Drawing.Size(100, 24);
             this.txt_edition.TabIndex = 16;
@@ -440,9 +451,9 @@
             // btn_ExportPage2
             // 
             this.btn_ExportPage2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_ExportPage2.Location = new System.Drawing.Point(52, 346);
+            this.btn_ExportPage2.Location = new System.Drawing.Point(70, 339);
             this.btn_ExportPage2.Name = "btn_ExportPage2";
-            this.btn_ExportPage2.Size = new System.Drawing.Size(75, 23);
+            this.btn_ExportPage2.Size = new System.Drawing.Size(79, 24);
             this.btn_ExportPage2.TabIndex = 1;
             this.btn_ExportPage2.Text = "Export";
             this.btn_ExportPage2.UseVisualStyleBackColor = true;
@@ -454,30 +465,19 @@
             this.dgv_sasr2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv_sasr2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_sasr2.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F);
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_sasr2.DefaultCellStyle = dataGridViewCellStyle17;
             this.dgv_sasr2.Location = new System.Drawing.Point(0, 6);
             this.dgv_sasr2.Name = "dgv_sasr2";
             this.dgv_sasr2.RowTemplate.Height = 23;
             this.dgv_sasr2.Size = new System.Drawing.Size(846, 327);
             this.dgv_sasr2.TabIndex = 0;
-            // 
-            // cmdUpdateGrid
-            // 
-            this.cmdUpdateGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.cmdUpdateGrid.Location = new System.Drawing.Point(265, 310);
-            this.cmdUpdateGrid.Name = "cmdUpdateGrid";
-            this.cmdUpdateGrid.Size = new System.Drawing.Size(75, 23);
-            this.cmdUpdateGrid.TabIndex = 20;
-            this.cmdUpdateGrid.Text = "修改";
-            this.cmdUpdateGrid.UseVisualStyleBackColor = true;
-            this.cmdUpdateGrid.Click += new System.EventHandler(this.cmdUpdateGrid_Click);
             // 
             // Frm_RequestXls
             // 

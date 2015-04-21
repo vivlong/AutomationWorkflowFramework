@@ -147,6 +147,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(115, 22);
             this.txtPassword.TabIndex = 38;
+            this.txtPassword.Text = "p@ssw0rd$";
             // 
             // txtUserID
             // 
