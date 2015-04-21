@@ -792,7 +792,7 @@ namespace AWF
             ExportToExcel2(dgv_sasr2, txt_edition.Text.Trim(), backupDir + @"\Database Change & App List " + vlue.Replace (".","") + ".xls");
             MessageBox.Show("导出数据成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
+          
         //dataGridView 单元格结束编辑时间
         private void dgv_sars1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -831,7 +831,7 @@ namespace AWF
                         txt_ReDes.Text = strReq;
                     }
                 }
-            }
+            }  
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
