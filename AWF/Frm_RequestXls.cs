@@ -778,8 +778,8 @@ namespace AWF
             int date4 = int.Parse(this.txtPublishDate .Text.Replace("-","").Substring(2));
        
             //此路径是与复制文件夹同一路径 自己本机测试的话要自己新建文件夹存储
-         //    string backupDir = @"D:\Request By Deo\" + date4 + " Update(Version " + vlue + "." + filebackupDir + ")";
-             string backupDir =  @"\\" + tex_url.Text.ToString() + @"\" + date4 + " Update(Version " + vlue + "." + filebackupDir + ")";
+     //    string backupDir = @"D:\Request By Deo\" + date4 + " Update(Version " + vlue + "." + filebackupDir + ")";
+          string backupDir =  @"\\" + tex_url.Text.ToString() + @"\" + date4 + " Update(Version " + vlue + "." + filebackupDir + ")";
             tex_url.Text = backupDir;
             //    string fileType = "xls";
             CopyAllFiles(fileSource, backupDir);
