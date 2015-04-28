@@ -56,6 +56,7 @@
             this.lbl_trackno = new System.Windows.Forms.Label();
             this.txt_TrackNo = new System.Windows.Forms.TextBox();
             this.chk_Today = new System.Windows.Forms.CheckBox();
+            this.txt_RequestDescription = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_sasr1)).BeginInit();
             this.gb_BuildNo.SuspendLayout();
@@ -64,6 +65,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txt_RequestDescription);
             this.panel1.Controls.Add(this.txt_ProgramingSummary);
             this.panel1.Controls.Add(this.cmd_Update);
             this.panel1.Controls.Add(this.txt_TestSummary);
@@ -87,6 +89,8 @@
             // 
             // txt_ProgramingSummary
             // 
+            this.txt_ProgramingSummary.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.txt_ProgramingSummary.Location = new System.Drawing.Point(26, 355);
             this.txt_ProgramingSummary.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txt_ProgramingSummary.Multiline = true;
@@ -109,6 +113,8 @@
             // 
             // txt_TestSummary
             // 
+            this.txt_TestSummary.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.txt_TestSummary.Location = new System.Drawing.Point(445, 355);
             this.txt_TestSummary.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txt_TestSummary.Multiline = true;
@@ -211,7 +217,6 @@
             this.txt_BuildNo.Size = new System.Drawing.Size(103, 24);
             this.txt_BuildNo.TabIndex = 50;
             this.txt_BuildNo.TextChanged += new System.EventHandler(this.txt_BuildNo_TextChanged);
-            this.txt_BuildNo.Leave += new System.EventHandler(this.txt_BuildNo_Leave);
             // 
             // lbl_SpecialName
             // 
@@ -395,6 +400,18 @@
             this.chk_Today.Text = "Complete Today";
             this.chk_Today.UseVisualStyleBackColor = true;
             // 
+            // txt_RequestDescription
+            // 
+            this.txt_RequestDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.txt_RequestDescription.Location = new System.Drawing.Point(865, 355);
+            this.txt_RequestDescription.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txt_RequestDescription.Multiline = true;
+            this.txt_RequestDescription.Name = "txt_RequestDescription";
+            this.txt_RequestDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txt_RequestDescription.Size = new System.Drawing.Size(415, 75);
+            this.txt_RequestDescription.TabIndex = 111;
+            // 
             // Frm_Request
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -409,6 +426,7 @@
             this.Name = "Frm_Request";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Frm_Request_Load);
+            this.SizeChanged += new System.EventHandler(this.Frm_Request_SizeChanged);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_sasr1)).EndInit();
@@ -450,6 +468,7 @@
         private System.Windows.Forms.Button cmd_Update;
         private System.Windows.Forms.TextBox txt_ProgramingSummary;
         private System.Windows.Forms.CheckBox chk_Today;
+        private System.Windows.Forms.TextBox txt_RequestDescription;
 
 
     }
