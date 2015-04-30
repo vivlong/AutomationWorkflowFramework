@@ -925,9 +925,12 @@ namespace AWF
                     if (intIndex <= 0) { intIndex = 1; }
                     strFixInfo = dt_Select.Rows[intI]["Programming Summary"].ToString().Substring(intIndex - 1);
                     string[] strInfo;
-                    if (strFixInfo.IndexOf(":") > 0)
+                    if (strFixInfo.IndexOf(" fix ") > 0)
                     {
-                        strInfo = strFixInfo.Substring(strFixInfo.IndexOf(":")).Split(':');
+                        strInfo = new string[2];
+                       string  strInfo1 = strFixInfo.Substring(strFixInfo.IndexOf(" fix "));
+                        strInfo[0]=" fix ";
+                        strInfo[1] = strInfo1.Substring(" fix ".Length);
                         string Fix;
                         Fix = "";
                         if (dt_Select.Rows[intI]["Test Summary"].ToString().IndexOf(strInfo[1].Trim()) > 0)
@@ -953,6 +956,8 @@ namespace AWF
                         if (Fix == "")
                         {
                             string strProgr = strInfo[strInfo.Length -1];
+                            if (strProgr!="")
+                            { 
                             strProgr = strProgr.Trim().Substring(5).Trim();
                             Fix = "";
                             if (dt_Select.Rows[intI]["Request Description"].ToString().IndexOf(strProgr.Trim()) > 0)
@@ -962,6 +967,7 @@ namespace AWF
                                 if (strReject.LastIndexOf("\n") > 0)
                                 { strReject = strReject.Substring(strReject.LastIndexOf("\n")+"\n".Length ); }
                                 dt_Select.Rows[intI]["Today Completed tasks"] = "Fix " + strReject + Fix;
+                            }
                             }
                         }
 

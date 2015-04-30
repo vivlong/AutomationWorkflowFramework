@@ -309,7 +309,7 @@ namespace AWF
                                 strProgrammingSummary = strProgrammingSummary.Substring(0, strProgrammingSummary.Length - "\n".Length);
                             }
                             strTextSummary = strTextSummary.Substring(strTextSummary.IndexOf(strDate));
-                            strTextSummary = strTextSummary.Substring(0, strTextSummary.IndexOf("\r\n"));
+                            if (strTextSummary.IndexOf("\r\n") > 0) { strTextSummary = strTextSummary.Substring(0, strTextSummary.IndexOf("\r\n")); }
                             dt.Rows[i]["ProgrammingSummary"] = strProgrammingSummary + "\n" + Classes.Modfunction.datetime_today.ToString("yyMMdd") + "(v" + m_VersionName + ")" + cbo_Programmer.Text.ToString() + " fix " + strTextSummary;
                          }
                         }
