@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.disCurrentDate = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -68,6 +68,10 @@
             this.txt_edition = new System.Windows.Forms.TextBox();
             this.btn_ExportPage2 = new System.Windows.Forms.Button();
             this.dgv_sasr2 = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.txtSpecial = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.gb_ConnetDB.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -79,6 +83,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtSpecial);
             this.panel1.Controls.Add(this.disCurrentDate);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtPublishDate);
@@ -126,7 +131,7 @@
             // 
             // cmdVersionSearch
             // 
-            this.cmdVersionSearch.Location = new System.Drawing.Point(457, 87);
+            this.cmdVersionSearch.Location = new System.Drawing.Point(557, 87);
             this.cmdVersionSearch.Name = "cmdVersionSearch";
             this.cmdVersionSearch.Size = new System.Drawing.Size(75, 27);
             this.cmdVersionSearch.TabIndex = 41;
@@ -144,7 +149,7 @@
             // 
             // btn_Copy
             // 
-            this.btn_Copy.Location = new System.Drawing.Point(834, 87);
+            this.btn_Copy.Location = new System.Drawing.Point(940, 87);
             this.btn_Copy.Name = "btn_Copy";
             this.btn_Copy.Size = new System.Drawing.Size(75, 26);
             this.btn_Copy.TabIndex = 35;
@@ -154,7 +159,7 @@
             // 
             // tex_url
             // 
-            this.tex_url.Location = new System.Drawing.Point(534, 88);
+            this.tex_url.Location = new System.Drawing.Point(634, 88);
             this.tex_url.Name = "tex_url";
             this.tex_url.Size = new System.Drawing.Size(298, 24);
             this.tex_url.TabIndex = 38;
@@ -163,7 +168,7 @@
             // 
             this.txt_versionName.Location = new System.Drawing.Point(303, 88);
             this.txt_versionName.Name = "txt_versionName";
-            this.txt_versionName.Size = new System.Drawing.Size(152, 24);
+            this.txt_versionName.Size = new System.Drawing.Size(55, 24);
             this.txt_versionName.TabIndex = 37;
             // 
             // com_version
@@ -184,7 +189,7 @@
             // 
             // btn_Search
             // 
-            this.btn_Search.Location = new System.Drawing.Point(833, 56);
+            this.btn_Search.Location = new System.Drawing.Point(939, 56);
             this.btn_Search.Name = "btn_Search";
             this.btn_Search.Size = new System.Drawing.Size(75, 26);
             this.btn_Search.TabIndex = 33;
@@ -196,7 +201,7 @@
             // 
             this.txt_search.Location = new System.Drawing.Point(425, 58);
             this.txt_search.Name = "txt_search";
-            this.txt_search.Size = new System.Drawing.Size(402, 24);
+            this.txt_search.Size = new System.Drawing.Size(508, 24);
             this.txt_search.TabIndex = 32;
             // 
             // gb_ConnetDB
@@ -312,6 +317,9 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.progressBar1);
+            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.cmdUpdateGrid);
             this.tabPage1.Controls.Add(this.txt_RequestDescripiton);
             this.tabPage1.Controls.Add(this.lblCount);
@@ -329,9 +337,9 @@
             // cmdUpdateGrid
             // 
             this.cmdUpdateGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.cmdUpdateGrid.Location = new System.Drawing.Point(258, 298);
+            this.cmdUpdateGrid.Location = new System.Drawing.Point(261, 292);
             this.cmdUpdateGrid.Name = "cmdUpdateGrid";
-            this.cmdUpdateGrid.Size = new System.Drawing.Size(75, 23);
+            this.cmdUpdateGrid.Size = new System.Drawing.Size(72, 23);
             this.cmdUpdateGrid.TabIndex = 20;
             this.cmdUpdateGrid.Text = "修改";
             this.cmdUpdateGrid.UseVisualStyleBackColor = true;
@@ -341,18 +349,18 @@
             // 
             this.txt_RequestDescripiton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_RequestDescripiton.Location = new System.Drawing.Point(346, 268);
+            this.txt_RequestDescripiton.Location = new System.Drawing.Point(346, 262);
             this.txt_RequestDescripiton.Multiline = true;
             this.txt_RequestDescripiton.Name = "txt_RequestDescripiton";
             this.txt_RequestDescripiton.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txt_RequestDescripiton.Size = new System.Drawing.Size(789, 88);
+            this.txt_RequestDescripiton.Size = new System.Drawing.Size(789, 86);
             this.txt_RequestDescripiton.TabIndex = 19;
             // 
             // lblCount
             // 
             this.lblCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblCount.AutoSize = true;
-            this.lblCount.Location = new System.Drawing.Point(24, 308);
+            this.lblCount.Location = new System.Drawing.Point(24, 296);
             this.lblCount.Name = "lblCount";
             this.lblCount.Size = new System.Drawing.Size(45, 19);
             this.lblCount.TabIndex = 18;
@@ -361,7 +369,7 @@
             // txt_editionSasr1
             // 
             this.txt_editionSasr1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txt_editionSasr1.Location = new System.Drawing.Point(96, 268);
+            this.txt_editionSasr1.Location = new System.Drawing.Point(96, 262);
             this.txt_editionSasr1.Name = "txt_editionSasr1";
             this.txt_editionSasr1.Size = new System.Drawing.Size(236, 24);
             this.txt_editionSasr1.TabIndex = 17;
@@ -369,7 +377,7 @@
             // btn_Export
             // 
             this.btn_Export.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_Export.Location = new System.Drawing.Point(14, 268);
+            this.btn_Export.Location = new System.Drawing.Point(14, 262);
             this.btn_Export.Name = "btn_Export";
             this.btn_Export.Size = new System.Drawing.Size(75, 23);
             this.btn_Export.TabIndex = 13;
@@ -379,26 +387,26 @@
             // 
             // dgv_sars1
             // 
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_sars1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_sars1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.dgv_sars1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv_sars1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F);
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_sars1.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_sars1.DefaultCellStyle = dataGridViewCellStyle14;
             this.dgv_sars1.Location = new System.Drawing.Point(3, 3);
             this.dgv_sars1.Name = "dgv_sars1";
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_sars1.RowsDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_sars1.RowsDefaultCellStyle = dataGridViewCellStyle15;
             this.dgv_sars1.RowTemplate.Height = 23;
-            this.dgv_sars1.Size = new System.Drawing.Size(1136, 259);
+            this.dgv_sars1.Size = new System.Drawing.Size(1136, 253);
             this.dgv_sars1.TabIndex = 12;
             this.dgv_sars1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_sars1_CellFormatting);
             this.dgv_sars1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_sars1_CellMouseClick);
@@ -411,10 +419,10 @@
             this.tabPage2.Controls.Add(this.txt_edition);
             this.tabPage2.Controls.Add(this.btn_ExportPage2);
             this.tabPage2.Controls.Add(this.dgv_sasr2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 28);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1142, 376);
+            this.tabPage2.Size = new System.Drawing.Size(1142, 382);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "filed";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -465,19 +473,55 @@
             this.dgv_sasr2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv_sasr2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F);
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_sasr2.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F);
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_sasr2.DefaultCellStyle = dataGridViewCellStyle16;
             this.dgv_sasr2.Location = new System.Drawing.Point(0, 6);
             this.dgv_sasr2.Name = "dgv_sasr2";
             this.dgv_sasr2.RowTemplate.Height = 23;
             this.dgv_sasr2.Size = new System.Drawing.Size(846, 327);
             this.dgv_sasr2.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.Location = new System.Drawing.Point(154, 341);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(186, 30);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "整理完成 打包到Reuqest.";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(346, 349);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(789, 24);
+            this.textBox1.TabIndex = 22;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(406, 167);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(330, 42);
+            this.progressBar1.TabIndex = 64;
+            this.progressBar1.Visible = false;
+            // 
+            // txtSpecial
+            // 
+            this.txtSpecial.Location = new System.Drawing.Point(361, 88);
+            this.txtSpecial.Name = "txtSpecial";
+            this.txtSpecial.Size = new System.Drawing.Size(190, 24);
+            this.txtSpecial.TabIndex = 65;
             // 
             // Frm_RequestXls
             // 
@@ -542,6 +586,10 @@
         private System.Windows.Forms.Label disCurrentDate;
         private System.Windows.Forms.TextBox txt_RequestDescripiton;
         private System.Windows.Forms.Button cmdUpdateGrid;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.TextBox txtSpecial;
 
     }
 }
