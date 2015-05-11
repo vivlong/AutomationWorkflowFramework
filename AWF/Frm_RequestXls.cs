@@ -135,6 +135,7 @@ namespace AWF
                     IFont fontstyleCACT = workbook.CreateFont();
                     fontstyleCACT.FontName = "Arial Unicode MS";
                     fontstyleCACT.FontHeightInPoints = 10;
+                    styleCACT.WrapText = true;
                     styleCACT.SetFont(fontstyleCACT);
                     styleCACT.FillPattern = FillPattern.SolidForeground;
                     styleCACT.FillForegroundColor = HSSFColor.Yellow.Index;
@@ -418,7 +419,8 @@ namespace AWF
                     IFont fontExpCell = workbook.CreateFont();
                     font.FontHeightInPoints = 12;
                     font.FontName = "Arial Unicode MS";
-               
+                    styleExpCell.VerticalAlignment = VerticalAlignment.Center;
+                    styleExpCell.Alignment = NPOI.SS.UserModel.HorizontalAlignment.Left;
                     styleExpCell.BorderBottom = NPOI.SS.UserModel.BorderStyle.Thin;
                     styleExpCell.BorderLeft = NPOI.SS.UserModel.BorderStyle.Thin;
                     styleExpCell.BorderRight = NPOI.SS.UserModel.BorderStyle.Thin;
@@ -752,23 +754,43 @@ namespace AWF
         private void btn_Copy_Click(object sender, EventArgs e)
         {
            if(MessageBox.Show ("确认核对完所有信息，Request信息和数据库修改，并要做导出操作？","保存",MessageBoxButtons.YesNo)==  System.Windows.Forms.DialogResult.No ){return ;}
-            int fileSourceDir = int.Parse(txt_versionName.Text.Trim())-1;
+           tex_url.Text = "192.168.0.250\\Net Application";
+           int fileSourceDir = int.Parse(txt_versionName.Text.Trim()) - 1;
             string vlue = com_version.SelectedItem.ToString();
             DateTime date1 = DateTime.Now;
             string date2 = String.Format("{0:yyMMdd}", date1).ToString();
             int date3 = int.Parse(date2);
             // string fileSource = @"\\192.168.0.250\Net Application\" + date3 + " Update(Version 7.0.3." + fileSourceDir + ")";
            // string fileSource = @"\\192.168.0.250\Net Application\" + date1.ToString("yyMMdd") + " Update(Version " + vlue + "." + fileSourceDir + ")";
-            string fileSource = @"\\" + tex_url.Text.ToString()+ @"\" + date1.ToString("yyMMdd") + " Update(Version " + vlue + "." + fileSourceDir + ")";
+            string strSpecial = txtSpecial.Text;
+            if (txtSpecial.Text != "")
+            { strSpecial = "(Special-" + strSpecial+")"; }
+            string fileSource = @"\\" + tex_url.Text.ToString() + @"\" + date1.ToString("yyMMdd") + " Update(Version " + vlue + "." + fileSourceDir  + ")" + strSpecial;
             while (!Directory.Exists(fileSource))
             {
 
                 date1 = date1.AddDays(-1);
-                fileSource = @"\\" + tex_url.Text.ToString()+ @"\" + date1.ToString("yyMMdd") + " Update(Version " + vlue + "." + fileSourceDir + ")";
+                fileSource = @"\\" + tex_url.Text.ToString() + @"\" + date1.ToString("yyMMdd") + " Update(Version " + vlue + "." + fileSourceDir + ")" + strSpecial;
                 if (date1.Date < DateTime.Now.AddYears(-3))
                 {
                     return;
                 }
+            }
+            this.textBox1.Text = @"\\192.168.0.230\RequestFormUpload\";
+            if (strSpecial == "")
+            {
+                if (vlue == "8.0.2")
+                {
+                    this.textBox1.Text = @"\\192.168.0.230\RequestFormUpload\8.0.2 Test\V_" + vlue + "." + fileSourceDir + ".zip";
+                }
+                else
+                {
+                    this.textBox1.Text = @"\\192.168.0.230\RequestFormUpload\" + vlue + @"\V_" + vlue + "." + fileSourceDir + ".zip";
+                }
+            }
+            else
+            {
+                this.textBox1.Text = @"\\192.168.0.230\RequestFormUpload\Special\V_" + vlue + "." + fileSourceDir + strSpecial  + ".zip";
             }
             //创建的版本号+1
             int filebackupDir = fileSourceDir + 1;
@@ -776,16 +798,21 @@ namespace AWF
             int date4 = int.Parse(this.txtPublishDate .Text.Replace("-","").Substring(2));
        
             //此路径是与复制文件夹同一路径 自己本机测试的话要自己新建文件夹存储
-           // string backupDir = @"D:\Request By Deo\" + date4 + " Update(Version " + vlue + "." + filebackupDir + ")";
-              string backupDir =  @"\\" + tex_url.Text.ToString() + @"\" + date4 + " Update(Version " + vlue + "." + filebackupDir + ")";
+     //    string backupDir = @"D:\Request By Deo\" + date4 + " Update(Version " + vlue + "." + filebackupDir + ")";
+            string backupDir = @"\\" + tex_url.Text.ToString() + @"\" + date4 + " Update(Version " + vlue + "." + filebackupDir + ")" + strSpecial;
             tex_url.Text = backupDir;
             //    string fileType = "xls";
             CopyAllFiles(fileSource, backupDir);
-           ExportToExcel(dgv_sars1, this.txt_editionSasr1.Text.Trim (), backupDir + @"\Version" + vlue + ".xx Update tasks.xls");
+            string strExcelName= backupDir + @"\Version " + vlue + ".xx Update tasks.xls";
+            if ((File.Exists(strExcelName))==false )
+            {
+                strExcelName = backupDir + @"\Version" + vlue + ".xx Update tasks.xls";
+            }
+            ExportToExcel(dgv_sars1, this.txt_editionSasr1.Text.Trim(), strExcelName);
             ExportToExcel2(dgv_sasr2, txt_edition.Text.Trim(), backupDir + @"\Database Change & App List " + vlue.Replace (".","") + ".xls");
             MessageBox.Show("导出数据成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
+          
         //dataGridView 单元格结束编辑时间
         private void dgv_sars1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -824,7 +851,7 @@ namespace AWF
                         txt_ReDes.Text = strReq;
                     }
                 }
-            }
+            }  
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -884,17 +911,18 @@ namespace AWF
             string strSelect, strFitler, strFitler2;
             strSelect = "Select TrackNo AS [Track No],case (right(rtrim(isnull(ProgrammingSummary,'')),4)) when 'Done' then 'Fix this request form' else '' end as [Today Completed tasks],FixVersion as [Fix Version],ActualCompletionDate as[Actual Completion Date],ProgrammingSummary as[Programming Summary],TestSummary as[Test Summary],Form,RequestDescription as [Request Description],CompleteByName as[Complete By Name],TestByName as[Test By Name],TestDate as[Test Date],TestResultFlag as [Test Result] from sasr1 ";
             string strSasr2 = "select b.ActualCompletionDate as Date, a.TrackNo,a.TableName,a.FieldName,a.Type as DateType,a.LEN as Length,a.SPFlag as StoreProcedureName,a.TriggerName,a.Remark from Sasr2 a,sasr1 b where a.TrackNo=b.TrackNo";
-            
-            
+            string strSpecial = txtSpecial.Text;
+            if (txtSpecial.Text != "")
+            { strSpecial = "(Special-" + strSpecial + ")"; }
             if (disCurrentDate.Text == this.txtPublishDate.Text)
             {
-                strFitler = " FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + "%' AND convert(char(10),ActualCompletionDate,20)='" + this.txtPublishDate.Text + "'";
-                strFitler2 = " b.FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + "%' AND convert(char(10),a.ModifyAt,20)='" + this.txtPublishDate.Text + "'";
+                strFitler = " (FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + strSpecial + "%' AND convert(char(10),ActualCompletionDate,20)='" + this.txtPublishDate.Text + "')  OR ( FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + strSpecial + "%')";
+                strFitler2 = " b.FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + strSpecial + "%' AND convert(char(10),a.ModifyAt,20)='" + this.txtPublishDate.Text + "'";
             }
             else
             {
-                strFitler = "(( FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + "%' AND convert(char(10),ActualCompletionDate,20)='" + this.txtPublishDate.Text + "') OR ( FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + "%'))";
-                strFitler2 = "(( b.FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + "%' AND convert(char(10),a.ModifyAt,20)='" + this.txtPublishDate.Text + "'))";
+                strFitler = "(( FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + strSpecial + "%' AND convert(char(10),ActualCompletionDate,20)='" + this.txtPublishDate.Text + "') OR ( FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + strSpecial + "%'))";
+                strFitler2 = "(( b.FixVersion like '%" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text + strSpecial + "%' AND convert(char(10),a.ModifyAt,20)='" + this.txtPublishDate.Text + "'))";
             }
             strSelect = strSelect + " Where " + strFitler + " order by TrackNo desc";
             strSasr2 = strSasr2 + " AND " + strFitler2 + " Order by b.TrackNo desc,a.TableName";
@@ -918,9 +946,12 @@ namespace AWF
                     if (intIndex <= 0) { intIndex = 1; }
                     strFixInfo = dt_Select.Rows[intI]["Programming Summary"].ToString().Substring(intIndex - 1);
                     string[] strInfo;
-                    if (strFixInfo.IndexOf(":") > 0)
+                    if (strFixInfo.IndexOf(" fix ") > 0)
                     {
-                        strInfo = strFixInfo.Substring(strFixInfo.IndexOf(":")).Split(':');
+                        strInfo = new string[2];
+                       string  strInfo1 = strFixInfo.Substring(strFixInfo.IndexOf(" fix "));
+                        strInfo[0]=" fix ";
+                        strInfo[1] = strInfo1.Substring(" fix ".Length);
                         string Fix;
                         Fix = "";
                         if (dt_Select.Rows[intI]["Test Summary"].ToString().IndexOf(strInfo[1].Trim()) > 0)
@@ -946,6 +977,8 @@ namespace AWF
                         if (Fix == "")
                         {
                             string strProgr = strInfo[strInfo.Length -1];
+                            if (strProgr!="")
+                            { 
                             strProgr = strProgr.Trim().Substring(5).Trim();
                             Fix = "";
                             if (dt_Select.Rows[intI]["Request Description"].ToString().IndexOf(strProgr.Trim()) > 0)
@@ -955,6 +988,7 @@ namespace AWF
                                 if (strReject.LastIndexOf("\n") > 0)
                                 { strReject = strReject.Substring(strReject.LastIndexOf("\n")+"\n".Length ); }
                                 dt_Select.Rows[intI]["Today Completed tasks"] = "Fix " + strReject + Fix;
+                            }
                             }
                         }
 
@@ -977,6 +1011,23 @@ namespace AWF
             label2.Text = "总行数 ： " + (dgv_sasr2.Rows.Count).ToString();
             FieldCount = dgv_sasr2.Rows.Count ;
             txt_editionSasr1.Text = this.txtPublishDate.Text.Replace("-", "").Substring(2) + " V_" + this.com_version.SelectedItem.ToString() + "." + this.txt_versionName.Text;
+            string vlue = this.com_version.SelectedItem.ToString();
+            this.textBox1.Text = @"\\192.168.0.230\RequestFormUpload\";
+            if (strSpecial == "")
+            {
+                if (vlue == "8.0.2")
+                {
+                    this.textBox1.Text = @"\\192.168.0.230\RequestFormUpload\8.0.2 Test\V_" + vlue + "." + this.txt_versionName.Text + ".zip";
+                }
+                else
+                {
+                    this.textBox1.Text = @"\\192.168.0.230\RequestFormUpload\" + vlue + @"\V_" + vlue + "." + this.txt_versionName.Text + ".zip";
+                }
+            }
+            else
+            {
+                this.textBox1.Text = @"\\192.168.0.230\RequestFormUpload\Special\V_" + vlue + "." + this.txt_versionName.Text + strSpecial + ".zip";
+            }
         }
 
         private void dgv_sars1_CellValueNeeded(object sender, DataGridViewCellValueEventArgs e)
@@ -1002,7 +1053,7 @@ namespace AWF
         private void dgv_sars1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
 
-            String strdag_sasr1 = dgv_sars1.Columns[dgv_sars1.CurrentCell.ColumnIndex].HeaderText;
+           // String strdag_sasr1 = dgv_sars1.Columns[dgv_sars1.CurrentCell.ColumnIndex].HeaderText;
            if(e.RowIndex>=0 && e.ColumnIndex>=0)
            {
                String str_dgv_sasr1_value = dgv_sars1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
@@ -1050,6 +1101,87 @@ namespace AWF
         private void cmdUpdateGrid_Click(object sender, EventArgs e)
         {
             dgv_sars1.CurrentCell .Value = this.txt_RequestDescripiton.Text;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            tex_url.Text = "192.168.0.250\\Net Application";
+            int fileSourceDir = int.Parse(txt_versionName.Text.Trim());
+            string vlue = com_version.SelectedItem.ToString();
+            DateTime date1 = DateTime.Now;
+            string date2 = String.Format("{0:yyMMdd}", date1).ToString();
+            int date3 = int.Parse(date2);
+            // string fileSource = @"\\192.168.0.250\Net Application\" + date3 + " Update(Version 7.0.3." + fileSourceDir + ")";
+            // string fileSource = @"\\192.168.0.250\Net Application\" + date1.ToString("yyMMdd") + " Update(Version " + vlue + "." + fileSourceDir + ")";
+            string strSpecial = txtSpecial.Text;
+            if (txtSpecial.Text != "")
+            { strSpecial = "(Special-" + strSpecial + ")"; }
+            string fileSource = @"\\" + tex_url.Text.ToString() + @"\" + date1.ToString("yyMMdd") + " Update(Version " + vlue + "." + fileSourceDir + ")" + strSpecial;
+            while (!Directory.Exists(fileSource))
+            {
+
+                date1 = date1.AddDays(-1);
+                fileSource = @"\\" + tex_url.Text.ToString() + @"\" + date1.ToString("yyMMdd") + " Update(Version " + vlue + "." + fileSourceDir + ")" + strSpecial;
+                if (date1.Date < DateTime.Now.AddYears(-3))
+                {
+                    return;
+                }
+            }
+            if (MessageBox.Show("确认打包到Request?\n 压缩文件夹 = "+ fileSource +" \n 路径 = " + this.textBox1.Text + "？", "", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            {
+                string filepath = Classes.Modfunction.baseDPath + @"PublishFolder\sysfreight";
+                try
+                {
+                    if (!string.IsNullOrEmpty(this.textBox1.Text) && !string.IsNullOrEmpty(fileSource))
+                    {
+                        //string ogFileName = verName + txt_BuildNo.Text.Trim().ToString() + "_" + strTime;
+                        string ZipName = this.textBox1.Text;
+                        string SourcePatch = fileSource;
+                        string tempFolder_Master = ZipName.Substring(0, ZipName.Length - 4);
+                        //string tempFolder_Sub = tempFolder_Master + "\\" + ogFileName;
+                        Directory.CreateDirectory(tempFolder_Master);
+                        //DirectoryInfo DInfo = new DirectoryInfo(SourcePatch);
+                        //DInfo.MoveTo(tempFolder_Sub);
+                        Classes.ZipThread thPub2Zip = new Classes.ZipThread(SourcePatch, ZipName); //Thread thPub2Zip = new Thread(delegate() {  });
+                        thPub2Zip.start();
+                        while (thPub2Zip.threadState() == System.Threading.ThreadState.Running)
+                        {
+                            Application.DoEvents();
+                            if (progressBar1.Value == progressBar1.Maximum)
+                            {
+                                progressBar1.Value = 0;
+                            }
+                            progressBar1.Value += 1;
+                        }
+                        thPub2Zip.abort();
+                        progressBar1.Visible = false;
+                        panel1.Enabled = true;
+                        progressBar1.Enabled = false;
+                        if (File.Exists(ZipName))
+                        {                          
+                            MessageBox.Show("Published to Zip Successful!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Published to Zip Faild!");
+                            string path = @"D:\PublishFolder\sysfreightupdate\publish";
+                            System.Diagnostics.Process.Start("explorer.exe", path);
+                        }
+                        //DirectoryInfo DInfoNew = new DirectoryInfo(tempFolder_Sub);
+                        //DInfoNew.MoveTo(SourcePatch);
+                        if (Directory.Exists(tempFolder_Master))
+                        {
+                            Directory.Delete(tempFolder_Master);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("请输入版本修订号!");
+                    }
+                }
+                catch (Exception ex) { }
+                finally { GC.Collect(); }
+            }
         }
    
     }

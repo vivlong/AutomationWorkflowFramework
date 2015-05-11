@@ -208,12 +208,17 @@ namespace AWF
             string m_strFilter;
             m_strFilter = "";
             string strVer = GetVer();
+            if (cbo_Programmer.Text.ToString() == "")
+            {
+                MessageBox.Show("请选择指派人员");
+                return;
+            }
             if (txt_MulTrackNo.Text != "")
             {
                      m_mulTrackNo = txt_MulTrackNo.Text.Split(',');
                 for (int i = 0; i < m_mulTrackNo.Length; i++)
                 {
-                 
+                    if (m_mulTrackNo[i] == "") { continue; }
                     if (m_mulTrackNo[i].Substring(0, 3).ToLower()  == "Net".ToLower() )
                     {
                         m_mulTrackNo[i] = "." + m_mulTrackNo[i];
@@ -223,18 +228,16 @@ namespace AWF
                         m_mulTrackNo[i] = ".Net" + m_mulTrackNo[i];
                     }
                 }
-
-              
-         
                 for (int i = 0; i < m_mulTrackNo.Length; i++)
                 {
-                    if (i == m_mulTrackNo.Length - 1)
+                    if (m_mulTrackNo[i] == "") { continue; }
+                    if (m_strFilter == "")
                     {
-                        m_strFilter = m_strFilter + "'" + m_mulTrackNo[i] + "'";
+                        m_strFilter = m_strFilter + "'" + m_mulTrackNo[i].Replace ("'","''") + "'";
                     }
                     else
                     {
-                        m_strFilter = m_strFilter + "'" + m_mulTrackNo[i] + "',";
+                        m_strFilter = m_strFilter + ",'" + m_mulTrackNo[i].Replace("'", "''") + "'";
                     }
                 }
             }
@@ -246,8 +249,7 @@ namespace AWF
             {
                 if (!string.IsNullOrEmpty(cbo_Programmer.Text.ToString()))
                 { m_strFilter = m_strFilter + "And AssignToName ='" + cbo_Programmer.Text.ToString() + "'"; }
-                if (!string.IsNullOrEmpty(txt_TrackNo.Text.ToString()))
-                { m_strFilter = m_strFilter + "And TrackNo ='" + txt_TrackNo.Text.ToString() + "'"; }
+                
              }
 
             if (m_strFilter !="()")
@@ -273,27 +275,70 @@ namespace AWF
                     // FixVersion
                     if (string.IsNullOrEmpty(dt.Rows[i]["FixVersion"].ToString()))
                     {
-                        dt.Rows[i]["FixVersion"] = "V" + m_VersionName;
+                        dt.Rows[i]["FixVersion"] = "v" + m_VersionName;
                     }
                     else
                     {
-                        dt.Rows[i]["FixVersion"] = dt.Rows[i]["FixVersion"] + "," + "V" + m_VersionName;
+                        dt.Rows[i]["FixVersion"] = dt.Rows[i]["FixVersion"] + "," + "v" + m_VersionName;
                     }
                    // ProgrammingSummary
                     if (string.IsNullOrEmpty(dt.Rows[i]["ProgrammingSummary"].ToString()))
                     {
-                        dt.Rows[i]["ProgrammingSummary"] = Classes.Modfunction.datetime_today.ToString("yyMMdd") + "(" + m_VersionName + ")" + cbo_Programmer.Text.ToString() + " done ";
+                        dt.Rows[i]["ProgrammingSummary"] = Classes.Modfunction.datetime_today.ToString("yyMMdd") + "(v" + m_VersionName + ")" + cbo_Programmer.Text.ToString() + " done ";
                     }
                     else
                     {
-                     // dt.Rows[i]["ProgrammingSummary"] = Classes.Modfunction.datetime_today.ToString("yyMMdd") + "(" + m_VersionName + ")" + cbo_Programmer.Text.ToString() + " done ";
-                        dt.Rows[i]["ProgrammingSummary"] = Classes.Modfunction.datetime_today.ToString("yyMMdd") + "(" + m_VersionName + ")" + cbo_Programmer.Text.ToString() + " done ";
+                        int intExitCount = 0;
+                        DateTime date1=DateTime.Now ;
+                        string strDate = date1.ToString("yyMMdd");
+                        string strTextSummary =dt.Rows[i]["TestSummary"].ToString();
+                        if (strTextSummary!="")
+                        { 
+                        while (strTextSummary.IndexOf(strDate) < 0)
+                        {
+                            date1 = date1.AddDays(-1);
+                            strDate = date1.ToString("yyMMdd");
+                            intExitCount = intExitCount + 1;
+                            if (intExitCount >= 100) { break; }
+                        }
+                        if (strTextSummary.IndexOf(strDate) >= 0)
+                        {
+                            string strProgrammingSummary = dt.Rows[i]["ProgrammingSummary"].ToString();
+                            if (strProgrammingSummary.Substring(strProgrammingSummary.Length - "\n".Length) == "\n")
+                            {
+                                strProgrammingSummary = strProgrammingSummary.Substring(0, strProgrammingSummary.Length - "\n".Length);
+                            }
+                            strTextSummary = strTextSummary.Substring(strTextSummary.IndexOf(strDate));
+                            if (strTextSummary.IndexOf("\r\n") > 0) { strTextSummary = strTextSummary.Substring(0, strTextSummary.IndexOf("\r\n")); }
+                            dt.Rows[i]["ProgrammingSummary"] = strProgrammingSummary + "\n" + Classes.Modfunction.datetime_today.ToString("yyMMdd") + "(v" + m_VersionName + ")" + cbo_Programmer.Text.ToString() + " fix " + strTextSummary;
+                         }
+                        }
+                        strTextSummary = dt.Rows[i]["RequestDescription"].ToString();
+                        intExitCount = 0;
+                         if (strTextSummary != "")
+                         {
+                             while (strTextSummary.IndexOf(strDate) < 0)
+                             {
+                                 date1 = date1.AddDays(-1);
+                                 strDate = date1.ToString("yyMMdd");
+                                 intExitCount = intExitCount + 1;
+                                 if (intExitCount >= 100) { break; }
+                             }
+                             if (strTextSummary.IndexOf(strDate) >= 0)
+                             {
+                                 string strProgrammingSummary = dt.Rows[i]["ProgrammingSummary"].ToString();
+                                 if (strProgrammingSummary.Substring(strProgrammingSummary.Length - "\n".Length) == "\n")
+                                 {
+                                     strProgrammingSummary = strProgrammingSummary.Substring(0, strProgrammingSummary.Length - "\n".Length);
+                                 }
+                                 strTextSummary = strTextSummary.Substring(strTextSummary.IndexOf(strDate));
+                                 strTextSummary = strTextSummary.Substring(0, strTextSummary.IndexOf("\r\n"));
+                                 dt.Rows[i]["ProgrammingSummary"] = strProgrammingSummary + "\n" + Classes.Modfunction.datetime_today.ToString("yyMMdd") + "(v" + m_VersionName + ")" + cbo_Programmer.Text.ToString() + " fix " + strTextSummary;
+                             }
+                         }
                     }
-                   
                 }
-
                 grd_sasr1.DataSource = dt;
-                //grd_sasr1.Columns[0].HeaderText = "Track No";
                 grd_sasr1.Columns[0].ReadOnly = true;
                 grd_sasr1.Columns["ProgrammingSummary"].Width = 600;
                 
@@ -308,7 +353,8 @@ namespace AWF
                    {
                        txt_RequestDes.Text = Modfunction.CheckNull(grd_sasr1.Rows[grd_sasr1.CurrentRow.Index].Cells["RequestDescription"].Value).ToString().Replace("\n", "\r\n");
                        txt_TestSummary.Text   = grd_sasr1.Rows[grd_sasr1.CurrentRow.Index].Cells["TestSummary"].Value.ToString().Replace("\n","\r\n") ;
-                    txt_ProgramingSummary.Text = Modfunction.CheckNull(grd_sasr1.Rows[grd_sasr1.CurrentRow.Index].Cells["ProgrammingSummary"].Value).ToString().Replace("\n", "\r\n");
+                       this.txt_RequestDescription.Text = grd_sasr1.Rows[grd_sasr1.CurrentRow.Index].Cells["RequestDescription"].Value.ToString().Replace("\n", "\r\n");
+                       txt_ProgramingSummary.Text = Modfunction.CheckNull(grd_sasr1.Rows[grd_sasr1.CurrentRow.Index].Cells["ProgrammingSummary"].Value).ToString().Replace("\n", "\r\n");
                 }
            }
         }
@@ -357,7 +403,7 @@ namespace AWF
         {
             if(!string.IsNullOrEmpty(cbo_SpecialName.Text.ToString()))
             {
-                m_VersionName = m_VersionName + "(Special-" + cbo_SpecialName.Text.ToString() + ")";
+                m_VersionName = m_VersionName + "(Special" + cbo_SpecialName.Text.ToString() + ")";
             }
         }
 
@@ -424,20 +470,12 @@ namespace AWF
         {
             string strVer = GetVer();
             m_VersionName = strVer + "." + txt_BuildNo.Text.ToString();
-            if (!string.IsNullOrEmpty(cbo_SpecialName.Text.ToString()))
-            {
-                m_VersionName = m_VersionName + "(Special-" + cbo_SpecialName.Text.ToString() + ")";
-            }
+
         }
 
-        private void txt_BuildNo_Leave(object sender, EventArgs e)
+        private void Frm_Request_SizeChanged(object sender, EventArgs e)
         {
-            string strVer = GetVer();
-            m_VersionName = strVer + "." + txt_BuildNo.Text.ToString();
-            if (!string.IsNullOrEmpty(cbo_SpecialName.Text.ToString()))
-            {
-                m_VersionName = m_VersionName + "(Special-" + cbo_SpecialName.Text.ToString() + ")";
-            }
+            this.txt_RequestDescription.Width = this.Width - this.txt_RequestDescription.Left;
         }
       
     }
