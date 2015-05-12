@@ -201,7 +201,28 @@ namespace AWF
               }
           
           }
-          MessageBox.Show("恭喜你，成功导入数据！");
+
+          string[] var;
+          var = txt_TrackNo.Text.Split(',');
+          string strsql;
+          string spname;
+          spname = "";
+            if (var.Length > 2)
+            {
+                string SPFlag;
+                if (var[3].ToUpper().Trim() =="Y" )
+                {  spname = "spi_" + cbo_Table.Text + ",sps_" + cbo_Table.Text + ",spu_" + cbo_Table.Text; }
+              
+            }
+          strsql = "Update sasr1 set TableName='" + cbo_Table.Text + "', ViewName ='vw_" + cbo_Table.Text +"', StoreProcedureName ='" + spname + "' Where TrackNo='" + var[0] +"'" ;
+          string m_strConn1 = "server=" + strsearviceName + ";uid=" + searviceName + ";pwd=" + strMima + ";database= RequestForm" ;
+
+             int k = SqlHelper.ExecuteNonQuery(m_strConn1, CommandType.Text,strsql);
+              if (k!=-1)
+              {
+              
+              }
+            MessageBox.Show("恭喜你，成功导入数据！");
 
         }
 
