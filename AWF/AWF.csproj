@@ -306,6 +306,9 @@
     <Compile Include="Classes\ZipThread.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="EXE\SearchFieldForText.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="SAWF.exe.l4n">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

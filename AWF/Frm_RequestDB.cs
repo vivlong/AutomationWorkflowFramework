@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using AWF.Classes;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
 
 namespace AWF
 {
@@ -23,6 +24,9 @@ namespace AWF
         private string strSQL = "";
         private string strConn = "";
         public string[] arrSQL;
+     //  public static extern int ShellExecute(int hwnd, String lpOperation, String lpFile, String lpParameters, String lpDirectory, int nShowCmd);
+        
+        private static System.Diagnostics.Process p;
         public frm_RequestDB()
         {
             InitializeComponent();
@@ -301,5 +305,27 @@ namespace AWF
 
              }
          }
+
+         private void cmd_EXE_Click(object sender, EventArgs e)
+         {
+           if (p == null)
+           {
+                p = new System.Diagnostics.Process();
+                p.StartInfo.FileName = @"EXE\SearchFieldForText.exe";
+                p.Start();
+           }
+           else
+           {
+            if (p.HasExited) //是否正在运行
+            {p.Start();}
+            }
+          p.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal;
+         }
+
+         private void cmd_OpenSQL_Click(object sender, EventArgs e)
+         {
+            // ShellExecute(0, String.Empty,"Microsoft SQL Server Management Studio", String.Empty, String.Empty, 1);
+         }
+
     }
 }

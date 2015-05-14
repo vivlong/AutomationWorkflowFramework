@@ -58,11 +58,13 @@
             this.cmd_Update = new System.Windows.Forms.Button();
             this.lbl_trackno = new System.Windows.Forms.Label();
             this.txt_TrackNo = new System.Windows.Forms.TextBox();
+            this.cmd_EXE = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.cmd_EXE);
             this.panel1.Controls.Add(this.cmd_INS);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.label8);
@@ -379,6 +381,17 @@
             this.txt_TrackNo.TabIndex = 91;
             this.txt_TrackNo.Leave += new System.EventHandler(this.txt_TrackNo_Leave);
             // 
+            // cmd_EXE
+            // 
+            this.cmd_EXE.Location = new System.Drawing.Point(634, 8);
+            this.cmd_EXE.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmd_EXE.Name = "cmd_EXE";
+            this.cmd_EXE.Size = new System.Drawing.Size(135, 20);
+            this.cmd_EXE.TabIndex = 135;
+            this.cmd_EXE.Text = "数据库脚本产生";
+            this.cmd_EXE.UseVisualStyleBackColor = true;
+            this.cmd_EXE.Click += new System.EventHandler(this.cmd_EXE_Click);
+            // 
             // frm_RequestDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -427,5 +440,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button cmd_EXE;
     }
 }
