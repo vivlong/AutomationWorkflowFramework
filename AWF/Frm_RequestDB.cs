@@ -311,7 +311,7 @@ namespace AWF
            if (p == null)
            {
                 p = new System.Diagnostics.Process();
-                p.StartInfo.FileName = "SearchFieldForText.exe";
+                p.StartInfo.FileName = @"EXE\SearchFieldForText.exe";
                 p.Start();
            }
            else
